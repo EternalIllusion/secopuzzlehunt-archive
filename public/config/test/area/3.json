@@ -1,0 +1,29 @@
+{
+  "title": "N2PH",
+  "problems": [
+    {
+      "pid": 15,
+      "title": "天窗之下",
+      "type": 0,
+      "path": "/problems/test/3/15"
+    },
+    {
+      "pid": 16,
+      "title": "图书馆中",
+      "type": 0,
+      "path": "/problems/test/3/16"
+    },
+    {
+      "pid": 17,
+      "title": "PREMETA 文字游戏",
+      "type": 0,
+      "path": "/problems/test/3/17"
+    },
+    {
+      "pid": 18,
+      "title": "盘上黑白",
+      "type": 1,
+      "path": "/problems/test/3/18"
+    }
+  ]
+}

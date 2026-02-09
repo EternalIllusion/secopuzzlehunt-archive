@@ -1,0 +1,42 @@
+[
+  {
+    "title": "第九题服务器时间同步",
+    "type": "backend_script",
+    "psid": 1,
+    "key": "tn-check",
+    "content": [
+      "服务器脚本 tn-check 第九题服务器时间同步"
+    ],
+    "script": "./tn-check/js"
+  },
+  {
+    "title": "第九题实际内容",
+    "type": "backend_script",
+    "psid": 2,
+    "key": "tn-content",
+    "content": [
+      "服务器脚本 tn-content 第九题实际内容"
+    ],
+    "script": "./tn-content/js"
+  },
+  {
+    "title": "不要修改上面的任何的东西！！！！！",
+    "type": "backend_script",
+    "psid": 3,
+    "key": "zz-do-not-touch-above-zz",
+    "content": [
+      "服务器脚本 zz-do-not-touch-above-zz 不要修改上面的任何的东西！！！！！"
+    ],
+    "script": "./zz-do-not-touch-above-zz/js"
+  },
+  {
+    "title": "测试专用脚本，谁访问封谁",
+    "type": "backend_script",
+    "psid": 4,
+    "key": "zzz-apitest-haspzfinished-zzz",
+    "content": [
+      "服务器脚本 zzz-apitest-haspzfinished-zzz 测试专用脚本，谁访问封谁"
+    ],
+    "script": "./zzz-apitest-haspzfinished-zzz/js"
+  }
+]

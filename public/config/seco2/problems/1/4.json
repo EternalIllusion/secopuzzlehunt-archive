@@ -1,0 +1,46 @@
+{
+  "type": "problem",
+  "title": "瘟疫石板",
+  "extendData": "",
+  "contentType": 2,
+  "content": "",
+  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <p>\r\n            ① 用黑线围成的9个方格为一个房间，病毒不会跨房间传播，【医生】不会跨房间治疗。<br />\r\n            ② 4为【患者】，会将病毒传染给其上下左右（同一个房间里）的人，被传染者若没有在③④条中被治愈，会感染并继续按此规则传播病毒。<br />\r\n            ③ 1为【医生】，可治愈自己及上下左右的人，被治愈者不传播病毒。<br />\r\n            ④ 9为【自护者】，可治愈自己，不传播病毒。<br />\r\n            ⑤ 阴影代表病毒感染者，空白表示未感染病毒。<br />\r\n            ⑥ 最终结果符合每行、每列、每个房间各含1~9。<br />\r\n            ⑦ 推理出最终结果后，所有病毒全部消失。随后5变成【患者】，3变成【医生】，4变成【自护者】，请推理最新感染情况。\r\n        </p>\r\n        <p><a href=\"https://puzz.cipherpuzzles.com/penpa-edit/#m=solve&p=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\" target=\"_blank\">做题链接（Penpa+链接，不含答案验证）</a></p>\r\n        <img class=\"img-main-single\" :src=\"imgSource\" :alt=\"imgAlt\" />\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n\r\n    .img-main-single {\r\n        width: auto;\r\n        max-width: 100%;\r\n        max-height: 60vh;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        border: #bbb 3px solid;\r\n        background-color: #fff;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
+  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/n2ph/static/5abe9ce4c7bf443d80929ab9b3e75280.webp\"),imgAlt:e.ref(\"瘟疫石板\"),ansLength:e.ref(4)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
+  "answer": "SAKE",
+  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n\n这里的部落曾饱受病毒侵扰，现在也是这样",
+  "tips": [
+    {
+      "title": "我毫无头绪 (0提示点)",
+      "content": "你真的只需要按照题目的要求完成这个变形的数独。"
+    },
+    {
+      "title": "我不知道我做的是否正确 (600提示点)",
+      "content": "你可以发送开头为【叮咚鸡大狗叫搞核酸】的站内信并附带外交表链接，让我们来为你确认。请您建立一张外交用的腾讯文档/表格并附带本提示的解锁截图、以及你们做这一题的进度，然后把带具有查看权限的链接粘贴到站内信。"
+    },
+    {
+      "title": "我还是不会做 (1000提示点)",
+      "content": "这是数独的**答案**:\n\n<img src=\"/config/n2ph/static/ccd30b5d2b894844ba8d36b35a36d7e5.webp\" width=\"240\" height=\"240\"></img>"
+    },
+    {
+      "title": "该如何提取 (300提示点)",
+      "content": "盲文。你需要对圈中的六个块旋转90度。每个块向左转和向右转只会有一种是有效的盲文。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "n2ph/index"
+    },
+    {
+      "title": "N2PH",
+      "path": "/area/n2ph/1",
+      "pgid": 1
+    }
+  ],
+  "arealink": {
+    "title": "N2PH",
+    "path": "/area/n2ph/1",
+    "pgid": 1
+  }
+}

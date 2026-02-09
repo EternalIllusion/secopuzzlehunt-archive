@@ -1,0 +1,39 @@
+{
+  "type": "index",
+  "title": "N2PH存档站",
+  "content": "所有的题目均已存档，请点击主页面按钮查看。",
+  "navs": [
+    {
+      "title": "首页",
+      "type": "index",
+      "path": "/index"
+    },
+    {
+      "title": "test 主页",
+      "type": "page",
+      "path": "/pages/main/test"
+    }
+  ],
+  "links": [
+    {
+      "title": "N2PH",
+      "path": "/area/test/1",
+      "pgid": 1
+    },
+    {
+      "title": "剧情",
+      "type": "page",
+      "path": "/articles/test/index"
+    },
+    {
+      "title": "排行榜",
+      "type": "scoreboard",
+      "path": "/scoreboard/test"
+    },
+    {
+      "title": "公告列表",
+      "type": "announcements",
+      "path": "/announcements/test"
+    }
+  ]
+}

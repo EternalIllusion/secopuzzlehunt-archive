@@ -1,0 +1,42 @@
+{
+  "type": "problem",
+  "title": "混音留声",
+  "extendData": "",
+  "contentType": 2,
+  "content": "",
+  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <audio :src=\"imgSource\" controls>您的浏览器不支持音频标签，请升级浏览器</audio>\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n    .img-main-single {\r\n        width: 100%;\r\n        max-width: 100%;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        border: #bbb 3px solid;\r\n        background-color: #fff;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
+  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/n2ph/static/4fef5223284041c981e1963fbfe44d6f.mp3\"),imgAlt:e.ref(\"古道密语\"),ansLength:e.ref(8)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
+  "answer": "CASSETTE",
+  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n\n<span style=\"color: #ff0000;\">一</span>台<span style=\"color: #ff0000;\">唱</span>片机中传来了<span style=\"color: #ff0000;\">零</span>星的<span style=\"color: #ff0000;\">音</span>乐声……听，那不断传来的重音…… ",
+  "tips": [
+    {
+      "title": "我毫无头绪 (300提示点)",
+      "content": "将注意力放在加重的音上。"
+    },
+    {
+      "title": "该如何提取 (600提示点)",
+      "content": "前半部分是一个重复多遍的01串，0对应低音，1对应高音。后半段有一段音数和前半段01串字符数一样的、被加重的旋律。当前面是0的时候提取那段旋律的音名，前面是1的时候提取唱名（皆提取首字母）。"
+    },
+    {
+      "title": "我难以提取音频中的内容，我需要一些辅助。 (1000提示点)",
+      "content": "以下是音乐对应的MIDI瀑布流，你无需提取瀑布流note颜色，音乐BPM等内容，这不是Puzzle的一部分。\n[点击打开](/config/n2ph/static/21e4222f18244056b2b0196891c65bd0.html)\n\n如果您的设备无法打开这个网页，您可以下载midi文件：[T7.mid](/config/n2ph/static/91a8ff23d54f4b02a642dad77ca4c73c.mid)"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "n2ph/index"
+    },
+    {
+      "title": "N2PH",
+      "path": "/area/n2ph/1",
+      "pgid": 1
+    }
+  ],
+  "arealink": {
+    "title": "N2PH",
+    "path": "/area/n2ph/1",
+    "pgid": 1
+  }
+}

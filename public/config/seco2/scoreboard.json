@@ -1,0 +1,5048 @@
+{
+  "type": "scoreboard",
+  "title": "排行榜 - n2ph",
+  "content": "【存档版说明】\n\n此处显示的是n2ph比赛的最终结果。排名规则不是按照得分排序的。",
+  "scoreboarddata": {
+    "finished_groups": [
+      {
+        "gid": 126,
+        "groupName": "Eternal Solitude",
+        "groupProfile": "诶",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Undercover",
+            "avatar": "dc8a0edd1a349358f11e581be134283e",
+            "theme_color": "#EEFF41"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 263.34609742500004,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 136,
+        "groupName": "Rusty Lake Sleeper",
+        "groupProfile": "The owls are not what they seem.",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Cy_ExH",
+            "avatar": "9fcc224423e419f176893bfff987d0fd",
+            "theme_color": "#41e6db"
+          },
+          {
+            "is_leader": 0,
+            "username": "GreasyPig",
+            "avatar": "41d8f01641f3a0d1bd8c6e00ca5680df",
+            "theme_color": "#66ccff"
+          },
+          {
+            "is_leader": 0,
+            "username": "Selena",
+            "avatar": "e293d3bcc6e02863cf5ed93bc19a9574",
+            "theme_color": "#BCAAA4"
+          },
+          {
+            "is_leader": 0,
+            "username": "明月何曾是两乡",
+            "avatar": "f7128f907cde2cbdb5db6270ac208f75",
+            "theme_color": "#00796B"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 263.4172617877778,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 4,
+        "groupName": "Crychic",
+        "groupProfile": "没有祥子，我们4个人也可以组乐队！",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "椎名立希",
+            "avatar": "24b9e18e51de969274305b239fe230d5",
+            "theme_color": "#80CBC4"
+          },
+          {
+            "is_leader": 1,
+            "username": "长崎爽世",
+            "avatar": "417d4c45b24745774f13576a806ae9ab",
+            "theme_color": "#2fff05"
+          },
+          {
+            "is_leader": 0,
+            "username": "若葉睦",
+            "avatar": "4006a242a52af1aa2b9b7b5381c7b821",
+            "theme_color": "#779977"
+          },
+          {
+            "is_leader": 0,
+            "username": "高松燈",
+            "avatar": "2d408d4d9d081a212c1d16165408c32d",
+            "theme_color": "#83857a"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 263.8743980936111,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 193,
+        "groupName": "匿名",
+        "groupProfile": "pyy说的都对",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "王尔芃",
+            "avatar": "fbfe5da567964caad93338ba49d0d4af",
+            "theme_color": "#D4E157"
+          },
+          {
+            "is_leader": 0,
+            "username": "王梓瑜",
+            "avatar": "48f920a639b3545f95e32f7291068bca",
+            "theme_color": "#D84315"
+          },
+          {
+            "is_leader": 0,
+            "username": "刘星宇",
+            "avatar": "8666f34f7507e2fcc5b42212851cc243",
+            "theme_color": "#FFF59D"
+          },
+          {
+            "is_leader": 0,
+            "username": "王浩然",
+            "avatar": "c060c7cb48ff07130837dff791d789e2",
+            "theme_color": "#ECEFF1"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.12093365000004,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 13,
+        "groupName": "请填写此字段",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "努力的西瓜投手",
+            "avatar": "d43d7e5fd8346eb29c7f2748a3843a99",
+            "theme_color": "#90A4AE"
+          },
+          {
+            "is_leader": 0,
+            "username": "星停",
+            "avatar": "5368e41becd4b86fc415acb6fe05d979",
+            "theme_color": "#FF9800"
+          },
+          {
+            "is_leader": 0,
+            "username": "Nicolas",
+            "avatar": "05f051496696830bf4730f2592dae258",
+            "theme_color": "#F9A825"
+          },
+          {
+            "is_leader": 0,
+            "username": "荼蘼",
+            "avatar": "6def8f1e75cbc5b2bc18d3af8a5fea3f",
+            "theme_color": "#AA00FF"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.3190553088889,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 9,
+        "groupName": "对啊，为什么不队",
+        "groupProfile": "⬜️👋👋🫶",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "三个人",
+            "avatar": "97be8bcedead724bf20f255bdd8ff8ae",
+            "theme_color": "#1f1e33"
+          },
+          {
+            "is_leader": 0,
+            "username": "四个人",
+            "avatar": "9bb05146c0528ced453054bceeee3fff",
+            "theme_color": "#008071"
+          },
+          {
+            "is_leader": 0,
+            "username": "两个人",
+            "avatar": "44b39158ad9cbd79b41b509b8e95f010",
+            "theme_color": "#52d6fc"
+          },
+          {
+            "is_leader": 0,
+            "username": "一个人",
+            "avatar": "b48b463beb14c893475f050583cbafc5",
+            "theme_color": "#1f1e33"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.44105164138887,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 162,
+        "groupName": "Pink Herring",
+        "groupProfile": "Not red herring or green herring.",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Albert1191",
+            "avatar": "6ad2ac7f34886c880e997f28e01672f7",
+            "theme_color": "#1DE9B6"
+          },
+          {
+            "is_leader": 0,
+            "username": "cg_awa",
+            "avatar": "93a904bee06be6ecaa5065b6f051ec5d",
+            "theme_color": "#4E342E"
+          },
+          {
+            "is_leader": 0,
+            "username": "Andy吴",
+            "avatar": "873e470a7fe3ac55742a6653a0b077b6",
+            "theme_color": "#F44336"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.4916761980556,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 15,
+        "groupName": "南外奎帮",
+        "groupProfile": "奎哥",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Ronald0903",
+            "avatar": "2cd3a4cf6a413d54098e7396c401681a",
+            "theme_color": "#FFA000"
+          },
+          {
+            "is_leader": 0,
+            "username": "JLGC",
+            "avatar": "fac7de86efdd7d03fa1cd2f31448f469",
+            "theme_color": "#52f3ff"
+          },
+          {
+            "is_leader": 0,
+            "username": "Arnold_Relph",
+            "avatar": "b8269cbee5cbefbce804fd70fc1afb2c",
+            "theme_color": "#8D6E63"
+          },
+          {
+            "is_leader": 0,
+            "username": "Ruhm",
+            "avatar": "d0005a5f7d4243830c7df15a5bae6b58",
+            "theme_color": "#1976D2"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.50316579916665,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 103,
+        "groupName": "呆报编辑部",
+        "groupProfile": "来写来吃来玩",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "Silvdov",
+            "avatar": "a97ca694eac16c6089213ddcb6055108",
+            "theme_color": "#1f52ff"
+          },
+          {
+            "is_leader": 1,
+            "username": "小牛3号",
+            "avatar": "d45ccdf5bef1eec6cfaac453d74848dd",
+            "theme_color": "#fff157"
+          },
+          {
+            "is_leader": 0,
+            "username": "milkdragon",
+            "avatar": "07b1f93aebd2a006593ad342dfccdb27",
+            "theme_color": "#26C6DA"
+          },
+          {
+            "is_leader": 0,
+            "username": "nbky-3",
+            "avatar": "1de7f6b7e8004505c27e18244f334e4f",
+            "theme_color": "#CCFF90"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.57693827083335,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 332,
+        "groupName": "闲杂无关人等",
+        "groupProfile": "我也不知道啊反正就是来参赛了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Hz",
+            "avatar": "67a42744af3448174fd66f885ffbd9d1",
+            "theme_color": "#90c8e0"
+          },
+          {
+            "is_leader": 0,
+            "username": "Antares Asteroidia",
+            "avatar": "2523b69f11f58ead2fb7460ebe913591",
+            "theme_color": "#7ddf62"
+          },
+          {
+            "is_leader": 0,
+            "username": "douzidouzidouzi",
+            "avatar": "ff3ac0f91624bc0c6d6b1b5995a83bfc",
+            "theme_color": "#2bf702"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.63797326,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 96,
+        "groupName": "组一辈子乐队",
+        "groupProfile": "对，对吗？",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "羊驼君吖",
+            "avatar": "4aaf57498fe8c567befd55cc0032c118",
+            "theme_color": "#F50057"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.7557799755555,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 100,
+        "groupName": "风不清云不淡",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "(≧ω≦)",
+            "avatar": "71e273d1802c68d226170e8279ef3b2b",
+            "theme_color": "#FFCA28"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.8058866238889,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 148,
+        "groupName": "酸碱只是寄（请外援版",
+        "groupProfile": "关注微信公众号 果壳格物推理社 谢谢呱\n有幸邀请到SilverHawk老师一起参赛！",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "时芳槿",
+            "avatar": "99d40717c0c03e0735cff69b7a2dbeca",
+            "theme_color": "#20cc14"
+          },
+          {
+            "is_leader": 0,
+            "username": "SilverHawk",
+            "avatar": "c177555361b13ad1fc92b85d85a7dc06",
+            "theme_color": "#689F38"
+          },
+          {
+            "is_leader": 0,
+            "username": "14obs",
+            "avatar": "a76915573c491b0916ae67777862205d",
+            "theme_color": "#FFCA28"
+          },
+          {
+            "is_leader": 0,
+            "username": "ki-sikil",
+            "avatar": "18c5fd7d1caa557fe68fe34a6678c027",
+            "theme_color": "#FF9100"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.93435199944446,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 243,
+        "groupName": "旁观者模式",
+        "groupProfile": "箇队长嬉戏去爻，也朆写简介",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Zeta-Xi-Upsilon",
+            "avatar": "aff6b6055c180a116bb2eb5f71bdaefb",
+            "theme_color": "#5a5859"
+          },
+          {
+            "is_leader": 0,
+            "username": "灵绪",
+            "avatar": "aa29938e2c9e3be01ad94d788f69edaa",
+            "theme_color": "#00fafa"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.9663478102778,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 8,
+        "groupName": "神秘队伍",
+        "groupProfile": "神秘",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "BlancBlade",
+            "avatar": "43db5d3ba3d79a6cc716f19bb18fd8d5",
+            "theme_color": "#254dad"
+          },
+          {
+            "is_leader": 1,
+            "username": "10**12",
+            "avatar": "89151d1e2edaf59944afa74fef430e3d",
+            "theme_color": "#FFEB3B"
+          },
+          {
+            "is_leader": 0,
+            "username": "lsz",
+            "avatar": "65e4b29a6e6e0edeb22b5716252fc85f",
+            "theme_color": "#F06292"
+          },
+          {
+            "is_leader": 0,
+            "username": "猜猜这是谁",
+            "avatar": "6c12e128b9dc5e807abfd6e11c780cbe",
+            "theme_color": "#009688"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.98208023166666,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      },
+      {
+        "gid": 167,
+        "groupName": "通灵少女的孬题裁判",
+        "groupProfile": "我们之中混入了一位通灵少女",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "二阶导 Sigma",
+            "avatar": "bf552d4f9fa60e490c6440a7a5e23736",
+            "theme_color": "#fe3434"
+          },
+          {
+            "is_leader": 1,
+            "username": "硬语 艾玛",
+            "avatar": "4949850386c772dd76e59ef29a6b3022",
+            "theme_color": "#fa93b2"
+          },
+          {
+            "is_leader": 0,
+            "username": "氷上 咩露露",
+            "avatar": "3fa0b814b46ec2c6d40fcc4846556943",
+            "theme_color": "#ffffff"
+          },
+          {
+            "is_leader": 0,
+            "username": "月代 轩",
+            "avatar": "e8f31220d37f64215c26723b4f01463c",
+            "theme_color": "#7dc4e8"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 264.9852712386111,
+        "finishedGroupCount": 4,
+        "finishedPuzzleCount": 19
+      }
+    ],
+    "groups": [
+      {
+        "gid": 102,
+        "groupName": "25時、ナイトコードで。",
+        "groupProfile": "25点，Nightcord见。",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "K",
+            "avatar": "2b313d628e16d7391000a402a5003bc4",
+            "theme_color": "#bb6688"
+          },
+          {
+            "is_leader": 0,
+            "username": "雪",
+            "avatar": "63c564dff06d025f57267c046ef282e5",
+            "theme_color": "#00695C"
+          },
+          {
+            "is_leader": 0,
+            "username": "Amia",
+            "avatar": "ed81aa2951a43937de2dc768b8aef356",
+            "theme_color": "#8BC34A"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 265.1300828391667,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 144,
+        "groupName": "蓝队",
+        "groupProfile": "我不是蓝粉，我只是蓝大队长的鼠鼠而已",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "马怿菲0320",
+            "avatar": "cd3071ee588452c4ba8b3d04a82e9b50",
+            "theme_color": "#0000ff"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 266.6039892927778,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 143,
+        "groupName": "OMO",
+        "groupProfile": "不会哈气学哈气，基米咋摆你咋摆",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "omo",
+            "avatar": "81db9fac8194a2effe9333b6aab7b05c",
+            "theme_color": "#E53935"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 166,
+        "groupName": "看看题👀",
+        "groupProfile": "你 去打PH了对吧\n和我认识的同学一起\n……\n唉……\n好麻烦啊……",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "阳阳得意",
+            "avatar": "881c69203b6c156c2b10a4e6796ffe74",
+            "theme_color": "#00B8D4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 195,
+        "groupName": "Real Sample",
+        "groupProfile": "Fake SAMPLE",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "用户名1",
+            "avatar": "3eae0699fc3fa400bb30f6ba5e52fa5f",
+            "theme_color": "#f7dbff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 298,
+        "groupName": "养老队",
+        "groupProfile": "摆了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "tryhauh",
+            "avatar": "93d59fb96219708145b782634d28d6f0",
+            "theme_color": "#E64A19"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 310,
+        "groupName": "最强の冰之妖精",
+        "groupProfile": "bakabaka",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "最强の冰之妖精",
+            "avatar": "28331d14b94eba753d1075c1c6c7bb85",
+            "theme_color": "#CE93D8"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 344,
+        "groupName": "Not A User",
+        "groupProfile": "请输入队伍简介",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "CbrX",
+            "avatar": "6e65c55d6f7b7d90efb70f7bffc17d03",
+            "theme_color": "#42A5F5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 18
+      },
+      {
+        "gid": 340,
+        "groupName": "肉脯看看题",
+        "groupProfile": "单刷决定中",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Rouf",
+            "avatar": "f480a402c24f686066666877b9d65e5b",
+            "theme_color": "#296dc7"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 265.9380317316667,
+        "finishedGroupCount": 3,
+        "finishedPuzzleCount": 17
+      },
+      {
+        "gid": 200,
+        "groupName": "Kromatic",
+        "groupProfile": "半音",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Creall",
+            "avatar": "310135d067012a2dcfef21041d962812",
+            "theme_color": "#FFCC80"
+          },
+          {
+            "is_leader": 0,
+            "username": "dimplycat",
+            "avatar": "96a063ff0b9628684e0ad3315f258fe7",
+            "theme_color": "#FFE082"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 17
+      },
+      {
+        "gid": 275,
+        "groupName": "random",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "inversion",
+            "avatar": "0a1990962ce53c713e9defc5643b8414",
+            "theme_color": "#C5E1A5"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 268.9480872825,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 261,
+        "groupName": "puzzle？not at all！",
+        "groupProfile": "快期末周了，支帐篷睡觉，随便看看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "fur_vitality_suicide",
+            "avatar": "a697b6d53c79b77f5df9faea6c34e030",
+            "theme_color": "#000000"
+          }
+        ],
+        "isFinish": 1,
+        "totalTime": 284.64792208333336,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 147,
+        "groupName": "BMCA自由搏击社团",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "RenoYang",
+            "avatar": "4b5f111fe7052f3e50d0092e6e8d7121",
+            "theme_color": "#FFCC80"
+          },
+          {
+            "is_leader": 1,
+            "username": "WXI",
+            "avatar": "715fcac4df9f746f2e51e2a82078ae67",
+            "theme_color": "#d1bdbd"
+          },
+          {
+            "is_leader": 0,
+            "username": "MIKE",
+            "avatar": "f42bceca1765ff034513341904802ec7",
+            "theme_color": "#00fac8"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 164,
+        "groupName": "一群沙包",
+        "groupProfile": "不道啊我只是来看看有没有纸笔题送我一个视频素材的——Yy",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Yanyan0915",
+            "avatar": "1789c8dd0cfcb4ac13f7857be475f770",
+            "theme_color": "#ff8624"
+          },
+          {
+            "is_leader": 0,
+            "username": "CutieRainbow",
+            "avatar": "b3f7d1c448ae141acc977b9557bfd250",
+            "theme_color": "#90CAF9"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 172,
+        "groupName": "虎福威威vv",
+        "groupProfile": "It's raining tacos",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "hiroi",
+            "avatar": "3a2c14e00d601db0245c0d038f268698",
+            "theme_color": "#a5225b"
+          },
+          {
+            "is_leader": 0,
+            "username": "咸鱼喝猹喵！",
+            "avatar": "4124cefc343727aa24932efd649fcd0a",
+            "theme_color": "#F50057"
+          },
+          {
+            "is_leader": 0,
+            "username": "椰子里面有水",
+            "avatar": "3061bdae572e98a0c287e5c423e4ff1c",
+            "theme_color": "#00695C"
+          },
+          {
+            "is_leader": 0,
+            "username": "Zgorwanpop",
+            "avatar": "2a2ebaff75e2959c5ad0ac23b2da62cc",
+            "theme_color": "#00ACC1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 184,
+        "groupName": "bread",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "littlebread720",
+            "avatar": "4660468a696a9ea07639b7ea31636f3f",
+            "theme_color": "#FFCA28"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 187,
+        "groupName": "Victor",
+        "groupProfile": "Victor",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "victor",
+            "avatar": "27b597cdc7ed8dfa98091313a2956f08",
+            "theme_color": "#FF7043"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 348,
+        "groupName": "QRKD",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "QRKD",
+            "avatar": "e634e401139e07687b7dc0178bdf877c",
+            "theme_color": "#C2185B"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 355,
+        "groupName": "ddd",
+        "groupProfile": "qwerty",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Dev_114514",
+            "avatar": "7932c7efe6a070a40e54928f7d34f181",
+            "theme_color": "#E0E0E0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 14
+      },
+      {
+        "gid": 91,
+        "groupName": "无人问津的阴雨霉湿之地",
+        "groupProfile": "完不了赛当晚线下面基出题组",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "enderdragon",
+            "avatar": "9d155e32a254aa11b56a7b188079915c",
+            "theme_color": "#757575"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 2,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 14,
+        "groupName": "jm汉化组",
+        "groupProfile": "全都不会做！",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "Phizo个人汉化组",
+            "avatar": "b43c5b07d9b0ee2c4f4cea93b9bf2aea",
+            "theme_color": "#0000ff"
+          },
+          {
+            "is_leader": 1,
+            "username": "Marcus个人汉化组",
+            "avatar": "b957e50be1b926cef6bd3f87d4d0cceb",
+            "theme_color": "#00ffd0"
+          },
+          {
+            "is_leader": 0,
+            "username": "北魏孝文帝汉化组",
+            "avatar": "ce4c162f06b28a3cc6eaadfd54e9ab08",
+            "theme_color": "#8E24AA"
+          },
+          {
+            "is_leader": 0,
+            "username": "狲鲸蚁个人汉化组",
+            "avatar": "11ceaecd7a65b6cdc27723ee645694b7",
+            "theme_color": "#69F0AE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 105,
+        "groupName": "食堂干饭飞舞",
+        "groupProfile": "我是馋猫我先吃",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "Eka",
+            "avatar": "7a36a98575716275793f6422d9d6a519",
+            "theme_color": "#EFEBE9"
+          },
+          {
+            "is_leader": 1,
+            "username": "Qshueee",
+            "avatar": "dc2a0f13dd923898bafcef9c3cc730b8",
+            "theme_color": "#4E342E"
+          },
+          {
+            "is_leader": 0,
+            "username": "Sqiii",
+            "avatar": "e5eec41635d6fe313e8163d1f7de4c2a",
+            "theme_color": "#AD1457"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 106,
+        "groupName": "リドルジョーカー",
+        "groupProfile": "我毫无头绪😭😭😭琵琶拨尽四弦悲😈😈😈我毫无头绪😭😭😭琵琶拨尽四弦悲😈😈😈我毫无头绪😭😭😭琵琶拨尽四弦悲😈😈😈",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "あめく たかお",
+            "avatar": "144f9b373e15d9a301f9ab681f9c6450",
+            "theme_color": "#39c5bb"
+          },
+          {
+            "is_leader": 0,
+            "username": "摩多羅 隠岐奈",
+            "avatar": "3df143eb729cc448ff5b635e3c6c5e9c",
+            "theme_color": "#ceff00"
+          },
+          {
+            "is_leader": 0,
+            "username": "Redferrum27315",
+            "avatar": "e448248b025d3986f109ac6443c16968",
+            "theme_color": "#CDDC39"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 216,
+        "groupName": "阵雨花园",
+        "groupProfile": "你在线上题部分里学到了许多，足以应对接下来的所有挑战。“头脑好清醒，怀着这么昂扬的斗志去解谜还是头一次，已经没有什么好怕的了！”",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Kaedesnow",
+            "avatar": "484a6807d1c270a7dccf7a6afaef9d78",
+            "theme_color": "#00ff00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 296,
+        "groupName": ". z Z",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "(￣o￣) . z Z",
+            "avatar": "162e90b90fddc97ea4c0fc6f2cd0c642",
+            "theme_color": "#6a99eb"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 339,
+        "groupName": "F1O2REV2E6R",
+        "groupProfile": "3 Years",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "AppOfficer",
+            "avatar": "3c461eeaac6b47acbfdc73ad07014bf7",
+            "theme_color": "#C0CA33"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 13
+      },
+      {
+        "gid": 5,
+        "groupName": "赫尔墨斯",
+        "groupProfile": "然后把你完整的脑子放进去🎵",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "王慕瞳",
+            "avatar": "1d77fbea79b832d07ae217794617ee9f",
+            "theme_color": "#EEEEEE"
+          },
+          {
+            "is_leader": 0,
+            "username": "Aquarius",
+            "avatar": "0f9757cf41cf6fb067638a2e7d905c0d",
+            "theme_color": "#a7c6ff"
+          },
+          {
+            "is_leader": 0,
+            "username": "缺德论",
+            "avatar": "ed2d8d0e8ac4a8b39bc5061883b7dbb6",
+            "theme_color": "#02e8d9"
+          },
+          {
+            "is_leader": 0,
+            "username": "Wolke",
+            "avatar": "3842076b4f3d89eaea41b5d77d1a9a30",
+            "theme_color": "#adf1ff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 12
+      },
+      {
+        "gid": 174,
+        "groupName": "BOOM",
+        "groupProfile": "Jorge",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Jorge",
+            "avatar": "b29143514663998b908c5d6ac61cf8ac",
+            "theme_color": "#448AFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 12
+      },
+      {
+        "gid": 17,
+        "groupName": "逼",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "2511425938514_",
+            "avatar": "0ab3a162aa5a423a7f73e5506329cb35",
+            "theme_color": "#FFF59D"
+          },
+          {
+            "is_leader": 0,
+            "username": "Ornithoptera",
+            "avatar": "9cf051bd1439005b18fedefd1b64ed35",
+            "theme_color": "#7CB342"
+          },
+          {
+            "is_leader": 0,
+            "username": "139115",
+            "avatar": "cf163fd20b6dd605bd31fedb8950235f",
+            "theme_color": "#304FFE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 11
+      },
+      {
+        "gid": 125,
+        "groupName": "自定义鸽子赛1",
+        "groupProfile": "来打鸽子赛吧\n鸽子赛队伍里为什么没有葛子塞",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "hezi1234",
+            "avatar": "7b2f973e27117e1c74e011513504e772",
+            "theme_color": "#D84315"
+          },
+          {
+            "is_leader": 0,
+            "username": "OoRrAaNnGgEe",
+            "avatar": "57413a3870d0d5bef76c789667c70bd1",
+            "theme_color": "#689F38"
+          },
+          {
+            "is_leader": 1,
+            "username": "cs",
+            "avatar": "0b58bd84b4ca71cc84371d79947ba899",
+            "theme_color": "#AEEA00"
+          },
+          {
+            "is_leader": 0,
+            "username": "何任翔",
+            "avatar": "442309e6db4b8720345a9e03f4e191d5",
+            "theme_color": "#E0E0E0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 11
+      },
+      {
+        "gid": 138,
+        "groupName": "羊八井杨队",
+        "groupProfile": "🐑",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "muffinfox",
+            "avatar": "dfcaca546c85c5b59e00b93671628d5f",
+            "theme_color": "#B9F6CA"
+          },
+          {
+            "is_leader": 0,
+            "username": "冯思远",
+            "avatar": "f6eb4b32dcaf5dee7b6807c39255614d",
+            "theme_color": "#81D4FA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 11
+      },
+      {
+        "gid": 95,
+        "groupName": "Lt.lcu",
+        "groupProfile": "Lt.lcu",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Lt.lcu",
+            "avatar": "23ff8fed4cf0332cfcd98ef9d2f86a56",
+            "theme_color": "#60f312"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 99,
+        "groupName": "医生我们有神经病对不队",
+        "groupProfile": "我是二毕",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "神经小伙",
+            "avatar": "2f10002a232534f144fd07567dacf6ea",
+            "theme_color": "#FFC400"
+          },
+          {
+            "is_leader": 1,
+            "username": "神经之主",
+            "avatar": "217b038cb0f58f7b58e2a2d1c810e60c",
+            "theme_color": "#FF7043"
+          },
+          {
+            "is_leader": 0,
+            "username": "神经小孩",
+            "avatar": "c35f9f319f186127c35b925f418b0758",
+            "theme_color": "#74a7ff"
+          },
+          {
+            "is_leader": 0,
+            "username": "医生",
+            "avatar": "c3f008ce0a22e382aeafd555c25bb661",
+            "theme_color": "#3df2ff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 161,
+        "groupName": "希望能完赛",
+        "groupProfile": "做了两次ph全都是只做了一半的新手",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "diudiu",
+            "avatar": "210292f24189fc3a26738754c318d1a5",
+            "theme_color": "#263238"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 213,
+        "groupName": "浪费好题队",
+        "groupProfile": "因为太菜了遇到好题也做不出来只能浪费掉",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "黑白配",
+            "avatar": "26979a112eb228dd4fe3712ecedd986d",
+            "theme_color": "#EEEEEE"
+          },
+          {
+            "is_leader": 0,
+            "username": "zzq",
+            "avatar": "3de10d658a1d4ec4962f6bbcb53d143d",
+            "theme_color": "#3F51B5"
+          },
+          {
+            "is_leader": 0,
+            "username": "烟雨同学",
+            "avatar": "0d5da14ec80c092196aba469622bfc19",
+            "theme_color": "#CE93D8"
+          },
+          {
+            "is_leader": 0,
+            "username": "ccb",
+            "avatar": "733a9e37d9401bc07eb5ddcd37a07285",
+            "theme_color": "#F57C00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 237,
+        "groupName": "嘿嘿呼呼",
+        "groupProfile": "哈哈",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "songshy",
+            "avatar": "cf1e74494902c86ca5483bf2d9ad1cdf",
+            "theme_color": "#FFFF00"
+          },
+          {
+            "is_leader": 1,
+            "username": "Judge",
+            "avatar": "08091fb8e4ec794c373810ff591f6c73",
+            "theme_color": "#283593"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 238,
+        "groupName": "松鼠小队",
+        "groupProfile": "1",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "shrrel",
+            "avatar": "802027bf0577548e02520bf8c38a6bb3",
+            "theme_color": "#00B8D4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 352,
+        "groupName": "hc83",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "huichen83",
+            "avatar": "111a3def50bdadbbad20fc96ef6c0112",
+            "theme_color": "#FFB300"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 10
+      },
+      {
+        "gid": 3,
+        "groupName": "广告位招租",
+        "groupProfile": "111广告位招租详情请拨打12345678910",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "哀江南赋并序",
+            "avatar": "73e45841a1291bcfe30ba1790098e627",
+            "theme_color": "#E6EE9C"
+          },
+          {
+            "is_leader": 0,
+            "username": "徐一涵",
+            "avatar": "dda8839a295aef69f42cb8bf4e79e753",
+            "theme_color": "#df0f0c"
+          },
+          {
+            "is_leader": 0,
+            "username": "KG59",
+            "avatar": "7b6186249a554d72ff21d614934e65cc",
+            "theme_color": "#80DEEA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 97,
+        "groupName": "云喊你回家吃菌子",
+        "groupProfile": "🏆",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Evaaaaa",
+            "avatar": "e73b7fe03f2da6d0948e1708cbf1f975",
+            "theme_color": "#607D8B"
+          },
+          {
+            "is_leader": 0,
+            "username": "Olivia",
+            "avatar": "7fcdfc9fb613011082913e91dbb9e848",
+            "theme_color": "#FB8C00"
+          },
+          {
+            "is_leader": 0,
+            "username": "下周见",
+            "avatar": "fd516370546cc57bec9b29143a9b9982",
+            "theme_color": "#8f6be0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 131,
+        "groupName": "何意味是什么意思呢",
+        "groupProfile": "hywhywhywhywhywhywhywhyw",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "忽悠我还要我好友位何意味",
+            "avatar": "383b442f1fc1a3269c90851458e8d1ac",
+            "theme_color": "#900c92"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 239,
+        "groupName": "不学数学队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "被数学虐的死去活来的猫",
+            "avatar": "f80e510b9a1d8d022ba04154c5a61fa0",
+            "theme_color": "#651FFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 266,
+        "groupName": "Hannah笙",
+        "groupProfile": "123454321",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Linus",
+            "avatar": "5d589f33a12b05244a49d2e02774fcd1",
+            "theme_color": "#42A5F5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 342,
+        "groupName": "Casper",
+        "groupProfile": "重在参与～",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Casper",
+            "avatar": "c42a21a47e303d818a41c0f078c2eedb",
+            "theme_color": "#424242"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 346,
+        "groupName": "喵喵喵喵喵",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "湘月",
+            "avatar": "e8653644b74955e87881b54dd2fe65ec",
+            "theme_color": "#795548"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 169,
+        "groupName": "（",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "inkyscope",
+            "avatar": "81155fb49d0c117f57ed2e3b0ff58216",
+            "theme_color": "#b4e9ea"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 311,
+        "groupName": "李明APT队",
+        "groupProfile": "高一(7)班",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "DerivableParabola ",
+            "avatar": "215041b3aacfa1e3473ce49d0da7d785",
+            "theme_color": "#42A5F5"
+          },
+          {
+            "is_leader": 0,
+            "username": "Tyrese",
+            "avatar": "240ba3c5eecbe59263952811342bed2a",
+            "theme_color": "#fdbe35"
+          },
+          {
+            "is_leader": 0,
+            "username": "金钟铉",
+            "avatar": "a0f10ef04ce9d8b37b4f751e9862eeca",
+            "theme_color": "#2E7D32"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 357,
+        "groupName": "xyx的父亲们",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "xyz的父亲",
+            "avatar": "d77eb8052569ee01f01bf056de457431",
+            "theme_color": "#9C27B0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 361,
+        "groupName": "一个好队伍",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "田雨林",
+            "avatar": "222f5ecd11df2fcf1737c5f5ef0f443c",
+            "theme_color": "#FFE082"
+          },
+          {
+            "is_leader": 1,
+            "username": "繁星",
+            "avatar": "c515b5dddce57ec3569b31d0c1944476",
+            "theme_color": "#76FF03"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 1,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 142,
+        "groupName": "雀批的世界",
+        "groupProfile": "只有两个雀批……",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "LAMIA",
+            "avatar": "9d33348a9245f1cad6886acb56d3eb0f",
+            "theme_color": "#d4b0e8"
+          },
+          {
+            "is_leader": 1,
+            "username": "是画皮喵",
+            "avatar": "b5a6906838199f494284f7408a587b06",
+            "theme_color": "#EF6C00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 279,
+        "groupName": "我是取名废物",
+        "groupProfile": "何忆卫",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "TCMint",
+            "avatar": "eeda733c25ce93b4093ab5be1896bc6a",
+            "theme_color": "#78909C"
+          },
+          {
+            "is_leader": 0,
+            "username": "Fing.",
+            "avatar": "8b35e6d5b1585d58bb5cd04ad65d1346",
+            "theme_color": "#536DFE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 290,
+        "groupName": "贝贝南瓜队",
+        "groupProfile": "不知道写啥那就不写了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Eric",
+            "avatar": "bdc44cbf03a78d0470ef9e5ab2736512",
+            "theme_color": "#FF6E40"
+          },
+          {
+            "is_leader": 0,
+            "username": "NORXMLR",
+            "avatar": "60030bdf7dcd44e4dc5e670b9d9db7d9",
+            "theme_color": "#0091EA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 303,
+        "groupName": "lkk",
+        "groupProfile": "来看看",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "20220342",
+            "avatar": "9e88fabe3a596141a2cfea43a7d238bc",
+            "theme_color": "#D81B60"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 304,
+        "groupName": "wow",
+        "groupProfile": "无",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "冒晴淏",
+            "avatar": "9de968f2bfca8ce6ba589ecd3f549194",
+            "theme_color": "#5D4037"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 306,
+        "groupName": "colin玩galagame",
+        "groupProfile": "我是colin我爱玩旮旯给木",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "Colin_f",
+            "avatar": "434c1966afc4fb5bff3820b601243793",
+            "theme_color": "#2979FF"
+          },
+          {
+            "is_leader": 1,
+            "username": "Sakura",
+            "avatar": "616d858b5fa34e3c0f7114b094301743",
+            "theme_color": "#8E24AA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 333,
+        "groupName": "zz",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Zoe",
+            "avatar": "a35ec5cd54da1a98fb4cf52af9c18861",
+            "theme_color": "#AA00FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 9
+      },
+      {
+        "gid": 153,
+        "groupName": "豆知识",
+        "groupProfile": "大豆是豆科大豆属的一年生草本植物，高30-90厘米。茎粗壮，直立，密被褐色长硬毛。叶通常具3小叶；托叶具脉纹，被黄色柔毛；叶柄长2-20厘米；小叶宽卵形，纸质；总状花序短的少花，长的多花；总花梗通常有5-8朵无柄、紧挤的花；苞皮披针形，被糙伏毛；小苞片披针形，被伏贴的刚毛；花萼披针形，花紫色、淡紫色或白色，基部具瓣柄，翼瓣蓖状。荚果肥大，稍弯，下垂，黄绿色，密被褐黄色长毛；种子2-5颗，椭圆形、近球形，种皮光滑，有淡绿、黄、褐和黑色等多样。花期6-7月，果期7-9月。",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "李大豆",
+            "avatar": "fc675146b35fd4dffe8bf22e65a3edbb",
+            "theme_color": "#18FFFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 158,
+        "groupName": "鸬鹚不发了",
+        "groupProfile": "怀疑问",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yswyyy",
+            "avatar": "2a3a2685b464050619c61fca48d4e870",
+            "theme_color": "#3E2723"
+          },
+          {
+            "is_leader": 0,
+            "username": "QqQe308",
+            "avatar": "082da0cbf8f5d1cb6b265c837621fb09",
+            "theme_color": "#00ff00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 163,
+        "groupName": "ヘルエスタ王国",
+        "groupProfile": "随便看看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "时雨星霜",
+            "avatar": "bde344fa6f6e9df363da04f62d9a59f0",
+            "theme_color": "#42ffff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 165,
+        "groupName": "403 FORBIDDEN",
+        "groupProfile": "哈基谜难被捋动",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "今晚一定早点睡",
+            "avatar": "6f1fd5069a9ce658120010ec78bbf755",
+            "theme_color": "#558B2F"
+          },
+          {
+            "is_leader": 0,
+            "username": "auining",
+            "avatar": "fb5de6369572b36ff5dba60b6e7b819e",
+            "theme_color": "#40C4FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 178,
+        "groupName": "pizzahunter，但只有其中一个人",
+        "groupProfile": "pizzahunter分裂成了三个队伍！（其实是四个）",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "dtk",
+            "avatar": "22f43c5e068c1d3f3d55b45f96cbb2ca",
+            "theme_color": "#D500F9"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 180,
+        "groupName": "这什么",
+        "groupProfile": "柴灣　北角　銅鑼灣　灣仔　中環　金鐘　尖沙咀　油蔴地　旺角　太子　九龍塘　沙田　上水　羅湖　深圳　廣州　廈門　台北　福州　南京　上海　北京　中環",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "飞车飞车",
+            "avatar": "7435843531091900710ec3ca22b3ed40",
+            "theme_color": "#673AB7"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 186,
+        "groupName": "test",
+        "groupProfile": "NaN",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "JudgeDa",
+            "avatar": "d6e7cc81bdebfdcd15bdca6de0fa1814",
+            "theme_color": "#FFEE58"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 191,
+        "groupName": "EMK",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "EMK",
+            "avatar": "d8dd72519820565833ccc38f15aafd9c",
+            "theme_color": "#A5D6A7"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 203,
+        "groupName": "1",
+        "groupProfile": "被迫单刷",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "1duSiusiusiu",
+            "avatar": "7404d7240644c54a5c59856feafe097f",
+            "theme_color": "#42A5F5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 204,
+        "groupName": "奇迹",
+        "groupProfile": "日复一日的机械运作着，面前三色荧光单调排列，四周充满黑暗的压抑。将来更是一眼到头的坏结局。\n\n完全地虚无。“充实”的机械耕耘无法撬动贫瘠的思想土壤，尽管所思所念仍然在不断创造“奇迹”，且毫无意义。\n\n我所希望的奇迹究竟是什么？我认为应该是一个小概率事件的产生，对若干部分造成了影响，这些部分又相互联系，进而获得了宏观上的巨变。\n\n一月复一月，黑暗在逐渐侵蚀希望。在几乎必然的绝望之下，我也只能祈望奇迹的光亮再次来临。",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "bunH2O",
+            "avatar": "d2c03c4404d3e74052aa1b915410b27d",
+            "theme_color": "#FF80AB"
+          },
+          {
+            "is_leader": 1,
+            "username": "Max_s_xaM",
+            "avatar": "e0032583873cd08f42fa397a0d519332",
+            "theme_color": "#AEEA00"
+          },
+          {
+            "is_leader": 0,
+            "username": "fast_photon",
+            "avatar": "c32eccbd0d4b928576ee5a1f78ff2903",
+            "theme_color": "#F57C00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 210,
+        "groupName": "yshm",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "mianTzQwQ",
+            "avatar": "75dc52a5b50c66303891873b5a0442f6",
+            "theme_color": "#febeea"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 212,
+        "groupName": "夏洛宝宝",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "夏洛",
+            "avatar": "316f19c0d2ff87726dfbf0cf118793e6",
+            "theme_color": "#76FF03"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 227,
+        "groupName": "ナンのイミ？",
+        "groupProfile": "何意味？ナンのイミ？",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Cei",
+            "avatar": "767cf871000b3240c796df92fddc6e33",
+            "theme_color": "#03A9F4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 231,
+        "groupName": "All Simples",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "ichihime",
+            "avatar": "90890de086d887eacefe4f2aae630916",
+            "theme_color": "#E040FB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 232,
+        "groupName": "RVV Intrinsics",
+        "groupProfile": "#include <riscv_vector.h>",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "voilern",
+            "avatar": "bc0b1314b0aa6222aa1c34ae913bf1b3",
+            "theme_color": "#3949AB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 251,
+        "groupName": "银邦帮",
+        "groupProfile": "南外智利巅峰",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "奇妙的gy",
+            "avatar": "c94d0006817b6639390267aee82fecd0",
+            "theme_color": "#FF4081"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 254,
+        "groupName": "不想上班",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "LS",
+            "avatar": "a29c0a45e25c96bf4b6fb3f6ef23b48a",
+            "theme_color": "#7CB342"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 260,
+        "groupName": "迷路人",
+        "groupProfile": "1",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "迷路人",
+            "avatar": "c15e5779b9e8c90696a01a89475be136",
+            "theme_color": "#ECEFF1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 262,
+        "groupName": "两个非空白字符，",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "星融",
+            "avatar": "f99a34f5eaecb584826a7d891b8e8d82",
+            "theme_color": "#ae7ece"
+          },
+          {
+            "is_leader": 0,
+            "username": "Malan_C",
+            "avatar": "cf09eb9d518d7451648fad2672c6805b",
+            "theme_color": "#FFEE58"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 263,
+        "groupName": "sweetorange",
+        "groupProfile": "看看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "sweetorange",
+            "avatar": "09dbb5628f821e5ffef62534ce1b25be",
+            "theme_color": "#FF4081"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 267,
+        "groupName": "Ave Mujica",
+        "groupProfile": "组一辈子乐队吧！",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Ave Mujica",
+            "avatar": "65aad601c86acac5ed778d71a756d807",
+            "theme_color": "#6200EA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 283,
+        "groupName": "lexiyvv",
+        "groupProfile": "cat",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "lexiyvv",
+            "avatar": "a58eddc347cb6312b4431cd5c58afa7a",
+            "theme_color": "#FF80AB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 297,
+        "groupName": "AlephOne",
+        "groupProfile": "For Fun.",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "AlephRei",
+            "avatar": "09f3dd89fd95909ab08d29da00424d00",
+            "theme_color": "#E040FB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 307,
+        "groupName": "老咖啡",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Pakuppcino",
+            "avatar": "9f72123efd533d15914da39ace6585c4",
+            "theme_color": "#1565C0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 328,
+        "groupName": "Noobself?",
+        "groupProfile": "懒得组队了，仅看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "nb",
+            "avatar": "ab5f076b84d3e008a9a498ceb783af79",
+            "theme_color": "#FFFF00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 337,
+        "groupName": "pptt",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "cjyh233",
+            "avatar": "ae21ae8fbcd15e9818010253c3fc3369",
+            "theme_color": "#C0CA33"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 8
+      },
+      {
+        "gid": 19,
+        "groupName": "为什么食堂永远都有那么长的队",
+        "groupProfile": "食堂的菜就像一道窄门，你先吃完了，别人就不能吃了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "乐意",
+            "avatar": "cf4a301775f33b110078f0a04d1a6d08",
+            "theme_color": "#4CAF50"
+          },
+          {
+            "is_leader": 0,
+            "username": "吕婧萱",
+            "avatar": "6892a287b9504ef442aacd0fad973cc0",
+            "theme_color": "#CE93D8"
+          },
+          {
+            "is_leader": 0,
+            "username": "山中布衣",
+            "avatar": "7fab0cd49e44a40546e36f746f9c963b",
+            "theme_color": "#795548"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 124,
+        "groupName": "xxx",
+        "groupProfile": "xxx",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "tommychen",
+            "avatar": "a62f7b927e79114fa44547ce4199dba1",
+            "theme_color": "#69F0AE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 141,
+        "groupName": "奶龙之家",
+        "groupProfile": "高二，纯新手",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "20210421",
+            "avatar": "f410f71bc2cd6c65ea6c80807e0af876",
+            "theme_color": "#26C6DA"
+          },
+          {
+            "is_leader": 0,
+            "username": "egg。",
+            "avatar": "9ab6f1f14f6a70d0482ff27d17866b4e",
+            "theme_color": "#80D8FF"
+          },
+          {
+            "is_leader": 0,
+            "username": "Blahblah",
+            "avatar": "0b78ea3029e716a8201f797ccb36dc20",
+            "theme_color": "#d88fff"
+          },
+          {
+            "is_leader": 0,
+            "username": "奶昔（",
+            "avatar": "0c3696e4767f0132fd71ab4b3929d01a",
+            "theme_color": "#B39DDB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 159,
+        "groupName": "maimai",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "rambo",
+            "avatar": "332980b80a67a83a66b7fa4f8f8c3efe",
+            "theme_color": "#EEEEEE"
+          },
+          {
+            "is_leader": 0,
+            "username": "DKun",
+            "avatar": "5ad508d762645a5bc4473830923eb1cc",
+            "theme_color": "#009688"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 170,
+        "groupName": "滕王阁序——唐·王勃",
+        "groupProfile": "豫章故郡，\n洪都新府。\n星分翼轸，\n地接衡庐。\n襟三江而带五湖，\n控蛮荆而引瓯越。\n物华天宝，\n龙光射牛斗之墟；\n人杰地灵，\n徐孺下陈蕃之榻。\n雄州雾列，\n俊采星驰。\n台隍枕夷夏之交，\n宾主尽东南之美。\n都督阎公之雅望，\n棨戟遥临；\n宇文新州之懿范，\n襜帷暂驻。\n十旬休假，\n胜友如云；\n千里逢迎，\n高朋满座。\n腾蛟起凤，\n孟学士之词宗；\n紫电青霜，\n王将军之武库。\n家君作宰，\n路出名区；\n童子何知，\n躬逢胜饯。\n时维九月，\n序属三秋。\n潦水尽而寒潭清，\n烟光凝而暮山紫。\n俨骖騑于上路，\n访风景于崇阿；\n临帝子之长洲，\n得天人之旧馆。\n层峦耸翠，\n上出重霄；\n飞阁流丹，\n下临无地。\n鹤汀凫渚，\n穷岛屿之萦回；\n桂殿兰宫，\n即冈峦之体势。",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "烟落fall",
+            "avatar": "b213597a47c4e573257c72bc13283891",
+            "theme_color": "#40C4FF"
+          },
+          {
+            "is_leader": 1,
+            "username": "滕王高阁临江渚，佩玉鸣鸾罢歌舞",
+            "avatar": "33ccf7df9f145625ed36a50a10fb2610",
+            "theme_color": "#fffefe"
+          },
+          {
+            "is_leader": 0,
+            "username": "风清雾云",
+            "avatar": "3ca3da9dd4486672bca249fc68ff03dd",
+            "theme_color": "#00ffff"
+          },
+          {
+            "is_leader": 0,
+            "username": "何晓华",
+            "avatar": "8109fb33dfafd9b19cb70200066ea15f",
+            "theme_color": "#304FFE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 175,
+        "groupName": "建立新队伍",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "Hile_Meow",
+            "avatar": "06a9453ba912e052a83590a2a0d8c86d",
+            "theme_color": "#990cc0"
+          },
+          {
+            "is_leader": 1,
+            "username": "用户名",
+            "avatar": "2353b399b41a1ff9c6b60989a2995a88",
+            "theme_color": "#F4FF81"
+          },
+          {
+            "is_leader": 0,
+            "username": "TOMATO",
+            "avatar": "aaf4e100245033d40ad32f6afbe17e32",
+            "theme_color": "#03A9F4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 177,
+        "groupName": "pizzahunter!",
+        "groupProfile": "1/3🍕",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "空气酱",
+            "avatar": "93aa1c77e07a7b04a311e45af69865c9",
+            "theme_color": "#CCFF90"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 183,
+        "groupName": "pizzahuntee",
+        "groupProfile": "被披萨狩猎",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "桠碸",
+            "avatar": "08d889c8c64b9cd568b867ec8dc9d420",
+            "theme_color": "#FFC107"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 206,
+        "groupName": "lx07",
+        "groupProfile": "来观下光",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "lx07213",
+            "avatar": "96f1de263025f5323cf1c84fc254aec5",
+            "theme_color": "#00E5FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 211,
+        "groupName": "卧槽期末周怎么这么坏啊",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "suixian",
+            "avatar": "6807db9a1ff6c154c0b3266275fde929",
+            "theme_color": "#FFD600"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 221,
+        "groupName": "golwy",
+        "groupProfile": "看看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Goldenwy",
+            "avatar": "d962a230d41a62b5e8a49f1b9cdc5190",
+            "theme_color": "#651FFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 222,
+        "groupName": "聚光灯柠檬果酱",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "NobodyThere",
+            "avatar": "a610b6e1a02641f1e2186959f5eb3da0",
+            "theme_color": "#E0E0E0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 246,
+        "groupName": "菜毛毛",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "大毛664",
+            "avatar": "d47f6dd2fc254ecf6df1ee31fe48096c",
+            "theme_color": "#FFCA28"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 249,
+        "groupName": "这是啥呀",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "我是小涵",
+            "avatar": "2804182a545548eef6b377ab1645c458",
+            "theme_color": "#90CAF9"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 258,
+        "groupName": "深色墨点",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "135_Morisummer",
+            "avatar": "2c2a4f78b8212b294a9ba4c4d56117b4",
+            "theme_color": "#CFD8DC"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 259,
+        "groupName": "水果无蔬菜",
+        "groupProfile": "水果蔬菜队的队长自己来单挑",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "狐狸雪梨fox_pear",
+            "avatar": "32d6ede64669af7ad147310b2f37a620",
+            "theme_color": "#C5E1A5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 265,
+        "groupName": "fuck the enter code",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "2679133081@qq.com",
+            "avatar": "965bf95366d88eac2860acbf2df7a3a3",
+            "theme_color": "#26A69A"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 270,
+        "groupName": "A",
+        "groupProfile": "单人",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Frank",
+            "avatar": "c37bf82c867938d00c58984714690a41",
+            "theme_color": "#795548"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 285,
+        "groupName": "学生行动队",
+        "groupProfile": "队伍简介",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "waibibabu",
+            "avatar": "76aa872625be3bb2b359899d7bdabbef",
+            "theme_color": "#3F51B5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 294,
+        "groupName": "FerryTime",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "FerryTime",
+            "avatar": "f2a747bc977870246d071af9f8fd488c",
+            "theme_color": "#FF8A65"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 317,
+        "groupName": "it runs out",
+        "groupProfile": "观光旅游",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "19077frb",
+            "avatar": "7065d6161846c829037f02d778e9fa4b",
+            "theme_color": "#66BB6A"
+          },
+          {
+            "is_leader": 0,
+            "username": "pty6666",
+            "avatar": "2c1fbe24b43bebb2cfad1b51713c6861",
+            "theme_color": "#651FFF"
+          },
+          {
+            "is_leader": 0,
+            "username": "chenman0068",
+            "avatar": "e9cb714f2866c301f9d35ce55e215367",
+            "theme_color": "#E53935"
+          },
+          {
+            "is_leader": 0,
+            "username": "Riki",
+            "avatar": "8f522f8fa761dabff592ceece8e1ab76",
+            "theme_color": "#03A9F4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 324,
+        "groupName": "夕宝可爱",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "winky",
+            "avatar": "0823495a2884e7ea01eac19b23d8f09e",
+            "theme_color": "#FFEA00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 350,
+        "groupName": "大划水怪",
+        "groupProfile": "只会划水的Faz.",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Faz.",
+            "avatar": "e8b52f978eb49ff100a2d222df6ff426",
+            "theme_color": "#82B1FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 7
+      },
+      {
+        "gid": 10,
+        "groupName": "看剑看剑看剑",
+        "groupProfile": "孩子们等我破军",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Bookcup",
+            "avatar": "4f3b449285a160b2a35efbf78b1bfd4a",
+            "theme_color": "#00BFA5"
+          },
+          {
+            "is_leader": 0,
+            "username": "画框留音.",
+            "avatar": "b73c24db5afea28f91bf76e587ad1f58",
+            "theme_color": "#FBC02D"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 11,
+        "groupName": "新花  故吾",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "江隐",
+            "avatar": "c12a77d8a57bed2438b3de4ad0e7aacb",
+            "theme_color": "#007cf0"
+          },
+          {
+            "is_leader": 0,
+            "username": "酸菜龙",
+            "avatar": "2831a34ab66ebc2107c4fd12aa05353f",
+            "theme_color": "#EFEBE9"
+          },
+          {
+            "is_leader": 0,
+            "username": "寻秋",
+            "avatar": "4ea2923c9c81677ef55b58905a182cfb",
+            "theme_color": "#76FF03"
+          },
+          {
+            "is_leader": 0,
+            "username": "入弦",
+            "avatar": "b15bd742f57c224dd66fea401604da62",
+            "theme_color": "#FFC400"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 12,
+        "groupName": "游客",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "杀马特团长",
+            "avatar": "802d3c9d8d45addd6227da048daad3a7",
+            "theme_color": "#A5D6A7"
+          },
+          {
+            "is_leader": 0,
+            "username": "111大哥真咬打火机吗",
+            "avatar": "fdf6fa783172e50cad2f76b865db995b",
+            "theme_color": "#689F38"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 29,
+        "groupName": "IA",
+        "groupProfile": "IA",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "zxy",
+            "avatar": "d251402d18b08d6ef25139c5577f741e",
+            "theme_color": "#BCAAA4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 107,
+        "groupName": "自定义名称1",
+        "groupProfile": "别让等待，成为遗憾",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yueruge",
+            "avatar": "4ec8d3639f1a058b22b6304c5d7da4eb",
+            "theme_color": "#0288D1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 129,
+        "groupName": "ice porridge",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "ll",
+            "avatar": "135692405c31110c62eacee68e3f074d",
+            "theme_color": "#FFC107"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 171,
+        "groupName": "玫瑰过了花期",
+        "groupProfile": "诗茧旧梦",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yueeee",
+            "avatar": "2e14598b801898f39cd726a3a81de9a3",
+            "theme_color": "#35a7a5"
+          },
+          {
+            "is_leader": 0,
+            "username": "こーりゅ",
+            "avatar": "a34abbc7ceb9943abfcbb2d987dc8160",
+            "theme_color": "#ffa8e8"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 208,
+        "groupName": "？",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "?",
+            "avatar": "f40596aa97bc87ded5ed9f4706f306bf",
+            "theme_color": "#EEEEEE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 209,
+        "groupName": "111",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "111",
+            "avatar": "84f03800d171a14cae17d386b7c4664a",
+            "theme_color": "#B388FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 214,
+        "groupName": "owo",
+        "groupProfile": "owo\nowo\nowo\nowo\nowo\nowo\nowo",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yghptdyywj",
+            "avatar": "63d57541d3900061f1fc20254f632a97",
+            "theme_color": "#00ACC1"
+          },
+          {
+            "is_leader": 0,
+            "username": "WaterDrop",
+            "avatar": "5d63fd2d40a621670d4da313315dbdaf",
+            "theme_color": "#5e02cc"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 215,
+        "groupName": "VerictEmmA想吃Hiro炒饭",
+        "groupProfile": "略",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "verictbbb",
+            "avatar": "beb7e77dcd3542c0a051034eb5955225",
+            "theme_color": "#3E2723"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 228,
+        "groupName": "WFLS新手村",
+        "groupProfile": "NFLS已经有hunt了，WFLShunt在哪里？",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "liyufish",
+            "avatar": "f2c5f611a7c0f7175e7127b6f3ad7da2",
+            "theme_color": "#0288D1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 233,
+        "groupName": "泞之翼666",
+        "groupProfile": "为了我对他使用国学吧",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "烬明",
+            "avatar": "e4989f5f0453ad828ee9e292f836b219",
+            "theme_color": "#FFAB00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 242,
+        "groupName": "哪来的蛆",
+        "groupProfile": "队友队友救一下",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "_noname",
+            "avatar": "07654775ce9f2910dd26ab84d382a45a",
+            "theme_color": "#DD2C00"
+          },
+          {
+            "is_leader": 0,
+            "username": "absi2011",
+            "avatar": "cc0c7801084e75fd1671e8ba6aa5d178",
+            "theme_color": "#CFD8DC"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 247,
+        "groupName": "看看题",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "sunshine",
+            "avatar": "85cca6f66621b70b3de1ffea58fce929",
+            "theme_color": "#F44336"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 252,
+        "groupName": "时尚单品队",
+        "groupProfile": "当你在你的生活中遇见铺天盖地的艾玛，希罗和雪莉的时候，你有没有一种似曾相识的感觉？你是否回忆起从前那些日子，那些充斥四方的mujica，mygo，gbc，石蒜？所以，这意味着什么？一波一波的疯狂浪潮，是否也是一种贫瘠？无论如何，这不是谁的问题。我已经累了。",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Chalep",
+            "avatar": "4e922d1b34fb1415ee59a3887aecaee1",
+            "theme_color": "#CDDC39"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 256,
+        "groupName": "huig",
+        "groupProfile": "gdjbc",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "xmx",
+            "avatar": "d2427cd326b65f95f220b39bf5e1a7be",
+            "theme_color": "#546E7A"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 268,
+        "groupName": "万一对了呢",
+        "groupProfile": "？",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Swreapt",
+            "avatar": "ccab7b070041f721c0df7429ebcb0dfa",
+            "theme_color": "#FF6E40"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 282,
+        "groupName": "我就看看题",
+        "groupProfile": "看题",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "我就看看题",
+            "avatar": "9a1870a06ce39f791880a3af2090732f",
+            "theme_color": "#8D6E63"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 292,
+        "groupName": "人可队",
+        "groupProfile": "前进！",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Dopteatues",
+            "avatar": "de43b0ec3679b699120fb96c901c4833",
+            "theme_color": "#7E57C2"
+          },
+          {
+            "is_leader": 0,
+            "username": "Supreme",
+            "avatar": "ae7aecabb866ad175b0f69f9c58dfdda",
+            "theme_color": "#E91E63"
+          },
+          {
+            "is_leader": 0,
+            "username": "chiisanapan",
+            "avatar": "1e73ce4e2a0504561a0fc35ed8e1cf4e",
+            "theme_color": "#00796B"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 314,
+        "groupName": "夜莺厨",
+        "groupProfile": "YYC",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Roselia",
+            "avatar": "bd4eea29762412c44b872a9096bc3e53",
+            "theme_color": "#AEEA00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 320,
+        "groupName": "JDBY_To GE",
+        "groupProfile": "期末周，随便看看",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "林鳴",
+            "avatar": "ed446c1ac88071b085baa7a8a30d4b00",
+            "theme_color": "#FF3D00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 326,
+        "groupName": "U+1F3F3",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "louvrre",
+            "avatar": "d714a78f88b87c5421b947a8bfd77f48",
+            "theme_color": "#0277BD"
+          },
+          {
+            "is_leader": 0,
+            "username": "JMDdeluxe",
+            "avatar": "3892d1e1139b18a48418e8c351b75811",
+            "theme_color": "#651FFF"
+          },
+          {
+            "is_leader": 0,
+            "username": "祛苦",
+            "avatar": "867a06b0b31a6e9aeef39d342a0e3fad",
+            "theme_color": "#BDBDBD"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 331,
+        "groupName": "观光",
+        "groupProfile": "1",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "huaji",
+            "avatar": "66156ba5664b356572c0479f48e78166",
+            "theme_color": "#FFEA00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 336,
+        "groupName": "BRUH",
+        "groupProfile": "HI",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "light5QAQ",
+            "avatar": "f787c0a70e3bb0529648c3336864a17c",
+            "theme_color": "#651FFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 6
+      },
+      {
+        "gid": 185,
+        "groupName": "yyyyy",
+        "groupProfile": "nothing",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Yurrace",
+            "avatar": "b59e11a453a87c9cc47269e47fa014c1",
+            "theme_color": "#212121"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 199,
+        "groupName": "稠环芳烃",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "圆周率",
+            "avatar": "1e9ce37421b2af0e0d4d275907947c53",
+            "theme_color": "#3D5AFE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 207,
+        "groupName": "Reviver Team",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "十五行诗",
+            "avatar": "513a6903c7f74a40a464a351eb4ae655",
+            "theme_color": "#ff8899"
+          },
+          {
+            "is_leader": 1,
+            "username": "孔明七星",
+            "avatar": "d77871d1bb76b5b6b640940b1c39faef",
+            "theme_color": "#66ccff"
+          },
+          {
+            "is_leader": 0,
+            "username": "Lazy_Labs",
+            "avatar": "9b96a678964c99174c8b029594878e40",
+            "theme_color": "#00695C"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 224,
+        "groupName": "U",
+        "groupProfile": "小包包了包",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "U",
+            "avatar": "2a2a551fb9b9981adcadc8dd348f888d",
+            "theme_color": "#9C27B0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 250,
+        "groupName": "War Thunder",
+        "groupProfile": "114514",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "sailboat",
+            "avatar": "67a4336c34cc3721023281b0fc8053fa",
+            "theme_color": "#558B2F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 253,
+        "groupName": "就看看",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yu88",
+            "avatar": "5f4fffbd570f925107e2c323354fac1c",
+            "theme_color": "#A1887F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 264,
+        "groupName": "语文Q群",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "-小彩云-",
+            "avatar": "433477d65e915d1ac389d7fe406e378d",
+            "theme_color": "#CE93D8"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 269,
+        "groupName": "堵桥来",
+        "groupProfile": "我的浮木似了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "丘",
+            "avatar": "cbd704ae2ee589077c5f8fb7c6cd4a3e",
+            "theme_color": "#FF4081"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 274,
+        "groupName": "江苏省哈基中学",
+        "groupProfile": "妈妈只教了我哈气，没教我咬人",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "早睡早起",
+            "avatar": "01c1656c9238d488871d341e4611e0db",
+            "theme_color": "#FDD835"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 284,
+        "groupName": "lgkl",
+        "groupProfile": "null",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "lgkllxy",
+            "avatar": "870baedeb7daeee10db1715fd06e896b",
+            "theme_color": "#F44336"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 353,
+        "groupName": "10002221",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Eric12345636",
+            "avatar": "6ceb38bffebbbe8317475082bdd763ac",
+            "theme_color": "#82B1FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 5
+      },
+      {
+        "gid": 150,
+        "groupName": "不要和我作队",
+        "groupProfile": "Ça sent brûlé",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "hecker",
+            "avatar": "f6f3da6238c20e7571cd0a12387451ad",
+            "theme_color": "#FFA726"
+          },
+          {
+            "is_leader": 0,
+            "username": "落烬",
+            "avatar": "7d5292944ed01d3a40a8bf9998f731ad",
+            "theme_color": "#E6EE9C"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 156,
+        "groupName": "你说的队",
+        "groupProfile": "请输入队伍简介",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "ffffffffyt",
+            "avatar": "6e84f6fb803374ccfc7697752a9933ab",
+            "theme_color": "#cbf0ff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 196,
+        "groupName": ".",
+        "groupProfile": "/",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "robertfan",
+            "avatar": "42f605b2b4cd2c2df6828b0fdbb925e1",
+            "theme_color": "#5E35B1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 198,
+        "groupName": "Mango",
+        "groupProfile": "Mango",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Mango",
+            "avatar": "a13f235e2c4ed5dabd20db80d8926caf",
+            "theme_color": "#C62828"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 218,
+        "groupName": "SOLO",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "清尘",
+            "avatar": "5b7206f5e926d90113f9d5e8aaccdacf",
+            "theme_color": "#D84315"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 225,
+        "groupName": "kon",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "yanami",
+            "avatar": "55723b69206da710bdf2265ff8aabb38",
+            "theme_color": "#CFD8DC"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 241,
+        "groupName": "Tiger2008",
+        "groupProfile": "我草这是什么hunt",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Tiger2008",
+            "avatar": "35e0d363cdeea5e30f1793d2ba95d444",
+            "theme_color": "#FF6D6D"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 245,
+        "groupName": "美味金黄肉松麻薯蓝发小女孩",
+        "groupProfile": "请给我发蓝发小女孩！",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "bokubokubokubokuboku",
+            "avatar": "a3e68d1ba3b10c423758b9453326343e",
+            "theme_color": "#FFE082"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 281,
+        "groupName": "hungergame",
+        "groupProfile": "看看题👀",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "hungergame",
+            "avatar": "5aba712860800238dd78b3c7efddf595",
+            "theme_color": "#FF1744"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 299,
+        "groupName": "何意味",
+        "groupProfile": "无意味",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "QuAckB33",
+            "avatar": "f2b255a01b19c9e4a275eabf091af3e5",
+            "theme_color": "#E53935"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 319,
+        "groupName": "Eva squad",
+        "groupProfile": "小鸟游击队",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "金坚川页",
+            "avatar": "39a7fb0efd39adee7f39b0e6178f55ac",
+            "theme_color": "#C6FF00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 329,
+        "groupName": "至死方休",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "liuliu1717",
+            "avatar": "b5344e71fd87967299ced9f40f145d15",
+            "theme_color": "#F57C00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 334,
+        "groupName": "重生之我在HSY搞语言学",
+        "groupProfile": "大理学校放过我",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "FerisFelicie",
+            "avatar": "e5c356690055953a54312c265c3ff22d",
+            "theme_color": "#66edff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 354,
+        "groupName": "mashiro",
+        "groupProfile": "mashiro",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "mashiro",
+            "avatar": "7fbf7503384c5a443d76aa2680511a9d",
+            "theme_color": "#FF5252"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 356,
+        "groupName": "阿巴阿巴",
+        "groupProfile": "阿巴阿巴",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "cutx64",
+            "avatar": "5169b5f0c6cd9fdc9aa18852290c3c66",
+            "theme_color": "#FFFF8D"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 4
+      },
+      {
+        "gid": 152,
+        "groupName": "赫儿曼ε外儿",
+        "groupProfile": "还能更优秀",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "魏雨暄",
+            "avatar": "12890cec675c31ad44f0a974daa02ff8",
+            "theme_color": "#FF3D00"
+          },
+          {
+            "is_leader": 0,
+            "username": "闵小雅",
+            "avatar": "dc7f3353b7e33b390edea9cae436ddfc",
+            "theme_color": "#F4511E"
+          },
+          {
+            "is_leader": 0,
+            "username": "张淑恒",
+            "avatar": "90c726506281de45a7027664bae47bb0",
+            "theme_color": "#E0E0E0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 157,
+        "groupName": "一个队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "抠脚趾",
+            "avatar": "563af0604a4845eb5d8afdb4908afbd8",
+            "theme_color": "#6D4C41"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 168,
+        "groupName": "巴别塔圣歌",
+        "groupProfile": "来自高一十班",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "zsy",
+            "avatar": "a6790ec1001a21d6b6a8fb50ad07c002",
+            "theme_color": "#5D4037"
+          },
+          {
+            "is_leader": 1,
+            "username": "瞿",
+            "avatar": "59c010566229f883c2b9e8fb93922a5c",
+            "theme_color": "#F4FF81"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 201,
+        "groupName": "avlujiba",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "_547aaa_",
+            "avatar": "84d0aaf733d22e6694a3dc06cec5d531",
+            "theme_color": "#EFEBE9"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 205,
+        "groupName": "行行重行行",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "行行重行行",
+            "avatar": "b217024cd03ec0365ee7b3fc483235c1",
+            "theme_color": "#FDD835"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 220,
+        "groupName": "THEGENIUS",
+        "groupProfile": "支持《游戏的法则》！单人刷一下",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "卡布咖波",
+            "avatar": "6b3534807b9981bd85f3e66b66dcad60",
+            "theme_color": "#1DE9B6"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 234,
+        "groupName": "Pyromaniac",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "pyromaniac",
+            "avatar": "29678ed73c381839df305c90c7358eb1",
+            "theme_color": "#40C4FF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 248,
+        "groupName": "一个环",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "环",
+            "avatar": "a2071fafac02ff4ed2075be91f0eea3f",
+            "theme_color": "#00ACC1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 271,
+        "groupName": "Chugging",
+        "groupProfile": "Abcdefu",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "出谷",
+            "avatar": "aca0068f4884d8413665e6cee8f7a2f8",
+            "theme_color": "#FDD835"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 272,
+        "groupName": "IO",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "MasterRedDust",
+            "avatar": "179771e2cc040148d6983d1d92e9f874",
+            "theme_color": "#1565C0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 276,
+        "groupName": "从千山奔赴远方",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "雪绒花",
+            "avatar": "7227254c2f81891aaae315b1ef482f6a",
+            "theme_color": "#689F38"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 293,
+        "groupName": "大饮料后援会",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "mr_hatfield03",
+            "avatar": "366bff46854104c9e62650913f8406fb",
+            "theme_color": "#00fdff"
+          },
+          {
+            "is_leader": 1,
+            "username": "xxdxye",
+            "avatar": "b2335c0352e93ab355f0ad970d6003b9",
+            "theme_color": "#FF1744"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 3
+      },
+      {
+        "gid": 140,
+        "groupName": "CYAN",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Cyan",
+            "avatar": "6687cb95f0a49c4e2d3e68fb0ea7a161",
+            "theme_color": "#CDDC39"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 197,
+        "groupName": "请输入队伍名称",
+        "groupProfile": "请输入队伍简洁",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "-xcxxx-",
+            "avatar": "0399022bdc93c3aa6304989672e8a4a3",
+            "theme_color": "#3D5AFE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 226,
+        "groupName": "lightmoon",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "tree",
+            "avatar": "c02ec62a4093bd628d491b92fd14ecbe",
+            "theme_color": "#90A4AE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 257,
+        "groupName": "smop2",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Lucas2011",
+            "avatar": "09d06e2a23f3c30d447883b2148e5fc5",
+            "theme_color": "#FFAB40"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 277,
+        "groupName": "shenfenghenxili",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "烟火",
+            "avatar": "fea39e00be3b6d533123a40da337de26",
+            "theme_color": "#FF4081"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 287,
+        "groupName": "666",
+        "groupProfile": "无",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "colinli66",
+            "avatar": "d096fae7765e6fed28402f47e569b572",
+            "theme_color": "#F57C00"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 308,
+        "groupName": "观光队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "MQQ",
+            "avatar": "81e74dc68ed8855a5134dcbf0a0a185b",
+            "theme_color": "#FF4081"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 318,
+        "groupName": "🐜↑🌳",
+        "groupProfile": "一只🐜发现期末周除了学习做什么都有意思",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "🐜",
+            "avatar": "4cb73b983abc9b8b97420de42b59ff06",
+            "theme_color": "#5C6BC0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 321,
+        "groupName": "一人帮也不是什么好东西",
+        "groupProfile": "一人帮也不是什么好东西",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Eric998",
+            "avatar": "6e910adf427564cedbf7f0390b0f4a90",
+            "theme_color": "#7E57C2"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 2
+      },
+      {
+        "gid": 6,
+        "groupName": "奎队",
+        "groupProfile": "队内有奎哥出没\ntm奎哥你一题不做呀，服了服了服了\n踢你的球去吧",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "十一月的肖邦",
+            "avatar": "35cad79d459f48e5394da0ddba375d7d",
+            "theme_color": "#FF8F00"
+          },
+          {
+            "is_leader": 0,
+            "username": "拙劣的马奎",
+            "avatar": "04fdacd26ea442ede5b86e1e98c845e2",
+            "theme_color": "#7C4DFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 134,
+        "groupName": "E",
+        "groupProfile": "Permets tu?",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "NJ",
+            "avatar": "5baa2ea72b8415fc5c5900bed96b24ea",
+            "theme_color": "#0288D1"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 135,
+        "groupName": "TexPat",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Pasixtec",
+            "avatar": "324ca853b9d0056562bb4bffb36fda0c",
+            "theme_color": "#E91E63"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 137,
+        "groupName": "酥淇淋炒鸡蛋",
+        "groupProfile": "🍦🍳😋",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Sukilin",
+            "avatar": "062b2bb626e697288b6c831ddaec6e9e",
+            "theme_color": "#37474F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 154,
+        "groupName": "掉炸天队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "stella",
+            "avatar": "ca6bec792bb19d002bb48261d7e6a3a0",
+            "theme_color": "#F9A825"
+          },
+          {
+            "is_leader": 0,
+            "username": "Iris",
+            "avatar": "53fee6e8c88d21756f724b0677be0f8e",
+            "theme_color": "#00C853"
+          },
+          {
+            "is_leader": 0,
+            "username": "Jocelyn",
+            "avatar": "01dad2b516a1505dd88ca251b150230e",
+            "theme_color": "#CCFF90"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 155,
+        "groupName": "半亩方糖喵",
+        "groupProfile": "喵喵喵",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "半亩方糖",
+            "avatar": "37b6c8d1ff27c1f77caca1f0f1d037ad",
+            "theme_color": "#2E7D32"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 173,
+        "groupName": "某队",
+        "groupProfile": "无",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "jusbod",
+            "avatar": "a96ae8ad9c42ab5317b3dfb43aa09fb1",
+            "theme_color": "#C62828"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 179,
+        "groupName": "一氧化碳",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "COX",
+            "avatar": "05502d0e9dada8439f511f3453c61770",
+            "theme_color": "#263238"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 202,
+        "groupName": "铃",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "migita_suzu",
+            "avatar": "88cbd9d0113fcf5b0e45962b317f38bb",
+            "theme_color": "#FF5252"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 229,
+        "groupName": "五十度灰",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "xinzhu",
+            "avatar": "1927b823547666c4b9398b591507439b",
+            "theme_color": "#1976D2"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 230,
+        "groupName": "练习中",
+        "groupProfile": "学习中练习中。。。",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "学习中",
+            "avatar": "ef9303119671c564e9e8916b2f4caa0e",
+            "theme_color": "#64DD17"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 273,
+        "groupName": "MORE MORE JUMP!",
+        "groupProfile": "求来个大神带带我吧。。。",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "ともこ.",
+            "avatar": "295c0cd94b3a8c01478357c086768cfd",
+            "theme_color": "#039BE5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 278,
+        "groupName": "AAAAlez",
+        "groupProfile": "Whta",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Alez",
+            "avatar": "ec9345aeddc670576ac5e3ea9702fda6",
+            "theme_color": "#9575CD"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 288,
+        "groupName": "zhengjie",
+        "groupProfile": "hhhhhh",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "upwind",
+            "avatar": "77c110494f7dd83bc5906fca0e6e80e7",
+            "theme_color": "#D7CCC8"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 289,
+        "groupName": "Zjjt",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "zj",
+            "avatar": "79bf79b24f02f6dbe5c0e2a01c3f46ce",
+            "theme_color": "#FF8A65"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 291,
+        "groupName": "心野在途",
+        "groupProfile": "看看试试",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "心野在途",
+            "avatar": "ad4ae9e69432ef5e7a7f343d8c7afe14",
+            "theme_color": "#263238"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 295,
+        "groupName": "荧棒帮",
+        "groupProfile": "你猜",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Garry",
+            "avatar": "50e328b024f2fb790b49f571ec627fb9",
+            "theme_color": "#EEEEEE"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 300,
+        "groupName": "葱头战队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "happyfe01",
+            "avatar": "a2687a60dab9de015dda6d43972a542b",
+            "theme_color": "#FF7043"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 309,
+        "groupName": "四驱兄弟",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 0,
+            "username": "lihuayuxia",
+            "avatar": "358e5c3e4cc6328dcebe891db07c53f1",
+            "theme_color": "#FB8C00"
+          },
+          {
+            "is_leader": 0,
+            "username": "Justwe",
+            "avatar": "39bccf0e5ac1a80e2dbcaa4f0869f735",
+            "theme_color": "#BCAAA4"
+          },
+          {
+            "is_leader": 1,
+            "username": "momo",
+            "avatar": "e0a47bf654298cfae9e86da2556a7177",
+            "theme_color": "#A1887F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 316,
+        "groupName": "神秘过路队",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "神秘路过人",
+            "avatar": "01dc9e11c036fc122b7a2b2c31da2c95",
+            "theme_color": "#3F51B5"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 323,
+        "groupName": "请选出图片里所有的人类",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Pancake",
+            "avatar": "2909dc4394ac28598d4da10e1f6314d7",
+            "theme_color": "#757575"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 327,
+        "groupName": "lizyxO.o",
+        "groupProfile": "O.o",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "lizyx",
+            "avatar": "8bd70074605dd35087724729e8b6b205",
+            "theme_color": "#B9F6CA"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 330,
+        "groupName": "花花花花缘",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Kalimos",
+            "avatar": "508e45bd157de63349bdcb37838bca90",
+            "theme_color": "#C2185B"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 335,
+        "groupName": "DDPC",
+        "groupProfile": "高中生组的队伍，只是看题（幽谷响子天下第一！）",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "非犬者响子也",
+            "avatar": "b5735c0ab055a3074f2e2b2aef1a0d26",
+            "theme_color": "#E64A19"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 341,
+        "groupName": "维多pluzza店",
+        "groupProfile": "不想复制粘贴了",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "噬梦浊流",
+            "avatar": "db6ef29b533a4781178f2d375e6dae0a",
+            "theme_color": "#1565C0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 343,
+        "groupName": "我加班故我摸🐟",
+        "groupProfile": "说不定工位也是一种通灵的风水宝地",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "劲脆鸡腿堡",
+            "avatar": "82035a539ef68f594b5636e27e3508f7",
+            "theme_color": "#89d1fa"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 351,
+        "groupName": "我真得考虑一下mcjava了",
+        "groupProfile": "基岩版特性露头就秒人玩否",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "CharlieTao",
+            "avatar": "c701dae24aac943d417dd6624409421e",
+            "theme_color": "#D50000"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 360,
+        "groupName": "啥也不会",
+        "groupProfile": "123",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "小樱桃子爵",
+            "avatar": "487807d4943b786b687d78f0b70e2b13",
+            "theme_color": "#616161"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 1
+      },
+      {
+        "gid": 16,
+        "groupName": "你说得对但是",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Kanbe Kotori",
+            "avatar": "a5c3e25a1c67aae5189a5d27fbfcf377",
+            "theme_color": "#F50057"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 18,
+        "groupName": "八瓣苹果",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Ally",
+            "avatar": "9ceb4ef38b5820bafe4a5d5a2ae13e5c",
+            "theme_color": "#FFE57F"
+          },
+          {
+            "is_leader": 0,
+            "username": "Amy盛",
+            "avatar": "6e10babb6e44c03206d7c652d7291a2d",
+            "theme_color": "#37474F"
+          },
+          {
+            "is_leader": 0,
+            "username": "Giselle",
+            "avatar": "33ef0a005950c65b69864a04d7ddf6fa",
+            "theme_color": "#AA00FF"
+          },
+          {
+            "is_leader": 0,
+            "username": "刘艺涵Alice",
+            "avatar": "f905bef8c30e9533633e4346717b8840",
+            "theme_color": "#7E57C2"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 92,
+        "groupName": "ぴぱ",
+        "groupProfile": "请输入队伍简介",
+        "users": [],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 94,
+        "groupName": "Cute",
+        "groupProfile": "：）",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "CuteDino",
+            "avatar": "69b65fd99817335bcaabf02d33514b16",
+            "theme_color": "#128fc4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 98,
+        "groupName": "王泓懿",
+        "groupProfile": "王泓懿高一（二）",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "王泓懿",
+            "avatar": "c098c14317e71c47bf57786795df8ae4",
+            "theme_color": "#546E7A"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 104,
+        "groupName": "时代少年团",
+        "groupProfile": "我们喜欢马嘉祺丁程鑫宋亚轩刘耀文张真源严浩翔贺峻霖",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "妄灿歆岚",
+            "avatar": "b9ad185e93e24216d93a5d282322a4ad",
+            "theme_color": "#009688"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 123,
+        "groupName": "Flashback",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "skyline",
+            "avatar": "bb4a836e171841e5efb7e4350c87f49e",
+            "theme_color": "#d980ea"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 127,
+        "groupName": "已出租",
+        "groupProfile": "有意者请勿重复联系",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "倒霉蛋子",
+            "avatar": "057fb5b2b74b0cb5a39bf1967e07d1ca",
+            "theme_color": "#E91E63"
+          },
+          {
+            "is_leader": 0,
+            "username": "蜜罐鸭笨笨",
+            "avatar": "c29e0d099630dea6b386070bd2b3e043",
+            "theme_color": "#FFCC80"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 128,
+        "groupName": "自定义名称2",
+        "groupProfile": "黄金大饭店开张大吉！！！",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "AA大风机关赛诺",
+            "avatar": "77724f8bec051d4539b3f8f1fbd54fee",
+            "theme_color": "#1DE9B6"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 151,
+        "groupName": "evil pumpkin",
+        "groupProfile": "-",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "MichaelXu",
+            "avatar": "66aa8f0d97d998c6b414c690fc8ad28b",
+            "theme_color": "#FFE57F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 160,
+        "groupName": "什么",
+        "groupProfile": "什么",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "什么",
+            "avatar": "a70990b3415acb38a54008b48cb3a46c",
+            "theme_color": "#FF9100"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 181,
+        "groupName": "群星",
+        "groupProfile": "略",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "13385434963",
+            "avatar": "56d2c41cc5f03202af0efbb2ea4cb7c7",
+            "theme_color": "#26A69A"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 182,
+        "groupName": "Fvyirsvfu",
+        "groupProfile": "Jr ner cercnevat sbe gur jbeyq bs gbzbeebj.",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Fvyirsvfu",
+            "avatar": "e4cb1a9b0a50e863baf7643f1583466e",
+            "theme_color": "#424242"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 188,
+        "groupName": "落单STAFF",
+        "groupProfile": "落单的staff正在等待管理员身份。",
+        "users": [],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 189,
+        "groupName": "bbb",
+        "groupProfile": "bvb",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "bbb",
+            "avatar": "eaaf5893f8aec9e73f65d5004bc1db8b",
+            "theme_color": "#FFE082"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 190,
+        "groupName": "wobuhuimi",
+        "groupProfile": "buhuu",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "姚翔",
+            "avatar": "4515857f8a85dc7763526fd6ba576304",
+            "theme_color": "#C62828"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 194,
+        "groupName": "鹿鹿鹿",
+        "groupProfile": "只有一个人www",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "FDA",
+            "avatar": "9943b55880c2b3187e26484d464774d0",
+            "theme_color": "#90CAF9"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 217,
+        "groupName": "kkt",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "龙",
+            "avatar": "149baa3ef0637dfd22e3e31156b02edd",
+            "theme_color": "#651FFF"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 219,
+        "groupName": "小说",
+        "groupProfile": "随便看看",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "林镜野",
+            "avatar": "b363a44556ab5e5a9177192d5d4b08f5",
+            "theme_color": "#FF9E80"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 223,
+        "groupName": "Spathodea",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Spathodea",
+            "avatar": "b069727ceffd90cab2aa2052dabdd3cb",
+            "theme_color": "#4E342E"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 235,
+        "groupName": "Kagetsu",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Kagetsu",
+            "avatar": "9cc609b8de16e49a3bda193757d4bea3",
+            "theme_color": "#9C27B0"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 236,
+        "groupName": "南外番茄酱大象联盟",
+        "groupProfile": "不参赛，仅摸鱼",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "_westWind",
+            "avatar": "1392ab359b735cd8d536ae69e0e13cbe",
+            "theme_color": "#D32F2F"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 255,
+        "groupName": "我看看怎么个事儿",
+        "groupProfile": "我看看怎么个事儿",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "c0pyc4t",
+            "avatar": "ce49464be02e7d159f29196c4ad46d12",
+            "theme_color": "#8D6E63"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 280,
+        "groupName": "小语种",
+        "groupProfile": "小语种",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "user001",
+            "avatar": "8760f9eb259b1e20494c01fed48ec2a9",
+            "theme_color": "#FF7043"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 301,
+        "groupName": "组队是个难事",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "wendy",
+            "avatar": "5d4f5c09f31c5d12353f18bb9dda2293",
+            "theme_color": "#EC407A"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 302,
+        "groupName": "美鸭梨队",
+        "groupProfile": "其实是炫狂小队",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "crx",
+            "avatar": "643c59ccadabc4a8969b928be9ea618f",
+            "theme_color": "#80CBC4"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 313,
+        "groupName": "阿森纳",
+        "groupProfile": "不可战胜",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "gyg_nerazzurri",
+            "avatar": "72e81ab11300e95e31e04388a83e1f41",
+            "theme_color": "#FFAB40"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 322,
+        "groupName": "南京航空航天大学",
+        "groupProfile": "NUAAers",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Fitch",
+            "avatar": "5817bb5c171ce21bcde2f9a3db260806",
+            "theme_color": "#E040FB"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 325,
+        "groupName": "Aaa",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "calebzqy",
+            "avatar": "75981af6929f0c78cc59065825f2d992",
+            "theme_color": "#FFEE58"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 345,
+        "groupName": "Small Council",
+        "groupProfile": "Green Hands",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Curious Tao Chi",
+            "avatar": "ff6b3a067e38d0bb9a86bdacdcc342d6",
+            "theme_color": "#D84315"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 347,
+        "groupName": "ぴぱ2",
+        "groupProfile": "ぴぱぴぱ",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "Furina de Fontaine",
+            "avatar": "46c3e3eca92d671cfe64569db88beaf3",
+            "theme_color": "#66ccff"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      },
+      {
+        "gid": 349,
+        "groupName": "Celeste64",
+        "groupProfile": "",
+        "users": [
+          {
+            "is_leader": 1,
+            "username": "LoneLawn",
+            "avatar": "607b9b1611efb69a7a312a082df5153b",
+            "theme_color": "#00897B"
+          }
+        ],
+        "isFinish": 0,
+        "totalTime": -1,
+        "finishedGroupCount": 0,
+        "finishedPuzzleCount": 0
+      }
+    ]
+  }
+}

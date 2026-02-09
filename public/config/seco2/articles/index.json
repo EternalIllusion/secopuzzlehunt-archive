@@ -1,0 +1,202 @@
+{
+  "type": "page",
+  "title": "剧情",
+  "content": "此处显示的是N2PH的所有剧情。您也可以使用左下导航工具打开剧情目录。",
+  "links": [
+    {
+      "title": "序章",
+      "type": "page",
+      "path": "/article/n2ph/prologue"
+    },
+    {
+      "title": "正名之志",
+      "type": "page",
+      "path": "/article/n2ph/end-black"
+    },
+    {
+      "title": "印加覆灭",
+      "type": "page",
+      "path": "/article/n2ph/end-white"
+    },
+    {
+      "title": "马丘比丘之巅",
+      "type": "page",
+      "path": "/article/n2ph/finalend"
+    },
+    {
+      "title": "TFM开启",
+      "type": "page",
+      "path": "/article/n2ph/fm-open"
+    },
+    {
+      "title": "岁星片影",
+      "type": "page",
+      "path": "/article/n2ph/g1-p"
+    },
+    {
+      "title": "繁星碎影",
+      "type": "page",
+      "path": "/article/n2ph/g1-e"
+    },
+    {
+      "title": "古道密语",
+      "type": "page",
+      "path": "/article/n2ph/g2-p"
+    },
+    {
+      "title": "古老语言",
+      "type": "page",
+      "path": "/article/n2ph/g2-e"
+    },
+    {
+      "title": "\t异星菌落",
+      "type": "page",
+      "path": "/article/n2ph/g3-p"
+    },
+    {
+      "title": "文明沙盘",
+      "type": "page",
+      "path": "/article/n2ph/g3-e"
+    },
+    {
+      "title": "瘟疫石板",
+      "type": "page",
+      "path": "/article/n2ph/g4-p"
+    },
+    {
+      "title": "疾病刻录",
+      "type": "page",
+      "path": "/article/n2ph/g4-e"
+    },
+    {
+      "title": "几何光学",
+      "type": "page",
+      "path": "/article/n2ph/g5-p"
+    },
+    {
+      "title": "普照八方",
+      "type": "page",
+      "path": "/article/n2ph/g5-e"
+    },
+    {
+      "title": "指向何方",
+      "type": "page",
+      "path": "/article/n2ph/g6-p"
+    },
+    {
+      "title": "将往之向",
+      "type": "page",
+      "path": "/article/n2ph/g6-e"
+    },
+    {
+      "title": "混音留声",
+      "type": "page",
+      "path": "/article/n2ph/g7-p"
+    },
+    {
+      "title": "磁带遗音",
+      "type": "page",
+      "path": "/article/n2ph/g7-e"
+    },
+    {
+      "title": "墙面涂鸦",
+      "type": "page",
+      "path": "/article/n2ph/g8-p"
+    },
+    {
+      "title": "壁上纹样",
+      "type": "page",
+      "path": "/article/n2ph/g8-e"
+    },
+    {
+      "title": "眼中寻珠",
+      "type": "page",
+      "path": "/article/n2ph/g9-p"
+    },
+    {
+      "title": "点睛珍藏",
+      "type": "page",
+      "path": "/article/n2ph/g9-e"
+    },
+    {
+      "title": "迷途未竟",
+      "type": "page",
+      "path": "/article/n2ph/g10-p"
+    },
+    {
+      "title": "长路终焉",
+      "type": "page",
+      "path": "/article/n2ph/g10-e"
+    },
+    {
+      "title": "天窗之下",
+      "type": "page",
+      "path": "/article/n2ph/g11-p"
+    },
+    {
+      "title": "穹顶投光",
+      "type": "page",
+      "path": "/article/n2ph/g11-e"
+    },
+    {
+      "title": "图书馆中",
+      "type": "page",
+      "path": "/article/n2ph/g12-p"
+    },
+    {
+      "title": "秘密书单",
+      "type": "page",
+      "path": "/article/n2ph/g12-e"
+    },
+    {
+      "title": "文字游戏",
+      "type": "page",
+      "path": "/article/n2ph/g13-p"
+    },
+    {
+      "title": "最初时刻",
+      "type": "page",
+      "path": "/article/n2ph/g13-e"
+    },
+    {
+      "title": "盘上黑白",
+      "type": "page",
+      "path": "/article/n2ph/g14-p"
+    },
+    {
+      "title": "天窗之下",
+      "type": "page",
+      "path": "/article/n2ph/g15-p"
+    },
+    {
+      "title": "穹顶投光",
+      "type": "page",
+      "path": "/article/n2ph/g15-e"
+    },
+    {
+      "title": "图书馆中",
+      "type": "page",
+      "path": "/article/n2ph/g16-p"
+    },
+    {
+      "title": "秘密书单",
+      "type": "page",
+      "path": "/article/n2ph/g16-e"
+    },
+    {
+      "title": "文字游戏",
+      "type": "page",
+      "path": "/article/n2ph/g17-p"
+    },
+    {
+      "title": "最终时刻",
+      "type": "page",
+      "path": "/article/n2ph/g17-e"
+    },
+    {
+      "title": "盘上黑白",
+      "type": "page",
+      "path": "/article/n2ph/g18-p"
+    }
+  ]
+}

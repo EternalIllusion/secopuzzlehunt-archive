@@ -1,0 +1,68 @@
+{
+  "type": "problem",
+  "title": "古道密语",
+  "extendData": "",
+  "contentType": 2,
+  "content": "",
+  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <img class=\"img-main-single\" :src=\"imgSource\" :alt=\"imgAlt\" />\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n    .img-main-single {\r\n        width: auto;\r\n        max-width: 100%;\r\n        max-height: 60vh;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        border: #bbb 3px solid;\r\n        background-color: #fff;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
+  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/test/static/c52db058949349a881075ff72a794dc4.webp\"),imgAlt:e.ref(\"古道密语\"),ansLength:e.ref(9)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
+  "answer": "CRATAEGUS",
+  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题具有中间答案验证</span>\n</div>\n\n密语中混入了一些……不速之客？",
+  "tips": [
+    {
+      "title": "“中间答案”是什么意思 (0提示点)",
+      "content": "中间答案是你在做题过程中可能会做出的一些中间步骤的结果，所有标明具有中间答案验证的题目，我们会把中间步骤所得出的结果放入判题系统中，你可以递交这些答案来检查你的中间步骤完成的是否正确。"
+    },
+    {
+      "title": "我毫无头绪 (300提示点)",
+      "content": "你需要把这些密码翻译出来，这些密语的加密方式依次分别是：旗语、摩斯、盲文、NATO旗语。"
+    },
+    {
+      "title": "我得到了一些东西，但是我不知道下一步如何进行 (500提示点)",
+      "content": "你需要找到这些单词中被数字替换的字母原来是什么。如果你不知道怎么还原这些单词，你可以使用[**Nutrimatic**](https://nutrimatic.org/)工具。用大写A表示你不知道的字母，用小写字母表示你知道的字母，然后点击Go，工具会为你找到所有的可能并且按照可能性排序。你可以递交这些词语，本题的中间答案是这四个原来的词语。"
+    },
+    {
+      "title": "该如何提取 (400提示点)",
+      "content": "你需要把这些字母按照它们被替换的数字按1-9排序，并拼接成单词"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "CRAYON",
+      "message": "这是一个中间答案！",
+      "extra": ""
+    },
+    {
+      "answer": "ATTRIBUTE",
+      "message": "这是一个中间答案！",
+      "extra": ""
+    },
+    {
+      "answer": "AEROPLANE",
+      "message": "这是一个中间答案！",
+      "extra": ""
+    },
+    {
+      "answer": "AUGUST",
+      "message": "这是一个中间答案！",
+      "extra": ""
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "n2ph/index"
+    },
+    {
+      "title": "N2PH",
+      "path": "/area/test/1",
+      "pgid": 1
+    }
+  ],
+  "arealink": {
+    "title": "N2PH",
+    "path": "/area/test/1",
+    "pgid": 1
+  }
+}
