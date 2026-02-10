@@ -1,6 +1,9 @@
 <template>
-    <div class="body">
+    <div :class="{'body':true,'blur':isBannerVisible}">
     </div>
+        <div :class="{'area-banner':true,'area-banner-hidden':!isBannerVisible}">
+            <img :src="banner" alt="区域立绘"></img>
+        </div>
     <div class="navi-container">
         <div class="row header-line">
             <ul class="col link-button-wrapper">
@@ -13,7 +16,7 @@
                     </div>
                     <div class="link-desc" v-html="descHtml"></div>
                 </li>
-                <li v-for="link in data.links" class="link-li" @click="navigate(link.path)">
+                <li v-for="link in data.links" :class="{'link-li':true,'link-nav':!isques(link)}" @click="navigate(link.path)" @mouseenter="showBanner(link?.pgid??'')" @mouseleave="hideBanner">
                     <div class="link-title">
                         {{ link.title }}
                     </div>
@@ -43,7 +46,7 @@ import { onMounted, reactive, ref } from 'vue';
 
 import { getMainInfo } from '../api';
 import { useTheme } from '../dataschem/theme';
-import { IndexData } from '../dataschem/interfaces';
+import { AreaLink, IndexData } from '../dataschem/interfaces';
 
 import { markdownToHtml } from "../utils";
 
@@ -52,21 +55,30 @@ const router = useRouter();
 
 const data = reactive<IndexData>({ title: '', content: '', links: [], navs: [] });
 const loading = ref(true);
+const isBannerVisible = ref(false);
+const banner = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
 
 const theme = useTheme();
 
-const bgImg = ref('url("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")');
-const logoImg = ref('url("data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==")');
+const bgImg = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+const logoImg = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
 const bgSnap = ref(0);
 const descHtml = ref('')
 
 onBeforeMount(async () => {
-    await theme.update(route.params.hunt as string)
-    bgImg.value = `url("${theme.maps.banner.bg ?? '/static/bg_4e65eaf7.webp'}")`;
-    bgSnap.value = theme.maps.banner.snapMargin ?? 40;
-    logoImg.value = theme.maps.banner.logo ?? '/static/icon_74b33252.svg';
-    console.log(theme.maps.banner)
+    var hunt = route.params.hunt as string;
+    if(!hunt) return;
+    await theme.update(hunt)
+    let huntTheme = theme.themes[hunt];
+    console.debug(huntTheme?.root ?? "No root theme def!!!");
+    bgImg.value = `url("${huntTheme?.root?.banner ?? bgImg.value}")`;
+    logoImg.value = huntTheme?.root?.logo ?? "";
+    bgSnap.value = huntTheme?.root?.snapMargin ?? 40;
 })
+
+const isques = (item:AreaLink) => {
+    return !!(item?.pgid ?? false);
+}
 
 async function loadDetail() {
     console.log("site-render");
@@ -76,6 +88,21 @@ async function loadDetail() {
     console.debug(adata);
 
     Object.assign(data, adata);
+}
+
+const showBanner = (pgid:string) => {
+    console.debug(pgid)
+    if(pgid=="")return;
+    var hunt = route.params.hunt as string;
+    let huntTheme = theme.themes[hunt];
+    if(!(pgid in huntTheme.areas)) return;
+    let bannerimg = huntTheme.areas[pgid].banner
+    banner.value = bannerimg??"";
+    isBannerVisible.value = !!bannerimg;
+}
+
+const hideBanner = () => {
+    isBannerVisible.value = false;
 }
 
 const navigate = (path: string) => {
@@ -102,6 +129,34 @@ onMounted(async () => {
     transition: all ease .4s;
 }
 
+.area-banner {
+    display: flex;
+    position: fixed;
+    right: 3rem;
+    max-height: 800px;
+    max-width: 400px;
+    top:50%;
+    transform: translateY(-50%);
+    background-color: #ffffff66;
+    backdrop-filter: blur(10px);
+    box-shadow: #fff 0 0 2rem;
+    border: #fff 2px solid;
+    border-radius: 2rem;
+    overflow: hidden;
+    width: 30vw;
+    height: auto;
+    transition: all ease 0.5s;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.area-banner-hidden {
+    opacity: 0;
+}
+
 .body {
     position: fixed;
     top: 0;
@@ -112,6 +167,7 @@ onMounted(async () => {
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: -1;
+    transition: filter ease 1s;
 }
 
 .body::before {
@@ -133,14 +189,18 @@ onMounted(async () => {
     }
 }
 
+.body.blur::before {
+    filter: blur(12px);
+}
+
 
 .navi-container {
-    background: linear-gradient(to right, #ffffffcc 0%, #ffffff66 85%, #ffffff33 95%, #ffffff00 100%);
     margin: 0;
     margin-right: 40%;
     padding: 1rem;
     min-height: calc(100vh - 2rem);
     top: 0;
+    color: #fff;
 }
 
 .navi-container .loader::before {
@@ -189,6 +249,7 @@ onMounted(async () => {
     padding-left: 1rem;
     padding-right: 0;
     cursor: pointer;
+    color: #000;
     background: linear-gradient(to right, #ffffffdd 0%, #ffffffbb 60%, #ffffff33 85%, #ffffff00 100%);
     border-radius: 12px;
     align-items: center;
@@ -203,6 +264,10 @@ onMounted(async () => {
         align-items: center;
         line-height: 1.8rem;
     }
+}
+
+.link-nav {
+    background: linear-gradient(to right, #E3FCE3dd 0%, #E3FCE3bb 60%, #E3FCE333 85%, #E3FCE300 100%) !important;
 }
 
 .sp-li {

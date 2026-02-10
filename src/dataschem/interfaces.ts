@@ -9,11 +9,15 @@ export interface PidIndex extends Link {
   pid: string;
 }
 
+export interface AreaLink extends Link {
+  pgid?: string;
+}
+
 export interface IndexData {
   type?: 'index';
   title: string;
   content: string;
-  links: Link[];
+  links: AreaLink[];
   navs: Link[];
 }
 
@@ -88,40 +92,25 @@ export interface ThemeColorCfg {
   bg?: string;
   navText?: string;
   navBg?: string;
-  puzzListBg?: string;
-  puzzListItemBg?: string;
-  puzzListText?: string;
-  puzzCfg?: Record<string,PuzzleColorCfg>;
 }
 
-export interface MapCfg {
-  pid: string;
-  imgUrl: string;
-  color: string;
-  top: string;
-  left: string;
-  puzzle_type?: number;
-  title?: string;
-  titleOffsetX?: number;
-  titleOffsetY?: number;
-}
-
-export type HuntThemeColorCfg = Record<string,ThemeColorCfg>
-
-export interface AreaMapCfg {
-  bg?:string;
-  front?:string;
-  mapItem:MapCfg[];
+export interface AreaCfg {
+  banner?:string;
   originalWidth: number;
   originalHeight: number;
   logo?:string;
   snapMargin?:number;
+  color?: ThemeColorCfg;
 }
 
 export interface HuntThemeCfg {
-  colors: HuntThemeColorCfg;
-  maps: Record<string,AreaMapCfg>;
+  puzzCfg?: Record<string,PuzzleColorCfg>;
+  color: ThemeColorCfg;
+  areas: Record<string,AreaCfg>;
+  root: AreaCfg;
 }
+
+export type ThemeCfg = Record<string,HuntThemeCfg>;
 
 export interface article {
   title:string;

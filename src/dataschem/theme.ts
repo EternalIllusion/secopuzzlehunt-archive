@@ -1,28 +1,23 @@
 import { defineStore } from "pinia";
 import { getHuntTheme } from "../api";
-import { HuntThemeColorCfg, AreaMapCfg } from "./interfaces";
+import { ThemeCfg } from "./interfaces";
 
 export const useTheme = defineStore("theme", {
   state: () => ({
-    colors: {} as HuntThemeColorCfg,
-    maps: {} as Record<string, AreaMapCfg>,
-    hunt: "" as string
+    themes: {} as ThemeCfg,
   }),
   actions: {
     async update(hunt: string) {
-      if (hunt === this.hunt) {
+      if (hunt in this.themes) {
         getHuntTheme(hunt).then((data) => {
           console.debug(data);
-          this.hunt = hunt;
-          this.colors = data?.colors ?? ({} as HuntThemeColorCfg);
-          this.maps = data?.maps ?? ({} as Record<string, AreaMapCfg>);
+          if(data) this.themes[hunt] = data;
         })
       } else {
         let data = await getHuntTheme(hunt);
         console.debug(data);
-        this.hunt = hunt;
-        this.colors = data?.colors ?? ({} as HuntThemeColorCfg);
-        this.maps = data?.maps ?? ({} as Record<string, AreaMapCfg>);
+        if(data) this.themes[hunt] = data;
+        else console.error("empty theme!");
       }
     }
   },
