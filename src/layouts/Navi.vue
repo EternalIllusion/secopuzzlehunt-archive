@@ -30,7 +30,7 @@
                     CCXCArchiveEvolved</a></el-tooltip></div>
         </div>
         <div class="sp-index-extras">
-            <a href="https://x.com/hisehisekin" class="banner-credit main-ext-icon" target="_blank" rel="noopener">
+            <a href="https://secopuzzle.com/" class="banner-credit main-ext-icon" target="_blank" rel="noopener">
                 <svg width="1em" height="1em" data-icon="material-symbols:copyright-outline-rounded"
                     class="banner-credit-icon-copyright">
                     <symbol id="ai:material-symbols:copyright-outline-rounded" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@
                     </symbol>
                     <use href="#ai:material-symbols:copyright-outline-rounded"></use>
                 </svg>
-                <div class="banner-credit-text">X@hisehisekin</div>
+                <div class="banner-credit-text">SECO@riser</div>
                 <svg width="1em" height="1em" data-icon="fa6-solid:arrow-up-right-from-square"
                     class="banner-credit-icon-share">
                     <symbol id="ai:fa6-solid:arrow-up-right-from-square" viewBox="0 0 512 512">
@@ -150,7 +150,7 @@ onMounted(async () => {
 
 body.sp::before {
     content: "";
-    background: url("/static/bg_4e65eaf7.webp") no-repeat right top / cover;
+    background: url("/static/bg_3587bc5f.webp") no-repeat right top / cover;
     top: 0;
     left: 0;
     bottom: 0;
@@ -407,7 +407,7 @@ body.sp::after {
     }
 
     .banner-credit:hover {
-        padding-right: 7.5rem;
+        padding-right: 6.5rem;
     }
 
     .banner-credit-icon-copyright {
@@ -416,7 +416,7 @@ body.sp::after {
 
     .banner-credit-text {
         font-size: 0.75rem;
-        width: 5.25rem;
+        width: 4.25rem;
         text-align: center;
         position: absolute;
         right: 2.25rem;
