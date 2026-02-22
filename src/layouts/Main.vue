@@ -1,9 +1,9 @@
 <template>
-    <div :class="{'body':true,'blur':isBannerVisible}">
+    <div :class="{ 'body': true, 'blur': isBannerVisible }">
     </div>
-        <div :class="{'area-banner':true,'area-banner-hidden':!isBannerVisible}">
-            <img :src="banner" alt="区域立绘"></img>
-        </div>
+    <div :class="{ 'area-banner': true, 'area-banner-hidden': !isBannerVisible }">
+        <img :src="banner" alt="区域立绘"></img>
+    </div>
     <div class="navi-container">
         <div class="row header-line">
             <ul class="col link-button-wrapper">
@@ -16,7 +16,8 @@
                     </div>
                     <div class="link-desc" v-html="descHtml"></div>
                 </li>
-                <li v-for="link in data.links" :class="{'link-li':true,'link-nav':!isques(link)}" @click="navigate(link.path)" @mouseenter="showBanner(link?.pgid??'')" @mouseleave="hideBanner">
+                <li v-for="link in data.links" :class="{ 'link-li': true, 'link-nav': !isques(link) }"
+                    @click="navigate(link.path)" @mouseenter="showBanner(link?.pgid ?? '')" @mouseleave="hideBanner">
                     <div class="link-title">
                         {{ link.title }}
                     </div>
@@ -67,7 +68,7 @@ const descHtml = ref('')
 
 onBeforeMount(async () => {
     var hunt = route.params.hunt as string;
-    if(!hunt) return;
+    if (!hunt) return;
     await theme.update(hunt)
     let huntTheme = theme.themes[hunt];
     console.debug(huntTheme?.root ?? "No root theme def!!!");
@@ -76,7 +77,7 @@ onBeforeMount(async () => {
     bgSnap.value = huntTheme?.root?.snapMargin ?? 40;
 })
 
-const isques = (item:AreaLink) => {
+const isques = (item: AreaLink) => {
     return !!(item?.pgid ?? false);
 }
 
@@ -90,14 +91,14 @@ async function loadDetail() {
     Object.assign(data, adata);
 }
 
-const showBanner = (pgid:string) => {
+const showBanner = (pgid: string) => {
     console.debug(pgid)
-    if(pgid=="")return;
+    if (pgid == "") return;
     var hunt = route.params.hunt as string;
     let huntTheme = theme.themes[hunt];
-    if(!(pgid in huntTheme.areas)) return;
+    if (!(pgid in huntTheme.areas)) return;
     let bannerimg = huntTheme.areas[pgid].banner
-    banner.value = bannerimg??"";
+    banner.value = bannerimg ?? "";
     isBannerVisible.value = !!bannerimg;
 }
 
@@ -135,7 +136,7 @@ onMounted(async () => {
     right: 3rem;
     max-height: 800px;
     max-width: 400px;
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
     background-color: #ffffff66;
     backdrop-filter: blur(10px);
@@ -146,6 +147,7 @@ onMounted(async () => {
     width: 30vw;
     height: auto;
     transition: all ease 0.5s;
+
     img {
         height: 100%;
         width: 100%;

@@ -1,4 +1,5 @@
 <template>
+  <div class="body"></div>
   <div class="page-container">
     <!-- 左侧导航 -->
     <div class="sidebar">
@@ -86,7 +87,7 @@
                       </button>
                     </div>
                   </div>
-                  <p class="team-profile" :class="{ expanded: expandedTeams.includes(team.gid) }">
+                  <p class="team-profile" :class="{ expanded: expandedTeams.includes(team.gid) }" v-if="!usingGPH">
                     {{ team.groupProfile || '暂无队伍简介' }}
                   </p>
                   <button
@@ -98,8 +99,10 @@
                   </button>
                 </div>
               </div>
-              <div class="problems-col">{{ team.finishedGroupCount }} - {{ team.finishedPuzzleCount }}</div>
-              <div class="time-col">{{ team.totalTime.toFixed(2) }}小时</div>
+              <div class="problems-col" v-if="usingGPH">{{ team.finishedPuzzleCount }}</div>
+              <div class="problems-col" v-else>{{ team.finishedGroupCount }} - {{ team.finishedPuzzleCount }}</div>
+              <div class="time-col" v-if="usingDays">{{ (team.totalTime*24.00).toFixed(2) }}小时</div>
+              <div class="time-col" v-else>{{ team.totalTime.toFixed(2) }}小时</div>
             </div>
           </div>
         </div>
@@ -134,7 +137,7 @@
                       </button>
                     </div>
                   </div>
-                  <p class="team-profile" :class="{ expanded: expandedTeams.includes(team.gid) }">
+                  <p class="team-profile" :class="{ expanded: expandedTeams.includes(team.gid) }" v-if="!usingGPH">
                     {{ team.groupProfile || '暂无队伍简介' }}
                   </p>
                   <button
@@ -185,6 +188,7 @@ import { ref, onMounted } from 'vue'
 import { getScoreboard } from '../api'
 import { ScoreboardGroupInfo } from '../dataschem/interfaces'
 import { msgerror } from '../utils/msg'
+import { useTheme } from '../dataschem/theme'
 
 // 响应式状态
 const loading = ref(true)
@@ -195,6 +199,8 @@ const expandedTeams = ref<number[]>([])
 const searchKeyword = ref('')
 const searchResults = ref<ScoreboardGroupInfo[]>([])
 const searched = ref(false)
+const usingGPH = ref(false)
+const usingDays = ref(false)
 
 // 悬浮队员提示
 const hoveredTeam = ref<ScoreboardGroupInfo | null>(null)
@@ -216,6 +222,8 @@ async function fetchScoreboard() {
 
     finishedGroups.value = data.scoreboarddata.finished_groups || []
     groups.value = data.scoreboarddata.groups || []
+    usingGPH.value = (data?.using_gph??0)===1 || false;
+    usingDays.value = (data?.using_days??0)===1 || false;
     // 如果后端有更新时间，可替换 cacheTime.value = data.update_time * 1000
   } catch (err) {
     console.error('加载失败:', err)
@@ -294,20 +302,72 @@ function hideMembers() {
 onMounted(() => {
   fetchScoreboard()
 })
+
+
+const bgImg = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+const bgSnap = ref(0);
+const theme = useTheme();
+onBeforeMount(async () => {
+    var hunt = route.params.hunt as string;
+    if(!hunt) return;
+    await theme.update(hunt)
+    let huntTheme = theme.themes[hunt];
+    console.debug(huntTheme?.root ?? "No root theme def!!!");
+    bgImg.value = `url("${huntTheme?.root?.banner ?? bgImg.value}")`;
+    bgSnap.value = huntTheme?.root?.snapMargin ?? 40;
+})
+
 </script>
 
 <style scoped>
+
+.body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: -1;
+    transition: filter ease 1s;
+}
+
+.body::before {
+    content: "";
+    background: v-bind(bgImg) no-repeat right top / cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -3;
+    transition: all ease .3s, margin-right ease-in-out .15s;
+}
+
+
+@media (max-width: 800px) {
+    .body::before {
+        margin-right: calc(-1vh * v-bind(bgSnap));
+    }
+}
+
+
 .page-container {
   min-height: calc(100vh - 120px);
   display: flex;
-  background: #ffffff;
+  background: #ffffffaa;
   color: #000;
 }
 
 .sidebar {
   width: 300px;
   background: rgba(255, 255, 255, 0.05);
-  border-right: 1px solid rgb(10, 222, 173);
+  box-sizing: border-box;
+  border-radius: 1rem 0;
+  border-right: 1px solid rgb(22, 199, 158);
+  border-bottom: 1px solid rgb(22, 199, 158);
   padding: 2rem;
   position: sticky;
   top: 0;
@@ -336,23 +396,23 @@ onMounted(() => {
   padding: 0.75rem;
   border: 1px solid rgb(26, 207, 165);
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.6);
   color: #000000;
   font-size: 0.9rem;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #64ffda;
+  border-color: #00aa82;
 }
 
 .search-input::placeholder {
-  color: #cccccc;
+  color: #818181;
 }
 
 .search-btn {
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #64ffda, #00bcd4);
+  background: #00aa82;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -373,7 +433,7 @@ onMounted(() => {
 }
 
 .search-results-header {
-  color: #64ffda;
+  color: #0dd2a4;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
   font-weight: 500;
@@ -392,7 +452,7 @@ onMounted(() => {
   padding: 0.75rem 1rem;
   background: rgba(100, 255, 218, 0.1);
   color: #000000;
-  border: 1px solid rgb(7, 227, 176);
+  border: 1px solid rgb(6, 179, 138);
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
@@ -411,7 +471,7 @@ onMounted(() => {
 }
 
 .no-result {
-  color: #999999;
+  color: #5b5b5b;
   text-align: center;
   font-size: 0.9rem;
 }
@@ -471,7 +531,7 @@ onMounted(() => {
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
-  color: #64ffda;
+  color: #00aa82;
   text-align: center;
   font-weight: 500;
 }
@@ -489,7 +549,7 @@ onMounted(() => {
 }
 
 .section-desc {
-  color: #cccccc;
+  color: #484848;
   margin-bottom: 1.5rem;
   font-size: 1rem;
 }
@@ -501,7 +561,7 @@ onMounted(() => {
   background: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.2);
   border-radius: 8px 8px 0 0;
-  color: #12d6a9;
+  color: #00aa82;
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -511,7 +571,7 @@ onMounted(() => {
 }
 
 .teams-list {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(100, 255, 218, 0.2);
   border-top: none;
   border-radius: 0 0 8px 8px;
@@ -560,7 +620,7 @@ onMounted(() => {
 
 .rank-col {
   font-size: 1.1rem;
-  color: #12d6a9;
+  color: #00aa82;
 }
 
 .team-col {
@@ -592,7 +652,7 @@ onMounted(() => {
 
 .member-count-btn {
   background: rgba(100, 255, 218, 0.2);
-  color: #12d6a9;
+  color: #00aa82;
   border: 1px solid rgba(100, 255, 218, 0.3);
   border-radius: 50%;
   width: 32px;
@@ -632,7 +692,7 @@ onMounted(() => {
 .expand-btn {
   background: none;
   border: none;
-  color: #64ffda;
+  color: #00aa82;
   cursor: pointer;
   font-size: 0.9rem;
   margin-top: 0.5rem;
@@ -657,7 +717,7 @@ onMounted(() => {
 }
 
 .members-tooltip h4 {
-  color: #64ffda;
+  color: #00aa82;
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
 }
@@ -698,7 +758,7 @@ onMounted(() => {
 }
 
 .leader-badge {
-  background: linear-gradient(135deg, #64ffda, #00bcd4);
+  background: #00aa82;
   color: #ffffff;
   padding: 0.2rem 0.4rem;
   border-radius: 3px;

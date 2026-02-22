@@ -86,8 +86,11 @@ onBeforeRouteUpdate((to, from) => {
   if (to.params.key !== from.params.key || from.params.hunt !== to.params.hunt) {
     unmountVueApp();
 
-    nextTick(() => {
-      loadPuzzleArticle(to.params.key as string, to.params.hunt as string);
+    nextTick(async() => {
+      let hunt = route.params.hunt as string ?? '';
+      let data = await getArticles(hunt)
+      Object.assign(articleKeys, data?.links ?? []);
+      await loadPuzzleArticle(to.params.key as string, to.params.hunt as string);
     });
   }
 });
@@ -102,6 +105,11 @@ function loadPuzzleArticle(key?: string, hunt?: string) {
 
   getArticleByKey(hunt, key).then((res) => {
     console.debug(res);
+    if(!res.data?.title) {
+      puzzleArticle.title = '加载失败';
+      puzzleArticle.html = '<p>可能是网络问题，请尝试<span onclick="window.location.reload()" style="text-decoration:underline;cursor:pointer;color:#00F;">刷新</span></p>';
+      return;
+    }
     puzzleArticle.title = res.data.title;
 
     if (res.data.content.startsWith("<!--use vue-->")) {

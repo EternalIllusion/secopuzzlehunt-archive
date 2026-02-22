@@ -1,6 +1,6 @@
 #/config/*
 #  Cache-Control: public, max-age=86400
-#*.webp
-#  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
 /static/*
   Cache-Control: public, max-age=31536000, immutable

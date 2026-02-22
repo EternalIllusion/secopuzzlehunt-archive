@@ -1,202 +1,87 @@
 {
   "type": "page",
   "title": "剧情",
-  "content": "此处显示的是N2PH的所有剧情。您也可以使用左下导航工具打开剧情目录。",
+  "content": "此处显示的是seco2的所有剧情。您也可以使用左下导航工具打开剧情目录。",
   "links": [
     {
       "title": "序章",
       "type": "page",
-      "path": "/article/n2ph/prologue"
+      "path": "/article/seco2/prologue"
     },
     {
-      "title": "正名之志",
+      "title": "一区 - 庄园",
       "type": "page",
-      "path": "/article/n2ph/end-black"
+      "path": "/article/seco2/1"
     },
     {
-      "title": "印加覆灭",
+      "title": "二区 - 沙海",
       "type": "page",
-      "path": "/article/n2ph/end-white"
+      "path": "/article/seco2/2"
     },
     {
-      "title": "马丘比丘之巅",
+      "title": "三区 - 高塔",
       "type": "page",
-      "path": "/article/n2ph/finalend"
+      "path": "/article/seco2/3"
     },
     {
-      "title": "TFM开启",
+      "title": "四区 - 花原",
       "type": "page",
-      "path": "/article/n2ph/fm-open"
+      "path": "/article/seco2/4"
     },
     {
-      "title": "岁星片影",
+      "title": "五区 - 暗格",
       "type": "page",
-      "path": "/article/n2ph/g1-p"
+      "path": "/article/seco2/5"
     },
     {
-      "title": "繁星碎影",
+      "title": "Meta-Meta - 崩溃",
       "type": "page",
-      "path": "/article/n2ph/g1-e"
+      "path": "/article/seco2/6"
     },
     {
-      "title": "古道密语",
+      "title": "六区 - 中心",
       "type": "page",
-      "path": "/article/n2ph/g2-p"
+      "path": "/article/seco2/6-c"
     },
     {
-      "title": "古老语言",
+      "title": "六区 - 牧渊 (镜像)",
       "type": "page",
-      "path": "/article/n2ph/g2-e"
+      "path": "/article/seco2/6-1"
     },
     {
-      "title": "\t异星菌落",
+      "title": "六区 - 澜夜 (镜像)",
       "type": "page",
-      "path": "/article/n2ph/g3-p"
+      "path": "/article/seco2/6-2"
     },
     {
-      "title": "文明沙盘",
+      "title": "六区 - 景颜 (镜像)",
       "type": "page",
-      "path": "/article/n2ph/g3-e"
+      "path": "/article/seco2/6-3"
     },
     {
-      "title": "瘟疫石板",
+      "title": "六区 - 绛璃 (镜像)",
       "type": "page",
-      "path": "/article/n2ph/g4-p"
+      "path": "/article/seco2/6-4"
     },
     {
-      "title": "疾病刻录",
+      "title": "六区 - 缚雪 (镜像)",
       "type": "page",
-      "path": "/article/n2ph/g4-e"
+      "path": "/article/seco2/6-5"
     },
     {
-      "title": "几何光学",
+      "title": "六区 Meta - 破碎",
       "type": "page",
-      "path": "/article/n2ph/g5-p"
+      "path": "/article/seco2/6-m"
     },
     {
-      "title": "普照八方",
+      "title": "彩蛋 - 异乡人",
       "type": "page",
-      "path": "/article/n2ph/g5-e"
+      "path": "/article/seco2/easteregg"
     },
     {
-      "title": "指向何方",
+      "title": "Final Meta",
       "type": "page",
-      "path": "/article/n2ph/g6-p"
-    },
-    {
-      "title": "将往之向",
-      "type": "page",
-      "path": "/article/n2ph/g6-e"
-    },
-    {
-      "title": "混音留声",
-      "type": "page",
-      "path": "/article/n2ph/g7-p"
-    },
-    {
-      "title": "磁带遗音",
-      "type": "page",
-      "path": "/article/n2ph/g7-e"
-    },
-    {
-      "title": "墙面涂鸦",
-      "type": "page",
-      "path": "/article/n2ph/g8-p"
-    },
-    {
-      "title": "壁上纹样",
-      "type": "page",
-      "path": "/article/n2ph/g8-e"
-    },
-    {
-      "title": "眼中寻珠",
-      "type": "page",
-      "path": "/article/n2ph/g9-p"
-    },
-    {
-      "title": "点睛珍藏",
-      "type": "page",
-      "path": "/article/n2ph/g9-e"
-    },
-    {
-      "title": "迷途未竟",
-      "type": "page",
-      "path": "/article/n2ph/g10-p"
-    },
-    {
-      "title": "长路终焉",
-      "type": "page",
-      "path": "/article/n2ph/g10-e"
-    },
-    {
-      "title": "天窗之下",
-      "type": "page",
-      "path": "/article/n2ph/g11-p"
-    },
-    {
-      "title": "穹顶投光",
-      "type": "page",
-      "path": "/article/n2ph/g11-e"
-    },
-    {
-      "title": "图书馆中",
-      "type": "page",
-      "path": "/article/n2ph/g12-p"
-    },
-    {
-      "title": "秘密书单",
-      "type": "page",
-      "path": "/article/n2ph/g12-e"
-    },
-    {
-      "title": "文字游戏",
-      "type": "page",
-      "path": "/article/n2ph/g13-p"
-    },
-    {
-      "title": "最初时刻",
-      "type": "page",
-      "path": "/article/n2ph/g13-e"
-    },
-    {
-      "title": "盘上黑白",
-      "type": "page",
-      "path": "/article/n2ph/g14-p"
-    },
-    {
-      "title": "天窗之下",
-      "type": "page",
-      "path": "/article/n2ph/g15-p"
-    },
-    {
-      "title": "穹顶投光",
-      "type": "page",
-      "path": "/article/n2ph/g15-e"
-    },
-    {
-      "title": "图书馆中",
-      "type": "page",
-      "path": "/article/n2ph/g16-p"
-    },
-    {
-      "title": "秘密书单",
-      "type": "page",
-      "path": "/article/n2ph/g16-e"
-    },
-    {
-      "title": "文字游戏",
-      "type": "page",
-      "path": "/article/n2ph/g17-p"
-    },
-    {
-      "title": "最终时刻",
-      "type": "page",
-      "path": "/article/n2ph/g17-e"
-    },
-    {
-      "title": "盘上黑白",
-      "type": "page",
-      "path": "/article/n2ph/g18-p"
+      "path": "/article/seco2/fm"
     }
   ]
 }

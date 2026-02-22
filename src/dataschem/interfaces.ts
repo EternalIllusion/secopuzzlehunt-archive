@@ -141,7 +141,7 @@ export interface Announcement {
   aid:number;
   content:string;
   create_time:number;
-  update_time:number;
+  update_time?:number;
 }
 
 export interface Announcements {
@@ -179,4 +179,6 @@ export interface Scoreboard {
   title: string;
   content: string;
   scoreboarddata: ScoreboardData;
+  using_gph: number,
+  using_days: number,
 }

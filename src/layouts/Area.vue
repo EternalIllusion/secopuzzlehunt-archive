@@ -1,12 +1,15 @@
 <template>
     <div class="body">
     </div>
+
+    <div class="area-banner">
+        <img :src="banner" alt="区域立绘"></img>
+    </div>
     <div class="navi-container">
         <div class="row header-line">
             <ul class="col link-button-wrapper">
                 <li class="sp-li">
                     <div class="link sp-title">
-                        <img class="link-logo" :src="logoImg"></img>
                         <div class="link-title">
                             <h2>{{ data.title }}</h2>
                         </div>
@@ -47,24 +50,24 @@ import { Area } from '../dataschem/interfaces';
 const route = useRoute();
 const router = useRouter();
 
-const data = reactive<Area>({ title: '', problems:[] });
+const data = reactive<Area>({ title: '', problems: [] });
 const loading = ref(true);
 
 const theme = useTheme();
 
 const bgImg = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
-const logoImg = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
+const banner = ref('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
 const bgSnap = ref(0);
 
 onBeforeMount(async () => {
     var hunt = route.params.hunt as string;
     var pgid = route.params.pgid as string;
-    if(!hunt||!pgid) return;
+    if (!hunt || !pgid) return;
     await theme.update(hunt)
     let huntTheme = theme.themes[hunt];
     let areaTheme = huntTheme?.areas[pgid];
-    bgImg.value = `url("${areaTheme?.banner ?? huntTheme?.root?.banner ?? bgImg.value}")`;
-    logoImg.value = `url("${huntTheme?.root?.logo ?? logoImg.value}")`;
+    banner.value = areaTheme?.banner ?? huntTheme?.root?.banner ?? bgImg.value;
+    bgImg.value = `url("${banner.value}")`;
     bgSnap.value = areaTheme.snapMargin ?? 40;
 })
 
@@ -93,6 +96,33 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+
+
+.area-banner {
+    display: flex;
+    position: fixed;
+    right: 3rem;
+    max-height: 800px;
+    max-width: 400px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff66;
+    backdrop-filter: blur(10px);
+    box-shadow: #fff 0 0 2rem;
+    border: #fff 2px solid;
+    border-radius: 2rem;
+    overflow: hidden;
+    width: 30vw;
+    height: auto;
+    transition: all ease 0.5s;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
 .page-title {
     position: fixed;
     right: 2rem;
@@ -110,6 +140,7 @@ onMounted(async () => {
     max-height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    filter: blur(15px);
     z-index: -1;
 }
 

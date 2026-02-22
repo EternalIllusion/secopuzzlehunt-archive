@@ -9,7 +9,7 @@
         <div class="annocards">
                 <div class="anno-card" v-for="anno in annoList" :key="anno.aid">
                     <div class="anno-card-time">发布于：{{ formatTimestamp(anno.create_time) }}</div>
-                    <div class="anno-card-time-updated" v-if="anno.update_time!==anno.create_time">最后修改于：{{formatTimestamp(anno.update_time) }}</div>
+                    <div class="anno-card-time-updated" v-if="anno.update_time && anno.update_time!==anno.create_time">最后修改于：{{formatTimestamp(anno.update_time) }}</div>
                     <div v-html="anno.html"></div>
                 </div>
         </div>
@@ -40,7 +40,7 @@
     padding: 1.5rem;
     padding-top: 2rem;
     border-radius: .8rem;
-    min-height: 200px;
+    min-height: 30px;
     background-color: #f0f0f0;
     position: relative;
 }
