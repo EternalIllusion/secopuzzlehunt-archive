@@ -119,7 +119,14 @@ const handleCommand = (command: string | number | { path?: string }) => {
     case "announcement":   
       window.open(`${window.location.origin}/announcements/${props.hunt}`);
       break;
+    case "area":   
+      router.push(props.arealink?.path as string);
+      break;
+    case "main":   
+      router.push(`/main/${props.hunt}`);
+      break;
     default:
+      console.log(command);
       const path = (command as { path: string }).path;
       if (path) {
         if (path[0] == "/") {
@@ -128,12 +135,12 @@ const handleCommand = (command: string | number | { path?: string }) => {
           window.open(path);
         }
       }
-      console.log(command);
   }
 };
 
 const emits = defineEmits(["puzzle-reload"]);
 
+onMounted(()=>{console.debug("nav-prop:",props)})
 </script>
 
 

@@ -214,3 +214,8 @@ body {
     font-weight: 700;
     margin-right: 10px;
 }
+
+#puzzle-content i{
+  display: block;
+  transform: skew(-20deg);
+}

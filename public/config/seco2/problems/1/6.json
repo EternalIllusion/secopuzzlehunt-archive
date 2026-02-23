@@ -1,38 +1,87 @@
 {
   "type": "problem",
-  "title": "指向何方",
+  "title": "？？？？Plus",
   "extendData": "",
-  "contentType": 2,
-  "content": "",
-  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <img class=\"img-main-single\" :src=\"imgSource\" :alt=\"imgAlt\" />\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n    .img-main-single {\r\n        width: auto;\r\n        max-width: 100%;\r\n        max-height: 60vh;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        background-color: #fff;\r\n        border: #bbb 3px solid;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
-  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/n2ph/static/8d8d650f85a9497b8a39e2a27ccb00b3.webp\"),imgAlt:e.ref(\"指向何方\"),ansLength:e.ref(5)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
-  "answer": "HUMID",
-  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n\nThe hands are pointing at …",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/familar_4D8E78091866616B3840E9C45C04370B.png\" weight=600px height=600px/></p>",
+  "answer": "CANNON",
+  "desc": "<i>&emsp;这里似乎举行过什么远古的仪式，但我却完全记不起来了……医生，你实话告诉我，我到底昏迷了多久？</i>",
   "tips": [
     {
-      "title": "我毫无头绪 (300提示点)",
-      "content": "这里的hand是双关，这里指时钟的指针，你可以试试看找出这些文字在指向哪些数字"
+      "title": "我毫无头绪！ (1提示点)",
+      "content": "想想看，这样排列的12个点在哪里也出现过？本题标题和ft提示了需要找的地方。"
     },
     {
-      "title": "该如何提取 (400提示点)",
-      "content": "你需要提取这些单词中对应数字的位置的字母"
+      "title": "可以具体解释一下吗？ (3提示点)",
+      "content": "本题的真实标题是《人为选择Plus》，对应SECO1的《人为选择》。"
+    },
+    {
+      "title": "我得到了中间答案，但是我实在没法进行操作，可以告诉我这一步的结果吗？ (6提示点)",
+      "content": "请将中间答案中每个词的首字母合并提交，里程碑会告诉你结果。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "paint the dot white",
+      "message": "使用填充工具将图中左上角的黑点填白吧！",
+      "extra": ""
+    },
+    {
+      "answer": "ptdw",
+      "message": "这道题的答案是CANNON。",
+      "extra": ""
     }
   ],
   "links": [
     {
       "title": "索引页",
       "type": "index",
-      "path": "n2ph/index"
+      "path": "seco2/index"
     },
     {
-      "title": "N2PH",
-      "path": "/area/n2ph/1",
+      "title": "庄园",
+      "path": "/area/seco2/1",
       "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
     }
   ],
   "arealink": {
-    "title": "N2PH",
-    "path": "/area/n2ph/1",
+    "title": "庄园",
+    "path": "/area/seco2/1",
     "pgid": 1
   }
 }

@@ -1,42 +1,140 @@
 {
   "type": "problem",
-  "title": "混音留声",
+  "title": "认字是门化简为繁的技术",
   "extendData": "",
-  "contentType": 2,
-  "content": "",
-  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <audio :src=\"imgSource\" controls>您的浏览器不支持音频标签，请升级浏览器</audio>\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n    .img-main-single {\r\n        width: 100%;\r\n        max-width: 100%;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        border: #bbb 3px solid;\r\n        background-color: #fff;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
-  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/n2ph/static/4fef5223284041c981e1963fbfe44d6f.mp3\"),imgAlt:e.ref(\"古道密语\"),ansLength:e.ref(8)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
-  "answer": "CASSETTE",
-  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n\n<span style=\"color: #ff0000;\">一</span>台<span style=\"color: #ff0000;\">唱</span>片机中传来了<span style=\"color: #ff0000;\">零</span>星的<span style=\"color: #ff0000;\">音</span>乐声……听，那不断传来的重音…… ",
+  "contentType": 1,
+  "content": "<p>注意看，这个人坐在老式飞机上飞行，而他竟然来到了朝韩两国的共管地带，怕不是落地就要变成某种无机材料了。（十九）</p>\n<p>这座墓穴的上方早已长草，把它挖开之后，其下方竟然没有棺材，只有放着刀的石臼，或许墓主已经经历了某件事？（十六）</p>\n<p>在高大的石墙东侧是一片森林，而即便能绕过石墙，你也会发现森林南侧是一块告示牌，作为景区来说，这怎么能让我露出某种感情呢？（十八）</p>\n<p>一代人垮掉了，他们变成了某种恶心的动物，并且公式一样地躲在保护结构之下，唉，这就是被我们倾注某种东西的下一代啊！（九）</p>\n<p>这只大眼睛在看什么呢？原来在看一个罐头，只不过不知为什么罐头左上角的拉环丢了，让眼睛的主人心急如焚。其实这个拉环就在眼皮子上方，为什么他像某种东西那样呆呆地定在那里，不多看一眼呢？（十一）</p>\n<p>这张毛巾挂在倾斜的十字挂钩上，已经摇摇欲坠。在它的旁边，一只虫子宣告着此处的所有权，更彰显了无人之处，某种东西的影响力。（十一）</p>\n<p>苦命的方形小岛被分割成了叠压的三个部分，但总有人没有忘记叠在上面的使命——回归吧！这种分裂还要持续到什么时候？即便相差九十度，也是可以有共同点的啊！（二十三）</p>\n<p>一只猪的头上竟然长出了两个角，这让它只能孤零零地待在草屋之下。不过富有戏剧性的是，这个草屋也有一对翅膀，和猪的两个角相映成趣——每个人都有不合群的体质，让我们学会接纳对方，就算我们相互平行。（十四）</p>\n<p>这是一艘残破的船，它的读音告诉了我们它原本该有的样子，但船底和船夫都不知所踪，整艘船只剩一个顶和一个空架子，让人感到强烈的反差，就像某种特定的图案一样。（十三）</p>\n<p>草地初生，纤细柔软，一切本来应该是早春的欣欣向荣，直到一个刺眼的钓钩出现在不起眼的角落，就像在游戏厅爽玩之后看到的某个人一样，让人胆战心惊。（十）</p>\n<p><a href=\"https://docs.qq.com/doc/DYkxEbHdRRE9yV2tS\">腾讯文档</a></p>\n<p><a href=\"/config/seco2/static/assets/hanzi_45804A9779A0DC75B5033FD5C234DB70.docx\">点击下载</a></p>",
+  "answer": "CHRYSANTHEMUM",
+  "desc": "<i><p>万国统一的第二平面上飘着好多不认识的字啊，要怎么让他们落到地上呢</p>\n<p>你或许需要：zi.tools（笔画数据请以中国大陆的规范字形为准）<p></i>",
   "tips": [
     {
-      "title": "我毫无头绪 (300提示点)",
-      "content": "将注意力放在加重的音上。"
+      "title": "我读不懂ft，请解释一下！ (2提示点)",
+      "content": "这是一系列字谜，但它们的答案位于Unicode的第二辅助平面（U+20000~U+2FFFF）上。"
     },
     {
-      "title": "该如何提取 (600提示点)",
-      "content": "前半部分是一个重复多遍的01串，0对应低音，1对应高音。后半段有一段音数和前半段01串字符数一样的、被加重的旋律。当前面是0的时候提取那段旋律的音名，前面是1的时候提取唱名（皆提取首字母）。"
+      "title": "这些字太难找了，有什么比较高效的方法吗？ (3提示点)",
+      "content": "你可以先找比较容易看出来的部件，如第一段“朝鲜和韩国的共管地带”提示二者共有的部件（𠦝），再把找到的部件放进字统网里面搜索。"
     },
     {
-      "title": "我难以提取音频中的内容，我需要一些辅助。 (1000提示点)",
-      "content": "以下是音乐对应的MIDI瀑布流，你无需提取瀑布流note颜色，音乐BPM等内容，这不是Puzzle的一部分。\n[点击打开](/config/n2ph/static/21e4222f18244056b2b0196891c65bd0.html)\n\n如果您的设备无法打开这个网页，您可以下载midi文件：[T7.mid](/config/n2ph/static/91a8ff23d54f4b02a642dad77ca4c73c.mid)"
+      "title": "我找到了一些字，但是不知道下一步该如何进行？ (4提示点)",
+      "content": "每段话最后一句是对最终提取出的汉字的描述，想想ft后半段是在说什么。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "将这些汉字的Unicode编码最高位去掉，再依次读出得到的汉字。"
+    },
+    {
+      "title": "可以直接告诉我一些小题的答案吗？ (4提示点)",
+      "content": "请在站内信回复【查询字典】并给出目前的答案，我们会尽快反馈。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "𩙶",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𦽜",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𥖜",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𧈱",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𦤍",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𧉩",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𥍁",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𤸉",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𥭗",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "𦯍",
+      "message": "这是本题的小题答案之一。",
+      "extra": ""
+    },
+    {
+      "answer": "陶潜喜爱植物十三字母",
+      "message": "这是本题的中间答案！",
+      "extra": ""
     }
   ],
   "links": [
     {
       "title": "索引页",
       "type": "index",
-      "path": "n2ph/index"
+      "path": "seco2/index"
     },
     {
-      "title": "N2PH",
-      "path": "/area/n2ph/1",
+      "title": "庄园",
+      "path": "/area/seco2/1",
       "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
     }
   ],
   "arealink": {
-    "title": "N2PH",
-    "path": "/area/n2ph/1",
+    "title": "庄园",
+    "path": "/area/seco2/1",
     "pgid": 1
   }
 }

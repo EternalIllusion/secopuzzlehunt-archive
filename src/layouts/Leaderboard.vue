@@ -149,7 +149,8 @@
                   </button>
                 </div>
               </div>
-              <div class="problems-col">{{ team.finishedGroupCount }} - {{ team.finishedPuzzleCount }}</div>
+              <div class="problems-col" v-if="usingGPH">{{ team.finishedPuzzleCount }}</div>
+              <div class="problems-col" v-else>{{ team.finishedGroupCount }} - {{ team.finishedPuzzleCount }}</div>
             </div>
           </div>
         </div>

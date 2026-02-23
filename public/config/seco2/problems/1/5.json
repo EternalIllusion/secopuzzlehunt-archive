@@ -1,42 +1,73 @@
 {
   "type": "problem",
-  "title": "几何光学",
+  "title": "童话故事",
   "extendData": "",
-  "contentType": 2,
-  "content": "",
-  "vueTemplate": "\r\n<!-- n2ph-1 Puzzle -->\r\n<template>\r\n\r\n    <div class=\"vue-pz-content\">\r\n        <img class=\"img-main-single\" :src=\"imgSource\" :alt=\"imgAlt\" />\r\n        <p>Ans:{{' _'.repeat(ansLength)}}</p>\r\n    </div>\r\n    \r\n\r\n</template>\r\n\r\n<style>\r\n\r\n    .img-main-single {\r\n        width: auto;\r\n        max-width: 100%;\r\n        max-height: 60vh;\r\n        height: auto;\r\n        border: #fff 3px solid;\r\n        border-radius: .5rem;\r\n    }\r\n\r\n    .vue-pz-content {\r\n        border: #bbb 3px solid;\r\n        background-color: #fff;\r\n        border-radius: 1rem;\r\n        margin: 1rem;\r\n        padding: 1.2rem;\r\n    }\r\n\r\n</style>",
-  "vueScript": "var __vue_puzzle_component__=function(e){\"use strict\";return{setup:()=>({imgSource:e.ref(\"/config/n2ph/static/c656295ac10b4c719e7538ff4eab675c.webp\"),imgAlt:e.ref(\"古道密语\"),ansLength:e.ref(3)})}}(Vue);\r\n\r\n\r\n// 确保导出名称正确\r\nexport default __vue_puzzle_component__;",
-  "answer": "ION",
-  "desc": "<div class=\"tip-block custom-block\">\n  <span class=\"custom-block-title\">💡</span>\n  <span>本题不参与比赛计分</span>\n</div>\n\n我是<span style=\"color: #ff0000;\">谁</span>，从<span style=\"color: #ffc000;\">哪里</span>来，到<span style=\"color: #e193d9;\">哪里</span>去……",
+  "contentType": 1,
+  "content": "<p>小语和小英是森林里的小英雄，一个擅长语文，一个擅长英语。这天他们看到王子的求救信，立刻赶去黑松林。</p>\n<p>树洞监狱门锁着，还堆了荆棘，更棘手的是，铁锁旁刻着密密麻麻的文字 —— 原来歹徒设了关卡，要解开谜题才能打开。两人默契配合，不一会就将这有关字部件数量的谜题解开了。铁锁打开后，<u><strong>他们</strong>破开门</u>解救了王子，王子抱着王冠连声道谢。</p>\n<p>消息传开，傍晚到家时，他们的<u><strong>粉丝</strong>为表对他们行动的感谢，赠送给他们米吃</u>，粉丝们放下米袋就离开了。</p>\n<p>人群走后，他们检查了自己的伤势，发现只有<u>手有些<strong>磨损</strong></u>，小英用草药汁涂了涂，两人都觉得不算什么。</p>\n<p>“得找歹徒线索！” 小语说。他们再次返回现场，发现<u>一张<strong>列表</strong>，上面是歹徒盗窃衣服</u>的计划表，写着 “黑色斗篷、牛皮靴、蒙面布，乌鸦裁缝店偷”。</p>\n<p>第二天，他们通过记录找到了歹徒并将他们变成了<u>不能见到月亮的<strong>青蛙</strong></u>，这样他们就不能在晚上实施行动了。</p>\n<p>王子送了宝石感谢他们，小语和小英的故事也从此成了森林传说。</p>\n<p><a href=\"https://docs.qq.com/doc/DYmtmT3RCZWZ5Ykh2\">腾讯文档</a></p>\n<p><a href=\"/config/seco2/static/assets/童话故事_D7660EC56514844F6AFD043B820B4C12.docx\">点击下载</a></p>",
+  "answer": "FOG",
+  "desc": "<i>夜深了，让我来给你讲个童话故事吧</i>",
   "tips": [
     {
-      "title": "我毫无头绪 (300提示点)",
-      "content": "FT中的颜色暗示你需要找到太阳到月亮的通路，具体规则如下：\n1.太阳发射光线，月亮吸收光线\n2.镜子会反射射向镜面的光线，透过其他方向的光线\n3.乌云会遮挡光线\n4.星星棱镜会向尖端四个方向折射光线"
+      "title": "我毫无头绪！ (2提示点)",
+      "content": "试着将加粗的词翻译成英文吧。"
     },
     {
-      "title": "我不知道我做的是否正确 (600提示点)",
-      "content": "你可以发送开头为【假如给我三天光明】的站内信并附带外交表链接，让我们来为你确认。请您建立一张外交用的腾讯文档/表格并附带本提示的解锁截图、以及你们做这一题的进度，然后把带具有查看权限的链接粘贴到站内信。"
-    },
-    {
-      "title": "该如何提取 (400提示点)",
-      "content": "你需要象形提取出三个字母，按照题号顺序拼接在一起"
+      "title": "该如何提取？ (5提示点)",
+      "content": "下划线部分都有“删除部件”的意思，对你在上一步得到的东西也进行这样的操作。字母和汉字部件是对应的。"
     }
+  ],
+  "additionalAnswers": [
   ],
   "links": [
     {
       "title": "索引页",
       "type": "index",
-      "path": "n2ph/index"
+      "path": "seco2/index"
     },
     {
-      "title": "N2PH",
-      "path": "/area/n2ph/1",
+      "title": "庄园",
+      "path": "/area/seco2/1",
       "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
     }
   ],
   "arealink": {
-    "title": "N2PH",
-    "path": "/area/n2ph/1",
+    "title": "庄园",
+    "path": "/area/seco2/1",
     "pgid": 1
   }
 }

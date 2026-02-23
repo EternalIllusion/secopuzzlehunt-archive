@@ -7,12 +7,14 @@
             <div v-html="desc" id="contentHtml"></div>
         </div>
         <div class="annocards">
-                <div class="anno-card" v-for="anno in annoList" :key="anno.aid">
-                    <div class="anno-card-time">发布于：{{ formatTimestamp(anno.create_time) }}</div>
-                    <div class="anno-card-time-updated" v-if="anno.update_time && anno.update_time!==anno.create_time">最后修改于：{{formatTimestamp(anno.update_time) }}</div>
-                    <div v-html="anno.html"></div>
-                </div>
+            <div class="anno-card" v-for="anno in annoList" :key="anno.aid">
+                <div class="anno-card-time">发布于：{{ formatTimestamp(anno.create_time) }}</div>
+                <div class="anno-card-time-updated" v-if="anno.update_time && anno.update_time !== anno.create_time">
+                    最后修改于：{{ formatTimestamp(anno.update_time) }}</div>
+                <div v-html="anno.html"></div>
+            </div>
         </div>
+        <div class="placeholder"></div>
     </div>
     <Nav />
 </template>
@@ -44,19 +46,26 @@
     background-color: #f0f0f0;
     position: relative;
 }
+
 .anno-card-time {
     color: #8a8a8a;
     position: absolute;
-    top:.5rem;
+    top: .5rem;
     right: .5rem;
     font-size: .8rem;
 }
+
 .anno-card-time-updated {
     color: #8a8a8a;
     position: absolute;
-    top:1.5rem;
+    top: 1.5rem;
     right: .5rem;
     font-size: .8rem;
+}
+
+.placeholder{
+    width: 100%;
+    height: 6rem;
 }
 </style>
 
@@ -74,17 +83,17 @@ import Nav from '../components/Nav.vue';
 const route = useRoute();
 
 const desc: Ref<string> = ref("");
-const data = reactive<Announcements>({type:"",title:"",content:"",announcements:[]});
+const data = reactive<Announcements>({ type: "", title: "", content: "", announcements: [] });
 
 const annoList: Ref<AnnoInfo[]> = ref([]);
 
 interface AnnoInfo extends Announcement {
-    html:string;
+    html: string;
 }
 
 onMounted(async () => {
     const conf = await getAnno(route.params.hunt as string);
-    Object.assign(data,conf);
+    Object.assign(data, conf);
 
     desc.value = markdownToHtml(data.content);
     annoList.value = data.announcements.map(anno => {

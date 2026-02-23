@@ -15,11 +15,8 @@
       <div class="pz-content">
         <div v-html="renderedHtml"></div>
       </div>
-      <el-collapse
-        v-if="isFinish && puzzle.extendContent && puzzle.extendContent != ''"
-        v-model="activeNames"
-        class="hidden-info"
-      >
+      <el-collapse v-if="isFinish && puzzle.extendContent && puzzle.extendContent != ''" v-model="activeNames"
+        class="hidden-info">
         <el-collapse-item name="1">
           <template #title>
             <h2 style="padding-left: 14px">隐藏的内容</h2>
@@ -28,25 +25,14 @@
         </el-collapse-item>
       </el-collapse>
       <div>
-        <div
-          v-if="puzzle.contentType == 0 && puzzle.problemImage"
-          class="puzzle-image-content"
-        >
-          <el-image
-            :src="puzzle.problemImage"
-            fit="contain"
-            loading="lazy"
-            :alt="`${puzzle.title}`"
-            :preview-src-list="[puzzle.problemImage]"
-          >
+        <div v-if="puzzle.contentType == 0 && puzzle.problemImage" class="puzzle-image-content">
+          <el-image :src="puzzle.problemImage" fit="contain" loading="lazy" :alt="`${puzzle.title}`"
+            :preview-src-list="[puzzle.problemImage]">
             <template #placeholder>
               <div>
                 <el-skeleton :loading="true" animated>
                   <template #template>
-                    <el-skeleton-item
-                      variant="image"
-                      style="width: 240px; height: 240px"
-                    />
+                    <el-skeleton-item variant="image" style="width: 240px; height: 240px" />
                   </template>
                 </el-skeleton>
               </div>
@@ -60,11 +46,9 @@
       </div>
     </div>
   </div>
-  <puzzle-nav :answer="puzzle.answer" :analysis="puzzle?.answerAnalysis??''" :milestone="puzzle?.additionalAnswers??[]"
-    :hunt="route.params.hunt as string" :pgid="route.params.pgid as string" :pid="route.params.pid as string"
-    :hints="puzzle.tips??[]"
-    :arealink="puzzle?.arealink??null"
-    />
+  <puzzle-nav :answer="puzzle.answer" :analysis="puzzle?.answerAnalysis ?? ''"
+    :milestone="puzzle?.additionalAnswers ?? []" :hunt="route.params.hunt as string" :pgid="route.params.pgid as string"
+    :pid="route.params.pid as string" :hints="puzzle.tips ?? []" :arealink="puzzle?.arealink ?? null" />
 
 </template>
 
@@ -201,7 +185,7 @@ async function loadPuzzleDetail(hunt?: string, pgid?: string, pid?: string) {
   if (!pgid) pgid = route.params.pgid as string;
   if (!pid) pid = route.params.pid as string;
 
-  const data = await getPuzzleInfoById<PuzzleResponse>(hunt,pgid,pid);
+  const data = await getPuzzleInfoById<PuzzleResponse>(hunt, pgid, pid);
 
   console.debug(data);
 
@@ -240,11 +224,11 @@ async function loadPuzzleDetail(hunt?: string, pgid?: string, pid?: string) {
     else if (puzzle.contentType == 2 || puzzle.contentType == 3) {
       // type == 2 时， 将 script 中内容视为 vue 组件，而 html 中 内容为 template 和 style。
       // type == 3 时， 将 script 中内容视为一个 vue 组件的地址，先加载 script 中的内容，然后使用 vueSfcParser 解析，提取 template, style 和 script。
-      let script = puzzle.vueScript??"";
+      let script = puzzle.vueScript ?? "";
       let template = "";
       let style = "";
       if (puzzle.contentType == 2) {
-        let html = puzzle.vueTemplate??"";
+        let html = puzzle.vueTemplate ?? "";
         let { descriptor } = vueSfcParser(html);
         template = descriptor.template?.content ?? "";
         style = descriptor.styles[0]?.content ?? "";
@@ -316,18 +300,18 @@ async function loadPuzzleDetail(hunt?: string, pgid?: string, pid?: string) {
 
 .puzzle-detail-container {
   // background-color: var(--pz-bg-color-1);
-  position: relative; /* 确保伪元素能相对于它定位 */
+  position: relative;
+  /* 确保伪元素能相对于它定位 */
   z-index: 0;
-  background: linear-gradient(
-    0deg,
-    var(--pz-bg-color-1) 0%,
-    var(--pz-bg-color-2) 100%
-  );
+  background: linear-gradient(0deg,
+      var(--pz-bg-color-1) 0%,
+      var(--pz-bg-color-2) 100%);
   color: var(--pz-text-color);
   padding: 0 6vw;
   box-sizing: border-box;
   height: calc(100vh - 80px);
   overflow: auto;
+
   #puzzle-content {
     position: relative;
     z-index: 2;
@@ -358,7 +342,9 @@ async function loadPuzzleDetail(hunt?: string, pgid?: string, pid?: string) {
 
 .pz-content {
   margin-bottom: 32px;
+  font-family: "Roboto", arial, sans-serif;
 }
+
 
 .pz-content p {
   margin-top: 0;
