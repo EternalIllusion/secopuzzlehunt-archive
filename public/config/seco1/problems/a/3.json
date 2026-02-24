@@ -1,0 +1,43 @@
+{
+  "answer": "ANEWREADER",
+  "answerAnalysis": "每一行都是一个序列，利用谜面中的已知元素作为index提取这个序列的英文。得到答案【anewreader】",
+  "content": 
+    "宙斯，德墨忒尔，阿芙洛狄忒······没有人给他们排个序吗？！\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/date.png\" weight=\"400px\" height=\"200px\">\n\n<a href=\"https://docs.qq.com/sheet/DV3ZhYk5QY01kRVpQ?tab=000001\">点击查看</a>"
+  ,
+  "content-type": 0,
+  "desc": "A3",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/a",
+      "title": "无垠乡野",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "每一行都对应一类具有一定序列特征的事物。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "第三行为子、丑、寅、卯等地支，故右侧为earthly branch。",
+      "title": "请给出第三行的答案"
+    },
+    {
+      "content": "用每一行已给出条件格子的数目，提取最后英文单词或词组。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "A3-解谜星球不可能有奥林匹斯山",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/a",
+    "pgid": "a"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "title": "B - 盒中城市",
+  "problems": [
+    {
+      "title": "B1-差序格局",
+      "type": "problem",
+      "path": "/problems/seco1/b/11"
+    },
+    {
+      "title": "B2-民以食为天",
+      "type": "problem",
+      "path": "/problems/seco1/b/12"
+    },
+    {
+      "title": "B3-课程表",
+      "type": "problem",
+      "path": "/problems/seco1/b/13"
+    },
+    {
+      "title": "B4-中英互译",
+      "type": "problem",
+      "path": "/problems/seco1/b/14"
+    },
+    {
+      "title": "B5-黑与白之舞",
+      "type": "problem",
+      "path": "/problems/seco1/b/15"
+    },
+    {
+      "title": "B6-Puzzle Hunts",
+      "type": "problem",
+      "path": "/problems/seco1/b/16"
+    },
+    {
+      "title": "B7-匿于棋盘之中",
+      "type": "problem",
+      "path": "/problems/seco1/b/17"
+    },
+    {
+      "title": "META 隐藏房间LVIII",
+      "type": "problem",
+      "path": "/problems/seco1/b/20"
+    }
+  ]
+}

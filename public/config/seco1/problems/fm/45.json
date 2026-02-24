@@ -1,0 +1,38 @@
+{
+  "answer": "ITSYOURDREAM",
+  "answerAnalysis": "根据题面提示，联想到猴子打出莎士比亚全集的故事，猜想要对两道元谜题答案使用anagram，在多次尝试后得到答案【itsyourdream】",
+  "content": 
+    "SECO原住民试图征服所有这个星球天然不宜居的区域，而他们在没有弄清楚“谜土”的规律之前，成功的概率堪比猴子打出莎士比亚全集，所幸一支来自地球的解谜小队给他们带来了曙光......\n\n（本题无提交次数限制，交互题，功能暂未实现）\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/secofm.png\" weight=\"400px\" height=\"400px\">"
+  ,
+  "content-type": 0,
+  "desc": "Final Meta",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    }
+  ],
+  "tips": [
+    {
+      "content": "对两道元谜题答案使用anagram",
+      "title": "如何解答"
+    },
+    {
+      "content": "Nutrimatic",
+      "title": "有什么网站推荐？"
+    },
+    {
+      "content": "请使用<readytourism>（英文状态下的尖括号）",
+      "title": "网站的语法是什么？"
+    }
+  ],
+  "title": "Timeless",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/1",
+    "pgid": 1
+  }
+}

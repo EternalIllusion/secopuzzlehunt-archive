@@ -1,0 +1,39 @@
+{
+  "answer": "MINCERAFT",
+  "answerAnalysis": "先按照时间顺序再按照排名将图中这些参与minecraft生物投票的生物依次连接，读取穿过的字母，得到答案【minceraft】",
+  "content": 
+    "只有第一名才能被第一个选中，其次是第二，最后是第三......\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/mob.png\" weight=\"800px\" height=\"600px\">"
+  ,
+  "content-type": 0,
+  "desc": "A5",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/a",
+      "title": "无垠乡野",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "尝试搜索“我的世界 生物投票”。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "将每年的生物投票按照每年的名次进行连线，提取被连到的字母。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "A5-人为选择",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/a",
+    "pgid": "a"
+  }
+}

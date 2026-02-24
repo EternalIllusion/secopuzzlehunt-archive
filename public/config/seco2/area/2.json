@@ -2,106 +2,89 @@
   "title": "沙海(2°32′S，43°7′W)",
   "problems": [
     {
-      "pid": 9,
       "title": "3 small mazes",
+      "type": 0,
+      "path": "/problems/seco2/2/1"
+    },
+    {
+      "title": "解绳子",
+      "type": 0,
+      "path": "/problems/seco2/2/2"
+    },
+    {
+      "title": "调色盘",
+      "type": 0,
+      "path": "/problems/seco2/2/3"
+    },
+    {
+      "title": "差序格局Plus",
+      "type": 0,
+      "path": "/problems/seco2/2/4"
+    },
+    {
+      "title": "长河漫漫，当文物醒来…",
+      "type": 0,
+      "path": "/problems/seco2/2/5"
+    },
+    {
+      "title": "对对碰",
+      "type": 0,
+      "path": "/problems/seco2/2/6"
+    },
+    {
+      "title": "程式之衡鉴",
+      "type": 0,
+      "path": "/problems/seco2/2/7"
+    },
+    {
+      "title": "疯狂星期四",
+      "type": 0,
+      "path": "/problems/seco2/2/8"
+    },
+    {
+      "title": "见微知微",
       "type": 0,
       "path": "/problems/seco2/2/9"
     },
     {
-      "pid": 10,
-      "title": "解绳子",
+      "title": "中国话",
       "type": 0,
       "path": "/problems/seco2/2/10"
     },
     {
-      "pid": 11,
-      "title": "调色盘",
+      "title": "数字狂想曲",
       "type": 0,
       "path": "/problems/seco2/2/11"
     },
     {
-      "pid": 12,
-      "title": "差序格局Plus",
+      "title": "六八一十二",
       "type": 0,
       "path": "/problems/seco2/2/12"
     },
     {
-      "pid": 13,
-      "title": "长河漫漫，当文物醒来…",
+      "title": "道是无情却有晴",
       "type": 0,
       "path": "/problems/seco2/2/13"
     },
     {
-      "pid": 14,
-      "title": "对对碰",
+      "title": "四线格",
       "type": 0,
       "path": "/problems/seco2/2/14"
     },
     {
-      "pid": 15,
-      "title": "程式之衡鉴",
-      "type": 4,
+      "title": "移言为定",
+      "type": 0,
       "path": "/problems/seco2/2/15"
     },
     {
-      "pid": 16,
-      "title": "疯狂星期四",
+      "title": "先天与后天",
       "type": 0,
       "path": "/problems/seco2/2/16"
     },
     {
-      "pid": 17,
-      "title": "见微知微",
-      "type": 0,
-      "path": "/problems/seco2/2/17"
-    },
-    {
-      "pid": 18,
-      "title": "中国话",
-      "type": 0,
-      "path": "/problems/seco2/2/18"
-    },
-    {
-      "pid": 19,
-      "title": "数字狂想曲",
-      "type": 4,
-      "path": "/problems/seco2/2/19"
-    },
-    {
-      "pid": 20,
-      "title": "六八一十二",
-      "type": 0,
-      "path": "/problems/seco2/2/20"
-    },
-    {
-      "pid": 21,
-      "title": "道是无情却有晴",
-      "type": 0,
-      "path": "/problems/seco2/2/21"
-    },
-    {
-      "pid": 22,
-      "title": "四线格",
-      "type": 0,
-      "path": "/problems/seco2/2/22"
-    },
-    {
-      "pid": 23,
-      "title": "移言为定",
-      "type": 4,
-      "path": "/problems/seco2/2/23"
-    },
-    {
-      "pid": 24,
-      "title": "先天与后天",
-      "type": 0,
-      "path": "/problems/seco2/2/24"
-    },
-    {
-      "pid": 25,
-      "title": "Wordles",
+      "title": "META Wordles",
       "type": 1,
-      "path": "/problems/seco2/2/25"
+      "path": "/problems/seco2/2/17"
     }
   ]
 }

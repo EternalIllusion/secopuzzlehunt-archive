@@ -1,0 +1,88 @@
+{
+  "type": "problem",
+  "title": "新手教程",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><a href=\"/config/seco2/static/assets/新手教程_33DED75B2F30723C5BE5330D792D92FA.pptx\">点击下载</a></p>",
+  "answer": "CEMETERY",
+  "desc": "连接终端中......请确认你已阅读相关教程。",
+  "tips": [
+    {
+      "title": "我毫无头绪 (2提示点)",
+      "content": "请看PPT中的月亮。"
+    },
+    {
+      "title": "该如何提取 (4提示点)",
+      "content": "注意到PPT中的月亮有暗有亮，把暗作为0，亮作为1，读取五位二进制，转换为数字后a1z26提取。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "琵琶拨尽四弦悲",
+      "message": "多年以后，面对通灵者，《写真一言》将会回想起 Winfrid 把它编写出来的那个遥远的下午……不管怎么样，我看是琵琶拨尽四弦悲？",
+      "extra": ""
+    },
+    {
+      "answer": "MYGO",
+      "message": "MyGO!!!!!",
+      "extra": ""
+    },
+    {
+      "answer": "ENDOFTIME",
+      "message": "时间的尽头，不是现在。",
+      "extra": ""
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

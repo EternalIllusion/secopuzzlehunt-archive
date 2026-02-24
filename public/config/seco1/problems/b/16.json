@@ -1,0 +1,43 @@
+{
+  "answer": "RECURRENCE",
+  "answerAnalysis": "找到所有puzzle.txt，解出所有密文，使用每个文件对应的加密方式提取该文件的路径，顺序包含在了文件解密出的文本里，解出答案RECURRENCE\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/67b83a067eb80.png\" alt=\"ph.png\" title=\"ph.png\">",
+  "content": 
+    "眼前的屏幕上赫浮现这一个Puzzle Hunt的压缩包，你迫不及待打开了它\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/puzzle.png\" weight=\"800px\" height=\"600px/\">\n\n<a href=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/Puzzle%20Hunt.zip\">点击下载</a>"
+  ,
+  "content-type": 0,
+  "desc": "B6",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "不妨先在文件夹里找到所有包含密码的文件。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "摩斯电码，五位二进制和培根密码。",
+      "title": "这道题用到了什么密码"
+    },
+    {
+      "content": "使用每个文件对应的加密方式提取该文件的路径，顺序包含在了文件解密出的文本里。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "B6-Puzzle Hunts",
+  "contentType": 4,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

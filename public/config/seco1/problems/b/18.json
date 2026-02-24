@@ -1,0 +1,36 @@
+{
+  "answer": "NEOCORTEX",
+  "answerAnalysis": "横向依次读取象形字母，答案：NEOCORTEX。",
+  "content": 
+    "在美术馆的一个角落，你发现了一幅由像素块组成的艺术作品。抽象的色块蕴含了极简的美感。"
+  ,
+  "content-type": 0,
+  "desc": "B8",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "美术馆",
+      "type": "page"
+    }
+  ],
+  "problemImage": "/seco1/images/B/a3fd0be2c0be40fe9465eca92157cffc.webp",
+  "tips": [
+    {
+      "content": "大九宫格内的每一小块，都是一个胖胖的象形字母",
+      "title": "我毫无头绪"
+    }
+  ],
+  "title": "B8-像素画作",
+  "contentType": 0,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

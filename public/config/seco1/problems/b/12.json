@@ -1,0 +1,47 @@
+{
+  "answer": "COMPOSITION",
+  "answerAnalysis": "根据FT中的“它们因何而成”不难发现需要找到这些食材对应的原材料。最后利用FT中的enumeration进行排序即可得到答案【compesition】",
+  "content": 
+    "看到解谜星球这么多美食，你不禁流下了口水......\n\n(3/13 10) (5 14/14 5) (1 13/11 10) (2 7/11 5) (10 22/15 10) (8 15/8 9)\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/cuisine.jpg\" weight=\"800px\" height=\"600px\">"
+  ,
+  "content-type": 0,
+  "desc": "B2",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "图片中的食物都有一种共性，请结合“它们因何而成”仔细想一想。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "柠檬，对应的“食物”并非其本身，而是柠檬酸。",
+      "title": "图片中好像有一种食物比较特殊，它是什么"
+    },
+    {
+      "content": "从最上方的图片开始，按顺时针顺序，分别对应第4、5、6、2、1、3个括号。",
+      "title": "请将上方的括号与下图一一对应"
+    },
+    {
+      "content": "每一种食物对应其在工业生产上使用的，最主要或最具代表性的一种微生物，请注意它们学名的字母数量。",
+      "title": "这道题的关键到底是什么"
+    }
+  ],
+  "title": "B2-民以食为天",
+  "contentType": 1,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

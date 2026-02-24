@@ -1,0 +1,86 @@
+{
+  "type": "problem",
+  "title": "我的世界",
+  "extendData": "",
+  "contentType": 3,
+  "vueScript": "/config/seco2/static/assets/meta5_0A9C488D1F79224D061481202F80EF87.vue",
+  "answer": "PLANTING",
+  "desc": "<p><i>欢迎参加 Minecraft Puzzle Hunt 比赛！本教程将帮助你快速了解游戏规则和操作方法。</i></p>",
+  "tips": [
+    {
+      "title": "我没有电脑怎么办？ (0提示点)",
+      "content": "很抱歉，本题暂无手机端兼容，你可以通过购买下面的提示通过本题。"
+    },
+    {
+      "title": "可以给我一个不需要进入游戏的纯题目版本吗？ (15提示点)",
+      "content": "<h3>移动迷宫</h3>\n<p>象形√81</p>\n\n<h3>简单跑酷</h3>\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/paoku.png\" width=\"300\">\n\n<h3>破损数码管</h3>\n<a href=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/%E7%A0%B4%E6%8D%9F%E6%95%B0%E7%A0%81%E7%AE%A1.xlsx\">下载破损数码管.xlsx</a>\n\n<h3>奇怪音频</h3>\n<audio src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/block.mp3\" controls></audio>\n\n<h3>树林秘密</h3>\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/flower.png\" width=\"300\">\n\n<h3>见证者洞穴</h3>\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.1.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.2.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.3.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.4.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.5.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.6.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.7.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/6.8.png\" width=\"150\">\n\n<h3>黑白视错觉</h3>\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/eye.png\" width=\"300\">\n\n<h3>立体峡谷</h3>\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.1.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.2.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.3.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.4.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.5.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.6.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.7.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.8.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.9.png\" width=\"150\">\n<img src=\"https://image.secopuzzle.com/SECO2/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/withoutmc/8.10.png\" width=\"150\">\n\n"
+    },
+    {
+      "title": "本题的答案是什么？ (80提示点)",
+      "content": "PLANTING。"
+    },
+    {
+      "title": "为什么我按题目顺序提取不出来？ (0提示点)",
+      "content": "因为防爆破，所以是乱序的。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "hpms",
+      "message": "【来自EterIll的私货】欢迎加入HPMS玩家社群https://qm.qq.com/q/1QA7vI3FI8 谢谢喵",
+      "extra": ""
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "暗格",
+    "path": "/area/seco2/5",
+    "pgid": 5
+  }
+}

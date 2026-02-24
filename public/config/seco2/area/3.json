@@ -1,53 +1,65 @@
 {
-  "title": "庄园(42°38′N，89°14′E)",
+  "title": "高塔(3°45′S，73°15′W)",
   "problems": [
     {
-      "pid": 1,
-      "title": "新手教程",
+      "title": "未知图腾？",
       "type": 0,
-      "path": "/problems/seco2/1/1"
+      "path": "/problems/seco2/3/1"
     },
     {
-      "pid": 2,
-      "title": "数码方阵",
+      "title": "知识速记",
       "type": 0,
-      "path": "/problems/seco2/1/2"
+      "path": "/problems/seco2/3/2"
     },
     {
-      "pid": 3,
-      "title": "坏苹果！！",
+      "title": "本题使用人工智能合成技术，请仔细甄别",
       "type": 0,
-      "path": "/problems/seco2/1/3"
+      "path": "/problems/seco2/3/3"
     },
     {
-      "pid": 4,
-      "title": "中英互译Plus",
+      "title": "多重数独",
       "type": 0,
-      "path": "/problems/seco2/1/4"
+      "path": "/problems/seco2/3/4"
     },
     {
-      "pid": 5,
-      "title": "童话故事",
+      "title": "到底是谁炸的群！",
       "type": 0,
-      "path": "/problems/seco2/1/5"
+      "path": "/problems/seco2/3/5"
     },
     {
-      "pid": 6,
-      "title": "？？？？Plus",
+      "title": "还在go",
       "type": 0,
-      "path": "/problems/seco2/1/6"
+      "path": "/problems/seco2/3/6"
     },
     {
-      "pid": 7,
-      "title": "认字是门化简为繁的技术",
-      "type": 4,
-      "path": "/problems/seco2/1/7"
+      "title": "游戏误学习",
+      "type": 0,
+      "path": "/problems/seco2/3/7"
     },
     {
-      "pid": 8,
-      "title": "拼图",
+      "title": "十诀",
+      "type": 0,
+      "path": "/problems/seco2/3/8"
+    },
+    {
+      "title": "看！听！提！",
+      "type": 0,
+      "path": "/problems/seco2/3/9"
+    },
+    {
+      "title": "宝可梦家族",
+      "type": 0,
+      "path": "/problems/seco2/3/10"
+    },
+    {
+      "title": "烂柯人观棋记",
+      "type": 0,
+      "path": "/problems/seco2/3/11"
+    },
+    {
+      "title": "META一一对应",
       "type": 1,
-      "path": "/problems/seco2/1/8"
+      "path": "/problems/seco2/3/12"
     }
   ]
 }

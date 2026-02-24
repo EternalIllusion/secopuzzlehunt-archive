@@ -1,0 +1,111 @@
+{
+  "answer": "SKINFLINT",
+  "answerAnalysis": "解析如下图：\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/translateans.png\" weight=200px>",
+  "content": 
+    "这是一个简单的cw，真的吗？\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/cw1.png\" weight=600px height=400px>\n\n- 3E向下：你的朋友斯特尔虽然个子小小，但权利大大，因为他是（8）\n\n- 3L向下：一把给（6）用的钥匙，上面刻着M\n\n- 4E向右：你知道哪个国家并不存在吗？我知道，是（11），因为它是你的（11）\n\n- 4G向上：世界上最大的蚂蚁被称为（5）\n\n- 5I向下：你知道吗？ft其实不是flavor text的意思，而是一个单位（4）\n\n- 6B向下：在美国，我想买下这个场地作为棒球运动员的训练场地，因为它（8）的价格在我的预算内\n\n- 6G向右：为什么吸血鬼不喜欢吃辣的东西？因为他们喜欢（5）\n\n- 7E向右：境内上市公司连续两年间亏损一棵树（6）\n\n- 8B向右：谁在过去吃掉了R？而（5），它仍会吃掉R\n\n- 10A右下：已知一个常规的靶子上被射了n支箭（n>100），那么这个靶子剩余空间十分（6）\n\n- 10G向右：这道几何题我不会啊？这个（5）怎么求？试试换一个（5）\n\n- 11A向右：请在做任何事前确保C被填满，可是（7）本身并没有做到（7），它少了一个字母\n\n- 11A向下：请为我们写一个双关语。抱歉可能不行，因为我是（7）\n\n- 13G向右：当你伤心时，出门走8.0467公里或许会让你（5）\n\n- 13H向下：我想自己一个人呆着整理一下（4），你（4）吗？\n\n- 13J左上：你肯定不想（8）公司的未来吧？那么请你（8），冷静一下\n\n- 16E向左：为什么字母B导致了世界上所有问题的出现？（7），它是（7）的\n\n- 16E向右：（4），一个字母表中的字母？它什么时候学会开坦克的？\n\n<a href=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/translate1.xlsx\">点击下载</a>"
+  ,
+  "content-type": 0,
+  "desc": "B4",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "方格里要填的是右边语句答案的英文单词，注意有的格子里要填2个字母。",
+      "title": "方格里要填的是什么"
+    },
+    {
+      "content": "minister",
+      "title": "请告诉我第1小题的答案"
+    },
+    {
+      "content": "monkey",
+      "title": "请告诉我第2小题的答案"
+    },
+    {
+      "content": "imagination",
+      "title": "请告诉我第3小题的答案"
+    },
+    {
+      "content": "giant",
+      "title": "请告诉我第4小题的答案"
+    },
+    {
+      "content": "foot",
+      "title": "请告诉我第5小题的答案"
+    },
+    {
+      "content": "ballpark",
+      "title": "请告诉我第6小题的答案"
+    },
+    {
+      "content": "blood",
+      "title": "请告诉我第7小题的答案"
+    },
+    {
+      "content": "street",
+      "title": "请告诉我第8小题的答案"
+    },
+    {
+      "content": "later",
+      "title": "请告诉我第9小题的答案"
+    },
+    {
+      "content": "narrow",
+      "title": "请告诉我第10小题的答案"
+    },
+    {
+      "content": "angle",
+      "title": "请告诉我第11小题的答案"
+    },
+    {
+      "content": "careful",
+      "title": "请告诉我第12小题的答案"
+    },
+    {
+      "content": "Chinese",
+      "title": "请告诉我第13小题的答案"
+    },
+    {
+      "content": "smile",
+      "title": "请告诉我第14小题的答案"
+    },
+    {
+      "content": "mind",
+      "title": "请告诉我第15小题的答案"
+    },
+    {
+      "content": "endanger",
+      "title": "请告诉我第16小题的答案"
+    },
+    {
+      "content": "because",
+      "title": "请告诉我第17小题的答案"
+    },
+    {
+      "content": "beta",
+      "title": "请告诉我第18小题的答案"
+    },
+    {
+      "content": "试着直译一下你提取出来的句子",
+      "title": "该如何提取最终答案"
+    }
+  ],
+  "title": "B4-中英互译",
+  "contentType": 1,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

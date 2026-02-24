@@ -1,0 +1,38 @@
+{
+  "answer": "HELLO",
+  "answerAnalysis": "将一楼和二楼重叠后象形读取答案：HELLO\n\n![A1A](https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/rm.png)",
+  "content": 
+    "解谜城的居民们为你们的到来特意准备了一处住宿......\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/room.png\" weight=\"800px\" height=\"600px\">"
+  ,
+  "desc": "A1",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/a",
+      "title": "无垠乡野",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "你发现这两层楼的平面图几乎一样！这可能代表着什么？",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "将两层楼的平面图重叠，各个房间的空缺位置象形字母。",
+      "title": "我还是没有明白，请告诉我怎么做"
+    }
+  ],
+  "title": "A1-初来乍到",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/a",
+    "pgid": "a"
+  }
+}

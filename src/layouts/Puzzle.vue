@@ -40,6 +40,7 @@
           </el-image>
         </div>
         <div v-if="puzzle.contentType == 1" v-html="puzzle.content" id="puzzleHtml"></div>
+        <div v-if="puzzle.contentType == 4" v-html="markdownToHtml(puzzle.content)" id="puzzleHtml"></div>
         <div v-if="puzzle.contentType == 2 || puzzle.contentType == 3" id="puzzleVue">
           <div id="puzzleVueApp"></div>
         </div>
@@ -342,7 +343,6 @@ async function loadPuzzleDetail(hunt?: string, pgid?: string, pid?: string) {
 
 .pz-content {
   margin-bottom: 32px;
-  font-family: "Roboto", arial, sans-serif;
 }
 
 

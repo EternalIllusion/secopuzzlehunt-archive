@@ -1,0 +1,19 @@
+{
+  "type": "page",
+  "title": "尾声 - SECO1",
+  "content": 
+    "<style>\n  .centered-article {\n    width: 60%;\n    margin: 0 auto;\n    text-align: center;\n  }\n</style>\n\n<div class=\"centered-article\">\n<b>\n恭喜完赛！<br>\n<br>\n\"It's your dream\"在你的脑海中响起，<br>\n恍然间白光一闪，<br>\n方才的黑暗席卷而去，思绪渐渐回笼……<br>\n<br>\n勉力睁开眼，<br>\n你发现你正处在一处类似3D-VR游戏的太空舱中，<br>\n有声音传来：<br>\n“各位探险者，在SECO星球过得还愉快吗？<br>\n……好吧，看来我们的沉浸式梦境体验效果还不错嘛。<br>\n我们并非发现了新星球的科学家，<br>\n而是白日梦机器的研发组。<br>\n各位其实是前来体验的内测者，<br>\n而勘探谜土的过程，就是对白日梦进行解析。”<br>\n<br>\n回味着在SECO星球的经历和这段话，<br>\n你终于想起来了。<br>\n是的，你报名了白日梦机器的研发内测，<br>\n而内测的剧情便是以探险者的身份<br>\n前往虚构出的SECO星球探秘……<br>\n<br>\n声音再次传来：<br>\n“很抱歉的是，<br>\n我们的机器运行出了一些故障，<br>\n导致各位没能体验完整剧情，<br>\n我们会不断改进，<br>\n并继续打造更加优质的体验和新剧情。”<br>\n<br>\n太空舱的电子屏亮起：<br>\n“各位内测者，请提出宝贵的意见，<br>\n我们一定会认真对待！”<br>\n<br>\n完赛交流群: QQ660237768<br>\n<a href=\"https://docs.qq.com/form/page/DYmtKaUxjY1BSS2RW#/fill\">满意度调查</a><br>\n<br>\n<br>\n<br>\n<br>\n特别感谢Taiga协助搭建网站<br>\n以及玥Hunt提供部分基建辅助静态资源分发！<br>\n</b>\n</div>\n"
+  ,
+  "links": [
+    {
+      "title": "主页面",
+      "type": "page",
+      "path": "seco1/pages/main"
+    },
+    {
+      "title": "索引",
+      "type": "index",
+      "path": "seco1/index"
+    }
+  ]
+}

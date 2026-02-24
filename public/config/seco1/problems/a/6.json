@@ -1,0 +1,63 @@
+{
+  "answer": "MAJOR",
+  "answerAnalysis": "MAJOR",
+  "content": 
+    "我去了很多地方。而在我到达的每一个地方，都有着这样一个神秘的存在：它既卖酒又卖烟，不论白天还是黑夜都可以使用，可以买新鲜的热食物，甚至有新鲜出炉的面包。没钱了可以取现金，甚至要续证件的时候也能在这里拍照…\n\n这一段旅途中，你是一名铁道迷。你拍下了这个有限高杆的铁道口后，去了左前方。\n\n<video controls> <source src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/1.0f666ce2f600.mp4\" type=\"video/mp4\"> </video>\n<a href=\"https://pan.baidu.com/s/1oJw8QB0DMu07Ohvl9DjJgQ?pwd=jr9t\">百度网盘下载</a>\n---\n这一段旅途中，你是一名高中二年级女生。你处理完拦住你的女生的事情后，又往前走了大约三个小街区。\n\n<video controls> <source src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/2.5a78c6af57bb.mp4\" type=\"video/mp4\"> </video>\n<a href=\"https://pan.baidu.com/s/1Nj79aJVM43Al8d37DfXZ4Q?pwd=ezvp\">百度网盘下载</a>\n---\n这一段旅途中，你是一名滑雪教练。在滑完最好的粉雪后，你给发热的自己在山脚下奖励了一只冰淇淋，之后，你又返回了背后。\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/3.be63c8f8a175.png\" weight=\"800px\" height=\"600px/\">\n\n---\n\n这一段旅途中，你是高二男生。等上完学出了校门，你走到最近的大路上，并往东边走了200米。\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/4.png\" weight=\"800px\" height=\"600px/\">\n\n---\n\n这一段旅途中，你是一名市长。把寄语立于石碑背面后，你走向了公园旁边的空地…\n\n终战之年，昭和二十年七月〇〇市\n\n遭遇了猛烈的空袭，众多市民的宝贵\n\n生命与财产被夺走。\n\n今年恰逢战后五十周年，〇〇市宣\n\n布「无核武器和平城市」已十周年。\n\n在此，将曾经的受灾中心荣町公园\n\n更名为「荣町和平公园」，以将战争\n\n的惨痛教训传递给后代，并祈愿永久\n\n和平。\n\n平成七年八月十五日\n\n〇〇市长〇〇〇〇"
+  ,
+  "content-type": 0,
+  "desc": "A6",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/a",
+      "title": "无垠乡野",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "这是一道由图寻、网络迷踪和OSINT启发的题目。你首先需要根据给出的多媒体信息定位到地球上的一些地点。一共有五处。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "该视频摄于JR函馆本线铁道旁，镜头有拍到能源公司“北燃商事”的招牌。",
+      "title": "第一部分是什么"
+    },
+    {
+      "content": "这是电视动画片《WORKING!!》第三季第十四集的片段。片段出现的学校原型为札幌もみじ台区域的一所高中。",
+      "title": "第二部分是什么"
+    },
+    {
+      "content": "“最好的粉雪”在北半球通常指的是新雪谷、留寿都等地区的JAPOW（日本粉雪）。在南半球则指的是新西兰的雪。该图片摄于新雪谷地区。",
+      "title": "第三部分是什么"
+    },
+    {
+      "content": "这是文字冒险游戏《银色，遥远》的截图。主人公就读的学校原型位于札幌北区。游戏截图中的背景里的文字和建筑设计皆有轻微变化，但整体大门装修与现实一致。",
+      "title": "第四部分是什么"
+    },
+    {
+      "content": "该文本由某城市的和平公园立碑文本译制与修改而来，立于北海道一沿海城市。",
+      "title": "第五部分是什么"
+    },
+    {
+      "content": "在你找到的部分周围再看看，顺着文本中所提示的方向走，有没有什么共同点？检索题目URL的六个字母也许会有帮助。",
+      "title": "我觉得我知道这些部分是什么了，但是这些有什么用？"
+    },
+    {
+      "content": "题目flavourtext有提到七个服务设施，按顺序进行判断对错并转换成二进制，最后使用ASCII编码。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "A6-SECO吗？",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/a",
+    "pgid": "a"
+  }
+}

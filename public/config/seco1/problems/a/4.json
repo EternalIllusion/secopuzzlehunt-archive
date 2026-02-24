@@ -1,0 +1,43 @@
+{
+  "answer": "CATEGORIZE",
+  "answerAnalysis": "解法一： 搜索关键词“扭结”，即可找到[相关百科图片](https://baike.baidu.com/pic/%E7%BA%BD%E7%BB%93%E7%90%86%E8%AE%BA/9850674/1/962bd40735fae6cd0c63ff4504b30f2442a70f3a?fromModule=lemma_top-image&ct=single#aid=0&pic=77485536b0086bcea3cc2b9f)\n根据百科图片，题目最底部图片查找每个扭结所代表的数字，A1Z26得出答案：CATEGORIZE\n\n解法二： 在网站后台找到相关代码，直接获得数字后A1Z26得出答案：CATEGORIZE\n![扭结相关图片](https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/knota.png)",
+  "content": 
+    "这些扭结似乎是古代解谜文明的遗留产物，似乎人们曾经使用过他们进行交流……\n<iframe src=\"https://knotplot.com/view/?k=0.2.1\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=0.1\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=9.11\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=4.1\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=6.1\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=8.2.5\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=9.9\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=7.2\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=9.17\" width=\"600\" height=\"400\"></iframe>\n\n<iframe src=\"https://knotplot.com/view/?k=2.2.1\" width=\"600\" height=\"400\"></iframe>\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/knot.png\" weight=\"800px\" height=\"600px\">"
+  ,
+  "content-type": 0,
+  "desc": "A4",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/a",
+      "title": "无垠乡野",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "不妨仔细阅读一下风味文本，里面包含了一些关键信息。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "可以注意到10种不同颜色的气球，恰好都是是色环电阻用来标记数值的颜色",
+      "title": "这道题的关键到底是什么"
+    },
+    {
+      "content": "找到与最下面一张图片中形式相同的对照表，将各数字相加后按照a1z26提取。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "A4-结绳记事",
+  "contentType": 1,
+  "arealink": {
+    "title": "无垠乡野",
+    "path": "/area/seco1/a",
+    "pgid": "a"
+  }
+}

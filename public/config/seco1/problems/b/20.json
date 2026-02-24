@@ -1,0 +1,51 @@
+{
+  "answer": "TOURISM",
+  "answerAnalysis": "首先完成一笔画，然后将小题答案依次填入格子。纸笔盘面实际上是元素周期表的一部分。四句房间密钥指向了七个化学元素，提取这七个位置的字母并anagram即可得到答案【tourism】",
+  "content": 
+    "几经周折，你们终于来到了这个文明的中心区域，你注意到，这里的房间似乎呈周期性排列······\n\n你们面前出现了riser和地图的投影，他说道：“整个中心区域是一个5×16矩形区域，**黑色的是不能进入的区域而白色的是房间**，我（I）现在在这个位置。我把它**简化成了表格的形式**，方便理解。”那人一指，地图上的一个小方块变成了黑色。\n\n“我没有多余的**解谜寻宝秘钥**，被关在里面了，而你们正好有剩下的59把秘钥。中心区域的入口在start（S）处，finish（F）**这个房间的格子桌后面藏匿着出口的门**。当一个房间里的秘钥是正确的，那么你们就可以选择一扇门打开，并且之前的门会关闭。所有房间都有秘钥时，出口才会解锁，**翻译过来就是**，你们必须不重复地穿过所有59个房间，不经过我在的房间但是会**绕着我的房间转一圈**。具体一点，假设你的秘钥组是**CUISINE**，你就在起点S放秘钥C，后面6个房间依次放秘钥U、I、S、I、N、E。”\n\n“那秘钥组的顺序是什么呢？总不能一个一个尝试吧。”你问到。\n\n投影开始变得模糊，看来维系它的时间快到极限了，那个人急切地大声喊道，你们也只能听到几个字：“已经······顺序······前面的话······”\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/meta2.png\">\n\n[查看题面](https://swaroopg92.github.io/penpa-edit/#m=solve&p=tVTbTttAEH3PV6B9nkr22lk7fqOUVJUoLQ0VQqsIbYKBCCemtgPIUfh25mKUOHHVqqiyPHNydnYuzp4tfy1dkYJvoA9BDB74+JjQgNYxGD3g12ue81mVpcnBPK2chsNldZcXycG9Kx9ckT8CwLfhEG5cVqY922wZ96zyFSiNr6/GL/XoxSoF/ri3qn8kq/oqseM11D83MN7AUbJSoVZJCCoMxIXi+uKMuEhcLG7Aru+J88VhpAFlJJmRZEaSGUlmJJmRZEaSGUkWSbJIkkW4QeM4Pu3ANk+xTSpg1RAn4zklyKrRhuBwq768MbjRT1ZoL9kO2Wq25zg+1AHbT2w9tn22JxxzjEV1FIIe4BTYDXoI/AYHGnSAQxI2EWiahnAcgI6bmHiAe3Euxn3ksT3CkQeaBtVY5IJLHbEN2RpuIaL/p9ezoebj0vXQSv8fV+V57/qHGL8CHUA8a6rMs6tyWdy4aaoSPqLA3GI5n6RFi8ry/CGbLdpxs9tFXqSdS0Sm17dd8ZO8uN7J/uSyrEWIAFvUdFZMszZVFbPWb1cU+VOLmbvqrkVMXIVqLe9mD+1M6aJqN1C5dovu3u1Um29mXvfUs+LXBviRQxLyIKnPoP6Mp3tL6lCfoZK/JvUJCZlEH/LhtRQQIDyWeI3wgtcJHQnpe4hPG4zwEqF8lasTYb4ntj4HRXU+8m6Cap4/YqPSB/2e5vMJjmLV1seQlXJ5nd8vm1if1Hgo7Y7e2qUq1C6ub7VLUNol1NEuTfGf2x2M1/I3eH95i8ol9f4b549XwnMjtbzoVBvSHYJDtlNYDb+nLeT3VEQF94WEbIeWkN2VE1L7ikJyT1TI/UZXlHVXWtTVrrqo1J7AqNS2xvDOYvQK)\n\n你们终于克服重重困难来到最后的房间，搬开格子桌之后赫然出现一道锁。\n\n“怎么还有密码？快看看上面写了什么。”\n\n“**以下房间的秘钥是什么？**”\n\n“都说一个文明的历史凝聚在它的名字里，这个文明的历史过于漫长，以至于史书需要分为前后两半分别储存在两个房间里，这两个房间也将它的名字一分为二。”\n\n“虽然个人之于文明微不足道，但是，婆婆和你不应该在这里，你们应该分别在哪个房间？”\n\n“影像回放室亦保存文明的过去，控制室掌握文明的现在，南北导航室指明文明的未来。”\n\n“**重新排列七个房间**，合理又崭新的密钥组，共同开辟终末的道路”'"
+  ,
+  "content-type": 0,
+  "desc": "Meta B",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "请仔细阅读题目前半部分加粗字体，它隐含了小题答案的顺序。",
+      "title": "如何利用小题答案"
+    },
+    {
+      "content": "元素周期表。",
+      "title": "这个一笔画的盘面到底是个什么东西"
+    },
+    {
+      "content": "将SECO一分为二。",
+      "title": "第一组需要秘钥的房间在哪里找"
+    },
+    {
+      "content": "房间内应该有的生物的中文拼音。",
+      "title": "第二组需要秘钥的房间在哪里找"
+    },
+    {
+      "content": "回放、控制室和南北的英文简写。",
+      "title": "第三组需要秘钥的房间在哪里找"
+    }
+  ],
+  "title": "隐藏房间LVIII",
+  "contentType": 4,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

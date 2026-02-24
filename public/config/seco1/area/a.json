@@ -1,0 +1,40 @@
+{
+  "title": "A - 无垠乡野",
+  "problems": [
+    {
+      "title": "A1-初来乍到",
+      "type": "problem",
+      "path": "/problems/seco1/a/1"
+    },
+    {
+      "title": "A2-无限进步",
+      "type": "problem",
+      "path": "/problems/seco1/a/2"
+    },
+    {
+      "title": "A3-解谜星球不可能有奥林匹斯山",
+      "type": "problem",
+      "path": "/problems/seco1/a/3"
+    },
+    {
+      "title": "A4-结绳记事",
+      "type": "problem",
+      "path": "/problems/seco1/a/4"
+    },
+    {
+      "title": "A5-人为选择",
+      "type": "problem",
+      "path": "/problems/seco1/a/5"
+    },
+    {
+      "title": "A6-SECO吗？",
+      "type": "problem",
+      "path": "/problems/seco1/a/6"
+    },
+    {
+      "title": "META 洞里乾坤大",
+      "type": "problem",
+      "path": "/problems/seco1/a/10"
+    }
+  ]
+}

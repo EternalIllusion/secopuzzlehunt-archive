@@ -1,0 +1,47 @@
+{
+  "answer": "CREDITS",
+  "answer-analysis": "本题没有真正的逻辑解，在最后一步需要进行2选1猜测，最终提取答案为【CREDITS】",
+  "content": 
+    "现在是第4节课上课，你被一阵阵欢笑声吸引了过去，走进教室，你发现学生和老师正在练习英语演讲，走上前去询问，你才得知他们将在明天课上进行口语大赛，你也想去凑热闹，但是并不知道是明天哪节课，于是你问了一些学生，而他们却给了你一些答非所问的回答，并且意味深长笑了笑……\n\n1.我们一周有主课包括5节语文（Chinese）、6节数学（Mathematics）、5节英语（English）、3节物理（Physics）、4节化学（Chemistry）、3节生物（Biology）、2节历史（History）、2节政治（Politics）、2节地理（Geography），副课包括1节艺术（Art Lesson）、2节体育（Physical Education）、3节活动（Activities）、1节班队（Class Meeting）、1节心理（Psychology）、2节通用技术（General Technology）、1节研究性学习（Inquiry Based Learning）、1节阅读（Reading)、2节选修（Electives）和4节自修（Self Study）。\n\n2.我们一天上10节课，上午5节，下午5节，其中周三下午是最轻松的，没有主课，其次是周五下午，只有前2节是主课，剩下的其中两节分别为体育和活动课，另外，所有的自修课和活动课都只在第9或第10节课。\n\n3.周一老师要进行上周学习情况总结，周二和周四自修课上完我们有社团活动，周三的体育和生物课进行了永久调课，周四数学不仅上午要讲新课，下午还有考试，而在周五的第6节课，我们会学习有关解谜文明的法律知识。\n\n4.一周中其中有3天的10节课都不相同，其中有3天的第9节课分别是选修，通用技术，班队课，其中有2天的第4节课分别为心理、艺术课，其中有5天的第1节课分别为语文、阅读、历史、数学、英语课。\n\n5.我们的课表横向表示是周几，竖向表示是第几节课，如果将课表横或竖相邻的2节课之间的距离设为1，那么将每周的生物课连起来，会形成一个底为4，腰为√13的等腰三角形，将周一、二、四、五的各1节数学课连起来，会形成边长为√10的正方形，一周其中1节历史课向下7个单位，向右3个单位后的课还是历史课，其中1节地理课向右2个单位，向上5个单位后的课还是地理，政治课之间的距离为5，并且课表10行有7行的每行科目都不相同。\n\n6.我们的社团活动只在活动课进行，我们周五没有化学作业，我们当天如果有物理课就没有艺术、研究性学习、体育课，我们的选修课在一周其中一天的下午并且2节连上，其他课都没有连上的情况。\n\n7.存在1节通用技术和1节研究性学习横向相邻，任意1节地理课都在化学课的右边，任意一节化学课与语文或英语竖向相邻，一周前三天每天语文和英语课之间间隔1节课，后两天则每天间隔3节课。\n\n<style> table { border-collapse: collapse; /* 合并边框，消除双线 */ border: 2px solid white;   /* 外边框：2px白色实线 */ } td, th { border: 1px solid white;   /* 内边框：1px白色实线 */ padding: 8px;              /* 可选：单元格内边距 */ } </style> <table border=\"10\"> <tr> <td>&nbsp;</td> <td>周一</td> <td>周二</td> <td>周三</td> <td>周四</td> <td>周五</td> </tr> <tr> <td>1</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>四（4）</td> </tr> <tr> <td>2</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>3</td> <td>六（3）</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>二（5）</td> <td>&nbsp;</td> </tr> <tr> <td>4</td> <td>一（4）</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>5</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>6</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>7</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>五（5）</td> <td>&nbsp;</td> <td>三（1）</td> </tr>\n<tr> <td>8</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>七（4）</td> </tr> <tr> <td>9</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>10</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> </table>"
+  ,
+  "content-type": 0,
+  "desc": "B3",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "<style> table { border-collapse: collapse; border: 2px solid white; } td, th { border: 1px solid white; padding: 8px; } </style> <table border=\"10\"> <tr> <td>&nbsp;</td> <td>周一</td> <td>周二</td> <td>周三</td> <td>周四</td> <td>周五</td> </tr> <tr> <td>1</td> <td>历史</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>四（4）</td> </tr> <tr> <td>2</td> <td>生物</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>3</td> <td>六（3）</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>二（5）</td> <td>&nbsp;</td> </tr> <tr> <td>4</td> <td>一（4）</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>5</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>6</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>7</td> <td>&nbsp;</td> <td>通用</td> <td>五（5）</td> <td>&nbsp;</td> <td>三（1）</td> </tr>\n<tr> <td>8</td> <td>化学</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>七（4）</td> </tr> <tr> <td>9</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>选修</td> <td>&nbsp;</td> <td>&nbsp;</td> </tr> <tr> <td>10</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>&nbsp;</td> <td>活动</td> </tr> </table>",
+      "title": "能帮我简化一下这道题吗"
+    },
+    {
+      "content": "以【课程程表表表】为标题发送站内信询问想要知道的格子。",
+      "title": "我想知道指定的两个格子的正确答案"
+    },
+    {
+      "content": "CREDITS",
+      "title": "奸商啊！两个格子卖4个提示点数，请直接给我答案"
+    },
+    {
+      "content": "Nutrimatic",
+      "title": "有没有什么不需要苦力的方法"
+    }
+  ],
+  "title": "B3-课程表",
+  "contentType": 1,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

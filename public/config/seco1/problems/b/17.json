@@ -1,0 +1,47 @@
+{
+  "answer": "RACE",
+  "answerAnalysis": "<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/chessans.png\">",
+  "content": 
+    "你看见一群人围在一个小摊边上，惊喜地发现它与你原来所在世界的某种棋类几乎一模一样，于是你摩拳擦掌，等轮到你的时候，却傻眼了，因为棋盘上仅仅只有几个棋子。 \"这······怎么下啊?\"\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/chess.png\" alt=\"My image\" weight=\"700px\" height=\"500px\">"
+  ,
+  "content-type": 0,
+  "desc": "B7",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "黑马Knight（N），黑象Bishop（B），白马Springer（S）。",
+      "title": "各个棋子都代表什么"
+    },
+    {
+      "content": "棋盘密码。",
+      "title": "这道题用到了什么密码"
+    },
+    {
+      "content": "The night before(knight b4)11.1 is not Halloween, because it's German(springer).这句话提示了棋盘上所有格子的定位。第二句话的图片加上加粗字母的格子可以组成一个三个字母的字符串，它提示了提取的方法。",
+      "title": "图片下方的两句话是什么意思"
+    },
+    {
+      "content": "用得到的提取方法提取左侧大写字母的单词，每个单词可提取到一个字母。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "B7-匿于棋盘之中",
+  "contentType": 4,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

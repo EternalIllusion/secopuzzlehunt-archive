@@ -1,0 +1,31 @@
+{
+  "type": "index",
+  "title": "SECO 1 存档站",
+  "content": 
+    "感谢CCBC提供的模板(*此处指原存档站)以及Ted Zyzsdy、Sevenkplus老师的帮助！\n\n\n谜土，是SECO星球上特有的奇妙区域，它不安全，不稳定，不适用物理规则。当有人看穿了某一块谜土背后的独特规律，它便会变成与周围正常环境一样，然后连同它的解法一起，悄然消失在所有人的记忆当中。只有少数人，凭借顽强的意志，能记住某些谜土的规律，然后将它带给他人，将对抗险恶环境的经验传播。\n"
+  ,
+  "links": [
+    {
+      "title": "A - 无垠乡野",
+      "path": "/area/seco1/a"
+    },
+    {
+      "title": "B - 盒中城市",
+      "path": "/area/seco1/b"
+    },
+    {
+      "title": "Final Meta 灵长之长",
+      "path": "/problems/seco1/fm/45"
+    },
+    {
+      "title": "尾声",
+      "type": "page",
+      "path": "/article/seco1/finalend" 
+    },
+    {
+      "title": "完赛排行榜",
+      "type": "page",
+      "path": "/article/seco1/scoreboard" 
+    }
+  ]
+}

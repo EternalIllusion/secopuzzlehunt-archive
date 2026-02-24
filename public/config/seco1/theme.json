@@ -1,0 +1,19 @@
+{
+  "colors": {
+  },
+  "root": {
+    "banner": "/config/seco1/seco1_banner_32CF626EC949A9C15754D5D512225160.png",
+    "originalHeight": 1080,
+    "originalWidth": 2663,
+    "snapMargin": 5.85,
+    "logo": "/config/logos/seco1_C63DE429315CFC86ED14E719F73564D4.png"
+  },
+  "areas": {
+    "a": {
+      "banner": "/config/seco1/seco1_banner_32CF626EC949A9C15754D5D512225160.png"
+    },
+    "b": {
+      "banner": "/config/seco1/seco1_banner_32CF626EC949A9C15754D5D512225160.png"
+    }
+  }
+}

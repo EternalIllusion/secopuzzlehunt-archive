@@ -1,0 +1,43 @@
+{
+  "answer": "PATTERN",
+  "answerAnalysis": "先凯撒移位获得BV号，通过第一个视频新手教程了解冰与火之舞的玩法，根据第二个视频还原出轨道模样并象形提取，最终再A1Z26，得到答案为【PATTERN】",
+  "content": 
+    "这是一个游戏视频，但似乎被加密了...... 好熟悉，似乎是某个视频网站的ID\n\n<img src=\"https://image.secopuzzle.com/SECO1%E5%9B%BE%E7%89%87%E8%A7%86%E9%A2%91/dance.png\" weigh=\"200px\" height=\"200px\">\n\nIC8CgILFJLKg"
+  ,
+  "content-type": 0,
+  "desc": "B5",
+  "extend-data": "",
+  "links": [
+    {
+      "path": "seco1/index",
+      "title": "索引页",
+      "type": "index"
+    },
+    {
+      "path": "seco1/pages/b",
+      "title": "盒中城市",
+      "type": "page"
+    }
+  ],
+  "tips": [
+    {
+      "content": "图片下方的字符串使用了一种经典的加密方式，可以得到某个视频网站的ID。",
+      "title": "我毫无头绪"
+    },
+    {
+      "content": "改变解密方向的正反试一试，字母不会改变，但是数字会。",
+      "title": "字符串里的数字到底该怎么转化"
+    },
+    {
+      "content": "将视频2P中得到的图形转化为数字，空节拍为字符之间的分隔，屏幕黑白切换为数字之间的分隔，按照a1z26提取。",
+      "title": "该如何提取"
+    }
+  ],
+  "title": "B5-黑与白之舞",
+  "contentType": 4,
+  "arealink": {
+    "title": "盒中城市",
+    "path": "/area/seco1/b",
+    "pgid": "b"
+  }
+}

@@ -40,12 +40,12 @@
     {
       "pid": 7,
       "title": "认字是门化简为繁的技术",
-      "type": 4,
+      "type": 0,
       "path": "/problems/seco2/1/7"
     },
     {
       "pid": 8,
-      "title": "拼图",
+      "title": "META拼图",
       "type": 1,
       "path": "/problems/seco2/1/8"
     }
