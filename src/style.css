@@ -217,5 +217,6 @@ body {
 
 #puzzle-content i{
   display: block;
+  font-style: normal;
   transform: skew(-20deg);
 }
