@@ -1,0 +1,185 @@
+/* ========== 故事系统样式 ========== */
+
+.story-section {
+    background: #f5f5f5;
+    border-left: 4px solid #4CAF50;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.story-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.story-toggle:hover {
+    color: #4CAF50;
+}
+
+.story-toggle .toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 12px;
+    min-width: 12px;
+}
+
+.story-content {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.story-text {
+    padding: 10px 0;
+    line-height: 1.8;
+    color: #555;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ========== 故事弹框样式 ========== */
+
+.story-modal-backdrop {
+    animation: fadeIn 0.2s ease;
+}
+
+.story-modal-content {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.story-modal-story p {
+    margin: 10px 0;
+    line-height: 1.8;
+    color: #333;
+}
+
+.story-modal-story h1,
+.story-modal-story h2,
+.story-modal-story h3 {
+    margin: 20px 0 10px 0;
+    color: #1a1a1a;
+}
+
+.story-modal-story h1 {
+    font-size: 24px;
+}
+
+.story-modal-story h2 {
+    font-size: 20px;
+}
+
+.story-modal-story h3 {
+    font-size: 16px;
+}
+
+.story-modal-story ul,
+.story-modal-story ol {
+    margin: 10px 0 10px 20px;
+    padding: 0;
+}
+
+.story-modal-story li {
+    margin: 5px 0;
+}
+
+.story-modal-story blockquote {
+    border-left: 4px solid #4CAF50;
+    margin: 15px 0;
+    padding: 10px 15px;
+    background: #f9f9f9;
+    font-style: italic;
+    color: #555;
+}
+
+.story-modal-story code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+/* ========== 故事启动部分特殊样式 ========== */
+
+.story-start-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff9e6 100%);
+    border-left-color: #FFA500;
+}
+
+.story-start-section .story-toggle {
+    color: #FF8C00;
+}
+
+.story-start-section .story-toggle:hover {
+    color: #FFA500;
+}
+
+/* ========== 故事完成部分特殊样式 ========== */
+
+.story-end-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+    border-left-color: #4CAF50;
+}
+
+.story-end-section .story-toggle {
+    color: #2E7D32;
+}
+
+.story-end-section .story-toggle:hover {
+    color: #4CAF50;
+}
+
+/* ========== 响应式设计 ========== */
+
+@media (max-width: 768px) {
+    .story-modal-content {
+        max-width: 90vw;
+        margin: 20px;
+    }
+
+    .story-section {
+        margin: 10px 0;
+        padding: 12px;
+    }
+
+    .story-toggle {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .story-text {
+        font-size: 13px;
+    }
+}

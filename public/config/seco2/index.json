@@ -69,6 +69,11 @@
       "title": "公告列表",
       "type": "announcements",
       "path": "/announcements/seco2"
+    },
+    {
+      "title": "按按钮维度",
+      "ext": true,
+      "path": "/button-dim/index.html"
     }
   ]
 }

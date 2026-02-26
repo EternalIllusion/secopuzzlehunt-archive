@@ -17,7 +17,8 @@
                     <div class="link-desc" v-html="descHtml"></div>
                 </li>
                 <li v-for="link in data.links" :class="{ 'link-li': true, 'link-nav': !isques(link) }"
-                    @click="navigate(link.path)" @mouseenter="showBanner(link?.pgid ?? '')" @mouseleave="hideBanner">
+                    @click="navigate(link.path, link?.ext ?? false)" @mouseenter="showBanner(link?.pgid ?? '')"
+                    @mouseleave="hideBanner">
                     <div class="link-title">
                         {{ link.title }}
                     </div>
@@ -106,8 +107,21 @@ const hideBanner = () => {
     isBannerVisible.value = false;
 }
 
-const navigate = (path: string) => {
-    router.push(path);
+const navigate = (path: string, ext?: boolean) => {
+    if (!ext) { ext = false }
+    if (ext) {
+        const a = document.createElement('a');
+        a.href = path;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+    else {
+
+        router.push(path);
+    }
 }
 
 //const route = useRoute();

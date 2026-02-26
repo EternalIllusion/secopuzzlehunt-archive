@@ -1,0 +1,1158 @@
+/* 深绿色主题色彩变量 */
+html {
+    /* 基础RGB色彩变量 */
+    --page-bg-rgb: 8, 20, 12;
+    --accent-bg-rgb: 25, 45, 30;
+    --accent-rgb: 120, 255, 160;
+    --dark-accent-rgb: 15, 35, 20;
+    --body-rgb: 200, 235, 210;
+    --dark-flair-rgb: 40, 80, 50;
+    --flair-rgb: 80, 200, 120;
+    --light-flair-rgb: 140, 255, 180;
+
+    /* 增强的绿色调色板 */
+    --primary-green: #50C878;
+    --secondary-green: #228B22;
+    --accent-green: #32CD32;
+    --dark-green: #006400;
+    --forest-green: #355E3B;
+    --mint-green: #98FB98;
+    
+    /* 文本和背景色 */
+    --white-color: #f0fff0;
+    --neutral-color: #a8d8a8;
+    --dark-text-color: rgba(var(--dark-accent-rgb), 0.95);
+    --subtle-text-color: rgba(var(--dark-accent-rgb), 0.6);
+    --body-text-color: rgba(var(--body-rgb), 0.95);
+    --glow-color: rgba(var(--accent-rgb), 0.5);
+
+    /* 强调色定义 */
+    --accent-color: rgb(var(--accent-rgb));
+    --accent-bg-color: rgba(var(--accent-rgb), 0.15);
+    --accent-hover-color: rgba(var(--flair-rgb), 0.8);
+    --light-flair-color: rgba(var(--light-flair-rgb), 0.85);
+
+    /* 页面背景 */
+    --page-bg-color: rgb(var(--page-bg-rgb));
+    --sticky-bg-color: rgba(var(--page-bg-rgb), 0.92);
+    --heading-text-color: var(--accent-color);
+
+    /* 边框和链接 */
+    --border-color: var(--primary-green);
+    --print-border-color: #2d5016;
+    --link-text-color: var(--accent-green);
+    --link-hover-color: var(--mint-green);
+
+    /* 按钮样式 */
+    --btn-text-color: var(--white-color);
+    --btn-bg-color: var(--secondary-green);
+    --btn-bg-2-color: rgba(var(--accent-bg-rgb), 0.9);
+    --btn-hover-color: var(--accent-green);
+
+    /* 组件背景 */
+    --tray-text-color: var(--accent-color);
+    --tray-bg-color: rgba(var(--accent-bg-rgb), 0.75);
+    --info-bg-color: rgba(var(--page-bg-rgb), 0.85);
+    --dropdown-bg-color: rgba(var(--accent-bg-rgb), 0.95);
+
+    /* 字体定义 */
+    --text-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --btn-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --input-font: 'Cascadia Code', 'Consolas', monospace;
+    --answer-font: 'Cascadia Code', 'Consolas', monospace;
+    --accent-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 全局样式 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--text-font);
+    font-variant-ligatures: none;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+    position: relative;
+    color: rgb(42 173 42);
+    background: rgb(7 33 16);
+    min-height: 100vh;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+/* 响应式布局 */
+@media screen {
+    body {
+        margin: 0 auto 60px;
+        width: min(90vw, 1200px); 
+        padding: 0 2rem;
+    }
+}
+
+/* 文本样式 */
+strong {
+    text-shadow: 0 0 15px var(--glow-color), 0 0 5px rgba(var(--accent-rgb), 0.3);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* 列表样式 */
+li {
+    list-style-position: outside;
+    margin-left: 1.8em;
+    margin-bottom: 0.5rem;
+}
+
+ul > li {
+    list-style-type: none;
+    position: relative;
+}
+
+ul > li::before {
+    content: "▸";
+    color: var(--accent-green);
+    font-weight: bold;
+    position: absolute;
+    left: -1.2em;
+    top: 0;
+}
+
+/* 表单样式 */
+textarea, input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    min-height: 50px;
+    font-family: var(--input-font);
+    background: rgba(var(--dark-accent-rgb), 0.3);
+    border: 2px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--body-text-color);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+textarea:focus, input:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+    outline: none;
+}
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--accent-font);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+}
+
+h1, h2 {
+    margin-top: 2rem;
+    line-height: 1.2;
+    color: var(--accent-green);
+}
+
+h3, h4 {
+    border-bottom: 2px solid #2aad2a;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* 主要内容区域 */
+main {
+    position: relative;
+    background: rgba(var(--accent-bg-rgb), 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+}
+
+/* 分隔线 */
+hr {
+    margin: 2rem 0;
+    border: none;
+    height: 2px;
+    background: var(--accent-green);
+    border-radius: 1px;
+}
+
+/* 表格样式 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    background: rgba(var(--accent-bg-rgb), 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 16px;
+    text-align: -webkit-auto;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+th {
+    background: var(--secondary-green);
+    color: var(--white-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tr:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transition: background 0.3s ease;
+}
+
+/* 代码样式 */
+code {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0.3em 0.6em;
+    background: rgba(var(--dark-accent-rgb), 0.8);
+    border-radius: 6px;
+    font-family: var(--input-font);
+    color: var(--mint-green);
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+}
+
+pre {
+    background: rgba(var(--dark-accent-rgb), 0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-green);
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 链接样式 */
+a {
+    color: var(--link-text-color);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover-color);
+    text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.6);
+}
+
+/* 按钮样式 */
+.btn, button, input[type="submit"], input[type="button"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    font-family: var(--btn-font);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px 24px;
+    border-radius: 25px;
+    background: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(var(--secondary-green), 0.4);
+    min-height: 44px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.btn:hover, .btn:focus {
+    background: var(--btn-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--accent-green), 0.4);
+    color: var(--btn-text-color);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(var(--secondary-green), 0.4);
+}
+
+/* 按钮尺寸变体 */
+.btn-sm {
+    padding: 10px 18px;
+    border-radius: 20px;
+    min-height: 36px;
+}
+
+.btn-lg {
+    padding: 18px 32px;
+    border-radius: 30px;
+    min-height: 52px;
+}
+
+/* 禁用状态 */
+.btn:disabled, .btn.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(var(--secondary-green), 0.2);
+    background: var(--btn-bg-color);
+}
+    
+/* 打印样式 */
+@media print {
+    nav, .shortcuts, .clipboard-button, footer, .chart {
+        display: none;
+    }
+
+    main {
+        border-top: 1px solid var(--print-border-color);
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .btn {
+        border: 2px solid black !important;
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* 跳过导航链接 */
+a.skip-to-main {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+a.skip-to-main:focus, a.skip-to-main:active {
+    color: var(--white-color);
+    background-color: var(--dark-green);
+    opacity: 0.9;
+    left: auto;
+    top: auto;
+    width: 70%;
+    height: auto;
+    overflow: auto;
+    margin: 10px 15%;
+    padding: 8px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 999;
+}
+
+/* 图表样式 */
+.chart-area {
+    fill: var(--neutral-color);
+    opacity: 0.5;
+}
+
+.chart-line {
+    stroke: var(--accent-color);
+    stroke-width: 0.25%;
+    fill: none;
+}
+
+/* 隐藏仅复制元素 */
+.copy-only {
+    display: none;
+}
+
+/* 剪贴板按钮 */
+.clipboard-button {
+    border-radius: 50%;
+    bottom: 1.5em;
+    box-shadow: 0.1em 0.1em 0.5em var(--info-bg-color);
+    height: 2.25em;
+    position: fixed !important;
+    right: 1.5em;
+    width: 2.25em;
+    z-index: 100;
+    background: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clipboard-button:hover {
+    background: var(--btn-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--accent-green), 0.4);
+}
+
+/* 故事块 */
+.story-chunk {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    background: rgba(var(--accent-bg-rgb), 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.story-chunk a {
+    text-decoration: none;
+}
+
+/* 谜题主区域 */
+.puzzle-main {
+    background: rgba(var(--dark-accent-rgb), 0.6);
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.puzzle-main h1,
+.puzzle-main h2,
+.puzzle-main h3,
+.puzzle-main h4 {
+    background: none;
+    border-left: none;
+    padding: 0;
+}
+
+/* 提示表格 */
+.hint-table {
+    width: 100%;
+    background: rgba(var(--accent-bg-rgb), 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hint-table th,
+.hint-table td {
+    border: none;
+    padding: 12px 15px;
+}
+
+.hint-table tr:first-child th,
+.hint-table tr:first-child td,
+.hint-table td[colspan] {
+    padding-top: 16px;
+}
+
+.hint-table tr:last-child th,
+.hint-table tr:last-child td {
+    padding-bottom: 16px;
+}
+
+.hint-table button {
+    margin: 0;
+}
+
+.hint-table hr {
+    border-color: var(--accent-color);
+    opacity: 0.25;
+}
+
+.hint-table .submitted-text,
+.hint-table textarea {
+    line-height: 2rem;
+}
+
+/* 保证富文本中的图片在提示/站内信等区域自适应显示 */
+.submitted-text img,
+.hint-response img,
+.dm-response img,
+.detail-text img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.hint-controls {
+    margin-bottom: 2rem;
+}
+
+.hint-controls > :last-child {
+    float: right;
+}
+
+.hint-controls form,
+.hint-controls input {
+    margin: 0;
+}
+
+/* 谜题列表 */
+.puzzles-list {
+    width: 100%;
+}
+
+.puzzles-list a {
+    text-decoration: none;
+}
+
+.puzzles-list h1 {
+    text-align: left;
+    margin: 0;
+}
+
+.puzzles-list th {
+    border: none;
+}
+
+.puzzles-list tbody:not(:first-child) th {
+    padding-top: 2em;
+}
+
+.puzzles-list td {
+    border: none;
+    padding-left: 0;
+    padding-right: 0.5ch;
+    vertical-align: top;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.puzzles-list td:first-child {
+    width: 3rem;
+    text-align: right;
+    font-weight: bold;
+}
+
+.puzzles-list td:nth-child(3) {
+    width: 0;
+    white-space: nowrap;
+}
+
+.puzzles-list td:last-child {
+    padding-right: 0;
+}
+
+.puzzles-answer {
+    width: 20ch;
+    max-width: 30vw;
+}
+
+.puzzles-answer > :first-child {
+    border-bottom: 2px solid rgb(42 173 42);
+    font-family: var(--answer-font);
+    font-weight: bold;
+}
+
+.puzzles-new {
+    display: inline-block;
+    padding: 0 0.5rem;
+    margin-right: 0.2rem;
+    vertical-align: top;
+    font-family: var(--accent-font);
+    text-transform: uppercase;
+    background: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    border-radius: 6px;
+}
+
+/* 剧透样式 */
+.spoiler.solved-title-answer {
+    display: inline-block;
+    min-width: 200px;
+    text-align: left;
+}
+
+.spoiler:not(:hover) {
+    background-color: currentColor;
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+/* 响应式表格 */
+@media screen {
+    .list-table th {
+        top: 36px;
+        background: var(--secondary-green);
+        color: var(--white-color);
+        box-shadow: inset 0 -2px 0 0 var(--border-color);
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .list-table th {
+        top: 4rem;
+    }
+}
+
+/* 导航样式 */
+nav {
+    background: rgba(var(--info-bg-color), 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+.top-tabs {
+    background: rgba(var(--info-bg-color), 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    margin: 2rem 0;
+    padding: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.top-tabs a {
+    padding: 7px 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    /* margin: 20px; */
+    line-height: 2.8;
+}
+
+.top-tabs a:hover {
+    background: rgba(var(--accent-rgb), 0.2);
+    transform: translateY(-1px);
+}
+
+.selected-tab {
+    background: var(--accent-green);
+    color: var(--white-color) !important;
+    font-weight: 700;
+}
+
+/* 表单区域 */
+.form-section {
+    margin: 3rem 0;
+    background: rgba(var(--accent-bg-rgb), 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    border-left: 4px solid var(--accent-green);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-row, .note {
+    background: rgba(var(--accent-bg-rgb), 0.2);
+    border-left: 3px solid var(--border-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.form-row:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.2);
+}
+
+/* 错误列表 */
+.errorlist {
+    padding: 1.5rem;
+    list-style-type: none;
+    color: var(--white-color);
+    text-shadow: 0 0 10px rgba(255, 100, 100, 0.5);
+    background: rgba(220, 20, 60, 0.8);
+    border-radius: 12px;
+    border-left: 4px solid #ff6b6b;
+    box-shadow: 0 4px 16px rgba(220, 20, 60, 0.3);
+}
+
+/* 图表容器 */
+.chart {
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 键盘按键样式 */
+kbd {
+    display: inline-block;
+    padding: 4px 8px;
+    border: 2px solid var(--accent-green);
+    border-radius: 6px;
+    margin: 0 4px;
+    background: rgba(var(--dark-accent-rgb), 0.8);
+    color: var(--mint-green);
+    font-family: var(--input-font);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.3);
+}
+
+/* 动画效果 */
+@keyframes glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.glow-animation {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(var(--dark-accent-rgb), 0.3);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-green);
+    border-radius: 6px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-green);
+}
+
+/* 小屏幕响应式调整 */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0 1rem;
+    }
+    
+    main {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+    
+    
+    .btn {
+        padding: 10px 20px;
+    }
+}
+/* 浅绿色主题色彩变量（基于简化版基础样式扩展） */
+html.light-green-theme {
+    /* 基础RGB色彩变量 - 统一浅绿基调 */
+    --page-bg-rgb: 248, 252, 248; /* 极浅绿背景 */
+    --accent-bg-rgb: 235, 245, 235; /* 浅绿辅助背景 */
+    --accent-rgb: 60, 180, 100; /* 主浅绿（适中亮度） */
+    --dark-accent-rgb: 220, 240, 225; /* 深一点的浅绿（用于组件背景） */
+    --body-rgb: 30, 80, 40; /* 深绿文本（确保可读性） */
+    --dark-flair-rgb: 200, 230, 210; /* 浅绿装饰色 */
+    --flair-rgb: 70, 190, 110; /* 浅绿强调色 */
+    --light-flair-rgb: 120, 230, 150; /* 极浅绿高亮色 */
+
+    /* 统一浅绿调色板 */
+    --primary-green: #4db66d; /* 主浅绿 */
+    --secondary-green: #2e7d32; /* 辅助深绿（按钮/表头） */
+    --accent-green: #38b04a; /* 浅绿强调（hover/选中） */
+    --dark-green: #00693e; /* 深绿（文本/链接） */
+    --forest-green: #2e5d3b; /* 深绿（按钮背景） */
+    --mint-green: #a5d6a7; /* 极浅绿（高亮文本） */
+    
+    /* 文本和背景色 - 统一对比度 */
+    --white-color: #ffffff; /* 纯白（按钮文本） */
+    --neutral-color: #d7ecd9; /* 浅绿中性色（图表填充） */
+    --dark-text-color: rgba(var(--body-rgb), 0.95); /* 深绿文本 */
+    --subtle-text-color: rgba(var(--body-rgb), 0.6); /* 浅深绿文本（次要信息） */
+    --body-text-color: rgba(var(--body-rgb), 0.9); /* 深绿正文 */
+    --glow-color: rgba(var(--accent-rgb), 0.3); /* 浅绿发光效果 */
+
+    /* 强调色定义 - 统一浅绿系 */
+    --accent-color: rgb(var(--accent-rgb)); /* 主浅绿 */
+    --accent-bg-color: rgba(var(--accent-rgb), 0.15); /* 浅绿透明背景 */
+    --accent-hover-color: rgba(var(--flair-rgb), 0.8); /* 浅绿hover色 */
+    --light-flair-color: rgba(var(--light-flair-rgb), 0.85); /* 极浅绿高亮 */
+
+    /* 页面背景 - 统一浅绿基调 */
+    --page-bg-color: rgb(227 252 227); /* 极浅绿页面背景 */
+    --sticky-bg-color: rgba(var(--page-bg-rgb), 0.95); /* 浅绿粘性背景（导航） */
+    --heading-text-color: var(--accent-color); /* 浅绿标题色 */
+
+    /* 边框和链接 - 统一浅绿系 */
+    --border-color: var(--primary-green); /* 浅绿边框 */
+    --print-border-color: #2d5016; /* 打印模式深绿边框 */
+    --link-text-color: var(--dark-green); /* 深绿链接 */
+    --link-hover-color: var(--accent-green); /* 浅绿链接hover */
+
+    /* 按钮样式 - 统一浅绿渐变替换为纯色 */
+    --btn-text-color: var(--white-color); /* 按钮白色文本 */
+    --btn-bg-color: var(--secondary-green); /* 按钮深绿背景 */
+    --btn-bg-2-color: rgba(var(--accent-bg-rgb), 0.9); /* 辅助浅绿背景 */
+    --btn-hover-color: var(--accent-green); /* 按钮hover浅绿 */
+
+    /* 组件背景 - 统一浅绿透明色 */
+    --tray-text-color: var(--accent-color); /* 组件浅绿文本 */
+    --tray-bg-color: rgba(var(--accent-bg-rgb), 0.8); /* 组件浅绿背景 */
+    --info-bg-color: rgba(var(--page-bg-rgb), 0.9); /* 信息区浅绿背景 */
+    --dropdown-bg-color: rgba(var(--accent-bg-rgb), 0.95); /* 下拉框浅绿背景 */
+
+    /* 字体定义（继承基础样式，确保一致性） */
+    --text-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --btn-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --input-font: 'Cascadia Code', 'Consolas', monospace;
+    --answer-font: 'Cascadia Code', 'Consolas', monospace;
+    --accent-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 浅绿色主题全局样式 - 覆盖基础样式 */
+html.light-green-theme body {
+    color: var(--body-text-color); /* 深绿正文 */
+    background: var(--page-bg-color); /* 极浅绿页面背景 */
+}
+
+/* 浅绿色主题文本样式 */
+html.light-green-theme strong {
+    text-shadow: 0 0 15px var(--glow-color); /* 浅绿发光效果（无额外杂色） */
+    color: var(--dark-green); /* 深绿加粗文本 */
+}
+
+/* 浅绿色主题列表样式 */
+html.light-green-theme ul > li::before {
+    color: var(--accent-green); /* 浅绿列表符号 */
+}
+
+/* 浅绿色主题表单样式 */
+html.light-green-theme textarea, 
+html.light-green-theme input[type="text"], 
+html.light-green-theme input[type="password"], 
+html.light-green-theme input[type="email"] {
+    background: rgba(var(--dark-accent-rgb), 0.6); /* 浅绿表单背景 */
+    border: 2px solid rgba(var(--accent-rgb), 0.4); /* 浅绿边框 */
+    color: var(--dark-text-color); /* 深绿输入文本 */
+}
+html.light-green-theme textarea:focus, 
+html.light-green-theme input:focus {
+    border-color: var(--accent-green); /* 浅绿聚焦边框 */
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2); /* 浅绿聚焦发光 */
+}
+
+/* 浅绿色主题标题样式 */
+html.light-green-theme h1, 
+html.light-green-theme h2 {
+    color: var(--accent-color); /* 浅绿标题 */
+}
+html.light-green-theme h3, 
+html.light-green-theme h4 {
+    border-bottom-color: var(--primary-green); /* 浅绿标题边框 */
+    color: var(--dark-green); /* 深绿小标题 */
+}
+
+/* 浅绿色主题主要内容区域 */
+html.light-green-theme main {
+    background: rgba(var(--accent-bg-rgb), 0.5); /* 浅绿透明背景 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); /* 浅阴影（适配浅背景） */
+}
+
+/* 浅绿色主题分隔线 */
+html.light-green-theme hr {
+    background: var(--primary-green); /* 浅绿分隔线 */
+}
+
+/* 浅绿色主题表格样式 */
+html.light-green-theme table {
+    background: rgba(var(--accent-bg-rgb), 0.3); /* 浅绿表格背景 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 浅阴影 */
+}
+html.light-green-theme th {
+    background: var(--secondary-green); /* 深绿表头背景（统一按钮色） */
+}
+html.light-green-theme tr:hover {
+    background: rgba(var(--accent-rgb), 0.08); /* 浅绿hover背景 */
+}
+
+/* 浅绿色主题代码样式 */
+html.light-green-theme code {
+    background: rgba(var(--dark-accent-rgb), 0.7); /* 浅绿代码背景 */
+    color: var(--dark-green); /* 深绿代码文本 */
+    border: 1px solid rgba(var(--accent-rgb), 0.2); /* 浅绿代码边框 */
+}
+html.light-green-theme pre {
+    background: rgba(var(--dark-accent-rgb), 0.8); /* 浅绿代码块背景 */
+    border-left: 4px solid var(--accent-green); /* 浅绿代码块边框 */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* 浅内阴影 */
+}
+
+/* 浅绿色主题链接样式 */
+html.light-green-theme a {
+    /* color: var(--link-text-color); */ /* 深绿链接 */
+}
+html.light-green-theme a:hover, 
+html.light-green-theme a:focus {
+    text-shadow: none; /* 浅背景无需额外发光 */
+}
+
+/* 浅绿色主题按钮样式 */
+html.light-green-theme .btn, 
+html.light-green-theme button, 
+html.light-green-theme input[type="submit"], 
+html.light-green-theme input[type="button"] {
+    box-shadow: 0 4px 15px rgba(var(--secondary-green), 0.2); /* 浅绿按钮阴影 */
+}
+html.light-green-theme .btn:hover, 
+html.light-green-theme .btn:focus {
+    background: var(--btn-hover-color); /* 浅绿按钮hover */
+    box-shadow: 0 6px 20px rgba(var(--accent-green), 0.3); /* 浅绿hover阴影 */
+}
+html.light-green-theme .btn:active {
+    box-shadow: 0 2px 10px rgba(var(--secondary-green), 0.2); /* 浅绿点击阴影 */
+}
+html.light-green-theme .btn:disabled, 
+html.light-green-theme .btn.disabled {
+    box-shadow: 0 4px 15px rgba(var(--secondary-green), 0.1); /* 浅绿禁用阴影 */
+}
+
+/* 浅绿色主题跳过导航链接 */
+html.light-green-theme a.skip-to-main:focus, 
+html.light-green-theme a.skip-to-main:active {
+    color: var(--white-color); /* 白色文本 */
+    background-color: var(--dark-green); /* 深绿背景 */
+}
+
+/* 浅绿色主题图表样式 */
+html.light-green-theme .chart-area {
+    fill: var(--neutral-color); /* 浅绿图表填充 */
+}
+html.light-green-theme .chart-line {
+    stroke: var(--dark-green); /* 深绿图表线 */
+}
+
+/* 浅绿色主题剪贴板按钮 */
+html.light-green-theme .clipboard-button {
+    box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.1); /* 浅绿按钮阴影 */
+}
+html.light-green-theme .clipboard-button:hover {
+    box-shadow: 0 6px 20px rgba(var(--accent-green), 0.2); /* 浅绿hover阴影 */
+}
+
+/* 浅绿色主题故事块 */
+html.light-green-theme .story-chunk {
+    background: rgba(var(--accent-bg-rgb), 0.6); /* 浅绿故事块背景 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 浅阴影 */
+}
+
+/* 浅绿色主题谜题主区域 */
+html.light-green-theme .puzzle-main {
+    background: rgba(var(--dark-accent-rgb), 0.4); /* 浅绿谜题背景 */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05); /* 浅内阴影 */
+}
+
+/* 浅绿色主题提示表格 */
+html.light-green-theme .hint-table {
+    background: rgba(var(--accent-bg-rgb), 0.4); /* 浅绿提示表格背景 */
+}
+html.light-green-theme .hint-table hr {
+    border-color: var(--primary-green); /* 浅绿分隔线 */
+    opacity: 0.3; /* 适配浅背景 */
+}
+
+/* 浅绿色主题谜题列表 */
+html.light-green-theme .puzzles-answer > :first-child {
+    border-bottom-color: var(--primary-green); /* 浅绿答案框边框 */
+}
+html.light-green-theme .puzzles-new {
+    background: var(--btn-bg-color); /* 深绿标签背景 */
+}
+
+/* 浅绿色主题剧透样式 */
+html.light-green-theme .spoiler:not(:hover) {
+    background-color: #81c784; /* 浅绿剧透隐藏色 */
+    color: #81c784; /* 浅绿剧透文本色 */
+}
+
+/* 浅绿色主题响应式表格 */
+html.light-green-theme .list-table th {
+    background: var(--secondary-green); /* 深绿表头背景 */
+    box-shadow: inset 0 -2px 0 0 var(--primary-green); /* 浅绿表头边框 */
+}
+
+/* 浅绿色主题导航样式 */
+html.light-green-theme nav {
+    background: rgba(var(--info-bg-color), 0.95); /* 浅绿导航背景 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 浅导航阴影 */
+}
+html.light-green-theme .top-tabs {
+    background: rgba(var(--info-bg-color), 0.95); /* 浅绿标签栏背景 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 浅阴影 */
+}
+html.light-green-theme .top-tabs a:hover {
+    background: rgba(var(--accent-rgb), 0.1); /* 浅绿hover背景 */
+}
+html.light-green-theme .selected-tab {
+    background: var(--dark-green); /* 深绿选中标签 */
+}
+
+/* 浅绿色主题表单区域 */
+html.light-green-theme .form-section {
+    background: rgba(var(--accent-bg-rgb), 0.4); /* 浅绿表单区域背景 */
+    border-left: 4px solid var(--primary-green); /* 浅绿表单边框 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); /* 浅阴影 */
+}
+html.light-green-theme .form-row, 
+html.light-green-theme .note {
+    background: rgba(var(--accent-bg-rgb), 0.6); /* 浅绿表单行背景 */
+    border-left: 3px solid var(--primary-green); /* 浅绿表单行边框 */
+}
+html.light-green-theme .form-row:hover {
+    box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.15); /* 浅绿hover阴影 */
+}
+
+/* 浅绿色主题错误列表 */
+html.light-green-theme .errorlist {
+    background: rgba(220, 20, 60, 0.9); /* 错误红色背景（保持警示性，不破坏浅绿主调） */
+    box-shadow: 0 4px 16px rgba(220, 20, 60, 0.2); /* 错误红色阴影 */
+}
+
+/* 浅绿色主题键盘按键样式 */
+html.light-green-theme kbd {
+    border: 2px solid var(--primary-green); /* 浅绿按键边框 */
+    background: rgba(var(--dark-accent-rgb), 0.6); /* 浅绿按键背景 */
+    color: var(--dark-green); /* 深绿按键文本 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 浅按键阴影 */
+}
+
+/* 浅绿色主题页脚样式 */
+html.light-green-theme footer {
+    opacity: 0.8; /* 浅背景页脚稍亮 */
+    border-top: 1px solid rgba(var(--accent-rgb), 0.4); /* 浅绿页脚边框 */
+}
+
+/* 浅绿色主题滚动条美化 */
+html.light-green-theme ::-webkit-scrollbar-track {
+    background: rgba(var(--dark-accent-rgb), 0.5); /* 浅绿滚动条轨道 */
+}
+html.light-green-theme ::-webkit-scrollbar-thumb {
+    background: var(--secondary-green); /* 深绿滚动条滑块 */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* 浅滑块阴影 */
+}
+html.light-green-theme ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-green); /* 浅绿滚动条hover */
+}
+
+/* 浅绿色主题小屏幕响应式调整 */
+@media screen and (max-width: 768px) {
+    html.light-green-theme body {
+        padding: 0 1rem;
+    }
+    html.light-green-theme main {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+    html.light-green-theme .btn {
+        padding: 10px 20px;
+    }
+}
+/* 进度条容器 */
+.puzzle-progress-container {
+    position: relative;
+    width: 80px;           /* 宽度保持 */
+    height: 14px;          /* 核心修改：增加高度，使其变粗 */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 7px;    /* 圆角随高度调整 */
+    cursor: help;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: visible;     /* 必须可见，否则右侧提示框会被切掉 */
+}
+
+/* 进度条轨道 */
+.puzzle-progress-bar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;    /* 保持圆角 */
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* 增加一点内阴影增加质感 */
+}
+
+/* 颜色层 */
+.bar-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.bar-unlocked { background-color: #d32f2f; opacity: 0.8; z-index: 1; }
+.bar-solved   { background-color: #4caf50; z-index: 2; }
+
+/* 核心修改：悬浮提示框 (右侧单行) */
+.progress-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    
+    /* 定位到右侧 */
+    left: 100%; 
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+    margin-left: 12px;           /* 与进度条的间距 */
+    
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    white-space: nowrap;         /* 强制单行不换行 */
+    z-index: 999;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    
+    /* Flex布局让内部文字垂直对齐 */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 分隔符样式 */
+.progress-tooltip .sep {
+    opacity: 0.5;
+    margin: 0 2px;
+}
+
+/* 箭头指向左侧 */
+.progress-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* 位于提示框左侧 */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    /* 右边有颜色，指向左边 */
+    border-color: transparent rgba(0, 0, 0, 0.9) transparent transparent;
+}
+
+/* 鼠标悬浮时显示 */
+.puzzle-progress-container:hover .progress-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 适配浅色主题 (可选) */
+html.light-green-theme .puzzle-progress-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 新增：Flex 容器，让标题、进度条、统计水平排列 */
+.puzzle-flex-wrapper {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    gap: 12px;           /* 元素之间的间距 */
+    flex-wrap: wrap;     /* 屏幕太窄时允许换行 */
+}
+
+/* 适配浅色模式 */
+html.light-green-theme .puzzle-progress-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}

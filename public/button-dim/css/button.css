@@ -1,0 +1,111 @@
+.mini-button {
+    transform: scale(1.05);
+    height: 100px;
+    max-width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: inline;
+}
+
+.mini-button:hover {
+    filter: brightness(1.1);
+}
+
+.mini-button:active {
+    transform: scale(0.95);
+}
+
+.buyDim {
+    background-color: var(--accent-color);
+}
+
+.buyTick {
+    background-color: var(--accent-color);
+}
+
+dimensionsName {
+    display: flex;
+    position: fixed;
+    left: 50px;
+}
+
+dimensionsAmount {
+}
+
+dimensionsCost {
+    display: flex;
+    position: fixed;
+    right: 50px;
+}
+
+.cantbuy {
+    background: #f55;
+}
+
+IV { 
+    color: #55FF55;
+}
+
+LuV {
+    color: #FF55FF;
+}
+
+ZPM {
+    color: #55FFFF;
+}
+
+UV {
+    color: #00AA00;
+}
+
+UHV {
+    color: #AA0000;
+}
+
+UEV {
+    color: #AA00AA;
+}
+
+UIV {
+    color: #0000AA;
+}
+
+UMV {
+    color: #FF5555;
+    text-decoration: underline;
+}
+
+UXV {
+    color: #AA00AA;
+    text-decoration: underline;
+}
+
+MAX {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.click-counter #tick-count {
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.resDisplay {
+    text-align: left;
+    margin: 40px auto;
+    padding: 2rem;
+    background: rgba(var(--accent-bg-rgb), 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid var(--accent-color);
+    position: absolute;
+    left: -200px;
+    top: 1925px;
+}

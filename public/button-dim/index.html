@@ -1,0 +1,1110 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>SECO Puzzle Hunt</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="FIXMEbasehtml">
+    <meta property="og:description" content="Registration for this year's SECO Puzzle Hunt is now open!">
+    <meta property="og:image" content="https://secopuzzle.comFIXMEbasehtml">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/story.css">
+
+    <link rel="stylesheet" href="css/button.css">
+
+	<script src="js/LZString.js"></script>
+	<script src="js/break_eternity.js"></script>
+	<script src="js/save.js"></script>
+	<script src="js/saveload.js"></script>
+	<script src="js/button.js"></script>
+	<script src="js/format.js"></script>
+
+    <!-- 关键修复：在CSS加载后立即设置主题，避免闪烁 -->
+    <script>
+        // 在页面渲染前就读取本地存储的主题偏好
+        try {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const htmlRoot = document.documentElement;
+
+            // 移除默认主题类
+            htmlRoot.classList.remove('light-green-theme', 'dark-theme');
+
+            // 应用保存的主题
+            if (savedTheme === 'light-green') {
+                htmlRoot.classList.add('light-green-theme');
+            } else {
+                htmlRoot.classList.add('light-green-theme');
+                //htmlRoot.classList.add('dark-theme');
+            }
+        } catch (e) {
+            // 处理可能的异常（如浏览器不支持localStorage）
+            document.documentElement.classList.add('dark-theme');
+        }
+    </script>
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/static/images/favicon.20f2255ee34b.ico"
+        type="image/vnd.microsoft.icon">
+
+    <script>
+        /* FIXME */
+    </script>
+
+    <style>
+        /* 导航栏样式 */
+        .top-navbar {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .tray {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .top-tabs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.5rem 0;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .top-team-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .site-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .site-nav a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* 快捷方式样式调整：不置顶但不被遮挡 */
+        #shortcuts-container {
+            width: 100%;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            /* 默认隐藏 */
+        }
+
+        #shortcuts {
+            position: relative;
+            /* 相对定位，跟随文档流 */
+            margin: 0 auto;
+            z-index: 100;
+            /* 确保在导航栏上方 */
+            background: var(--dropdown-bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            min-width: 300px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .theme-switcher {
+            margin-left: 0.5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .site-nav {
+                gap: 0.75rem;
+                padding: 0 0.5rem;
+            }
+
+            .site-nav a {
+                padding: 6px 12px;
+                font-size: 1.3rem;
+            }
+
+            .top-team-actions {
+                gap: 0.75rem;
+                padding: 0 0.5rem;
+            }
+
+            /* 手机版快捷方式调整 */
+            #shortcuts {
+                width: 100%;
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-to-main"></a>
+    <nav class="top-navbar">
+        <span class="tray">
+            <div class="top-tabs">
+                <div class="top-team-actions">                    <div id="nav-team-name">
+                        <a class="team-name" href="/team/root">辉影神秘</a>
+                    </div>
+                    <span class="current-stat" title="Available hints">
+
+                        <svg width="32" height="32" version="1.1" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg"
+                            class="hunt-icon">
+                            <path d="M1 4 A3 3 0 0 1 7 4 3 3 0 0 1 1 4z"
+                                style="stroke:currentColor;fill:none;stroke-width: 0.5" />
+                            <text x="4" y="4" font-family="Verdana" font-size="4" dy="0.35em" text-anchor="middle"
+                                style="stroke:currentColor;fill:currentColor;stroke-width: 0.3">H</text>
+                        </svg>
+
+                        <span class="current-stat-label">0.5</span>
+                    </span>
+                    <span class="current-stat" title="Solves: 17">
+
+                        <svg width="32" height="32" version="1.1" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg"
+                            class="hunt-icon">
+                            <path d="M1 4 A3 3 0 0 1 7 4 3 3 0 0 1 1 4z"
+                                style="stroke:currentColor;fill:none;stroke-width: 0.5" />
+                            <text x="4" y="4" font-family="Verdana" font-size="4" dy="0.35em" text-anchor="middle"
+                                style="stroke:currentColor;fill:currentColor;stroke-width: 0.3">S</text>
+                        </svg>
+
+                        <span class="current-stat-label">61</span>
+                    </span>
+                    <a href="/logout">登出</a>
+
+                </div>
+
+                <div class="site-nav">
+                    <a class="selected-tab" href="/">
+                        主页
+                    </a>
+                    <a href="/about">
+                        关于
+                    </a>
+                    <a href="/story">
+                        剧情
+                    </a>
+                    <a href="/puzzles">
+                        题目
+                    </a>
+                    <a href="/teams">
+                        队伍
+                    </a>
+                    <a href="/errata">
+                        更新
+                    </a>
+                    <a href="https://secopuzzle.com/archive">
+                        档案
+                    </a>
+
+                    <div class="theme-switcher">
+                        <button id="themeToggle" class="btn btn-sm">
+                            <span class="dark-icon">🌙 深绿</span>
+                            <span class="light-icon" style="display: none;">☀️ 浅绿</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </nav>
+    <script>
+
+        openSocket('/ws/team', showNotify);
+        // 主题切换功能
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const htmlRoot = document.documentElement;
+
+            htmlRoot.classList.remove('light-green-theme', 'dark-theme');
+
+            if (savedTheme === 'light-green') {
+                htmlRoot.classList.add('light-green-theme');
+                document.querySelector('.dark-icon').style.display = 'none';
+                document.querySelector('.light-icon').style.display = 'inline';
+            } else {
+                htmlRoot.classList.add('dark-theme');
+                document.querySelector('.dark-icon').style.display = 'inline';
+                document.querySelector('.light-icon').style.display = 'none';
+            }
+        }
+
+        function toggleTheme() {
+            const htmlRoot = document.documentElement;
+            const isLightGreen = htmlRoot.classList.contains('light-green-theme');
+
+            if (isLightGreen) {
+                htmlRoot.classList.remove('light-green-theme');
+                htmlRoot.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlRoot.classList.remove('dark-theme');
+                htmlRoot.classList.add('light-green-theme');
+                localStorage.setItem('theme', 'light-green');
+            }
+
+            // 更新按钮显示
+            applySavedTheme();
+        }
+
+        // 页面加载完成后初始化按钮状态
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('theme')) {
+                localStorage.setItem('theme', 'dark');
+            }
+
+            // 确保按钮状态正确
+            applySavedTheme();
+
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+        });
+    </script>
+
+    <div class="top-more-actions">
+
+    </div>
+    <div class="content">
+
+        <style>
+            @media print {
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .feedback,
+                .register {
+                    display: none;
+                }
+
+                .print-register {
+                    text-align: center;
+                    margin: 20px 0 40px;
+                }
+            }
+
+            @media screen {
+                .print-register {
+                    display: none;
+                }
+
+                .feedback,
+                .register {
+                    text-align: center;
+                    margin-bottom: 40px;
+                }
+
+                .register .btn {
+                    height: 48px;
+                    line-height: 48px;
+                    font-size: 3rem;
+                }
+            }
+
+            .footnote {
+                font-size: 80%;
+                line-height: 1.5;
+            }
+
+            /* 滑动窗口容器 */
+            .sliding-window-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 20px;
+                scroll-snap-type: x proximity;
+                -webkit-overflow-scrolling: touch;
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* 单个滑动窗口 */
+            .sliding-window {
+                display: inline-block;
+                vertical-align: top;
+                min-width: 280px;
+                max-width: 350px;
+                width: 300px;
+                margin: 0 15px;
+                padding: 20px;
+                background: rgba(var(--accent-bg-rgb), 0.3);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                scroll-snap-align: start;
+                transition: transform 0.3s ease;
+                position: relative;
+                backdrop-filter: blur(5px);
+            }
+
+            /* 标题样式 */
+            .sliding-window h3,
+            .clock-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                color: var(--accent-color);
+                font-weight: 600;
+                border-bottom: 2px solid var(--border-color);
+                padding-bottom: 0.5rem;
+            }
+
+            /* 内容区样式 */
+            .info-desc {
+                white-space: normal;
+                word-wrap: break-word;
+                word-break: break-all;
+                overflow-y: auto;
+                max-height: 200px;
+                line-height: 1.6;
+                color: var(--body-text-color);
+            }
+
+            /* 悬停效果 */
+            .sliding-window:hover,
+            .clock-container:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.2);
+                transition: all 0.3s ease;
+            }
+
+            /* 链接样式 */
+            .info-desc a {
+                color: var(--link-text-color);
+                text-decoration: none;
+            }
+
+            .info-desc a:hover {
+                color: var(--link-hover-color);
+                text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.6);
+            }
+
+            /* 移动端适配 */
+            @media (max-width: 768px) {
+                .sliding-window-container {
+                    padding: 10px;
+                    white-space: normal;
+                }
+
+                .sliding-window {
+                    display: block;
+                    width: 90%;
+                    max-width: 100%;
+                    margin: 10px auto;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                }
+
+                .info-desc {
+                    max-height: none;
+                }
+
+                .clock-container {
+                    padding: 15px;
+                    margin: 20px 10px;
+                }
+            }
+
+            .clock-container {
+                text-align: center;
+                margin: 40px auto;
+                padding: 2rem;
+                background: rgba(var(--accent-bg-rgb), 0.2);
+                border-radius: 16px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                max-width: 900px;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                border-left: 4px solid var(--accent-color);
+            }            .clock-root {
+                --field-gap: 2rem;
+                --cell-size: 3rem;
+                --cell-border-size: max(calc(var(--cell-size) / 16), 1.5px);
+                --cell-background-color: rgba(var(--dark-accent-rgb), 0.6);
+                --hand-color: var(--accent-color);
+            }
+
+            .clock-root * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .clock-display {
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                padding: 10px 0;
+            }
+
+            .clock-clock {
+                display: flex;
+                gap: var(--field-gap);
+            }
+
+            .clock-clock>.clock-pair {
+                display: flex;
+                gap: .125rem;
+            }
+
+            .clock-digit {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                gap: .125rem;
+            }
+
+            .clock-cell {
+                height: var(--cell-size);
+                width: var(--cell-size);
+                position: relative;
+                background-color: var(--cell-background-color);
+                border: var(--cell-border-size) solid var(--cell-border-color);
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+
+            .clock-cell:hover {
+                box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.3);
+            }
+
+            .clock-cell>.clock-hand {
+                width: 50%;
+                height: var(--cell-border-size);
+                background-color: var(--hand-color);
+                position: absolute;
+                transform-origin: center left;
+                top: 50%;
+                left: 50%;
+                translate: 0% -50%;
+                rotate: 135deg;
+                transition: rotate .25s ease-out;
+            }
+
+            .clock-cell>.clock-dot {
+                width: var(--cell-border-size);
+                height: var(--cell-border-size);
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                translate: -50% -50%;
+                background-color: var(--hand-color);
+                border-radius: 50%;
+            }
+
+            /* 响应式调整 */
+            @media (max-width: 1440px) {
+                .clock-root {
+                    --cell-size: 2rem;
+                }
+            }
+
+            @media (max-width: 1024px) {
+                .clock-root {
+                    --field-gap: 1rem;
+                    --cell-size: 1.5rem;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .clock-root {
+                    --field-gap: .5rem;
+                    --cell-size: 1rem;
+                }
+
+                .clock-title {
+                    font-size: 1.2rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .clock-root {
+                    --cell-size: .75rem;
+                }
+            }
+
+            /* 按钮点击区域样式 */
+            .button-container {
+                text-align: center;
+                margin: 40px auto;
+                padding: 2rem;
+                background: rgba(var(--accent-bg-rgb), 0.2);
+                border-radius: 16px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                max-width: 500px;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                border-left: 4px solid var(--accent-color);
+            }
+
+            .button-container h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+
+            .button-wrapper {
+                position: relative;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+
+            .clickable-button {
+                max-width: 200px;
+                height: auto;
+                cursor: pointer;
+                transition: transform 0.2s ease, filter 0.2s ease;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .clickable-button:hover {
+                transform: scale(1.05);
+                filter: brightness(1.1);
+            }
+
+            .clickable-button:active {
+                transform: scale(0.95);
+            }
+
+            .click-counter {
+                margin-top: 15px;
+                font-size: 1.2rem;
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+
+            .click-counter #click-count {
+                font-size: 2rem;
+                color: var(--accent-color);
+                font-weight: bold;
+            }
+
+            .button-message {
+                margin-top: 10px;
+                font-size: 0.95rem;
+                color: var(--body-text-color);
+                min-height: 1.5em;
+                transition: color 0.3s ease;
+            }
+
+            .button-message.success {
+                color: #4CAF50;
+            }
+
+            .button-message.error {
+                color: #f44336;
+            }
+
+            .button-message.info {
+                color: var(--accent-color);
+            }
+
+            @media (max-width: 768px) {
+                .button-container {
+                    padding: 1.5rem;
+                    max-width: 90%;
+                }
+
+                .clickable-button {
+                    max-width: 150px;
+                }
+            }
+        </style>
+
+        <h1>SECO Puzzle Hunt</h1>
+        <div class="sliding-window-container">
+            <!-- 滑动窗口1：这是什么？ -->
+            <div class="sliding-window">
+                <h3>这是什么？</h3>
+                <div class="info-desc">
+
+                    这是一个线上的解谜比赛（Puzzle Hunt），注册已经开始！请务必查看我们的<a href="/about">关于</a>页面以获取更多信息。
+                </div>
+            </div>
+
+            <!-- 滑动窗口2：什么时间？ -->
+            <div class="sliding-window">
+                <h3>什么时间？</h3>
+                <div class="info-desc">
+                    Puzzle Hunt 将于<time datetime="2026-01-31T20:00:00+08:00" data-format="F j, Y \a\t g:i A T">January
+                        31, 2026 at 8:00 PM CST</time>开始，并于<time datetime="2026-02-12T20:00:00+08:00"
+                        data-format="F j, Y \a\t g:i A T">February 12, 2026 at 8:00 PM CST</time>结束。                </div>
+            </div>
+
+            <!-- 滑动窗口3：谁主办的？ -->
+            <div class="sliding-window">
+                <h3>谁主办的？</h3>
+                <div class="info-desc">
+                    这是由一个不想起床的屑主办的解谜比赛，请在比赛开赛前加入QQ群：897975800以获取实时更新。                </div>
+            </div>
+        </div>
+
+        <!-- 时钟 -->
+        <div class="clock-container">
+            <h2 class="clock-title">当前时间</h2>
+            <div class="clock-root">
+                <div id="clock-app" class="clock-display"></div>
+            </div>
+        </div>
+        <!-- GIF按钮点击区域 -->
+        <div id="button-container" class="button-container">
+
+            <h2>如果遇到情况，如卡题或遇到孬题，请点击进行泄愤：</h2>
+
+            <div class="button-wrapper">
+                <img id="click-button" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="clickable-button" onclick="pushButton()">
+            </div>
+            <div class="click-counter">
+                总点击次数：<span id="click-count">0</span>
+            </div>
+            <div class="click-counter">
+                服务器速度：<span id="tick-count">0</span>
+            </div>
+            <p id="button-message" class="button-message"></p>
+        </div>
+        <div id="button-container" class="clock-container">
+
+            <h4 style="color: var(--accent-color);">孬题太多了，按钮根本不够按：</h4>
+
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第一<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions1" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim1" class="buyDim" onclick="buyDim(1)">
+                        需求: <b id="costdimensions1">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第二<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions2" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim2" class="buyDim" onclick="buyDim(2)">
+                        需求: <b id="costdimensions2">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第三<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions3" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim3" class="buyDim" onclick="buyDim(3)">
+                        需求: <b id="costdimensions3">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第四<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions4" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim4" class="buyDim" onclick="buyDim(4)">
+                        需求: <b id="costdimensions4">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第五<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions5" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim5" class="buyDim" onclick="buyDim(5)">
+                        需求: <b id="costdimensions5">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第六<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions6" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim6" class="buyDim" onclick="buyDim(6)">
+                        需求: <b id="costdimensions6">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第七<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions7" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim7" class="buyDim" onclick="buyDim(7)">
+                        需求: <b id="costdimensions7">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+            <div style="display: inline-flex">
+                <dimensionsName>
+                    第八<img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif" alt="Click Button" class="mini-button" onclick="pushButton()">维度
+                </dimensionsName>
+                <dimensionsAmount>
+                    你有 <b id="dimensions8" style="color: var(--accent-color);">0</b> 个本维度按钮
+                </dimensionsAmount>
+                <dimensionsCost>
+                    <button id="buyDim8" class="buyDim" onclick="buyDim(8)">
+                        需求: <b id="costdimensions8">0</b> 按钮
+                    </button>
+                </dimensionsCost>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div id="button-container" class="clock-container">
+            <h4 style="color: var(--accent-color);">你这服务器也太菜了吧：</h4>
+            <div id="ticks">
+
+            </div>
+        </div>
+        <script>
+            // 时钟js
+            (function () {
+                const e = document.createElement("link").relList;
+                if (e && e.supports && e.supports("modulepreload")) return;
+                for (const n of document.querySelectorAll('link[rel="modulepreload"]')) r(n);
+                new MutationObserver(n => {
+                    for (const i of n) if (i.type === "childList") for (const a of i.addedNodes) a.tagName === "LINK" && a.rel === "modulepreload" && r(a)
+                }).observe(document, { childList: !0, subtree: !0 });
+                function t(n) {
+                    const i = {};
+                    return n.integrity && (i.integrity = n.integrity), n.referrerPolicy && (i.referrerPolicy = n.referrerPolicy), n.crossOrigin === "use-credentials" ? i.credentials = "include" : n.crossOrigin === "anonymous" ? i.credentials = "omit" : i.credentials = "same-origin", i
+                }
+                function r(n) {
+                    if (n.ep) return;
+                    n.ep = !0;
+                    const i = t(n);
+                    fetch(n.href, i)
+                }
+            })();
+            class ClockElementCreator {
+                create(e) {
+                    const t = document.createElement(e.type);
+                    return e.id && (t.id = e.id),
+                        e.classes && t.classList.add(...e.classes),
+                        e.data && Object.entries(e.data).forEach(([r, n]) => { t.dataset[r] = n.toString() }),
+                        e.children && e.children.forEach(r => this.append(t, r)),
+                        t;
+                }
+
+                get(e) {
+                    if (e.id) {
+                        const t = document.getElementById(e.id);
+                        if (!t) throw new Error(`Element with id "${e.id}" not found`);
+                        const r = Array.from(t.childNodes);
+                        return { element: t, children: r };
+                    }
+                    if (e.data) {
+                        const t = document.querySelector(`[data-${e.data.key}="${e.data.value}"]`);
+                        if (!t) throw new Error(`Element with data-${e.data.key}="${e.data.value}" not found`);
+                        const r = Array.from(t.childNodes);
+                        return { element: t, children: r };
+                    }
+                    throw new Error("Id or data attribute required to find an element.");
+                }
+
+                append(e, t) {
+                    typeof e == "string" && document.getElementById(e).appendChild(t),
+                        e instanceof HTMLElement && e.appendChild(t);
+                }
+
+                children(e) {
+                    return Array.from(e.childNodes);
+                }
+            }
+
+            const clockElementCreator = new ClockElementCreator();
+
+            class ClockDot {
+                create() {
+                    return clockElementCreator.create({ type: "div", classes: ["clock-dot"] });
+                }
+            }
+
+            const clockDot = new ClockDot();
+
+            class ClockHand {
+                create() {
+                    return clockElementCreator.create({ type: "div", classes: ["clock-hand"] });
+                }
+
+                tick(e, t) {
+                    e.style.rotate = `${t}deg`;
+                }
+            }
+
+            const clockHand = new ClockHand();
+
+            class ClockCell {
+                create(e) {
+                    return clockElementCreator.create({
+                        type: "div",
+                        classes: ["clock-cell"],
+                        data: { index: e },
+                        children: [clockHand.create(), clockHand.create(), clockDot.create()]
+                    });
+                }
+
+                tick(e, t) {
+                    clockElementCreator.children(e).map((r, n) => clockHand.tick(r, t[n]));
+                }
+            }
+
+            const clockCell = new ClockCell();
+
+            const symbolMap = {
+                " ": [135, 135],
+                "┘": [180, 270],
+                "└": [0, 270],
+                "┐": [90, 180],
+                "┌": [0, 90],
+                "-": [0, 180],
+                "|": [90, 270]
+            };
+
+            const digitMap = {
+                0: ["┌", "-", "-", "┐", "|", "┌", "┐", "|", "|", "|", "|", "|", "|", "|", "|", "|", "|", "└", "┘", "|", "└", "-", "-", "┘"],
+                1: ["┌", "-", "┐", " ", "└", "┐", "|", " ", " ", "|", "|", " ", " ", "|", "|", " ", "┌", "┘", "└", "┐", "└", "-", "-", "┘"],
+                2: ["┌", "-", "-", "┐", "└", "-", "┐", "|", "┌", "-", "┘", "|", "|", "┌", "-", "┘", "|", "└", "-", "┐", "└", "-", "-", "┘"],
+                3: ["┌", "-", "-", "┐", "└", "-", "┐", "|", " ", "┌", "┘", "|", " ", "└", "┐", "|", "┌", "-", "┘", "|", "└", "-", "-", "┘"],
+                4: ["┌", "┐", "┌", "┐", "|", "|", "|", "|", "|", "└", "┘", "|", "└", "-", "┐", "|", " ", " ", "|", "|", " ", " ", "└", "┘"],
+                5: ["┌", "-", "-", "┐", "|", "┌", "-", "┘", "|", "└", "-", "┐", "└", "-", "┐", "|", "┌", "-", "┘", "|", "└", "-", "-", "┘"],
+                6: ["┌", "-", "-", "┐", "|", "┌", "-", "┘", "|", "└", "-", "┐", "|", "┌", "┐", "|", "|", "└", "┘", "|", "└", "-", "-", "┘"],
+                7: ["┌", "-", "-", "┐", "└", "-", "┐", "|", " ", " ", "|", "|", " ", " ", "|", "|", " ", " ", "|", "|", " ", " ", "└", "┘"],
+                8: ["┌", "-", "-", "┐", "|", "┌", "┐", "|", "|", "└", "┘", "|", "|", "┌", "┐", "|", "|", "└", "┘", "|", "└", "-", "-", "┘"],
+                9: ["┌", "-", "-", "┐", "|", "┌", "┐", "|", "|", "└", "┘", "|", "└", "-", "┐", "|", "┌", "-", "┘", "|", "└", "-", "-", "┘"]
+            };
+
+            const getSymbolRotation = (digit, position) => {
+                const symbolSequence = digitMap[digit];
+                if (symbolSequence) {
+                    const symbol = symbolSequence[position];
+                    const rotation = symbolMap[symbol];
+                    if (rotation) return rotation;
+                }
+                return symbolMap[" "];
+            };
+
+            class ClockDigit {
+                create(e) {
+                    const cells = Array.from({ length: 24 }, (_, index) => clockCell.create(index));
+                    return clockElementCreator.create({
+                        type: "div",
+                        classes: ["clock-digit"],
+                        data: { index: e },
+                        children: cells
+                    });
+                }
+
+                tick(element, digit) {
+                    clockElementCreator.children(element).map((cell, index) =>
+                        clockCell.tick(cell, getSymbolRotation(digit, index))
+                    );
+                }
+            }
+
+            const clockDigit = new ClockDigit();
+
+            class ClockPair {
+                create(field) {
+                    return clockElementCreator.create({
+                        type: "div",
+                        classes: ["clock-pair"],
+                        data: { field: field },
+                        children: [clockDigit.create(0), clockDigit.create(1)]
+                    });
+                }
+
+                tick(field, timePart) {
+                    const pairElement = clockElementCreator.get({ data: { key: "field", value: field } });
+                    pairElement.children.map((digitElement, index) =>
+                        clockDigit.tick(digitElement, timePart[index])
+                    );
+                }
+            }
+
+            const clockPair = new ClockPair();
+
+            class Clock {
+                create() {
+                    const pairs = [clockPair.create("hours"), clockPair.create("minutes"), clockPair.create("seconds")];
+                    return clockElementCreator.create({
+                        type: "div",
+                        classes: ["clock-clock"],
+                        children: pairs
+                    });
+                }
+
+                tick(time) {
+                    clockPair.tick("hours", time.hours);
+                    clockPair.tick("minutes", time.minutes);
+                    clockPair.tick("seconds", time.seconds);
+                    return time;
+                }
+            }
+
+            const mainClock = new Clock();
+
+            const getCurrentTime = () => {
+                const date = new Date();
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                const seconds = String(date.getSeconds()).padStart(2, '0');
+                return { hours, minutes, seconds };
+            };
+
+            const isTimeChanged = (prev, current) =>
+                prev.hours !== current.hours ||
+                prev.minutes !== current.minutes ||
+                prev.seconds !== current.seconds;
+
+            class ClockController {
+                time = getCurrentTime();
+                specialTimeEffect = false;
+                sequenceIndex = 0;
+                sequenceSeconds = ['16', '05', '18', '06', '21', '13', '05', '04'];
+                isPaused = false;
+
+                init() {
+                    clockElementCreator.append("clock-app", mainClock.create());
+                    if (this.specialTimeEffect) {
+                        // 特殊效果：显示秒数序列
+                        this.time = { hours: '00', minutes: '00', seconds: this.sequenceSeconds[0] };
+                        mainClock.tick(this.time);
+                        this.startSequence();
+                    } else {
+                        this.tick();
+                    }
+                }
+
+                startSequence() {
+                    // 每秒更新一次秒数
+                    setInterval(() => {
+                        if (this.isPaused) return;
+
+                        this.sequenceIndex = (this.sequenceIndex + 1) % this.sequenceSeconds.length;
+
+                        // 如果回到开头，停顿2秒
+                        if (this.sequenceIndex === 0) {
+                            this.isPaused = true;
+                            setTimeout(() => {
+                                this.isPaused = false;
+                            }, 2000);
+                        }
+
+                        this.time.seconds = this.sequenceSeconds[this.sequenceIndex];
+                        mainClock.tick(this.time);
+                    }, 1000);
+                }
+
+                checkTime() {
+                    if (this.specialTimeEffect) {
+                        // 特殊效果下不更新时间
+                        return;
+                    }
+                    const newTime = getCurrentTime();
+                    if (isTimeChanged(newTime, this.time)) {
+                        this.time = mainClock.tick(newTime);
+                    }
+                }
+
+                tick() {
+                    mainClock.tick(this.time);
+                    if (!this.specialTimeEffect) {
+                        setInterval(() => this.checkTime(), 100);
+                    }
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const clockController = new ClockController();
+                clockController.init();
+
+                // 初始化按钮点击处理
+                initButtonClickHandler();
+            });
+        </script>
+    </div>
+    <div class="resDisplay">
+        <div style="display: inline-flex">
+        你有 <b id="displayButton" style="color: var(--accent-color);">0</b> <img id="click-button" width="30px" height="30px" src="https://image.secopuzzle.com/button.gif"alt="Click Button" class="mini-button" onclick="pushButton()"> 
+        </div><br>
+        <div style="display: inline-flex">
+        <b id="displayButtonGain" style="color: var(--accent-color);">0</b>
+        </div><br>
+        <div style="display: inline-flex">
+        服务器速度 <b id="displayTick" style="color: var(--accent-color);">0</b>
+        </div>
+    </div>
+    <footer>
+        Powered by <a href="https://github.com/galacticpuzzlehunt/gph-site">gph-site</a><br>
+        Made by <a href="https://github.com/shenmi124">辉影神秘</a><br>
+        Origin by <a href="https://secopuzzle.com/">SECO2</a>
+
+        <p style="text-align: center;">
+        </p>
+    </footer>
+</body>
+
+</html>

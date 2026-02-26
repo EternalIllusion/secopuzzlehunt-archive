@@ -2,6 +2,7 @@ export interface Link {
   title: string;
   type?: 'index' | 'puzzle' | 'article' | 'area' | 'scoreboard' | 'announcements' | string;
   path: string;
+  ext?:boolean;
 }
 
 export interface PidIndex extends Link {
