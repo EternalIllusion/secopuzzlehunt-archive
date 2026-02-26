@@ -1,0 +1,96 @@
+{
+  "type": "problem",
+  "title": "定量分析",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/dingliangwanbao_ce7af8480f22a51a3f24c58809ec81a5.png\" weight=600px height=400px/></p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "AFFLUENT",
+  "desc": "<font color=\"#808080\"><i>感谢购买SECO晚报！</i></font>",
+  "tips": [
+    {
+      "title": "左上角的两个扇形图分别是什么？ (2提示点)",
+      "content": "芬兰和法国国旗中的颜色比例。"
+    },
+    {
+      "title": "正上方的灰色扇形图是什么？ (2提示点)",
+      "content": "对墙角的象形。"
+    },
+    {
+      "title": "正上方的绿色扇形图是什么？ (2提示点)",
+      "content": "对某个单词进行a1z26之后每个字母占总和的比例。"
+    },
+    {
+      "title": "右上角的两个扇形图是什么？ (2提示点)",
+      "content": "对字母频率的统计，两个单词的相同字母使用相同的颜色。"
+    },
+    {
+      "title": "左侧中间的扇形图是什么？ (2提示点)",
+      "content": "空气中某类成分中各个成分的占比。"
+    },
+    {
+      "title": "左下角的三个扇形图是什么？ (2提示点)",
+      "content": "一部著名日本动漫中机体的颜色。"
+    },
+    {
+      "title": "正中间“SECO晚报”下方的图形是什么？ (2提示点)",
+      "content": "这是一首日文歌曲的开头部分，它的作者是米津玄师。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "把各个扇形图象征的单词按长度填入右下的格子里。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

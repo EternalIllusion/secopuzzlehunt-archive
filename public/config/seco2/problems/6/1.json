@@ -1,0 +1,68 @@
+{
+  "type": "problem",
+  "title": "我来秋浦正逢秋",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>本题非必做题，仅为彩蛋。</p>\n  ",
+  "answer": "ALIEN",
+  "desc": "",
+  "tips": [
+    {
+      "title": "本题需要用到哪些信息？ (15提示点)",
+      "content": "有且仅有前面五个区域的剧情。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "过渡",
+    "path": "/area/seco2/6",
+    "pgid": 6
+  }
+}

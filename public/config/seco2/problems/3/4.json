@@ -1,0 +1,80 @@
+{
+  "type": "problem",
+  "title": "多重数独",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>示例：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokuexp_4fe1aa6e9a0d67a5d015032b52f261f1.png\" weight=600px height=600px/></p>\n<p>盘面：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokumain_dac038e617c43148720c6a9e06172ef2.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/lr32svo4ox\">查看盘面</a></p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "TEARS",
+  "desc": "<font color=\"#808080\"><i>织，连，独。</i></font>",
+  "tips": [
+    {
+      "title": "我不理解“织”和“独”！ (2提示点)",
+      "content": "“织”指数织，每个数字表示连续的一段颜色，两段相同的颜色之间至少有一格是其他颜色；“独”就是正常的数独。"
+    },
+    {
+      "title": "我不理解“连”！ (3提示点)",
+      "content": "在盘面内画若干条线，每条线连接一个绿色格子和一个红色格子，绿色格子内的数字表示从它出发的线的长度，所有格子都要被线通过。"
+    },
+    {
+      "title": "我理解这些东西了还是做不出来，可以简化一下盘面吗？ (4提示点)",
+      "content": "<a href=\"https://sudokupad.app/mee8b3rv2q\">\n查看简化盘面\n</a>"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "将虚线框内的数字求和，按下面的顺序a1z26提取。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}

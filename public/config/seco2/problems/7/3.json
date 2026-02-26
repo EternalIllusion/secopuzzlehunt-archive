@@ -1,0 +1,85 @@
+{
+  "type": "problem",
+  "title": "机关塔",
+  "extendData": "",
+  "contentType": 1,
+  "content": "{% load puzzle_tags %}\n\n{% block puzzle-body-html %}\n\n<style>\n    .tower-container { max-width: 800px; margin: auto; padding: 20px; background-color: #f4f4f4; border-radius: 12px; }\n    .tower-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 1.2rem; }\n    .tower-level-nav { display: flex; align-items: center; gap: 15px; }\n    .tower-nav-btn { font-size: 1.5rem; font-weight: bold; cursor: pointer; padding: 0 10px; border-radius: 5px; user-select: none; }\n    .tower-nav-btn:hover { background-color: #ddd; }\n    .tower-nav-btn.disabled { color: #aaa; cursor: not-allowed; background-color: transparent; }\n    \n    .tower-image-wrapper { width: 50%; margin: 0 auto 20px; }\n    .tower-image { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }\n    .tower-controls { display: flex; gap: 10px; margin-bottom: 10px; }\n    #tower-submission-input { flex-grow: 1; padding: 10px; font-size: 1rem; }\n    .tower-feedback { min-height: 24px; font-weight: bold; }\n    .tower-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }\n    .tower-modal-content { background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 600px; position: relative; max-height: 80vh; overflow-y: auto; }\n    .tower-modal-close { position: absolute; top: 10px; right: 15px; font-size: 2rem; cursor: pointer; border: none; background: none; }\n    #tower-history-list { list-style: none; padding: 0; }\n    #tower-history-list li { padding: 8px 0; border-bottom: 1px solid #eee; }\n    \n    /* 新增：文字样式 */\n    .tower-intro-text { margin-bottom: 20px; line-height: 1.6; }\n    .tower-image-caption { margin-bottom: 15px; font-style: italic; color: #555; background-color: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; }\n</style>\n\n<div class=\"tower-intro-text\">\n    <p>你来到了一座塔下面，这座塔虽然小巧，但是其八面都是机关。每一层塔的上楼通道都被密码门挡住了，你要找到对应的密码才能开门，获得最上层的宝物。</p>\n    <p>你注意到这个塔的机关是环环相扣的，从第二层开始每一层需要把上一层绿色框内的数字填入到本关的所有问号内，就能探到这个塔的奥秘。</p>\n</div>\n\n<div class=\"tower-container\">\n    <div class=\"tower-header\">\n        <div class=\"tower-level-nav\">\n            <div id=\"tower-prev-btn\" class=\"tower-nav-btn\">&lt;</div>\n            <span id=\"tower-level-text\">当前小关: <b id=\"tower-level-display\">{{ team.tower_state.current_level|default:1 }}</b></span>\n            <div id=\"tower-next-btn\" class=\"tower-nav-btn\">&gt;</div>\n        </div>\n        <span>剩余提交次数: <b id=\"tower-attempts-display\">{{ team.tower_state.submission_attempts_left|default:5 }}</b></span>\n    </div>\n\n    <!-- 动态变化的关卡描述 -->\n    <div class=\"tower-image-caption\" id=\"tower-level-description\">\n        <!-- 这里的内容会被JavaScript动态更新 -->\n    </div>\n\n    <div class=\"tower-image-wrapper\">\n        <a id=\"tower-image-link\" href=\"\" target=\"_blank\" rel=\"noopener noreferrer\">\n            <img id=\"tower-image\" src=\"\" alt=\"Puzzle Image\" class=\"tower-image\">\n        </a>\n    </div>\n    <div class=\"tower-controls\">\n        <input type=\"text\" id=\"tower-submission-input\" placeholder=\"输入答案\">\n        <button id=\"tower-submit-btn\" class=\"btn\">提交</button>\n    </div>\n    <div class=\"tower-feedback\" id=\"tower-feedback-display\"></div>\n    \n    <div class=\"tower-actions\" style=\"display: flex; gap: 10px; margin-top: 15px;\">\n        <button id=\"tower-history-btn\" class=\"btn\">查看历史记录</button>\n        \n        <!-- 【新增】兑换按钮 -->\n        <button id=\"exchange-hints-btn\" class=\"btn btn-secondary\">\n            使用提示点换次数 (消耗 {{ HINT_COST_FOR_ATTEMPTS }})\n            <!-- 显示当前拥有的提示点 -->\n            <span style=\"font-weight: bold;\">\n                (可用: <span id=\"hint-balance-display\">{{ team.num_hints_remaining|truncate_two_decimals }}</span>)\n            </span>\n        </button>\n    </div>\n</div>\n\n<div class=\"tower-modal-overlay\" id=\"tower-history-modal\">\n    <div class=\"tower-modal-content\">\n        <button class=\"tower-modal-close\" id=\"tower-history-close-btn\">&times;</button>\n        <h2>提交历史</h2>\n        <ul id=\"tower-history-list\"></ul>\n    </div>\n</div>\n\n<script>\ndocument.addEventListener('DOMContentLoaded', () => {\n    // --- DOM 元素获取 ---\n    const levelText = document.getElementById('tower-level-text');\n    const levelDisplay = document.getElementById('tower-level-display');\n    const attemptsContainer = document.querySelector('.tower-header > span');\n    const imageEl = document.getElementById('tower-image');\n    const descriptionEl = document.getElementById('tower-level-description');\n    const inputEl = document.getElementById('tower-submission-input');\n    const submitBtn = document.getElementById('tower-submit-btn');\n    const feedbackDisplay = document.getElementById('tower-feedback-display');\n    const historyBtn = document.getElementById('tower-history-btn');\n    const exchangeBtn = document.getElementById('exchange-hints-btn');\n    const hintBalanceDisplay = document.getElementById('hint-balance-display');\n    const historyModal = document.getElementById('tower-history-modal');\n    const historyCloseBtn = document.getElementById('tower-history-close-btn');\n    const historyList = document.getElementById('tower-history-list');\n    const prevBtn = document.getElementById('tower-prev-btn');\n    const nextBtn = document.getElementById('tower-next-btn');\n    const imageLinkEl = document.getElementById('tower-image-link');\n\n    // --- 数据初始化 ---\n    const apiUrl = \"{% url 'tower_api' %}\";\n    const csrfToken = \"{{ csrf_token }}\";\n    const isCompleted = {{ is_tower_completed_json|safe }};\n    \n    let teamCurrentLevel = parseInt(\"{{ team.tower_state.current_level|default:1 }}\");\n    let viewingLevel = teamCurrentLevel;\n    let maxReachedLevel = teamCurrentLevel;\n    \n    if (isCompleted) {\n        const totalLevels = {{ TOWER_DATA|length }};\n        maxReachedLevel = totalLevels > 0 ? totalLevels : 1;\n        viewingLevel = teamCurrentLevel > totalLevels ? totalLevels : teamCurrentLevel;\n    }\n\n    function formatHintBalance(val) {\n        const num = Number(val);\n        if (Number.isNaN(num)) return val;\n        const truncated = Math.trunc(num * 100) / 100;\n        return truncated.toFixed(2);\n    }\n\n    // --- API 调用 ---\n    async function apiCall(data) {\n        try {\n            const response = await fetch(apiUrl, { \n                method: 'POST', \n                headers: { \n                    'Content-Type': 'application/json', \n                    'X-CSRFToken': csrfToken \n                }, \n                body: JSON.stringify(data) \n            });\n            return response.json();\n        } catch (error) {\n            console.error('API call failed:', error);\n            return { success: false, error: 'Network error' };\n        }\n    }\n\n    // --- UI 更新函数 ---\n    function updateNavButtons() {\n        prevBtn.classList.toggle('disabled', viewingLevel <= 1);\n        nextBtn.classList.toggle('disabled', viewingLevel >= maxReachedLevel);\n    }\n\n    function updateLevelDescription(description) {\n        descriptionEl.innerHTML = description || `<p>第 ${viewingLevel} 关 - 仔细观察图片，找出隐藏的线索。</p>`;\n    }\n\n    function updateLevelDisplay() {\n        levelDisplay.innerText = viewingLevel;\n        if (viewingLevel === teamCurrentLevel && !isCompleted) {\n            levelText.innerHTML = `当前小关: <b id=\"tower-level-display\">${viewingLevel}</b>`;\n        } else {\n            levelText.innerHTML = `查看: 第 <b id=\"tower-level-display\">${viewingLevel}</b> 关`;\n        }\n    }\n\n    function updateAttemptsDisplay(attempts) {\n        attemptsContainer.innerHTML = `剩余提交次数: <b id=\"tower-attempts-display\">${attempts}</b>`;\n    }\n\n    // --- 事件处理 ---\n    async function handleNavClick(direction) {\n        const targetLevel = viewingLevel + direction;\n        if (targetLevel < 1 || targetLevel > maxReachedLevel) return;\n\n        const response = await apiCall({ action: 'get_level_data', level: targetLevel });\n        if (response.success) {\n            viewingLevel = targetLevel;\n            imageEl.src = response.level_data.image_url;\n            imageLinkEl.href = response.level_data.puzzle_link || '#';\n            updateLevelDescription(response.level_data.description);\n            updateLevelDisplay();\n            updateNavButtons();\n            updateAttemptsDisplay(response.team_state.attempts_left);\n            \n            // 清空反馈信息\n            feedbackDisplay.innerText = '';\n            inputEl.value = '';\n        } else {\n            alert(\"加载关卡失败: \" + response.error);\n        }\n    }\n\n    async function handleSubmit() {\n        const submission = inputEl.value;\n        if (!submission || submitBtn.disabled) return;\n\n        feedbackDisplay.innerText = \"正在提交...\";\n        submitBtn.disabled = true;\n\n        const response = await apiCall({ \n            action: 'submit', \n            submission: submission,\n            level: viewingLevel\n        });\n\n        if (!response.success) {\n            feedbackDisplay.innerText = response.message || \"发生未知错误\";\n            feedbackDisplay.style.color = 'red';\n            if (response.reason === 'no_attempts') inputEl.disabled = true;\n            submitBtn.disabled = false;\n            return;\n        }\n\n        if (response.result !== 'tower_reset_success') {\n            updateAttemptsDisplay(response.attempts_left);\n        }\n        \n        switch (response.result) {\n\n            case 'tower_reset_success':\n                feedbackDisplay.innerText = response.message;\n                feedbackDisplay.style.color = 'blue';\n                // 禁用输入和按钮，防止用户在刷新前操作\n                inputEl.disabled = true;\n                submitBtn.disabled = true;\n                // 延迟 2 秒后刷新页面，让用户看到提示\n                setTimeout(() => {\n                    window.location.reload();\n                }, 2000);\n                break;\n            \n            case 'correct':\n                feedbackDisplay.innerText = \"正确！正在进入下一关...\";\n                feedbackDisplay.style.color = 'green';\n                setTimeout(() => {\n                    teamCurrentLevel = response.new_level;\n                    maxReachedLevel = response.new_level;\n                    viewingLevel = response.new_level;\n                    imageEl.src = response.new_image_url;\n                    \n                    updateLevelDisplay();\n                    updateLevelDescription(response.new_description);\n                    updateAttemptsDisplay(response.attempts_left);\n                    \n                    feedbackDisplay.innerText = '';\n                    inputEl.value = '';\n                    submitBtn.disabled = false;\n                    updateNavButtons();\n                }, 1500);\n                break;\n\n            case 'correct_already_passed':\n                feedbackDisplay.innerText = response.message;\n                feedbackDisplay.style.color = 'green';\n                inputEl.value = '';\n                submitBtn.disabled = false;\n                break;\n\n            case 'final_correct':\n                // 文案由后端提供（response.message），前端只兜底默认提示\n                feedbackDisplay.innerText = response.message || \"恭喜！你已完成所有关卡！\";\n                feedbackDisplay.style.color = 'blue';\n                inputEl.disabled = false;\n                submitBtn.disabled = false;\n                break;\n\n            case 'milestone':\n                feedbackDisplay.innerText = response.message;\n                feedbackDisplay.style.color = 'blue';\n                inputEl.value = '';\n                submitBtn.disabled = false;\n                break;\n\n            case 'incorrect':\n                feedbackDisplay.innerText = \"答案错误\";\n                feedbackDisplay.style.color = 'red';\n                inputEl.value = '';\n                submitBtn.disabled = false;\n                break;\n        }\n    }\n \n    async function showHistory() {\n        // 【关键修正】添加 level 参数\n        const response = await apiCall({ \n            action: 'get_history',\n            level: viewingLevel \n        });\n        \n        if (response.success) {\n            historyList.innerHTML = response.history.length === 0 \n                ? '<li>本关暂无提交记录</li>'\n                : response.history.map(item => `<li><b>提交:</b> ${item.submission} <br> <b>响应:</b> ${item.response}</li>`).join('');\n            historyModal.style.display = 'flex';\n        } else {\n            alert(\"获取历史记录失败: \" + response.error);\n        }\n    }\n   \n    async function handleExchange() {\n        // 使用模板中的常量，确保与后端一致\n        const cost = {{ HINT_COST_FOR_ATTEMPTS }};\n        const attempts = {{ ATTEMPTS_PER_HINT }};\n\n        if (!confirm(`你确定要消耗 ${cost} 个提示点来换取 ${attempts} 次提交机会吗？`)) {\n            return;\n        }\n\n        exchangeBtn.disabled = true;\n        feedbackDisplay.innerText = \"正在兑换...\";\n        feedbackDisplay.style.color = 'inherit';\n\n        const response = await apiCall({\n            action: 'exchange_hint_for_attempts',\n            level: viewingLevel\n        });\n\n        if (response.success) {\n            feedbackDisplay.innerText = response.message;\n            feedbackDisplay.style.color = 'green';\n            // 更新UI\n            updateAttemptsDisplay(response.new_attempts_left);\n            hintBalanceDisplay.innerText = formatHintBalance(response.new_hints_remaining);\n        } else {\n            feedbackDisplay.innerText = response.message || \"兑换失败！\";\n            feedbackDisplay.style.color = 'red';\n        }\n\n        exchangeBtn.disabled = false;\n    }    \n\n    \n    // --- 页面初始化 ---\n    async function initializePage() {\n        const initialData = await apiCall({ action: 'get_level_data', level: viewingLevel });\n        if (initialData.success) {\n            imageEl.src = initialData.level_data.image_url;\n            imageLinkEl.href = initialData.level_data.puzzle_link || '#';\n            updateLevelDescription(initialData.level_data.description);\n            updateAttemptsDisplay(initialData.team_state.attempts_left);\n        } else {\n            descriptionEl.innerText = \"加载初始关卡失败。\";\n        }\n        \n        // if (isCompleted) {\n        //     // 这里只显示通关的通用提示，不硬编码宝箱文案\n        //     feedbackDisplay.innerText = \"恭喜！你已完成所有关卡！\";\n        //     inputEl.disabled = false;\n        //     submitBtn.disabled = false;\n        // }\n\n        updateLevelDisplay();\n        updateNavButtons();\n\n        // 事件监听\n        prevBtn.addEventListener('click', () => handleNavClick(-1));\n        nextBtn.addEventListener('click', () => handleNavClick(1));\n        submitBtn.addEventListener('click', handleSubmit);\n        exchangeBtn.addEventListener('click', handleExchange);\n        inputEl.addEventListener('keyup', (e) => { if (e.key === 'Enter') handleSubmit(); });\n        historyBtn.addEventListener('click', showHistory);\n        historyCloseBtn.addEventListener('click', () => { historyModal.style.display = 'none'; });\n        historyModal.addEventListener('click', (e) => { if (e.target === historyModal) historyModal.style.display = 'none'; });\n    }\n\n    initializePage();\n});\n</script>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n",
+  "answer": "ISLE",
+  "desc": "",
+  "tips": [
+    {
+      "title": "我卡题or提交行了怎么办？ (4提示点)",
+      "content": "请在站内信回复【塔塔开】并给出目前进度，我们会尽快反馈。"
+    },
+    {
+      "title": "我已经得到了里程碑，但我不知道怎么用！ (6提示点)",
+      "content": "注意到ft里“小巧”和“八面”两个词，它们后面能接同一个词组成成语，再结合本题是个“塔”可以得到。"
+    },
+    {
+      "title": "我已经找到了【数据删除】，但这是什么意思呢？ (6提示点)",
+      "content": "注意到文字中有一句表示了你应该遵循的顺序，你需要按顺序再做一遍题。"
+    },
+    {
+      "title": "本题的答案是什么？ (80提示点)",
+      "content": "ISLE。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "贯口",
+      "message": "那么，你是否听过一个和“塔”有关的贯口……"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "中心",
+    "path": "/area/seco2/7",
+    "pgid": 7
+  }
+}

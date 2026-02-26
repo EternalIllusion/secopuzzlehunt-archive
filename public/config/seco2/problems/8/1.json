@@ -1,0 +1,72 @@
+{
+  "type": "problem",
+  "title": "FM",
+  "extendData": "<div>\n<h1>🎉 恭喜通关！</h1>\n进入胜利页面 &rarr;</div>",
+  "contentType": 1,
+  "content": "<p>最终的秘密似乎被隐藏在了不起眼的<strong>角落</strong>中。</p>\n<p><img src=\"/config/seco2/static/assets/seco2fmresult_955a0534710fb44b4ab7b0552f5e5332.jpeg\"></p>",
+  "answer": "SECONDCHANCE",
+  "desc": "",
+  "tips": [
+    {
+      "title": "我应该做什么？ (6提示点)",
+      "content": "将这张图打印出来，折成墙角的形状。"
+    },
+    {
+      "title": "该如何提取？ (10提示点)",
+      "content": "将六个meta的答案填入横线，然后读取白色部分对应的字母。注意比例。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "FM",
+    "path": "/area/seco2/8",
+    "pgid": 8
+  }
+}

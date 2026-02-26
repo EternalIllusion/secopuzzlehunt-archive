@@ -1,0 +1,101 @@
+{
+  "type": "problem",
+  "title": "盲人摸字",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<style>\n    .blind-container { max-width: 900px; margin: 20px auto; padding: 20px; }\n    .blind-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }\n    .blind-info { font-size: 1.1rem; }\n    \n    .blind-canvas-wrapper { \n        position: relative; \n        width: 400px; \n        height: 400px; \n        margin: 20px auto;\n        border: 2px solid #333;\n        background: white;\n    }\n    \n    #blind-canvas { \n        cursor: crosshair;\n        display: block;\n    }\n    \n    .blind-controls { \n        max-width: 400px; \n        margin: 20px auto; \n        display: flex; \n        flex-direction: column;\n        gap: 10px;\n    }\n    \n    .blind-input-group { display: flex; gap: 10px; }\n    #blind-input { flex: 1; padding: 10px; font-size: 1rem; }\n    \n    .blind-buttons { display: flex; gap: 10px; flex-wrap: wrap; }\n    .blind-buttons button { flex: 1; min-width: 120px; }\n    \n    .blind-feedback { \n        min-height: 50px; \n        padding: 10px; \n        margin-top: 10px;\n        border-radius: 5px;\n        text-align: center;\n        font-weight: bold;\n    }\n    \n    .blind-feedback.success { background-color: #d4edda; color: #155724; }\n    .blind-feedback.error { background-color: #f8d7da; color: #721c24; }\n    .blind-feedback.info { background-color: #d1ecf1; color: #0c5460; }\n    \n    .blind-instructions { \n        background-color: #f8f9fa; \n        padding: 15px; \n        border-radius: 8px; \n        margin-bottom: 20px;\n        border-left: 4px solid #007bff;\n    }\n    \n    .blind-instructions h3 { margin-top: 0; color: #007bff; }\n    .blind-instructions ul { margin: 10px 0; padding-left: 20px; }\n    .blind-instructions li { margin: 5px 0; }\n\n    .blind-extra-rules {\n        margin-top: 10px;\n        padding: 10px 12px;\n        border-radius: 6px;\n        background: #fff3cd;\n        border: 1px solid #ffe08a;\n        color: #6b4e00;\n        font-weight: bold;\n        display: none;\n    }\n    \n    .blind-level-nav { \n        display: flex; \n        justify-content: center; \n        gap: 10px; \n        margin-bottom: 15px; \n    }\n    \n    .blind-level-btn { \n        padding: 8px 16px; \n        border: 2px solid #ddd; \n        background: white; \n        cursor: pointer; \n        border-radius: 5px;\n        font-weight: bold;\n    }\n    \n    .blind-level-btn.active { \n        background: #007bff; \n        color: white; \n        border-color: #007bff; \n    }\n    \n    .blind-level-btn.completed { \n        background: #28a745; \n        color: white; \n        border-color: #28a745; \n    }\n    \n    .blind-level-btn:disabled { \n        opacity: 0.5; \n        cursor: not-allowed; \n    }\n    \n    .blind-extract-btn {\n        padding: 8px 16px;\n        border: 2px solid #ffc107;\n        background: #ffc107;\n        color: #000;\n        cursor: pointer;\n        border-radius: 5px;\n        font-weight: bold;\n    }\n    \n    .blind-extract-btn:hover {\n        background: #ffb300;\n        border-color: #ffb300;\n    }\n</style>\n\n<div class=\"blind-container\">\n    <div class=\"blind-instructions\">\n        <h3>📝 游戏规则</h3>\n        <ul>\n            <li><strong>拖动探针：</strong>用鼠标拖动红色(A)和蓝色(B)两个探针</li>\n            <li><strong>观察长度：</strong>连接线上显示\"加权长度 / 实际长度\"</li>\n            <li><strong>长度计算：</strong>经过汉字部分的长度×4，未经过部分×1</li>\n            <li><strong>比例提示：</strong>连线旁边显示\"加权长度÷实际长度\"，范围1.0~4.0</li>\n            <li><strong>猜测汉字：</strong>根据探针感知的轮廓，猜出隐藏的汉字</li>\n            <li><strong>提交答案：</strong>每关有10次提交机会</li>\n        </ul>\n        <div id=\"blind-extra-rules\" class=\"blind-extra-rules\"></div>\n    </div>\n    \n    <div class=\"blind-header\">\n        <div class=\"blind-info\">\n            <span>当前关卡: <strong id=\"blind-level-display\">1</strong> / <strong id=\"blind-total-levels\">6</strong></span>\n        </div>\n        <div class=\"blind-info\">\n            <span>剩余次数: <strong id=\"blind-attempts-display\">10</strong></span>\n        </div>\n        <div class=\"blind-info\">\n            <span>提示点: <strong id=\"blind-hints-display\">0.00</strong></span>\n        </div>\n    </div>\n    \n    <div class=\"blind-level-nav\" id=\"blind-level-nav\">\n        <!-- 关卡按钮将由JS动态生成 -->\n    </div>\n    \n    <div class=\"blind-canvas-wrapper\">\n        <canvas id=\"blind-canvas\" width=\"400\" height=\"400\"></canvas>\n    </div>\n    \n    <div class=\"blind-controls\">\n        <div style=\"text-align: center; font-size: 1.2rem; font-weight: bold; color: #666;\">\n            长度比例：<span id=\"blind-ratio-display\">1.00</span>\n        </div>\n        \n        <div class=\"blind-input-group\">\n            <input type=\"text\" id=\"blind-input\" placeholder=\"输入你猜的汉字\" maxlength=\"2\">\n            <button id=\"blind-submit-btn\" class=\"btn\">提交答案</button>\n        </div>\n        \n        <div class=\"blind-buttons\">\n            <button id=\"blind-reset-btn\" class=\"btn btn-secondary\">重置探针</button>\n            <button id=\"blind-toggle-grid-btn\" class=\"btn btn-secondary\">显示/隐藏网格</button>\n            <button id=\"blind-exchange-btn\" class=\"btn btn-secondary\">+次数</button>\n        </div>\n        \n        <div id=\"blind-feedback\" class=\"blind-feedback\"></div>\n    </div>\n</div>\n\n<script>\n(function(){const _0xD=document,_0xC=Math;let _0xa,_0xb,_0xc,_0xd,_0xe,_0xf,_0xg,_0xh,_0xi,_0xj,_0xk,_0xl,_0xm,_0xn,_0xo,_0xp,_0xqa;const _0xS={l:1,a:10,c:[],t:6,g:!0,h:0};let _0xP={x:50,y:200},_0xQ={x:350,y:200},_0xR=null;let _0x4d={x:0,y:0};const _0xT=6;let _0xL={a:0,w:0,r:1};let _0xM={};const _0xU=30;_0xD.addEventListener('DOMContentLoaded',async()=>{_0xa=_0xD.getElementById('blind-canvas');_0xb=_0xa.getContext('2d');_0xc=\"{% url 'blind_api' %}\";_0xd=\"{{ csrf_token }}\";_0xe=_0xD.getElementById('blind-level-display');_0xf=_0xD.getElementById('blind-total-levels');_0xg=_0xD.getElementById('blind-attempts-display');_0xh=_0xD.getElementById('blind-hints-display');_0xi=_0xD.getElementById('blind-ratio-display');_0xj=_0xD.getElementById('blind-input');_0xk=_0xD.getElementById('blind-submit-btn');_0xl=_0xD.getElementById('blind-reset-btn');_0xm=_0xD.getElementById('blind-toggle-grid-btn');_0xn=_0xD.getElementById('blind-exchange-btn');_0xo=_0xD.getElementById('blind-feedback');_0xp=_0xD.getElementById('blind-level-nav');_0xqa=_0xD.getElementById('blind-extra-rules');const _0xF=async _0xq=>{try{const _0xr=await fetch(_0xc,{method:'POST',headers:{'Content-Type':'application/json','X-CSRFToken':_0xd},body:JSON.stringify(_0xq)});return await _0xr.json()}catch{return{success:!1,error:'网络错误'}}};const _0xG=async()=>{const _0xs=await _0xF({action:'get_state'});if(_0xs.success){_0xS.l=_0xs.state.current_level;_0xS.a=_0xs.state.attempts_left;_0xS.c=_0xs.state.completed_levels;_0xS.t=_0xs.state.total_levels;_0xS.h=_0xs.state.hint_balance;_0xV();_0xW();_0xX();_0xo.textContent='';_0xo.className='blind-feedback'}};const _0xH=async()=>{const _0xt=await _0xF({action:'get_masks'});if(_0xt.success&&_0xt.masks){for(const[_0xu,_0xv]of Object.entries(_0xt.masks)){const _0xw=atob(_0xv);const _0xx=new Uint8Array(_0xw.length);for(let _0xy=0;_0xy<_0xw.length;_0xy++){_0xx[_0xy]=_0xw.charCodeAt(_0xy)}_0xM[parseInt(_0xu)]=_0xx}}};const _0xI=(_0xz,_0xA,_0xB)=>{if(!_0xM[_0xB])return!1;if(_0xz<0||_0xz>=400||_0xA<0||_0xA>=400)return!1;const _0xE=_0xA*400+_0xz;const _0xY=_0xC.floor(_0xE/8);const _0xZ=_0xE%8;return(_0xM[_0xB][_0xY]&(1<<_0xZ))!==0};const _0xJ=()=>{const _0x0=_0xQ.x-_0xP.x;const _0x1=_0xQ.y-_0xP.y;const _0x2=_0xC.sqrt(_0x0*_0x0+_0x1*_0x1);if(_0x2<.1){_0xL={a:0,w:0,r:1};return}const _0x3=_0xC.max(100,_0xC.floor(_0x2));let _0x4=0;for(let _0x5=0;_0x5<_0x3;_0x5++){const _0x6=_0x5/_0x3;const _0x7=_0xC.floor(_0xP.x+(_0xQ.x-_0xP.x)*_0x6);const _0x8=_0xC.floor(_0xP.y+(_0xQ.y-_0xP.y)*_0x6);const _0x9=_0x2/_0x3;if(_0xI(_0x7,_0x8,_0xS.l)){_0x4+=_0x9*4}else{_0x4+=_0x9}}_0x4=_0xC.min(_0x4,_0x2*4);const _0x10=_0x2>.1?_0x4/_0x2:1;_0xL={a:_0xC.round(_0x2*100)/100,w:_0xC.round(_0x4*100)/100,r:_0xC.round(_0x10*100)/100}};const _0xK=()=>{_0xb.clearRect(0,0,400,400);if(_0xS.g){_0xb.strokeStyle='#e0e0e0';_0xb.lineWidth=.5;for(let _0x11=0;_0x11<=400;_0x11+=20){_0xb.beginPath();_0xb.moveTo(_0x11,0);_0xb.lineTo(_0x11,400);_0xb.stroke()}for(let _0x12=0;_0x12<=400;_0x12+=20){_0xb.beginPath();_0xb.moveTo(0,_0x12);_0xb.lineTo(400,_0x12);_0xb.stroke()}_0xb.strokeStyle='#b0b0b0';_0xb.lineWidth=1;for(let _0x11=0;_0x11<=400;_0x11+=100){_0xb.beginPath();_0xb.moveTo(_0x11,0);_0xb.lineTo(_0x11,400);_0xb.stroke()}for(let _0x12=0;_0x12<=400;_0x12+=100){_0xb.beginPath();_0xb.moveTo(0,_0x12);_0xb.lineTo(400,_0x12);_0xb.stroke()}}_0xb.strokeStyle='#28a745';_0xb.lineWidth=1;_0xb.setLineDash([5,5]);_0xb.beginPath();_0xb.moveTo(_0xP.x,_0xP.y);_0xb.lineTo(_0xQ.x,_0xQ.y);_0xb.stroke();_0xb.setLineDash([]);_0xb.fillStyle='#ffcccc';_0xb.strokeStyle='#ff0000';_0xb.lineWidth=1.5;_0xb.beginPath();_0xb.arc(_0xP.x,_0xP.y,_0xT,0,_0xC.PI*2);_0xb.fill();_0xb.stroke();_0xb.fillStyle='#ff0000';_0xb.font='bold 10px Arial';_0xb.textAlign='center';_0xb.fillText('A',_0xP.x,_0xP.y-_0xT-4);_0xb.fillStyle='#ccccff';_0xb.strokeStyle='#0000ff';_0xb.beginPath();_0xb.arc(_0xQ.x,_0xQ.y,_0xT,0,_0xC.PI*2);_0xb.fill();_0xb.stroke();_0xb.fillStyle='#0000ff';_0xb.fillText('B',_0xQ.x,_0xQ.y-_0xT-4);if(_0xS.l!==4){const _0x13=(_0xP.x+_0xQ.x)/2;const _0x14=(_0xP.y+_0xQ.y)/2;const _0x15=_0xQ.x-_0xP.x;const _0x16=_0xQ.y-_0xP.y;const _0x17=_0xC.sqrt(_0x15*_0x15+_0x16*_0x16);let _0x18=0,_0x19=-20;if(_0x17>0){_0x18=(-_0x16/_0x17)*20;_0x19=(_0x15/_0x17)*20}const _0x20=`${_0xL.w.toFixed(1)} / ${_0xL.a.toFixed(1)}`;_0xb.font='10px Arial';_0xb.textAlign='center';_0xb.textBaseline='middle';const _0x21=_0xb.measureText(_0x20);const _0x22=_0x21.width;_0xb.fillStyle='rgba(255,255,255,0.9)';_0xb.fillRect(_0x13+_0x18-_0x22/2-3,_0x14+_0x19-8,_0x22+6,16);_0xb.fillStyle='#28a745';_0xb.font='bold 10px Arial';_0xb.fillText(_0x20,_0x13+_0x18,_0x14+_0x19)}};const _0x47=_0x48=>{const _0x24=_0xa.getBoundingClientRect();const _0x25=_0x48.clientX-_0x24.left;const _0x26=_0x48.clientY-_0x24.top;const _0x27=_0xC.sqrt((_0x25-_0xP.x)**2+(_0x26-_0xP.y)**2);const _0x28=_0xC.sqrt((_0x25-_0xQ.x)**2+(_0x26-_0xQ.y)**2);if(_0x27<=_0xT&&_0xS.l!==5){_0xR='A';_0x4d={x:_0x25,y:_0x26}}else if(_0x28<=_0xT){_0xR='B';_0x4d={x:_0x25,y:_0x26}}};const _0x49=_0x48=>{if(!_0xR)return;const _0x30=_0xa.getBoundingClientRect();let _0x31=_0xC.max(0,_0xC.min(400,_0x48.clientX-_0x30.left));let _0x32=_0xC.max(0,_0xC.min(400,_0x48.clientY-_0x30.top));if(_0xS.l===6){const _0x4e=_0xC.abs(_0x31-_0x4d.x);const _0x4f=_0xC.abs(_0x32-_0x4d.y);if(_0x4e>_0x4f){_0x32=_0xR==='A'?_0xP.y:_0xQ.y}else{const _0x53=_0x32-(_0xR==='A'?_0xP.y:_0xQ.y);_0xP.y=_0xC.max(0,_0xC.min(400,_0xP.y+_0x53));_0xQ.y=_0xC.max(0,_0xC.min(400,_0xQ.y+_0x53));_0xJ();_0xK();_0xi.textContent=_0xL.r.toFixed(2);return}}if(_0xR==='A'){_0xP.x=_0x31;_0xP.y=_0x32}else{_0xQ.x=_0x31;_0xQ.y=_0x32}_0xJ();_0xK();_0xi.textContent=_0xL.r.toFixed(2)};const _0x4a=()=>{_0xR=null};_0xa.addEventListener('mousedown',_0x47);_0xa.addEventListener('mousemove',_0x49);_0xa.addEventListener('mouseup',_0x4a);_0xa.addEventListener('mouseleave',_0x4a);_0xa.addEventListener('touchstart',_0x4b=>{_0x4b.preventDefault();if(_0x4b.touches.length>0){const _0x4c=_0x4b.touches[0];_0x47({clientX:_0x4c.clientX,clientY:_0x4c.clientY})}},{passive:!1});_0xa.addEventListener('touchmove',_0x4b=>{_0x4b.preventDefault();if(_0x4b.touches.length>0){const _0x4c=_0x4b.touches[0];_0x49({clientX:_0x4c.clientX,clientY:_0x4c.clientY})}},{passive:!1});_0xa.addEventListener('touchend',_0x4b=>{_0x4b.preventDefault();_0x4a()},{passive:!1});_0xa.addEventListener('touchcancel',_0x4b=>{_0x4b.preventDefault();_0x4a()},{passive:!1});const _0xX=()=>{if(_0xS.l===5){_0xP={x:_0xT,y:400-_0xT};_0xQ={x:350,y:200}}else if(_0xS.l===6){_0xP={x:50,y:200};_0xQ={x:350,y:200}}else{_0xP={x:50,y:200};_0xQ={x:350,y:200}}_0xJ();_0xK();_0xi.textContent=_0xL.r.toFixed(2)};const _0x33=async()=>{const _0x34=_0xj.value.trim();if(!_0x34){_0x35('请输入答案','error');return}_0xk.disabled=!0;_0x35('正在提交...','info');const _0x36=await _0xF({action:'submit',submission:_0x34,level:_0xS.l});if(_0x36.success){if(_0x36.is_correct){_0x35(_0x36.message,'success');_0xS.c=_0x36.state.completed_levels;if(_0x36.game_completed){setTimeout(()=>{alert(' 恭喜通关！')},500)}_0xW();_0xj.value=''}else{_0x35(_0x36.message,'error');_0xS.a=_0x36.state.attempts_left;_0xg.textContent=_0xS.a}}else{_0x35(_0x36.error||'提交失败','error')}_0xk.disabled=!1};const _0x37=async()=>{if(!confirm('确定要用1点提示点兑换10次提交机会吗？'))return;_0xn.disabled=!0;const _0x38=await _0xF({action:'exchange_hints',level:_0xS.l});if(_0x38.success){_0x35(_0x38.message,'success');_0xS.a=_0x38.state.attempts_left;_0xS.h=_0x38.state.hint_balance;_0xV()}else{_0x35(_0x38.error||'兑换失败','error')}_0xn.disabled=!1};const _0x51=async()=>{const _0x52=await _0xF({action:'get_extract_info'});if(_0x52.success){alert(_0x52.extract_info.message)}else{alert(_0x52.error||'无法获取提取信息')}};const _0x35=(_0x39,_0x40)=>{_0xo.textContent=_0x39;_0xo.className=`blind-feedback ${_0x40}`};const _0xV=()=>{_0xe.textContent=_0xS.l;_0xf.textContent=_0xS.t;_0xg.textContent=_0xS.a;_0xh.textContent=_0xS.h.toFixed(2);const _0xR={4:'附加规则：不显示连线旁边的长度。',5:'附加规则：A 点固定不可移动。',6:'附加规则：拖动时只允许水平或垂直方向移动。'};if(_0xqa){if(_0xR[_0xS.l]){_0xqa.textContent=_0xR[_0xS.l];_0xqa.style.display='block'}else{_0xqa.textContent='';_0xqa.style.display='none'}}};const _0xW=()=>{_0xp.innerHTML='';for(let _0x41=1;_0x41<=_0xS.t;_0x41++){const _0x42=_0xD.createElement('button');_0x42.textContent=_0x41;_0x42.className='blind-level-btn';if(_0x41===_0xS.l)_0x42.classList.add('active');if(_0xS.c.includes(_0x41))_0x42.classList.add('completed');_0x42.addEventListener('click',()=>_0x43(_0x41));_0xp.appendChild(_0x42)}if(_0xS.c.length>=5){const _0x50=_0xD.createElement('button');_0x50.textContent='📝 提取答案';_0x50.className='blind-extract-btn';_0x50.addEventListener('click',_0x51);_0xp.appendChild(_0x50)}};const _0x43=async _0x44=>{_0xS.l=_0x44;_0xV();_0xX();_0x35('','');const _0x45=await _0xF({action:'get_level_data',level:_0x44});if(_0x45.success){_0xS.a=_0x45.state.attempts_left;_0xV();if(_0x45.level_data.show_answer){_0x35(`第${_0x44}关答案：${_0x45.level_data.answer}`,'success')}}_0xW()};_0xk.addEventListener('click',_0x33);_0xj.addEventListener('keypress',_0x46=>{if(_0x46.key==='Enter')_0x33()});_0xl.addEventListener('click',_0xX);_0xn.addEventListener('click',_0x37);_0xm.addEventListener('click',()=>{_0xS.g=!_0xS.g;_0xK()});await Promise.all([_0xG(),_0xH()]);_0xX()})})();\n</script>\n\n  ",
+  "answer": "CROSSFIRE",
+  "desc": "<font color=\"#808080\"><i>汉字，汉字，你的笔画为什么那么长</i></font>",
+  "tips": [
+    {
+      "title": "可以告诉我一些技巧吗？ (2提示点)",
+      "content": "最关键的是怎么找到汉字的边界。你可以从比例突变点、1.0区域、4.0区域等位置入手。"
+    },
+    {
+      "title": "第一个字是什么？ (1提示点)",
+      "content": "火。"
+    },
+    {
+      "title": "第二个字是什么？ (1提示点)",
+      "content": "牙。"
+    },
+    {
+      "title": "第三个字是什么？ (1提示点)",
+      "content": "纪。"
+    },
+    {
+      "title": "第四个字是什么？ (2提示点)",
+      "content": "空。"
+    },
+    {
+      "title": "第五个字是什么？ (2提示点)",
+      "content": "钱。"
+    },
+    {
+      "title": "第六个字是什么？ (2提示点)",
+      "content": "越。"
+    },
+    {
+      "title": "我实在不想做了，可以直接告诉我最终的提取方法吗？ (4提示点)",
+      "content": "请在这些汉字中选择部件，拼成一款游戏的名字。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "穿越火线",
+      "message": "答对了！请提交它的英文名。(9)"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

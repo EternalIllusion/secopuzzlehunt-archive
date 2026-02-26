@@ -1,0 +1,89 @@
+{
+  "type": "problem",
+  "title": "先天与后天",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/bio1_13a74708da1dffe603f2f1dc5d4dcd81.png\"></p>\n<p><img src=\"/config/seco2/static/assets/bio2_745de650a7848485d36c8957254e28fd.png\"></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n\n",
+  "answer": "MENDEL",
+  "desc": "<font color=\"#808080\"><i>&emsp;为什么 puzzle hunt 里还有遗传题啊！</i></font>",
+  "tips": [
+    {
+      "title": "这些表现型和基因对应什么？ (3提示点)",
+      "content": "六十四卦和六爻。"
+    },
+    {
+      "title": "我看不懂这个基因遗传的规则？ (6提示点)",
+      "content": "有阴阳两种等位基因，男性阳为显性基因，女性阴为显性基因。"
+    },
+    {
+      "title": "具体的提取方式是什么？ (2提示点)",
+      "content": "使用甲乙丙丁在周易中的爻辞来提取。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "ABCD",
+      "message": "你做出了这道多选题的一个可能的答案，接下来该做这个puzzle了。"
+    },
+    {
+      "answer": "BCD",
+      "message": "你做出了这道多选题的一个可能的答案，接下来该做这个puzzle了。"
+    },
+    {
+      "answer": "孟德尔",
+      "message": "请提交Mendel。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

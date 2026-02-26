@@ -1,0 +1,80 @@
+{
+  "type": "problem",
+  "title": "差序格局Plus",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/chatwo1_04838eb60647928acdaa42c678ba1e80.svg\" weight=600px height=600px/></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "TANGELA",
+  "desc": "<font color=\"#808080\"><i>他们曾经以为自己是世界的中心，而错位的格局一圈又一圈地蔓延，让多少楼台散入江南的烟雨之中</i></font>",
+  "tips": [
+    {
+      "title": "这道题和SECO1的《差序格局》有什么联系？ (3提示点)",
+      "content": "圆形仍然表示亲属关系，但这道题表示的是上帝视角，并且不区分性别。"
+    },
+    {
+      "title": "能否再详细讲一下规则？ (3提示点)",
+      "content": "每张图的核心（即中心的实心圆）是这张图的主题，其外的每个圆代表一代人，本题主题下的一类重要人物用点表示。"
+    },
+    {
+      "title": "空心点是什么意思？ (3提示点)",
+      "content": "它们代表的人物继承了所在图，但并不属于这些图。"
+    },
+    {
+      "title": "这道题的主题是什么？ (6提示点)",
+      "content": "南朝皇帝。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

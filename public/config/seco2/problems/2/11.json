@@ -1,0 +1,89 @@
+{
+  "type": "problem",
+  "title": "数字狂想曲",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>（如果你不清楚某一部分是否是对的，可以按顺序输入某个小题从1到9的答案进行验证。）</p>\n<head>\n    <style>\n        body {\n            font-family: sans-serif;\n        }\n        table {\n            border-collapse: collapse !important; \n            margin: 20px auto;\n            border: 2px solid #333 !important; \n        }\n        th, td {\n            border: 1px solid #ddd !important;\n            padding: 8px;\n        }\n        th {\n            text-align: center;\n            font-weight: bold;\n        }\n        td:first-child, td:nth-child(3) {\n            text-align: center !important;\n            font-weight: bold;\n        }\n        .answer {\n            margin: 20px;\n            text-align: center;\n            font-weight: bold;\n        }\n    </style>\n</head>\n<body>\n\n    <!-- 第一部分 -->\n    <section>\n        <h2>认识大数</h2>\n        <div class=\"dialogue\">\n            <p>“听说你们学天文的，只需要算对<strong>数量级</strong>就可以了？”</p>\n            <p>“当然！不过有些人看的是这个数字到底有多少位。比如1亿就是9位数之类的。”</p>\n            <p>“可是下面这些题目的答案都不完全是数字啊？”</p>\n        </div>\n\n        <p><strong>以下的答案是多少位？</strong></p>\n        <ol class=\"question-list\">\n            <li>一辆自身重3t的车装载了0.5t的沙，一共多重？</li>\n            <li>体测1000m需要跑两圈半，那么寻常操场跑道跑一圈的长度是？</li>\n            <li>如果一袋沙子重50kg，那么2026袋这样的沙子有多重？</li>\n            <li>含有四根轨道的音游叫做什么？</li>\n            <li>游戏中的多人模式，第二位玩家简称为什么？</li>\n            <li>从2K到4K，屏幕分辨率提高了4倍。那么从4K开始，分辨率再提高4096倍是多少？</li>\n            <li>如果航天员上升时受到5个G的压力，随后进入失重，压力变为原来的1/10。失重后的压力是？</li>\n            <li>带有2A恒定电流的长直导线放在匀强磁场中，电流方向垂直于磁场，如果每1米导线受到1N的力，求外磁场的磁感应强度？</li>\n            <li>如果将绿色光（波长0.0005mm）的频率/100，这一束光的波长变为？</li>\n        </ol>\n    </section>\n\n    <!-- 第二部分 -->\n    <section>\n        <h2>不计其数</h2>\n        <p class=\"note\">只需要把缺少的东西<strong>逐个相加</strong>就行了！注意左边的题号！</p>\n        <p><strong>缺少的东西一共是什么？</strong></p>\n        \n        <table>\n            <thead>\n                <tr>\n                    <th style=\"width: 50px;\">题号</th>\n                    <th style=\"width: 100px;\">提示</th>\n                    <th>线索</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>1</td>\n                    <td>(五字)</td>\n                    <td>在一起。</td>\n                </tr>\n                <tr>\n                    <td>8</td>\n                    <td>(四字)</td>\n                    <td>麻将里面的两种三元牌。</td>\n                </tr>\n                <tr>\n                    <td>6</td>\n                    <td>(四字)</td>\n                    <td>上海地铁8和14号线的换乘站。</td>\n                </tr>\n                <tr>\n                    <td>7</td>\n                    <td>(四字)</td>\n                    <td>回来。</td>\n                </tr>\n                <tr>\n                    <td>3</td>\n                    <td>(四字)</td>\n                    <td>卡</td>\n                </tr>\n                <tr>\n                    <td>2</td>\n                    <td>(四字)</td>\n                    <td>两位年长的女性。</td>\n                </tr>\n                <tr>\n                    <td>9</td>\n                    <td>(五字)</td>\n                    <td>末位淘汰。</td>\n                </tr>\n                <tr>\n                    <td>4</td>\n                    <td>(四字)</td>\n                    <td>据说凑齐了就可以移动三座泰山。</td>\n                </tr>\n                <tr>\n                    <td>5</td>\n                    <td>(四字)</td>\n                    <td>可以形容廉洁、正直的人。</td>\n                </tr>\n            </tbody>\n        </table>\n    </section>\n\n    <!-- 第三部分 -->\n    <section>\n        <h2>排列各数</h2>\n        <p class=\"note\">备注：如果出现了多个结果，取<strong>编号最小</strong>的那一个。</p>\n        <p><strong>后面的“第x项”是多少？</strong></p>\n\n        <table>\n            <thead>\n                <tr>\n                    <th style=\"width: 50px;\">题号</th>\n                    <th style=\"width: 150px;\">数列/数字</th>\n                    <th>描述</th>\n                    <th style=\"width: 100px;\">要求</th>\n                </tr>\n            </thead>\n            <tbody>\n                <tr>\n                    <td>1</td>\n                    <td>( 10 7 )</td>\n                    <td>若干个人出现在宴会上，每两人之间都进行了一次握手，且不重复，那么握手次数是？</td>\n                    <td>取第20项。</td>\n                </tr>\n                <tr>\n                    <td>2</td>\n                    <td>( 6 2 5 4 1 9 5 )</td>\n                    <td>当你打开做本题需要的这个网站时，你一眼就能看到这些数字。</td>\n                    <td>取第15项。</td>\n                </tr>\n                <tr>\n                    <td>3</td>\n                    <td>( 3 4 8 )</td>\n                    <td>平凡至极。所有数字都是完全一样的非正整数。</td>\n                    <td>取第21项。</td>\n                </tr>\n                <tr>\n                    <td>4</td>\n                    <td>( 9 7 )</td>\n                    <td>似乎是从兔子繁殖和黄金分割中得到的灵感。</td>\n                    <td>取第19项。</td>\n                </tr>\n                <tr>\n                    <td>5</td>\n                    <td>( 8 6 )</td>\n                    <td>17世纪法国数学家发现的一类质数，但只保留这里面真正的质数。</td>\n                    <td>取第5项。</td>\n                </tr>\n                <tr>\n                    <td>6</td>\n                    <td>( 7' 1 8 )</td>\n                    <td>当你打开做本题需要的这个网站时，你看到这串数字围成一圈。</td>\n                    <td>取第15项。</td>\n                </tr>\n                <tr>\n                    <td>7</td>\n                    <td>( 4 6 7 )</td>\n                    <td>似乎和图灵机的最大步数有关，而且只有五项。</td>\n                    <td>取第5项。</td>\n                </tr>\n                <tr>\n                    <td>8</td>\n                    <td>( 9 7 )</td>\n                    <td>如果一个非负整数表达出了喜悦等及其强烈的感情，那么这个数字会突然变得很大。</td>\n                    <td>取第9项。</td>\n                </tr>\n                <tr>\n                    <td>9</td>\n                    <td>( 6' 1 8 4 2 4 )</td>\n                    <td>某个表现二项式系数的三角形，按现代人的阅读顺序排列。</td>\n                    <td>取第19项。</td>\n                </tr>\n            </tbody>\n        </table>\n    </section>\n\n    <!-- 第四部分 -->\n    <section>\n        <h2>整合余数</h2>\n        <p>现在，你需要做的最后两件事情：</p>\n        <ol>\n            <li>把以上三个部分<strong>相同题号</strong>的所有答案加起来，然后将第8题答案减去90。</li>\n            <li>除以26，取余数，你就能得到……</li>\n        </ol>\n    </section>\n\n</body>\n<p><a href=\"https://docs.qq.com/sheet/DYnNJaE9PcXVYWlRC?tab=000001\">腾讯文档</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "VEGETABLE",
+  "desc": "<font color=\"#808080\">注意：请用<strong><font color=\"#808080\">纯数字</font></strong>回答下面的问题！</font>",
+  "tips": [
+    {
+      "title": "《认识大数》怎么做？ (3提示点)",
+      "content": "注意到每个题的答案除了数字之外都多出一些字母。"
+    },
+    {
+      "title": "《不计其数》怎么做？ (3提示点)",
+      "content": "“不计其数”就是不计入成语里面的数字，比如“在一起”对应“八九不离十（不离）”。"
+    },
+    {
+      "title": "《排列各数》怎么做？ (3提示点)",
+      "content": "题目中的网站是oeis.org，这道题需要的数列在这个网站上都能查到。此外，第3题中最“平凡”的数是0。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "13918416691211",
+      "message": "这是本题的小题答案之一。"
+    },
+    {
+      "answer": "2791510001310001920010",
+      "message": "这是本题的小题答案之一。"
+    },
+    {
+      "answer": "19031590258481919471768704032010",
+      "message": "这是本题的小题答案之一。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

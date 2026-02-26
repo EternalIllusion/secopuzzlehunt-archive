@@ -1,0 +1,89 @@
+{
+  "type": "problem",
+  "title": "3 small mazes",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/mazesmaze1_6776d9c5d2e30b1031393a985587e3a0.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze2_9f332acfffa978b30d8a0b75c3c5ad0a.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze3_7239ec9f05441f757797127cd0128329.png\" weight=600px height=600px/></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "WINTER",
+  "desc": "<font color=\"#808080\"><i>传统的走迷宫，就是把起终点连成一条线，好无趣好无聊！</i></font>",
+  "tips": [
+    {
+      "title": "《坠物迷宫》的关键点在哪？ (3提示点)",
+      "content": "刺所在格是地板而不是墙，所以……"
+    },
+    {
+      "title": "《弹簧迷宫》的关键点在哪？ (3提示点)",
+      "content": "不要把思维局限在封闭区域里，看看外面广阔的世界吧！"
+    },
+    {
+      "title": "《推箱迷宫》的关键点在哪？ (4提示点)",
+      "content": "中间的大正方形也是一个箱子！"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "water",
+      "message": "这是本题的小题答案之一。"
+    },
+    {
+      "answer": "in",
+      "message": "这是本题的小题答案之一。"
+    },
+    {
+      "answer": "32",
+      "message": "将前两题得到的较长单词中某个字母替换成较短单词，得到的新单词即为最终答案。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

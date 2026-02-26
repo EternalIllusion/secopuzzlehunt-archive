@@ -1,0 +1,76 @@
+{
+  "type": "problem",
+  "title": "f(字)",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/fzi1_cfc4795b84479ff110190e727f902a52.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/fzi2_6d52f3887f12a57770919dc149a513b0.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/fzi3_69102186238f0eab5883c0a275ad3bd6.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/fzi4_109f83b8482f1e13efd879480910c8e2.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/fzi5_80b9f660874b4b828f75716bff617833.png\" weight=600px height=600px/></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "COPSY",
+  "desc": "<font color=\"#808080\"><i>&emsp;我挑选，我封装，我转体，我开窗，我均分，我坠落，我折光。</i></font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (1提示点)",
+      "content": "例图和ft给出了本题需要的七种变换方法，分别是：只保留某一种笔画、给出部件凸包及其笔画数、将所有笔画绕中心旋转某个角度、只保留一条狭缝、用等距方格表示笔画（一个封闭区域里有一个笔画）、将所有笔画向下平移直到接触底边、只给出笔画折点（折点指仅与两条成一定角度的线相连的点）。"
+    },
+    {
+      "title": "救命，我看不出这些字到底是什么！ (6提示点)",
+      "content": "请在站内信回复【展！】并给出目前进度，我们会尽快反馈。"
+    },
+    {
+      "title": "最后一步该怎么做？ (4提示点)",
+      "content": "将你得到的部件象形成英文字母，得到答案。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

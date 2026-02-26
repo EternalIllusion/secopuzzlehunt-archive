@@ -1,0 +1,80 @@
+{
+  "type": "problem",
+  "title": "宝可梦家族",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>例：</p>\n<p>\n<img src=\"/config/seco2/static/assets/baohome1_5f3b478317c828711191e4c4d68d0cb7.png\">\n<img src=\"/config/seco2/static/assets/baohome2_9759829af76fb827dedd0e45c19561de.png\">\n</p>\n<p>八大家族：</p>\n<img src=\"/config/seco2/static/assets/baohome3_91452152cf4d2b9e911c38e96f6c64e7.png\">\n<img src=\"/config/seco2/static/assets/baohome4_e4fcac743a612948e9ab7c469c3ddf40.png\">\n<img src=\"/config/seco2/static/assets/baohome5_d484f82a2ee89128e29e91c77338e8ca.png\">\n<img src=\"/config/seco2/static/assets/baohome6_d66ed45c8751289da5398c71d6d9ccfc.png\">\n<img src=\"/config/seco2/static/assets/baohome7_a398d5a535cdaf25e8e82e9483ae64e3.png\">\n<img src=\"/config/seco2/static/assets/baohome8_7a09b709c0ec31e5d21d9939ef736a1b.png\">\n<img src=\"/config/seco2/static/assets/baohome9_8e6849a0cfe0f265ec8e73bb0cf4995c.png\">\n<img src=\"/config/seco2/static/assets/baohome10_c276f6b75c98a84ffcc9763e9efa180f.png\">\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "BROTHERS",
+  "desc": "<font color=\"#808080\">这些宝可梦家族是真不小，有些甚至跨越了世代和地区……</font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (1提示点)",
+      "content": "你需要搜索这些进化图谱中对应的宝可梦，你或许需要用到神奇宝贝百科（wiki.52poke.com）。"
+    },
+    {
+      "title": "有没有其他线索可以帮我确定具体的宝可梦？ (3提示点)",
+      "content": "注意圈的颜色，圈内颜色为宝可梦第一属性颜色。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "按数字提取宝可梦名称的英文字母。"
+    },
+    {
+      "title": "该如何排序？ (3提示点)",
+      "content": "注意ft中的“世代”，需要提取的八只宝可梦恰好分别出现在第一到第八世代。或者你可以直接按宝可梦的编号排序。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}

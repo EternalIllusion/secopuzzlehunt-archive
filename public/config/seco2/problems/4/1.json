@@ -1,0 +1,85 @@
+{
+  "type": "problem",
+  "title": "联络处",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>例：\n<br>【⿲〇〇〇】\n<br>hamleshoot = x i e\n<br>【⿵〇⿱〇〇】\n<br>bolthree = y a n\n<br>【⿰〇⿳〇〇〇】\n<br>platongue = h u a\n<br>plangue = g u\n<p><img src=\"/config/seco2/static/assets/contact1_8b48588ccc026d0645f6a6310f5cd481.png\" weight=600px height=600px/></p>\n<br>【⿰〇⿱〇〇】\n<br>buckltongue = 21 ? ?\n<br>【⿰〇⿱〇〇】\n<br>carrempty = ? 7 ? ?\n<br>【⿳〇〇〇】\n<br>cavehamber = 3 ? ?\n<br>【⿰〇⿱〇〇】\n<br>curssuitable = 1 ?\n<br>【⿰〇⿱〇〇】\n<br>deduceiscard = 13 ? ?\n<br>educeiscard = ? 18 ? ?\n<br>【⿰〇⿱〇〇】\n<br>frightesituation = ? ? ? 5\n<br>【⿰〇⿱〇〇】\n<br>grovexamine = ? ? 4\n<br>【⿰〇⿱〇〇】\n<br>hamlerespect = 6 ? ?\n<br>【⿰〇⿴〇〇】\n<br>ifor = 20 ? ?\n<br>【⿲〇〇〇】\n<br>infedisaster = 15 ? ?\n<br>【⿰〇⿱〇〇】\n<br>lakemperor = ? 12 ? ? ?\n<br>lakmperor = ? 19 ? ?\n<br>【⿰〇⿱〇〇】\n<br>onlpay = ? ?\n<br>onlpa = 24 ? ?\n<br>【⿰〇⿳〇〇〇】\n<br>positivchapter = 11 ? ? ? ?\n<br>【⿵〇⿳〇〇〇】\n<br>questioexchange = 10 ? ?\n<br>【⿸〇⿰〇〇】\n<br>quicknow = ? ? 23\n<br>【⿰〇⿱〇〇】\n<br>recognizentire = ? ? 22 ?\n<br>【⿰〇⿱〇〇】\n<br>seatlang = 9 ? ? ?\n<br>eatlang = ? 2 ? ?\n<br>【⿳〇⿰〇⿱〇〇〇】\n<br>sorpreserveow = ? ? 17\n<br>【⿸〇⿱〇〇】\n<br>startown = ? 8\n<br>【⿰〇⿸〇〇】\n<br>takstore = 16 ? ? ?\n<br>takstor = 14 ? ?\n<br>【⿰〇⿱〇〇】\n<br>vertebranxious = ? ? 25 ?\n<br>\n<br>ooooooooo (oooo)o oooooo ooooo\n<br>→〇〇→(10)\n<p></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "ATTRACTION",
+  "desc": "<font color=\"#808080\"><i>织成纹绺不须机</i></font>",
+  "tips": [
+    {
+      "title": "我看不懂例题！ (3提示点)",
+      "content": "每小题中，一些字母组合表示一个汉字部件，字母组合组成的单词近义于汉字部件组成的字。第一个例子中，hamlet=村，shoot=射，因此hamleshoot=榭。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "末尾有25个o，将前面25个数表示的字母填进去。最后5个字母的意义很特殊。"
+    },
+    {
+      "title": "最后一步该怎么做？ (4提示点)",
+      "content": "在前面找到这些字母组合对应的汉字部件，组成一个两字词语。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "景点",
+      "message": "这是本题的中间答案！"
+    },
+    {
+      "answer": "scenic spot",
+      "message": "正确答案是一个以a开头的单词。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

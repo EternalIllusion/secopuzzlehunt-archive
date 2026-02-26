@@ -1,0 +1,93 @@
+{
+  "type": "problem",
+  "title": "画布之间",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>最终，你们来到了最后一个房间，里面只有一幅简单的画。四根线条、杂乱的数字同一些零散的黄色区域排列在画上。看来，你们需要先将这个未完成的画作补全…</p>\n<p><img src=\"/config/seco2/static/assets/meta4colorplot_7c5c39ffc55718cadcb6990964baf861.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/t18bfxlnrz\">查看盘面</a></p>\n<br>\n<p>标准数独规则适用。</p>\n<p>红色线上的相邻两个数字奇偶性不同；</p>\n<p>橙色线上的相邻两个数字至少相差4；</p>\n<p>蓝色线穿越了多个宫，在有蓝色线的每一宫内蓝色线上的数字之和相等；</p>\n<p>绿色线上的相邻两个数字至少相差5.</p>\n<br>\n<p>将得到的第4行与第5行所有数字（共18位）按顺序写在答案提交框中，或许能发现什么……</p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "MONOCHROME",
+  "desc": "",
+  "tips": [
+    {
+      "title": "我需要简化第一步的盘面！ (4提示点)",
+      "content": "<a href=\"https://sudokupad.app/ix3c6s3ef1\">\n查看简化盘面\n</a>"
+    },
+    {
+      "title": "我需要简化第二步的盘面！ (4提示点)",
+      "content": "请提交你在上一步得到的倒数第二行的9个数字。"
+    },
+    {
+      "title": "该如何提取？ (8提示点)",
+      "content": "两个盘面上黄色和灰色色块上的数字对应了提取位数，用它们依次对小题答案进行提取，然后按照给出顺序重新排序，答案是26个字母的一句话。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "differentshadesofonecolour",
+      "message": "请使用浏览器搜索此答案，带空格。答案是10个字母的单词。"
+    },
+    {
+      "answer": "816327495",
+      "message": "这一步的简化盘面为：https://sudokupad.app/lpva5bjge8"
+    },
+    {
+      "answer": "348219567592763814",
+      "message": "虽然补全了，但是画布并没有发出任何动静。你突然想到：\n从你的视角来看是这样的，但是，从她的视角看呢？\nhttps://sudokupad.app/nkzuvc6fod"
+    },
+    {
+      "answer": "584297361362481957",
+      "message": "你们复原了她眼中的画布，咔哒一声，画布旁边的柜子打开了，里面是一张纸条。你们拿起了纸条，似乎得到了一串和涂色区域有关的数字…\n（有色）16 8 13 3 18 24 5 1 26 11 23 12 20\n（无色）9 19 17 4 10 22 2 21 6 15 7 25 14\n究竟如何使用纸条上面的数字，和涂色区域上面的所有数字呢？"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "type": "problem",
+  "title": "雪崩",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<style>\n        /* 雪花容器 */\n        .snow-container {\n            width: clamp(300px, 80vw, 1100px);\n            height: clamp(400px, 70vh, 800px);\n            position: relative;\n            overflow: hidden;\n            z-index: 1;\n        }\n        \n        .snowflake {\n            position: absolute;\n            width: 60px;\n            height: 60px;\n            background-size: contain;\n            background-repeat: no-repeat;\n            background-position: center;\n            opacity: 0;\n            transition: \n                opacity 1s ease-out, \n                transform 0.2s ease-out, \n                z-index 0.2s ease-out,\n                filter 0.2s ease-out;\n            z-index: 1;\n            transform-origin: center center;\n            cursor: pointer;\n        }\n        \n        .snowflake.landing {\n            z-index: 2;\n        }\n        \n        .snowflake.fading {\n            opacity: 0;\n        }\n        \n        .snowflake:hover {\n            transform: scale(1.1) rotate(var(--rotation, 0deg));\n            z-index: 5;\n            filter: brightness(1.2);\n            opacity: 1 !important;\n        }\n\n        /* 弹窗样式 */\n        .image-popup {\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background-color: rgba(0, 0, 0, 0.85);\n            display: none;\n            justify-content: center;\n            align-items: center;\n            z-index: 1000;\n            padding: 20px;\n            box-sizing: border-box;\n        }\n\n        .popup-content {\n            position: relative;\n            max-width: 90%;\n            max-height: 90%;\n        }\n\n        .popup-image {\n            max-width: 100%;\n            max-height: 80vh;\n            border: 5px solid #fff;\n            border-radius: 4px;\n            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);\n        }\n        .close-btn {\n            position: absolute;\n            top: -40px;\n            right: -40px;\n        }\n\n        .close-btn:hover {\n            transform: scale(1);\n        }\n    </style>\n\n    <!-- 雪花展示容器 -->\n    <div class=\"snow-container\" id=\"snow-container\"></div>\n\n    <!-- 图片弹窗 -->\n    <div class=\"image-popup\" id=\"image-popup\">\n        <div class=\"popup-content\">\n            <img src=\"\" alt=\"放大的雪花图片\" id=\"popup-image\">\n            <button class=\"close-btn\" id=\"close-btn\">&times;</button>\n        </div>\n    </div>\n\n    <script>\n        // 配置参数\n        const config = {\n            totalSnowflakes: 66,\n            minFallSpeed: 1,\n            maxFallSpeed: 2,\n            minSway: 0.3,\n            maxSway: 0.8,\n            minRotation: -15,\n            maxRotation: 15,\n            minOpacity: 0.6,\n            maxOpacity: 0.85,\n            stackDuration: 500,\n            fadeDuration: 500,\n            maxStackCount: 30\n        };\n\n        const snowContainer = document.getElementById('snow-container');\n        const imagePopup = document.getElementById('image-popup');\n        const popupImage = document.getElementById('popup-image');\n        const closeBtn = document.getElementById('close-btn');\n\n        let containerWidth = snowContainer.clientWidth;\n        let containerHeight = snowContainer.clientHeight;\n        let stackCount = 0;\n        const snowflakeSize = 60;\n        let currentlyPausedSnowflake = null; // 用于存储当前被暂停的雪花\n\n        // 图片URL数组\n        const imageUrls = Array.from({length: config.totalSnowflakes}, (_, i) => {\n            const index = String(i + 1).padStart(2, '0');\n            return `https://image.secopuzzle.com/SECO2/%E9%9B%AA%E5%B4%A9/%E9%9B%AA%E5%B4%A9/${index}.png`;\n        });\n\n        function getRandomImageUrl() {\n            return imageUrls[Math.floor(Math.random() * imageUrls.length)];\n        }\n        \n        function createSnowflake() {\n            if (stackCount >= config.maxStackCount) return;\n            \n            const snowflake = document.createElement('div');\n            snowflake.classList.add('snowflake');\n            const imgUrl = getRandomImageUrl();\n            snowflake.style.backgroundImage = `url(${imgUrl})`;\n            snowflake.dataset.imageUrl = imgUrl;\n            \n            const startX = Math.random() * (containerWidth - snowflakeSize);\n            snowflake.style.left = `${startX}px`;\n            snowflake.style.top = `-${snowflakeSize}px`;\n            \n            const opacity = config.minOpacity + Math.random() * (config.maxOpacity - config.minOpacity);\n            snowflake.style.opacity = opacity;\n            \n            const rotation = config.minRotation + Math.random() * (config.maxRotation - config.minRotation);\n            snowflake.style.transform = `rotate(${rotation}deg)`;\n            snowflake.style.setProperty('--rotation', `${rotation}deg`);\n            \n            snowflake.snowState = {\n                currentX: startX,\n                currentY: -snowflakeSize,\n                fallSpeed: config.minFallSpeed + Math.random() * (config.maxFallSpeed - config.minFallSpeed),\n                sway: config.minSway + Math.random() * (config.maxSway - config.minSway),\n                swayDirection: Math.random() > 0.5 ? 1 : -1,\n                swayOffset: 0,\n                isFalling: true,\n                animationId: null\n            };\n            \n            snowflake.addEventListener('mouseenter', handleMouseEnter);\n            snowflake.addEventListener('mouseleave', handleMouseLeave);\n            snowflake.addEventListener('click', handleSnowflakeClick);\n            \n            snowContainer.appendChild(snowflake);\n            \n            startFallAnimation(snowflake);\n        }\n\n        function startFallAnimation(snowflake) {\n            const { snowState } = snowflake;\n            const landingY = containerHeight - snowflakeSize;\n            \n            if (snowState.animationId) {\n                clearInterval(snowState.animationId);\n            }\n            \n            snowState.animationId = setInterval(() => {\n                if (!snowState.isFalling) return;\n                \n                snowState.currentY += snowState.fallSpeed;\n                snowState.swayOffset += 0.05;\n                snowState.currentX += snowState.sway * snowState.swayDirection * Math.sin(snowState.swayOffset);\n                \n                snowState.currentX = Math.max(0, Math.min(snowState.currentX, containerWidth - snowflakeSize));\n                \n                snowflake.style.left = `${snowState.currentX}px`;\n                snowflake.style.top = `${snowState.currentY}px`;\n                \n                if (snowState.currentY >= landingY) {\n                    snowState.isFalling = false;\n                    snowflake.style.top = `${landingY}px`;\n                    snowflake.classList.add('landing');\n                    stackCount++;\n                    \n                    setTimeout(() => {\n                        snowflake.classList.add('fading');\n                        setTimeout(() => {\n                            if (snowflake.parentNode) {\n                                clearInterval(snowState.animationId);\n                                snowflake.removeEventListener('mouseenter', handleMouseEnter);\n                                snowflake.removeEventListener('mouseleave', handleMouseLeave);\n                                snowflake.removeEventListener('click', handleSnowflakeClick);\n                                snowflake.parentNode.removeChild(snowflake);\n                                stackCount--;\n                            }\n                        }, config.fadeDuration);\n                    }, config.stackDuration);\n                }\n            }, 16);\n        }\n\n        function handleMouseEnter() {\n            // 鼠标悬浮时暂停当前雪花\n            if (this.snowState && this.snowState.animationId) {\n                clearInterval(this.snowState.animationId);\n            }\n        }\n\n        function handleMouseLeave() {\n            // 鼠标离开时恢复当前雪花动画（如果它不是被弹窗暂停的）\n            if (this !== currentlyPausedSnowflake && this.snowState && this.snowState.isFalling && !this.classList.contains('fading')) {\n                startFallAnimation(this);\n            }\n        }\n        \n        function handleSnowflakeClick(event) {\n            event.stopPropagation();\n            const snowflake = event.currentTarget;\n            const imgUrl = snowflake.dataset.imageUrl;\n            \n            if (imgUrl) {\n                popupImage.src = imgUrl;\n                imagePopup.style.display = 'flex';\n                \n                // 暂停被点击的雪花，并记录它\n                if (snowflake.snowState && snowflake.snowState.animationId) {\n                    clearInterval(snowflake.snowState.animationId);\n                    currentlyPausedSnowflake = snowflake;\n                }\n            }\n        }\n        \n        function closePopup() {\n            imagePopup.style.display = 'none';\n            popupImage.src = '';\n            \n            // 恢复被弹窗暂停的雪花动画\n            if (currentlyPausedSnowflake && currentlyPausedSnowflake.snowState && currentlyPausedSnowflake.snowState.isFalling && !currentlyPausedSnowflake.classList.contains('fading')) {\n                startFallAnimation(currentlyPausedSnowflake);\n            }\n            currentlyPausedSnowflake = null; // 清空记录\n        }\n        \n        closeBtn.addEventListener('click', closePopup);\n        imagePopup.addEventListener('click', (event) => {\n            if (event.target === imagePopup) {\n                closePopup();\n            }\n        });\n        document.addEventListener('keydown', (event) => {\n            if (event.key === 'Escape' && imagePopup.style.display === 'flex') {\n                closePopup();\n            }\n        });\n\n        // 波次循环逻辑 - 修改为每波66片\n        const WAVE_SIZE = 66;          // <-- 修改这里\n        const SPAWN_INTERVAL = 250;\n        const WAVE_DELAY = 0;\n\n        function generateWave() {\n            for (let i = 0; i < WAVE_SIZE; i++) {\n                setTimeout(() => {\n                    createSnowflake();\n                    if (i === WAVE_SIZE - 1) {\n                        setTimeout(generateWave, WAVE_DELAY);\n                    }\n                }, i * SPAWN_INTERVAL);\n            }\n        }\n\n        function startSnowfall() {\n            generateWave();\n        }\n\n        window.addEventListener('resize', () => {\n            containerWidth = snowContainer.clientWidth;\n            containerHeight = snowContainer.clientHeight;\n        });\n\n        startSnowfall();\n    </script>\n<p>注：图片编号和图片大小均对答案无影响。</p>\n<p>小题验证格式是“数字+答案”，例如，若第1题答案是“天”，提交“01天”即可验证。</p>\n<p>拥有小题验证的序号：01、02、05、06、07、10、12、16、17、18、20、22、23、24、25、26、28、29、30、32、34、39、41、47、48、50、52、53、56、60、61、63、64、65</p>\n<p><a href=\"/config/seco2/static/assets/snowfall雪崩_18ef74b97d2da4c69905d713ecb28818.zip\">点击下载</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n",
+  "answer": "BLUE",
+  "desc": "<font color=\"#808080\"><i>纷飞的画纸如雪片一样，它们飘扬，堆积，连结，直到——崩塌。</i></font>",
+  "tips": [
+    {
+      "title": "第一步该做什么？ (2提示点)",
+      "content": "将一共66张图片分类分层。本小题有五个小meta，为大meta（在图03）提供线索。"
+    },
+    {
+      "title": "救命，我做不出这些题！ (0提示点)",
+      "content": "请在站内信回复【雪崩】并给出目前进度，我们会尽快反馈。收费标准为小题0.5提示点，小meta3提示点，最终提取6提示点。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "01at",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "02白",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "05差",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "06春",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "07大合唱",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "10冬",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "12〢",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "16封",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "17古",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "18故意",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "20和",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "22积",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "23戋",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "24荐",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "25纟",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "26动机",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "28酒",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "29居中的竖线",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "30开水",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "32立",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "34铃",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "39念",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "41overline",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "47上箭头",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "48勺",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "50尸",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "52寺",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "53the",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "56夏",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "60衣",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "61又",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "63中",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "64中药材",
+      "message": "本题答案正确！"
+    },
+    {
+      "answer": "65子弹",
+      "message": "本题答案正确！"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

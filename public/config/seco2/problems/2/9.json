@@ -1,0 +1,93 @@
+{
+  "type": "problem",
+  "title": "见微知微",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>例：</p>\n<p><img src=\"/config/seco2/static/assets/smallbig1_c853c6c1c5ef685f5b1e7ae6994524f8.png\"></p>\n<br></br>\n<p><img src=\"/config/seco2/static/assets/smallbig2_bb0138482434300f72353831b1dbb943.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig3_504bab3da2caac1afce7ebbbd8009960.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig4_5acb5ee80244079858804e895ba5475b.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig5_621015b0d0721bdfe345d4bc8a99c6df.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig6_0d3952b24e904cfb0597f073c66752b7.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig7_c728a7b45ca269f89380155ac9faf222.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig8_b2a438aef266eb7a077d64884e9fbd54.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig9_6be5b6cbbde8f22fd9f8d7b08ad2c8fb.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig10_3d83be79edf1d3557d6fca2b1130a07e.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig11_b340b1b2a2f3a273553363c77dde1256.png\"></p>\n<p><img src=\"/config/seco2/static/assets/smallbig12_a7a2cd00db612a5f783235c1131c1efa.png\"></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "DESERT",
+  "desc": "<font color=\"#808080\"><i>这是计划的一部分。</i></font>",
+  "tips": [
+    {
+      "title": "应该如何理解本题机制？ (5提示点)",
+      "content": "例题的词是“璀璨”，阴影部分是“璀”的下半部分，即“堆”，然后用拼音进行恺撒。"
+    },
+    {
+      "title": "能提示一下第1~4题吗？ (2提示点)",
+      "content": "它们分别是：一种动物、一个两字声旁均在右下角的形容词、一个与音乐有关的集合、一个提醒人多加提防的俗语。"
+    },
+    {
+      "title": "能提示一下第5~6题吗？ (2提示点)",
+      "content": "它们都出自古诗，其中第6题需要旋转题面。"
+    },
+    {
+      "title": "能提示一下第7~9题吗？ (2提示点)",
+      "content": "第7题是一个常见单词，第8题是一系列常见软件，第9题描述了一类化学反应。"
+    },
+    {
+      "title": "能提示一下第10题吗？ (2提示点)",
+      "content": "每个字都可以分成上下两部分。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "最后一张图是对提取的字母的统计，那么横坐标是什么呢？"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "SAND",
+      "message": "这是本题的中间答案！那么，什么由沙子组成？(6)"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

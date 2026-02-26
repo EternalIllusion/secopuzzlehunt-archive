@@ -1,0 +1,81 @@
+{
+  "type": "problem",
+  "title": "游戏误学习",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><a href=\"/config/seco2/static/assets/gameno古诗练习_cd1f2b0461070df79fdbe3987f9cf111.zip\">点击下载</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "MYCENA",
+  "desc": "<font color=\"#808080\"><i>我要好好学习</i></font>",
+  "tips": [
+    {
+      "title": "我卡在了第一步！ (4提示点)",
+      "content": "你需要找到每句诗缺少的那个字，如果无法识别汉字，请在站内信回复【古诗重叠】并给出目前进度，我们会尽快反馈。"
+    },
+    {
+      "title": "我在第二步遗漏了什么导致第三步信息缺失？ (6提示点)",
+      "content": "需要注意视频跑酷部分的总时长为78=3*26秒，可以通过跑酷失误的时间点提取出一些内容。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "HTML",
+      "message": "这是本题的中间答案！"
+    },
+    {
+      "answer": "PDF",
+      "message": "这是本题的中间答案！"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}

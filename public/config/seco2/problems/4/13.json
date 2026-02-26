@@ -1,0 +1,117 @@
+{
+  "type": "problem",
+  "title": "谷歌翻译",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>\n    <ol>\n        <li>\n            <span class=\"text\">工具作业燃烧着年轻，沙赞教堂和海</span>\n            <span class=\"clue\">（五/八）</span>\n        </li>\n        <li>\n            <span class=\"text\">僵尸更富有了奇鹏和大禹</span>\n            <span class=\"clue\">（七/七）</span>\n        </li>\n        <li>\n            <span class=\"text\">吉普车在咒骂，绵羊零地址指令的线</span>\n            <span class=\"clue\">（五/八）</span>\n        </li>\n        <li>\n            <span class=\"text\">必应在说谎垃圾和粪便，虾也在说谎但是有图灵机</span>\n            <span class=\"clue\">（四/八）</span>\n        </li>\n        <li>\n            <span class=\"text\">沉迷疼痛和害怕线性的你</span>\n            <span class=\"clue\">（七/七）</span>\n        </li>\n        <li>\n            <span class=\"text\">手，很多的手，领主，很多的领主</span>\n            <span class=\"clue\">（二/八）</span>\n        </li>\n        <li>\n            <span class=\"text\">一旦六月湾，吉普链垮台</span>\n            <span class=\"clue\">（七/八）</span>\n        </li>\n        <li>\n            <span class=\"text\">木桶纽带全部深，歌给发声的狗看</span>\n            <span class=\"clue\">（十/十）</span>\n        </li>\n        <li>\n            <span class=\"text\">巴西子弹的床单</span>\n            <span class=\"clue\">（一/五）</span>\n        </li>\n        <li>\n            <span class=\"text\">操纵帆桁下部索具很美丽</span>\n            <span class=\"clue\">（二/四）</span>\n        </li>\n        <li>\n            <span class=\"text\">接地的查理，山是年轻的</span>\n            <span class=\"clue\">（五/七）</span>\n        </li>\n    </ol>\n</p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "UMBRELLA",
+  "desc": "<font color=\"#808080\"><i>怎么谷歌翻译了50次以后变成了这样，我要好好想想原来是什么东西。</i></font>",
+  "tips": [
+    {
+      "title": "这些句子是怎么得来的？ (3提示点)",
+      "content": "把汉语句子谐音成英语常见词汇，然后再逐词翻译成汉语。"
+    },
+    {
+      "title": "第1句是什么？ (1提示点)",
+      "content": "桃李不言，下自成蹊。"
+    },
+    {
+      "title": "第2句是什么？ (1提示点)",
+      "content": "东边日出西边雨。"
+    },
+    {
+      "title": "第3句是什么？ (1提示点)",
+      "content": "机不可失，时不再来。"
+    },
+    {
+      "title": "第4句是什么？ (1提示点)",
+      "content": "兵来将挡，水来土掩。"
+    },
+    {
+      "title": "第5句是什么？ (1提示点)",
+      "content": "屋漏偏逢连夜雨。"
+    },
+    {
+      "title": "第6句是什么？ (1提示点)",
+      "content": "旱的旱死，涝的涝死。"
+    },
+    {
+      "title": "第7句是什么？ (1提示点)",
+      "content": "万事俱备，只欠东风。"
+    },
+    {
+      "title": "第8句是什么？ (1提示点)",
+      "content": "帮人帮到底，送佛送到西。"
+    },
+    {
+      "title": "第9句是什么？ (1提示点)",
+      "content": "八九不离十。"
+    },
+    {
+      "title": "第10句是什么？ (1提示点)",
+      "content": "只字不提。"
+    },
+    {
+      "title": "第11句是什么？ (1提示点)",
+      "content": "儿行千里母担忧。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "下雨时挡雨的东西八字母",
+      "message": "这是本题的中间答案！"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "花原",
+    "path": "/area/seco2/4",
+    "pgid": 4
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "type": "problem",
+  "title": "程式之衡鉴",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<h2>甲乙之和</h2>\n\n<h4>題目敘述</h4>\n<p>書入二整數，曰甲、曰乙，其絕對值俱小於千萬萬，書出其和。</p>\n\n<h4>書入制式</h4>\n<p>二整數，以空格相隔。</p>\n\n<h4>書出制式</h4>\n<p>一整數。</p>\n\n<h4>書入样例</h4>\n<code>一 二</code>\n\n\n<h4>蟒蛇三</h4>\n<code>吾有二數。取之於外，以空格相隔。名之曰「甲」曰「乙」。  </code><br>\n<code>加「甲」以「乙」。名之曰「和」。書之。  </code>\n\n\n<h2>數位之和</h2>\n\n<h4>題目敘述</h4>\n<p>書入三位之數，其值介於一百至九百九十九，書出其各位數字之和。</p>\n\n<h4>書入制式</h4>\n<p>一整數。</p>\n\n<h4>書出制式</h4>\n<p>一整數。</p>\n\n<h4>書入樣例</h4>\n<code>一百二十三</code>\n\n<h4>蟒蛇三</h4>\n<code>吾有一數。取之於外。名之曰「未知數」。</code><br>\n<code>整除「未知數」以百。名之曰「甲」。</code><br>\n<code>整除「未知數」以十。除十以其。所餘幾何。名之曰「乙」。  </code><br>\n<code>除「未知數」以十。所餘幾何。名之曰「丙」。  </code><br>\n<code>加「甲」以「丙」。名之曰「和」。書之。 </code>\n\n\n\n<h2>斐氏列</h2>\n\n<h4>題目敘述</h4>\n<p>書入一整數，謂斐氏列之第若干項，其值在一與千萬萬之間，書出該項之值。</p>\n\n<h4>書入制式</h4>\n<p>一整數。</p>\n\n<h4>書出制式</h4>\n<p>一整數。</p>\n\n<h4>書入样例</h4>\n<code>一</code>\n\n\n<h4>蟒蛇三</h4>\n<code>吾有一術。名之曰「斐波那契」。</code><br>\n<code>欲行是術。必先得一數。曰「項」。  </code><br>\n<code>乃行是術曰。  </code><br>\n<code> 若「項」不大於一者。乃得「項」也。  </code><br>\n<code> 若非。 </code><br>\n<code> 施「斐波那契」於「減項以一」。名之曰「前一」。  </code><br>\n<code> 施「斐波那契」於「減項以二」。名之曰「前二」。    </code><br>\n<code> 加「前一」以「前二」。乃得之也。    </code><br>\n<code> 是謂「斐波那契」之術也。     </code><br>\n<code>吾有一數。取之於外。名之曰「未知數」。  </code><br>\n<code>施「斐波那契」於「未知數」。書之。  </code>\n\n<p>注：为便计，最终皆取评测之全称以为结果。</p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n\n</body>\n",
+  "answer": "CAT",
+  "desc": "<font color=\"#808080\"><i>是程式也，似藏玄机密语。</i></font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (2提示点)",
+      "content": "题目名可翻译为“代码评测”，题面的“蟒蛇”指示了本题使用的语言，以及题面最后有一句隐藏的话。"
+    },
+    {
+      "title": "我该干什么？ (5提示点)",
+      "content": "判断每个代码程序运行后的评测状态，如AC(Accepted)。"
+    },
+    {
+      "title": "该如何提取？ (3提示点)",
+      "content": "使用样例输出的正确结果作为index进行提取。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "type": "problem",
+  "title": "暗格",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p>继续来玩暗格，上回我们已经玩到了标↑↑↑题，我们继续玩……</p>\n<p><a href=\"/config/seco2/static/assets/mota暗格_c31b7c733b1402a085046f5ab2a3ffd5.exe\">点击下载</a></p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "WATERCYCLE",
+  "desc": "",
+  "tips": [
+    {
+      "title": "我完全不会拆塔，可以告诉我大致的路线吗？ (4提示点)",
+      "content": "前期商店只加攻，通过11层之后转防，大后期再转攻。"
+    },
+    {
+      "title": "我不太敢用红钥匙，能告诉我这座塔在哪些地方存在红门吗？ (4提示点)",
+      "content": "7F（银盾）、8F（跳怪）、10F（圣剑）、12F（骑士剑）、13F（骑士盾）、14F（必经之路）、17F（圣盾）、18F（大金币）、20F（必经之路）、23F（必经之路）。此外，全塔红钥匙总数等于红门总数。"
+    },
+    {
+      "title": "可以告诉我怪物的具体数值吗？ (8提示点)",
+      "content": "<a href=\"https://docs.qq.com/sheet/DTENwdVhzamFLUGNQ\">\n【腾讯文档】暗格怪物属性对照表\n</a>"
+    },
+    {
+      "title": "本题的答案是什么？ (80提示点)",
+      "content": "WATER CYCLE。"
+    },
+    {
+      "title": "这个塔实在太好玩了！我想玩玩作者更多的塔！ (0提示点)",
+      "content": "关注B站【盐铁桶子】谢谢喵，此外如果你对汉字文化有兴趣，也可以加入【汉字文化脑洞协会】（915324969）一起玩喵！"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "沉默",
+      "message": "<img src=\"https://image.secopuzzle.com/SECO2/%E6%9A%97%E6%A0%BC/%E6%9A%97%E6%A0%BC-%E5%9D%8F%E7%BB%93%E5%B1%80-%E6%B2%89%E9%BB%98.png\" alt=\"坏结局\" width=\"630\" height=\"396\">"
+    },
+    {
+      "answer": "共鸣",
+      "message": "<img src=\"https://image.secopuzzle.com/SECO2/%E6%9A%97%E6%A0%BC/%E6%9A%97%E6%A0%BC-%E4%B8%AD%E7%BB%93%E5%B1%80-%E5%85%B1%E9%B8%A3.png\" alt=\"中结局\" width=\"630\" height=\"396\">"
+    },
+    {
+      "answer": "春天",
+      "message": "<img src=\"https://image.secopuzzle.com/SECO2/%E6%9A%97%E6%A0%BC/%E6%9A%97%E6%A0%BC-%E5%A5%BD%E7%BB%93%E5%B1%80-%E6%98%A5%E5%A4%A9.png\" alt=\"好结局\" width=\"630\" height=\"396\">"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "中心",
+    "path": "/area/seco2/7",
+    "pgid": 7
+  }
+}

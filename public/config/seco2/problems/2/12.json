@@ -1,0 +1,85 @@
+{
+  "type": "problem",
+  "title": "六八一十二",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<head>\n    <style>\n        body {\n            font-family: sans-serif;\n        }\n        table {\n            border-collapse: collapse !important; \n            margin: 20px auto;\n            border: 2px solid #333 !important; \n            width: 95%; /* 适配长文本 */\n            max-width: 900px;\n        }\n        th, td {\n            border: 1px solid #ddd !important;\n            padding: 8px;\n            vertical-align: middle; /* 垂直居中 */\n        }\n        th {\n            text-align: center;\n            font-weight: bold;\n            background-color: #f2f2f2;\n        }\n        /* 设置序号列居中且宽度固定 */\n        td:first-child, td:nth-child(3) {\n            text-align: center !important;\n            font-weight: bold;\n            width: 40px; \n        }\n        .answer {\n            margin: 20px;\n            text-align: center;\n            font-weight: bold;\n        }\n    </style>\n</head>\n<div class=\"answer\"><img src=\"/config/seco2/static/assets/68121_4ed0bd054c8e9a18792567cebf4e7312.png\"></div>\n<body>\n    <table>\n        <thead>\n            <tr>\n                <th>横</th>\n                <th>提示</th>\n                <th>竖</th>\n                <th>提示</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>1</td>\n                <td>不</td>\n                <td>1</td>\n                <td>编号</td>\n            </tr>\n            <tr>\n                <td>2</td>\n                <td>新的，前缀</td>\n                <td>3</td>\n                <td>真心半解女主角</td>\n            </tr>\n            <tr>\n                <td>5</td>\n                <td>偶像</td>\n                <td>4</td>\n                <td>好的</td>\n            </tr>\n            <tr>\n                <td>6</td>\n                <td>mygo鼓手(爱音对她的称呼)</td>\n                <td>5</td>\n                <td>罗马数字2</td>\n            </tr>\n            <tr>\n                <td>8</td>\n                <td>罗马数字3</td>\n                <td>7</td>\n                <td>轻音少女</td>\n            </tr>\n            <tr>\n                <td>9</td>\n                <td>泛光灯</td>\n                <td>10</td>\n                <td>妈妈</td>\n            </tr>\n            <tr>\n                <td>11</td>\n                <td>评分系统</td>\n                <td>12</td>\n                <td>大阪学院大学</td>\n            </tr>\n            <tr>\n                <td>13</td>\n                <td>近场通信</td>\n                <td>13</td>\n                <td>一种活泼金属</td>\n            </tr>\n            <tr>\n                <td>14</td>\n                <td>游戏结束后会发的缩写</td>\n                <td>15</td>\n                <td>魔法少女的魔女审判主角之一，善良的，纯洁的乖孩子</td>\n            </tr>\n            <tr>\n                <td>15</td>\n                <td>以东</td>\n                <td>19</td>\n                <td>核磁共振</td>\n            </tr>\n            <tr>\n                <td>16</td>\n                <td>网状Meta分析</td>\n                <td>20</td>\n                <td>直接数字式频率合成器</td>\n            </tr>\n            <tr>\n                <td>17</td>\n                <td>小时</td>\n                <td>22</td>\n                <td>明日方舟联动角色，武器是枪</td>\n            </tr>\n            <tr>\n                <td>18</td>\n                <td>一个</td>\n                <td></td>\n                <td></td>\n            </tr>\n            <tr>\n                <td>20</td>\n                <td>做</td>\n                <td></td>\n                <td></td>\n            </tr>\n            <tr>\n                <td>21</td>\n                <td>芦苇</td>\n                <td></td>\n                <td></td>\n            </tr>\n            <tr>\n                <td>23</td>\n                <td>滑雪板（复数）</td>\n                <td></td>\n                <td></td>\n            </tr>\n        </tbody>\n    </table>\n</body>\n<p><a href=\"https://docs.qq.com/sheet/DYkRCWXhpeWV0b0Jz?tab=000001\">腾讯文档</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n",
+  "answer": "MINIGUN",
+  "desc": "<font color=\"#808080\"><i>\n<p>隐藏于六面之中，\t\n<p>于褪色之处再现。\t\n<p>将一切合为一体，\t\n<p>答案如初心依然。\t\n</i></font>",
+  "tips": [
+    {
+      "title": "这道题为什么要叫《六八一十二》？ (1提示点)",
+      "content": "想想什么常见几何体同时存在6、8、12这三个元素。"
+    },
+    {
+      "title": "我做完了crossword，然后呢？ (3提示点)",
+      "content": "这个crossword实际上是将立方体展开图连接在一起的，注意相邻两个展开图有且仅有一个面共用。"
+    },
+    {
+      "title": "该如何提取？ (5提示点)",
+      "content": "取红色面对应的所有字母，从给定的格子开始按顺时针顺序读取。"
+    },
+    {
+      "title": "我完全知道该怎么做了，但是提取出来好像不对？ (2提示点)",
+      "content": "去除红色所在图之后，每种图均存在且仅出现一次。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "sendminigun",
+      "message": "本题正确答案是MINIGUN，请提交"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

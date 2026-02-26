@@ -1,0 +1,84 @@
+{
+  "type": "problem",
+  "title": "调色盘",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/colorpanblue_063223b88d12a086a45c24deb1d4b266.png\"></p>\n<p><img src=\"/config/seco2/static/assets/colorpanyellow_ade94ba9bc05fd0d1f01adb03b5a8556.png\"></p>\n<p><img src=\"/config/seco2/static/assets/colorpanred_37e7bee282dbec90fee8c3ce7f080902.png\"></p>\n<p><img src=\"/config/seco2/static/assets/colorpancube_b604aa351e9742bd6e17eef3b3998cfb.png\"></p>\n<p><img src=\"\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/86y0szf8gf\">查看盘面（蓝）</a></p>\n<p><a href=\"https://sudokupad.app/813u9w7xpg\">查看盘面（黄）</a></p>\n<p><a href=\"https://sudokupad.app/axwcxy11j2\">查看盘面（红）</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "VANGOGH",
+  "desc": "<font color=\"#808080\"><i>&emsp;拿起画笔，搞点土派艺术！咦，你怎么还带了剪刀和胶水？</i></font>",
+  "tips": [
+    {
+      "title": "纸笔的基础规则是什么？ (2提示点)",
+      "content": "土派艺术，即 Tapa（https://pzplus.tck.mn/rules.html?tapa）。"
+    },
+    {
+      "title": "纸笔的附加规则是什么？ (3提示点)",
+      "content": "某些边界是连通的。具体来说，你需要将三个纸笔盘面分别粘成一个圆筒，一个圆筒和一个......呃，甜甜圈？这是一张纸可以粘出来的吗？"
+    },
+    {
+      "title": "我完成了纸笔部分，接下来要做什么？ (4提示点)",
+      "content": "将三个图的答案按三原色叠加到第四幅图中。"
+    },
+    {
+      "title": "最后一幅图是什么意思？ (4提示点)",
+      "content": "你可以将它粘成一个立方体，每个面需要画上你得到的内容。"
+    },
+    {
+      "title": "我还是不懂最后一幅图是什么？ (4提示点)",
+      "content": "这其实是一个魔方的展开图，你需要找出还原之后每个面上的图案是什么样的。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

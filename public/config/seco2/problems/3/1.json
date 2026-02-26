@@ -1,0 +1,77 @@
+{
+  "type": "problem",
+  "title": "未知图腾？",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/tutengtuteng_a27509dc77d30b5b0bae181ca56f1a48.png\" weight=600px height=400px/></p>\n<p>(6'1 4)->(5)</p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "STEEL",
+  "desc": "<font color=\"#808080\"><i>这些未知图腾是怎么回事？还好还有一些正常的</i></font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (3提示点)",
+      "content": "在浏览器中搜索标题，然后和题面进行比对。"
+    },
+    {
+      "title": "我得到了中间答案，但我看不懂！ (5提示点)",
+      "content": "搜索(6)，看它的(4)。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "meltans type",
+      "message": "这是本题的中间答案！"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}

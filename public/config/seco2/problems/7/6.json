@@ -1,0 +1,85 @@
+{
+  "type": "problem",
+  "title": "循环",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><a href=\"/config/seco2/static/assets/meta66meta_ebcf97a84c9f27774032348ab57732da.pptx\">点击下载</a></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "CENTERPIECE",
+  "desc": "断开连接中......",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (4提示点)",
+      "content": "PPT中的每个部分对应六区的一道题目。此外，你或许能发现小题答案的“错位感”，但这只和剧情有关。"
+    },
+    {
+      "title": "可以简化一下右下角纸笔的盘面吗？ (6提示点)",
+      "content": "<a href=\"https://sudokupad.app/o5zrk1fvxf\">\n查看简化盘面\n</a>"
+    },
+    {
+      "title": "能否详细说明整道题的解题思路？ (8提示点)",
+      "content": "每题的答案都需要用一个meta的机制进行提取（即对应剧情人物所在区的meta），最后将提取出的东西按小题顺序排序并连接。"
+    },
+    {
+      "title": "本题的答案是什么？ (80提示点)",
+      "content": "CENTER PIECE。"
+    }
+  ],
+  "additionalAnswers": [
+    {
+      "answer": "2153434251",
+      "message": "这个画框还少了三个不同的杀手框，你记得之前出现过……请从她的视角，按照颜色由浅入深的顺序，求和后提取。"
+    }
+  ],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "中心",
+    "path": "/area/seco2/7",
+    "pgid": 7
+  }
+}

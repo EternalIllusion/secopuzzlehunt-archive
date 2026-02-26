@@ -1,0 +1,80 @@
+{
+  "type": "problem",
+  "title": "到底是谁炸的群！",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<style>\n    /* --- 容器布局：让手机居中显示 --- */\n    .qq-puzzle-container {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        padding: 20px 0;\n        background-color: transparent; /* 融入题目背景 */\n    }\n\n    /* --- 手机外壳 --- */\n    .phone-wrapper { \n        width: 375px; \n        height: 700px; /* 固定高度，确保在网页中合适 */\n        background: #f2f2f2; \n        border: 1px solid #ddd; \n        border-radius: 16px; /* 增加圆角，更像手机 */\n        position: relative; \n        overflow: hidden; \n        box-shadow: 0 10px 25px rgba(0,0,0,0.3); \n        display: flex; \n        flex-direction: column;\n        font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    }\n    \n    /* 顶部导航栏 */\n    .status-bar { height: 30px; background: #f2f2f2; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; font-size: 12px; font-weight: bold; flex-shrink: 0; z-index: 20;}\n    .top-header { height: 50px; background: #f2f2f2; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 0 15px; position: relative; z-index: 10; flex-shrink: 0; }\n    .back-btn { font-size: 20px; margin-right: 10px; color: #333; cursor: default; }\n    .group-info { flex: 1; }\n    .group-name { font-size: 16px; font-weight: 500; color: #000; }\n    .menu-btn { font-size: 20px; color: #333; cursor: default; }\n\n    /* --- 聊天滚动区域 --- */\n    .chat-area { \n        flex: 1; \n        overflow-y: auto; /* 允许垂直滚动 */\n        padding: 15px; \n        padding-bottom: 20px; \n        display: flex; \n        flex-direction: column; \n        gap: 15px; \n        background: #f2f2f2; \n        scroll-behavior: smooth;\n    }\n    \n    /* 美化滚动条 */\n    .chat-area::-webkit-scrollbar { width: 6px; }\n    .chat-area::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.2); border-radius: 3px; }\n    .chat-area::-webkit-scrollbar-track { background: transparent; }\n\n    /* --- 消息气泡样式 (复用之前的逻辑) --- */\n    .message { display: flex; align-items: flex-start; margin-bottom: 0px; }\n    .avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; background-size: cover; background-position: center; flex-shrink: 0; }\n    .content-wrapper { display: flex; flex-direction: column; max-width: 70%; }\n    .user-info { display: flex; align-items: center; margin-bottom: 4px; font-size: 12px; color: #888; }\n    \n    /* 头衔标签 */\n    .user-title { background: #f5a623; color: white; padding: 1px 4px; border-radius: 4px; margin-right: 5px; font-size: 10px; line-height: 14px; }\n    .user-title.admin { background: #1cbdc5; } /* 管理员-青色 */\n    .user-title.custom { background: #8e44ad; } /* 自定义-紫色 */\n    \n    .bubble { padding: 10px 12px; font-size: 15px; line-height: 1.5; border-radius: 10px; word-wrap: break-word; position: relative; }\n\n    /* 他人消息 (左) */\n    .message.left .content-wrapper { margin-left: 10px; align-items: flex-start; }\n    .message.left .bubble { background: #ffffff; color: #000; border-top-left-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }\n    \n    /* 自己消息 (右) */\n    .message.right { flex-direction: row-reverse; }\n    .message.right .content-wrapper { margin-right: 10px; align-items: flex-end; }\n    .message.right .bubble { background: #0099ff; color: #fff; border-top-right-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }\n    .message.right .user-info { display: none; }\n\n    /* 系统消息 */\n    .system-message { text-align: center; margin: 10px 0; }\n    .system-text { display: inline-block; background: #dcdcdc; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 12px; }\n\n    /* 底部假输入框 */\n    .bottom-input { height: 50px; background: #f6f6f6; border-top: 1px solid #ddd; width: 100%; display: flex; align-items: center; padding: 0 10px; box-sizing: border-box; flex-shrink: 0; cursor: not-allowed; }\n    .fake-input { flex: 1; height: 32px; background: #fff; border-radius: 4px; margin: 0 10px; }\n</style>\n\n<div class=\"qq-puzzle-container\">\n    <div class=\"phone-wrapper\">\n        <!-- 顶部状态栏 -->\n        <div class=\"status-bar\">\n            <span>12:00</span>\n            <span>📶 5G 🔋</span>\n        </div>\n        \n        <!-- 头部导航 -->\n        <div class=\"top-header\">\n            <span class=\"back-btn\">&lt;</span>\n            <div class=\"group-info\">\n                <div class=\"group-name\" id=\"displayGroupName\">加载中...</div>\n            </div>\n            <span class=\"menu-btn\">≡</span>\n        </div>\n\n        <!-- 聊天内容区域 -->\n        <div class=\"chat-area\" id=\"chatArea\">\n            <!-- 内容将通过 JS 加载 -->\n            <div class=\"system-message\"><span class=\"system-text\">正在读取聊天记录...</span></div>\n        </div>\n\n        <!-- 底部输入框 (仅展示) -->\n        <div class=\"bottom-input\">\n            <span style=\"font-size:24px; color:#7f8389;\">🎤</span>\n            <div class=\"fake-input\"></div>\n            <span style=\"font-size:24px; color:#7f8389;\">😊 ➕</span>\n        </div>\n    </div>\n</div>\n\n<script>\ndocument.addEventListener('DOMContentLoaded', () => {\n    // 指向你的 JSON 文件位置\n    const jsonUrl = \"{% static 'puzzles/qq/qq.json' %}\";\n    \n    fetch(jsonUrl)\n        .then(response => {\n            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);\n            return response.json();\n        })\n        .then(data => {\n            const chatArea = document.getElementById('chatArea');\n            chatArea.innerHTML = ''; // 清空加载提示\n\n            // 1. 设置群名\n            if(data.groupName) {\n                document.getElementById('displayGroupName').innerText = data.groupName;\n            }\n\n            // 2. 渲染消息列表\n            if (data.chatHistory && Array.isArray(data.chatHistory)) {\n                data.chatHistory.forEach(item => {\n                    renderMessage(item, chatArea);\n                });\n            }\n        })\n        .catch(error => {\n            console.error('JSON Load Error:', error);\n            document.getElementById('displayGroupName').innerText = \"加载失败\";\n            document.getElementById('chatArea').innerHTML = `<div class=\"system-message\"><span class=\"system-text\" style=\"background:#ff5252\">数据加载失败，请联系管理员</span></div>`;\n        });\n\n    function renderMessage(data, container) {\n        const msgDiv = document.createElement('div');\n\n        if (data.msgType === 'system' || data.type === 'system') {\n            msgDiv.className = 'system-message';\n            msgDiv.innerHTML = `<span class=\"system-text\">${data.content}</span>`;\n        } else {\n            msgDiv.className = `message ${data.type}`;\n            let titleHtml = '';\n            \n            // 只有左侧消息(他人)才显示头衔和名字\n            if (data.type === 'left') {\n                if (data.title) {\n                    let roleClass = '';\n                    if (data.role === 'admin') roleClass = 'admin';\n                    else if (data.role === 'custom') roleClass = 'custom';\n                    titleHtml = `<span class=\"user-title ${roleClass}\">${data.title}</span>`;\n                }\n                \n                msgDiv.innerHTML = `\n                    <div class=\"avatar\" style=\"background-image: url('${data.avatarUrl}')\"></div>\n                    <div class=\"content-wrapper\">\n                        <div class=\"user-info\">${titleHtml}<span>${data.name}</span></div>\n                        <div class=\"bubble\">${data.content}</div>\n                    </div>\n                `;\n            } else {\n                // 右侧消息(自己)\n                msgDiv.innerHTML = `\n                    <div class=\"avatar\" style=\"background-image: url('${data.avatarUrl}')\"></div>\n                    <div class=\"content-wrapper\">\n                        <div class=\"bubble\">${data.content}</div>\n                    </div>\n                `;\n            }\n        }\n        container.appendChild(msgDiv);\n    }\n});\n</script>\n\n",
+  "answer": "FLATTEN",
+  "desc": "<font color=\"#808080\"><i>这些线索已经无需证明了，大家也公认如此，除了其中一条。</i></font>",
+  "tips": [
+    {
+      "title": "我做出来的答案似乎和最后的禁言对不上？ (5提示点)",
+      "content": "直接根据文字内容做出来的是群主的答案，你还需要找到两位管理员的答案，ft提示了该如何寻找。"
+    },
+    {
+      "title": "群主和管理员是谁？ (3提示点)",
+      "content": "欧几里得、黎曼和罗巴切夫斯基。"
+    },
+    {
+      "title": "“除了其中一条”指什么？ (4提示点)",
+      "content": "欧式几何的第五公设。"
+    },
+    {
+      "title": "该如何提取？ (4提示点)",
+      "content": "根据答案对应哪位管理员，按三进制提取。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}

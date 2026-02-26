@@ -1,0 +1,76 @@
+{
+  "type": "problem",
+  "title": "四线格",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><img src=\"/config/seco2/static/assets/fourlinesfourlines_b758ac1004fc11e661300a883a6e83ff.jpg\" weight=600px height=400px/></p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "HALLOWEEN",
+  "desc": "<font color=\"#808080\"><i>孩子们在四线格上谱写着七彩的童年</i></font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (2提示点)",
+      "content": "这些四线格实际上在模仿五线谱，你需要找到对应的歌曲。"
+    },
+    {
+      "title": "这些方块是什么意思？ (4提示点)",
+      "content": "方块涂黑了一些英文单词。"
+    },
+    {
+      "title": "每行分别是什么？ (5提示点)",
+      "content": "Bingo、London Bridge、Mary had a little lamb、Old MacDonald had a farm、Row row row your boat、Ten little Indians、Twinkle twinkle little star。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "沙海",
+    "path": "/area/seco2/2",
+    "pgid": 2
+  }
+}

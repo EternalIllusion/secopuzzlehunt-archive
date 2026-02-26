@@ -1,0 +1,72 @@
+{
+  "type": "problem",
+  "title": "知识速记",
+  "extendData": "",
+  "contentType": 1,
+  "content": "<p><audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi1_7834d272917aea61ce5a0a1300abdb78.mp3\" type=\"audio/mpeg\">\n</audio>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi2_3daefcfc5327df71ee7912d39f659e8e.mp3\" type=\"audio/mpeg\">\n</audio>\n</p>\n\n<p>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi3_f08023dfbab03d9e39bed78a5380f49c.mp3\" type=\"audio/mpeg\">\n</audio>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi4_3cc23b2adb636b2f4c0c5390674165fc.mp3\" type=\"audio/mpeg\">\n</audio>\n</p>\n\n<p>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi5_e9b04585e258ff6522d7a6ef11c6004e.mp3\" type=\"audio/mpeg\">\n</audio>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi6_5b4912fb4aafbedc5a921ac7a129c467.mp3\" type=\"audio/mpeg\">\n</audio>\n</p>\n\n<p>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi7_01c8374f711cb94a3f223cb0526afd69.mp3\" type=\"audio/mpeg\">\n</audio>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi8_d71ac4b4aa51eb9d9899d4b534ed91f5.mp3\" type=\"audio/mpeg\">\n</audio>\n</p>\n\n<p>\n<audio controls>\n  <source src=\"/config/seco2/static/assets/musicjiyi9_1e638952ad55b9a12a5dfce05aa07a7b.mp3\" type=\"audio/mpeg\">\n</audio>\n<p>本题音频均由AI生成。</p>\n</p>\n<h3>学科</h3>\n<p>化学：(3/7)</p>\n<p>语文：(17/4 2 1 4 6)</p>\n<p>英语：(9/3-6 4)</p>\n<p>历史：(2/4 7)</p>\n<p>数学：(10/13 9)</p>\n<p>地理：(1/5 5)</p>\n<p>物理：(5/9)</p>\n<p>生物：(7/3 11)</p>\n<p>政治：(4/10)</p>\n<p>(上下不对应)</p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "answer": "GREATWALL",
+  "desc": "<font color=\"#808080\"><i>用音乐来记忆知识点，似乎是个不错的选择</i></font>",
+  "tips": [
+    {
+      "title": "我毫无头绪！ (2提示点)",
+      "content": "你需要根据每一首音乐的内容来对应每种学科的一个知识点。"
+    },
+    {
+      "title": "我听不懂怎么办？ (5提示点)",
+      "content": "请在站内信回复【碎片知识点】并给出需要提示的小题题号，我们会尽快反馈。"
+    }
+  ],
+  "additionalAnswers": [],
+  "links": [
+    {
+      "title": "索引页",
+      "type": "index",
+      "path": "seco2/index"
+    },
+    {
+      "title": "庄园",
+      "path": "/area/seco2/1",
+      "pgid": 1
+    },
+    {
+      "title": "沙海",
+      "path": "/area/seco2/2",
+      "pgid": 2
+    },
+    {
+      "title": "高塔",
+      "path": "/area/seco2/3",
+      "pgid": 3
+    },
+    {
+      "title": "花原",
+      "path": "/area/seco2/4",
+      "pgid": 4
+    },
+    {
+      "title": "暗格",
+      "path": "/area/seco2/5",
+      "pgid": 5
+    },
+    {
+      "title": "过渡",
+      "path": "/area/seco2/6",
+      "pgid": 6
+    },
+    {
+      "title": "中心",
+      "path": "/area/seco2/7",
+      "pgid": 7
+    },
+    {
+      "title": "FM",
+      "path": "/area/seco2/8",
+      "pgid": 8
+    }
+  ],
+  "arealink": {
+    "title": "高塔",
+    "path": "/area/seco2/3",
+    "pgid": 3
+  }
+}
