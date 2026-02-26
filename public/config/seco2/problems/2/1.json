@@ -3,7 +3,7 @@
   "title": "3 small mazes",
   "extendData": "",
   "contentType": 1,
-  "content": "<p><img src=\"/config/seco2/static/assets/mazesmaze1_6776d9c5d2e30b1031393a985587e3a0.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze2_9f332acfffa978b30d8a0b75c3c5ad0a.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze3_7239ec9f05441f757797127cd0128329.png\" weight=600px height=600px/></p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "content": "<p><img src=\"/config/seco2/static/assets/mazesmaze1_6776d9c5d2e30b1031393a985587e3a0.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze2_9f332acfffa978b30d8a0b75c3c5ad0a.png\" weight=600px height=600px/></p>\n<p><img src=\"/config/seco2/static/assets/mazesmaze3_7239ec9f05441f757797127cd0128329.png\" weight=600px height=600px/></p>",
   "answer": "WINTER",
   "desc": "<font color=\"#808080\"><i>传统的走迷宫，就是把起终点连成一条线，好无趣好无聊！</i></font>",
   "tips": [
