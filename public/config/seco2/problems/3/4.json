@@ -3,7 +3,7 @@
   "title": "多重数独",
   "extendData": "",
   "contentType": 1,
-  "content": "<p>示例：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokuexp_4fe1aa6e9a0d67a5d015032b52f261f1.png\" weight=600px height=600px/></p>\n<p>盘面：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokumain_dac038e617c43148720c6a9e06172ef2.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/lr32svo4ox\">查看盘面</a></p>\n\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "content": "<p>示例：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokuexp_4fe1aa6e9a0d67a5d015032b52f261f1.png\" weight=600px height=600px/></p>\n<p>盘面：</p>\n<p><img src=\"/config/seco2/static/assets/duosudokumain_dac038e617c43148720c6a9e06172ef2.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/lr32svo4ox\">查看盘面</a></p>",
   "answer": "TEARS",
   "desc": "<font color=\"#808080\"><i>织，连，独。</i></font>",
   "tips": [

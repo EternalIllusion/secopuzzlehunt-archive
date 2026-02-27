@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>riser狱卒好好吃</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .yiyan-body-wrap { 
+            box-sizing: border-box; 
+            margin-left: 24px; 
+            margin-right: auto; 
+        }
+        .yiyan-quote { 
+            font-family: "Microsoft YaHei", sans-serif; 
+            font-size: 16px; 
+        }
+        #wordgame-container {
+            font-family: "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            margin: 0 0 20px 0;
+            padding: 20px 20px 20px 0;
+            position: relative;
+        }
+
+        #content {
+            max-height: 75vh;
+            overflow-y: scroll;
+            padding-right: 10px;
+            margin-bottom: 1rem;
+        }
+
+        #content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        #content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        #content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .wordgame-text {
+            margin-bottom: 8px;
+        }
+
+        .wordgame-text.double-spacing {
+            margin-bottom: 16px;
+        }
+
+        .wordgame-char {
+            display: inline;
+            opacity: 0;
+        }
+
+        .wordgame-char.visible {
+            animation: fadeIn 0.1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .wordgame-bold {
+            font-weight: bold;
+            text-indent: 2em;
+            display: block;
+        }
+
+        .wordgame-hint {
+            color: #808080;
+            font-style: italic;
+            margin: 15px 0;
+        }
+
+        .wordgame-bracket {
+            color: #d9534f;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .wordgame-input-container {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .wordgame-input {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .wordgame-input:focus {
+            border-color: #5cb85c;
+            outline: none;
+        }
+
+        .skip-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 10px 20px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .skip-btn:hover {
+            background: #4cae4c;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* 引文下方的按钮：取消固定定位，避免压在引文上；重置在右 */
+        .skip-btn-inline {
+            position: static !important;
+            top: auto;
+            left: auto;
+        }
+
+        .submit-btn {
+            padding: 8px 20px;
+            background: #0275d8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background: #025aa5;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .highlight {
+            animation: glow 1s ease-in-out;
+        }
+
+        .max-glow {
+            animation: maxGlow 2s ease-in-out;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: none; }
+            50% { text-shadow: 0 0 10px #ffd700; }
+        }
+
+        @keyframes maxGlow {
+            0%, 100% { text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700; }
+            50% { text-shadow: 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffd700; }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; display: none; }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="yiyan-body-wrap">
+        <div class="yiyan-buttons" style="margin: 0 0 0 0; padding: 0 20px 8px 0; display: flex; justify-content: space-between; align-items: center;">
+            <button id="skip-btn" class="skip-btn skip-btn-inline hidden">跳过 ▼</button>
+            <button id="reset-btn" class="skip-btn skip-btn-inline" style="background: #d9534f; margin-left: auto;">重置进度</button>
+        </div>
+
+        <div id="wordgame-container">
+            <div class="loading">加载中...</div>
+            <div id="content"></div>
+            <div id="input-area"></div>
+            <div id="final-hint" style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-radius: 8px; border: 2px solid #0275d8;" class="hidden"></div>
+        </div>
+    </div>
+
+    <script src="./yiyanconsts_6DBBE7F13EBFACCB71774F7545CB18FE.js"></script>
+    <script>
+        let storyContent = yiyan_data; // 从外部文件加载的数据
+        let currentIndex = 0;
+        let currentText = '';
+        let currentCharIndex = 0;
+        let isTyping = false;
+        let skipToNextParagraph = false;
+        let typingInterval;
+        let currentParagraphId = 0;
+        let completedStage = 0; // 已完成的阶段
+
+        // 用于跟踪当前正在打字的状态
+        let currentTypingElement = null;
+        let currentTypingText = '';
+        let currentTypingIndex = 0;
+        let currentTypingCallback = null;
+        let autoSkipTargetIndex = -1;
+        let stageStartParagraphId = 0; // 记录当前阶段开始的段落ID，用于限制修改范围
+
+        let currentPart = 0; // 当前所处的部分（0-3）
+
+        // Transformation Animation State
+        let isProcessingTransformation = false;
+        let currentTransformationItem = null;
+        let skipTransformationFlag = false;
+
+        // 初始化游戏
+        function initGame() {
+            document.querySelector('.loading').style.display = 'none';
+            processNext();
+        }
+
+        function addContent(text, className = '') {
+            const p = document.createElement('p');
+            p.className = `wordgame-text ${className}`;
+            p.id = `paragraph-${currentParagraphId++}`;
+            document.getElementById('content').appendChild(p);
+            
+            // 自动滚动到底部
+            const contentDiv = document.getElementById('content');
+            contentDiv.scrollTop = contentDiv.scrollHeight;
+            
+            return p;
+        }
+
+        function typeText(element, text, callback, charDelay = 50, partNum = null) {
+            isTyping = true;
+            let index = 0;
+            const skipBtn = document.getElementById('skip-btn');
+            skipBtn.classList.remove('hidden');
+            skipToNextParagraph = false;
+            
+            // 保存当前打字状态，供 handleSkip 使用
+            currentTypingElement = element;
+            currentTypingText = text;
+            currentTypingIndex = index;
+            currentTypingCallback = callback;
+            
+            // 如果指定了部分编号，更新全局的currentPart
+            if (partNum !== null) {
+                currentPart = partNum;
+            }
+            
+            typingInterval = setInterval(() => {
+                // 自动滚动到底部，确保最新字符可见
+                const contentDiv = document.getElementById('content');
+                contentDiv.scrollTop = contentDiv.scrollHeight;
+
+                if (skipToNextParagraph) {
+                    // 立即完成当前文本的剩余部分
+                    while (index < text.length) {
+                        const char = text[index];
+                        if (char === '\n') {
+                            // 检查是否是双换行
+                            if (index < text.length - 1 && text[index + 1] === '\n') {
+                                // 双换行 -> 两个 <br>
+                                element.appendChild(document.createElement('br'));
+                                element.appendChild(document.createElement('br'));
+                                index++;
+                            } else {
+                                // 单换行
+                                element.appendChild(document.createElement('br'));
+                            }
+                        } else {
+                            const span = document.createElement('span');
+                            span.className = 'wordgame-char visible';
+                            span.textContent = char;
+                            element.appendChild(span);
+                        }
+                        index++;
+                    }
+                    // 完成后结束打字
+                    clearInterval(typingInterval);
+                    isTyping = false;
+                    skipBtn.classList.add('hidden');
+                    skipToNextParagraph = false;
+                    if (callback) callback();
+                    return;
+                }
+                
+                if (index < text.length) {
+                    const char = text[index];
+                    if (char === '\n') {
+                        // 如果位于文本开头（且是新段落），只需要一个 <br> 来产生空行
+                        // 否则需要两个 <br> 来产生空行
+                        if (index === 0) {
+                             element.appendChild(document.createElement('br'));
+                        } else {
+                             element.appendChild(document.createElement('br'));
+                             element.appendChild(document.createElement('br'));
+                        }
+                        
+                        // 如果后面紧跟另一个换行符，跳过它（将 \n 和 \n\n 都视为一个空行）
+                        if (index < text.length - 1 && text[index + 1] === '\n') {
+                            index++;
+                        }
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'wordgame-char';
+                        span.textContent = char;
+                        element.appendChild(span);
+                        setTimeout(() => span.classList.add('visible'), 10);
+                    }
+                    index++;
+                    currentTypingIndex = index; // 更新全局索引
+                } else {
+                    clearInterval(typingInterval);
+                    isTyping = false;
+                    skipBtn.classList.add('hidden');
+                    if (callback) callback();
+                }
+            }, charDelay);
+        }
+
+        function handleSkip() {
+            if (isProcessingTransformation) {
+                skipTransformationFlag = true;
+                fastForwardTransformations(currentTransformationItem);
+                return;
+            }
+
+            if (isTyping) {
+                // 完成当前正在打字的文本
+                
+                // 同时，如果后续有相同类型的文本，也一并跳过
+                // currentIndex 此时指向的是 *下一条* 将要处理的文本（因为 processNext 在调用 typeText 前已经 increment 了 currentIndex）
+                // 所以我们正在打字的是 storyContent[currentIndex - 1]
+                
+                if (currentIndex > 0) {
+                    const currentItem = storyContent[currentIndex - 1];
+                    const currentType = currentItem.type;
+                    
+                    // 查找后续所有相同类型的项，直到遇到不同类型为止
+                    let target = currentIndex;
+                    while (target < storyContent.length && storyContent[target].type === currentType) {
+                        target++;
+                    }
+                    
+                    // 如果找到了可以跳过的后续项
+                    if (target > currentIndex) {
+                        autoSkipTargetIndex = target;
+                    }
+                }
+                
+                skipToNextParagraph = true;
+            } else {
+                // 不在打字，跳到下一个部分
+                skipToNextPart();
+            }
+        }
+
+        // 跳到下一个部分
+        // 每个阶段分为4个部分：
+        // Part 0: 开头的normal文本（语言与描写）- 直到遇到bold
+        // Part 1: bold文本（需要改动的句子）
+        // Part 2: bold后的normal文本（对应剧情）- 直到遇到hint
+        // Part 3: hint+bracket（关于改动的提示）
+        function skipToNextPart() {
+            // 当前part: 0-3
+            // 找到下一个关键点
+            
+            let foundNextPart = false;
+            
+            for (let i = currentIndex; i < storyContent.length; i++) {
+                const item = storyContent[i];
+                
+                // 根据当前part和item类型判断是否到达下一部分
+                if (currentPart === 0 && item.type === 'bold') {
+                    // 从Part 0跳到Part 1（bold）
+                    skipToIndexAndContinue(i);
+                    foundNextPart = true;
+                    break;
+                } else if (currentPart === 1 && item.type === 'normal') {
+                    // 从Part 1跳到Part 2（bold后的normal）
+                    skipToIndexAndContinue(i);
+                    foundNextPart = true;
+                    break;
+                } else if (currentPart === 2 && item.type === 'hint') {
+                    // 从Part 2跳到Part 3（hint）
+                    skipToIndexAndContinue(i);
+                    foundNextPart = true;
+                    break;
+                } else if (currentPart === 3 && item.type === 'input') {
+                    // 从Part 3跳到输入框
+                    skipToIndexAndContinue(i);
+                    foundNextPart = true;
+                    break;
+                }
+            }
+            
+            if (!foundNextPart) {
+                // 没有找到下一部分，可能已到达当前阶段末尾
+                // 继续正常流程
+                processNext();
+            }
+        }
+
+        // 跳到指定索引并继续，中间的文本立即显示
+        function skipToIndexAndContinue(targetIndex) {
+            // 立即显示从currentIndex到targetIndex之间的所有文本
+            while (currentIndex < targetIndex) {
+                const item = storyContent[currentIndex];
+                currentIndex++;
+                
+                if (item.type === 'normal') {
+                    const p = addContent('');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'bold') {
+                    const p = addContent('', 'wordgame-bold');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'hint') {
+                    const p = addContent('', 'wordgame-hint');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'bracket') {
+                    const p = addContent('', 'wordgame-bracket');
+                    p.textContent = item.text;
+                }
+            }
+            
+            // 然后继续正常处理
+            processNext();
+        }
+
+        // 跳到下一个输入框（跳过所有文本动画）
+        function skipToNextInput() {
+            // 从当前位置开始查找下一个input，并立即渲染所有中间的文本
+            for (let i = currentIndex; i < storyContent.length; i++) {
+                const item = storyContent[i];
+                
+                if (item.type === 'input') {
+                    // 找到下一个input，显示它
+                    currentIndex = i + 1; // 设置为input之后，以便后续继续
+                    showInput(item);
+                    return;
+                } else if (item.type === 'normal') {
+                    // 立即显示普通文本，处理换行符
+                    const p = addContent('');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'bold') {
+                    // 立即显示粗体文本，处理换行符
+                    const p = addContent('', 'wordgame-bold');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'hint') {
+                    // 立即显示提示文本，处理换行符
+                    const p = addContent('', 'wordgame-hint');
+                    renderTextWithLineBreaks(p, item.text);
+                } else if (item.type === 'bracket') {
+                    // 立即显示括号文本
+                    const p = addContent('', 'wordgame-bracket');
+                    p.textContent = item.text;
+                }
+            }
+            
+            // 没有找到input，说明到达最终提示
+            for (let i = currentIndex; i < storyContent.length; i++) {
+                const item = storyContent[i];
+                
+                if (item.type === 'final_hint') {
+                    currentIndex = i;
+                    processNext();
+                    return;
+                }
+            }
+        }
+
+        // 辅助函数：渲染带换行符的文本
+        function renderTextWithLineBreaks(element, text) {
+            // 将双换行分割为段落
+            const parts = text.split('\n\n');
+            parts.forEach((part, index) => {
+                if (index > 0) {
+                    element.appendChild(document.createElement('br'));
+                    element.appendChild(document.createElement('br'));
+                }
+                // 将单换行替换为<br>
+                const lines = part.split('\n');
+                lines.forEach((line, lineIndex) => {
+                    if (lineIndex > 0) {
+                        // 如果这是第二行且第一行是空的，说明原始文本以 \n 开头
+                        // 这种情况下，我们只需要一个 <br>
+                        if (lineIndex === 1 && lines[0] === '') {
+                             element.appendChild(document.createElement('br'));
+                        } else {
+                             element.appendChild(document.createElement('br'));
+                             element.appendChild(document.createElement('br'));
+                        }
+                    }
+                    for (const char of line) {
+                        const span = document.createElement('span');
+                        span.className = 'wordgame-char visible'; // Visible immediately
+                        span.textContent = char;
+                        element.appendChild(span);
+                    }
+                });
+            });
+        }
+
+        function showInput(item) {
+            const stageNum = parseInt(item.stage);
+            
+            const container = document.createElement('div');
+            container.className = 'wordgame-input-container';
+            container.id = `input-${item.stage}`;
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'wordgame-input';
+            input.placeholder = '请输入...';
+            
+            const btn = document.createElement('button');
+            btn.className = 'submit-btn';
+            btn.textContent = '提交';
+            
+            btn.onclick = () => {
+                const value = input.value.trim();
+                if (!value) return;
+                
+                btn.disabled = true;
+                btn.textContent = '验证中...';
+                
+                // 验证输入是否正确
+                if (value === item.answer) {
+                    // 更新本地进度
+                    completedStage = Math.max(completedStage, stageNum);
+                    
+                    container.remove();
+                    applyTransformations(item);
+                } else {
+                    btn.textContent = '答案错误，请重试';
+                    setTimeout(() => {
+                        btn.textContent = '提交';
+                        btn.disabled = false;
+                    }, 1500);
+                }
+            };
+            
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') btn.click();
+            });
+            
+            container.appendChild(input);
+            container.appendChild(btn);
+            // 清空input-area并添加新的输入框
+            const inputArea = document.getElementById('input-area');
+            inputArea.innerHTML = '';
+            inputArea.appendChild(container);
+            
+            // Scroll to input
+            setTimeout(() => {
+                const contentDiv = document.getElementById('content');
+                contentDiv.scrollTop = contentDiv.scrollHeight;
+            }, 100);
+        }
+
+        function fastForwardTransformations(item) {
+            // Reset states
+            isProcessingTransformation = false;
+            isTyping = false;
+            clearInterval(typingInterval);
+            document.getElementById('skip-btn').classList.add('hidden');
+            
+            // 1. Force remove hints and brackets
+            const content = document.getElementById('content');
+            const hintsAndBrackets = content.querySelectorAll('.wordgame-hint, .wordgame-bracket');
+            hintsAndBrackets.forEach(el => el.remove());
+            
+            let lastRemovedElement = null;
+
+            // 2. Force remove texts
+            // Re-calculate removal targets to ensure we catch them
+            if (item.removes) {
+                item.removes.forEach(removeText => {
+                    const allParagraphs = Array.from(content.querySelectorAll('.wordgame-text'));
+                    const paragraphs = allParagraphs.filter(p => {
+                        const pid = parseInt(p.id.split('-')[1]);
+                        return pid >= stageStartParagraphId;
+                    });
+                    
+                    for (const p of paragraphs) {
+                        const text = p.textContent;
+                        const startIdx = text.indexOf(removeText);
+                        if (startIdx !== -1) {
+                            lastRemovedElement = p;
+                            const chars = Array.from(p.querySelectorAll('.wordgame-char'));
+                            // Hide chars
+                            for (let j = 0; j < removeText.length; j++) {
+                                if (chars[startIdx + j]) {
+                                    chars[startIdx + j].style.display = 'none';
+                                    chars[startIdx + j].classList.add('fade-out'); // Ensure marked
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // 3. Force add text
+            if (item.adds) {
+                let targetElement = lastRemovedElement;
+
+                if (!targetElement) {
+                     // Fallback: Search backwards for a paragraph that has hidden chars
+                    const allPs = Array.from(content.querySelectorAll('.wordgame-text'));
+                    for (let i = allPs.length - 1; i >= 0; i--) {
+                        if (allPs[i].querySelector('.wordgame-char[style*="none"]')) {
+                             targetElement = allPs[i];
+                             break;
+                        }
+                    }
+                }
+                
+                if (!targetElement) {
+                    targetElement = addContent('');
+                }
+                
+                renderTextWithLineBreaks(targetElement, item.adds);
+            }
+            
+            stageStartParagraphId = currentParagraphId;
+            
+            // Continue
+            setTimeout(() => processNext(), 100);
+        }
+
+        function applyTransformations(item) {
+            isProcessingTransformation = true;
+            currentTransformationItem = item;
+            skipTransformationFlag = false;
+            document.getElementById('skip-btn').classList.remove('hidden');
+
+            const content = document.getElementById('content');
+            
+            // 隐藏提示和括号
+            const hintsAndBrackets = content.querySelectorAll('.wordgame-hint, .wordgame-bracket');
+            hintsAndBrackets.forEach(el => {
+                el.classList.add('fade-out');
+                // 动画结束后移除元素以释放空间
+                setTimeout(() => {
+                    el.remove();
+                }, 500);
+            });
+            
+            // 应用替换
+            item.replacements.forEach(rep => {
+                // 只筛选当前阶段生成的段落
+                const allParagraphs = Array.from(content.querySelectorAll('.wordgame-text'));
+                const paragraphs = allParagraphs.filter(p => {
+                    const pid = parseInt(p.id.split('-')[1]);
+                    return pid >= stageStartParagraphId;
+                });
+
+                paragraphs.forEach(p => {
+                    const text = p.textContent;
+                    if (text.includes(rep.from)) {
+                        const glowClass = rep.glow === 2 ? 'max-glow' : 'highlight';
+                        
+                        // 重建HTML，保留 <br> 和其他标签
+                        let reconstruct = '';
+                        p.childNodes.forEach(child => {
+                            if (child.nodeName === 'BR') {
+                                reconstruct += '<br>';
+                            } else if (child.nodeType === 3) { // Text node
+                                reconstruct += child.textContent;
+                            } else if (child.classList && child.classList.contains('wordgame-char')) {
+                                reconstruct += child.textContent;
+                            } else {
+                                // 保留其他元素（如之前的 strong）
+                                reconstruct += child.outerHTML;
+                            }
+                        });
+                        
+                        if (reconstruct.includes(rep.from)) {
+                            const escaped = rep.from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            const newHTML = reconstruct.replace(
+                                new RegExp(escaped, 'g'),
+                                `<strong class="${glowClass}">${rep.to}</strong>`
+                            );
+                            p.innerHTML = newHTML;
+                        }
+                    }
+                });
+            });
+            
+            // 将所有需要移除的任务放入队列，按顺序排列
+            const removeTasks = [];
+            
+            // 遍历 remves 列表，逐个查找匹配项
+            // 关键修正：对于每个 removeText，我们只找 *第一次* 匹配且 *未被之前任务占用* 的位置
+            // 这样可以确保按顺序一个接一个地移除
+            
+            // 用于记录已经被占用的段落索引，避免重复处理同一段落（如果这是期望的行为）
+            // 或者更细粒度地，记录字符位置。这里简单起见，假设每次移除都是独立的文本块
+            
+            item.removes.forEach(removeText => {
+                // 只筛选当前阶段生成的段落
+                const allParagraphs = Array.from(document.getElementById('content').querySelectorAll('.wordgame-text'));
+                const paragraphs = allParagraphs.filter(p => {
+                    const pid = parseInt(p.id.split('-')[1]);
+                    return pid >= stageStartParagraphId;
+                });
+
+                let taskFound = false;
+                
+                for (let i = 0; i < paragraphs.length; i++) {
+                    if (taskFound) break;
+                    
+                    const p = paragraphs[i];
+                    const text = p.textContent;
+                    
+                    // 查找文本位置
+                    const startIdx = text.indexOf(removeText);
+                    
+                    if (startIdx !== -1) {
+                        // 检查这段文本是否已经被标记为要移除了（通过检查字符是否已经有 fade-out 类）
+                        const chars = Array.from(p.querySelectorAll('.wordgame-char'));
+                        
+                        // 简单的检查：如果起始字符还没有 fade-out 类，那么这是一个新的匹配
+                        // 注意：这里假设 removeText 对应的字符在 DOM 中是连续的 wordgame-char span
+                        if (chars[startIdx] && !chars[startIdx].classList.contains('fade-out') && !chars[startIdx].dataset.removing) {
+                            
+                            // 标记这些字符即将被移除，防止被后续的 removeText 再次匹配
+                            for (let j = 0; j < removeText.length; j++) {
+                                if (chars[startIdx + j]) {
+                                    chars[startIdx + j].dataset.removing = "true";
+                                }
+                            }
+                            
+                            removeTasks.push({
+                                chars: chars,
+                                startIdx: startIdx,
+                                length: removeText.length
+                            });
+                            taskFound = true;
+                        }
+                    }
+                }
+            });
+            
+            // 使用Promise链按顺序执行移除动画
+            let promiseChain = Promise.resolve();
+            
+            // 在开始移除文本前，等待hint消失动画的一半时间
+            promiseChain = promiseChain.then(() => {
+                if (skipTransformationFlag) return Promise.reject('skipped');
+                return new Promise(resolve => setTimeout(resolve, 250));
+            });
+            
+            removeTasks.forEach(task => {
+                // 为每一段要删除的文本创建一个任务
+                promiseChain = promiseChain.then(() => {
+                    if (skipTransformationFlag) return Promise.reject('skipped');
+                    return new Promise(resolve => {
+                        // 从右往左移除这段文本
+                        let completedCount = 0;
+                        const totalChars = task.length;
+                        
+                        // 如果没有字符需要移除（例如文本未找到），直接 resolve
+                        if (totalChars === 0) {
+                            resolve();
+                            return;
+                        }
+
+                        // 逐个字符设置动画
+                        for (let i = task.length - 1; i >= 0; i--) {
+                            // Check skip inside loop for reducing timeout spam if skipped immediately
+                            if (skipTransformationFlag) {
+                                // resolve() or reject? If we reject here, we need to handle it.
+                                // But we are inside a sync loop creating async timeouts.
+                                // We can't easily stop the loop's effect once scheduled unless we track timeouts.
+                                // But fastForwardTransformations will hide everything anyway.
+                            }
+                            
+                            setTimeout(() => {
+                                if (skipTransformationFlag) return; // Don't animate if skipped
+                                
+                                const charIdx = task.startIdx + i;
+                                const targetChar = task.chars[charIdx];
+                                if (targetChar) {
+                                    targetChar.classList.add('fade-out');
+                                    setTimeout(() => {
+                                        if (!skipTransformationFlag) targetChar.style.display = 'none';
+                                    }, 150); 
+                                }
+                                
+                                completedCount++;
+                                
+                                if (completedCount === totalChars) {
+                                    if (!skipTransformationFlag) setTimeout(resolve, 200);
+                                }
+                            }, (task.length - 1 - i) * 50); 
+                        }
+                        
+                        // Safety resolve if skipped during this task setup? 
+                        // No, the timeouts handle the flow.
+                    });
+                });
+            });
+            
+            // 所有文本移除完成后，等待1秒，然后添加新文本，再继续下一阶段
+            promiseChain.then(() => {
+                if (skipTransformationFlag) return Promise.reject('skipped');
+                // 等待 500ms 的暂停时间，让用户看到"空白"或"消失后的状态"
+                return new Promise(resolve => setTimeout(resolve, 500));
+            }).then(() => {
+                if (skipTransformationFlag) return Promise.reject('skipped');
+                
+                // 确定添加文本的位置：尝试找到最后一段被移除文本所在的段落
+                let targetElement = null;
+                if (removeTasks.length > 0) {
+                    const lastTask = removeTasks[removeTasks.length - 1];
+                    if (lastTask.chars && lastTask.chars.length > 0) {
+                        targetElement = lastTask.chars[0].parentElement;
+                    }
+                }
+                
+                // 如果没找到（或者没有移除任务），则新建一个段落
+                if (!targetElement) {
+                    targetElement = addContent('');
+                }
+                
+                // 逐字显示新文本
+                if (item.adds) {
+                     typeText(targetElement, item.adds, () => {
+                         isProcessingTransformation = false; // Done
+                         // 打字完成后，更新阶段边界（新阶段将从此处之后开始）
+                         stageStartParagraphId = currentParagraphId;
+                         
+                         // 稍作停顿再继续下一阶段
+                         setTimeout(() => processNext(), 500);
+                     }, 50);
+                } else {
+                     isProcessingTransformation = false; // Done
+                     // 如果没有新文本要添加，直接继续
+                     stageStartParagraphId = currentParagraphId;
+                     setTimeout(() => processNext(), 500);
+                }
+            }).catch(reason => {
+                if (reason === 'skipped') {
+                    console.log('Transformation skipped');
+                } else {
+                    console.error(reason);
+                }
+            });
+        }
+
+        function processNext() {
+            if (currentIndex >= storyContent.length) return;
+            
+            // 检查是否需要自动跳过（处理同类型文本的批量显示）
+            if (autoSkipTargetIndex > currentIndex) {
+                skipToIndexAndContinue(autoSkipTargetIndex);
+                autoSkipTargetIndex = -1; // 重置
+                return; // skipToIndexAndContinue 会再次调用 processNext
+            }
+            
+            const item = storyContent[currentIndex];
+            currentIndex++;
+            
+            // 判断当前处于哪个部分，传递给typeText
+            let partNum = null;
+            if (item.type === 'normal') {
+                // normal可能是Part 1或Part 3，通过前后文判断
+                // 简化：检查之前是否有bold，如果有则是Part 3，否则是Part 1
+                let hasBoldBefore = false;
+                for (let i = 0; i < currentIndex - 1; i++) {
+                    if (storyContent[i].type === 'bold') {
+                        hasBoldBefore = true;
+                        break;
+                    }
+                }
+                partNum = hasBoldBefore ? 2 : 0; // Part 3或Part 1
+            } else if (item.type === 'bold') {
+                partNum = 1; // Part 2
+            } else if (item.type === 'hint' || item.type === 'bracket') {
+                partNum = 3; // Part 4
+            }
+            
+            if (item.type === 'normal') {
+                const p = addContent('');
+                typeText(p, item.text, processNext, 50, partNum);
+            } else if (item.type === 'bold') {
+                const p = addContent('', 'wordgame-bold');
+                typeText(p, item.text, processNext, 50, partNum);
+            } else if (item.type === 'hint') {
+                const p = addContent('', 'wordgame-hint');
+                typeText(p, item.text, processNext, 50, partNum);
+            } else if (item.type === 'bracket') {
+                const p = addContent('', 'wordgame-bracket');
+                typeText(p, item.text, processNext, 50, partNum);
+            } else if (item.type === 'input') {
+                showInput(item);
+            } else if (item.type === 'final_hint') {
+                // 显示最终提示文本（醒目颜色）
+                const hintDiv = document.getElementById('final-hint');
+                hintDiv.innerHTML = item.text.split('\n').map(line => 
+                    `<p style="color: #d9534f; font-weight: bold; margin: 5px 0;">${line}</p>`
+                ).join('');
+                hintDiv.classList.remove('hidden');
+                processNext();
+            } else if (item.type === 'final') {
+                // 不显示输入框，直接完成
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('skip-btn').addEventListener('click', handleSkip);
+            
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                if (!confirm('确定要重置进度吗？所有已完成的阶段将丢失。')) return;
+                
+                // 重置游戏状态
+                currentIndex = 0;
+                completedStage = 0;
+                currentParagraphId = 0;
+                stageStartParagraphId = 0;
+                currentPart = 0;
+                
+                // 清空内容区域
+                document.getElementById('content').innerHTML = '';
+                document.getElementById('input-area').innerHTML = '';
+                document.getElementById('final-hint').classList.add('hidden');
+                
+                // 重新初始化游戏
+                initGame();
+            });
+            
+            // 启动游戏
+            initGame();
+        });
+    </script>
+</body>
+</html>
+
+
+

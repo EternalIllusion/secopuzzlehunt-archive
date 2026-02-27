@@ -3,7 +3,7 @@
   "title": "画布之间",
   "extendData": "",
   "contentType": 1,
-  "content": "<p>最终，你们来到了最后一个房间，里面只有一幅简单的画。四根线条、杂乱的数字同一些零散的黄色区域排列在画上。看来，你们需要先将这个未完成的画作补全…</p>\n<p><img src=\"/config/seco2/static/assets/meta4colorplot_7c5c39ffc55718cadcb6990964baf861.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/t18bfxlnrz\">查看盘面</a></p>\n<br>\n<p>标准数独规则适用。</p>\n<p>红色线上的相邻两个数字奇偶性不同；</p>\n<p>橙色线上的相邻两个数字至少相差4；</p>\n<p>蓝色线穿越了多个宫，在有蓝色线的每一宫内蓝色线上的数字之和相等；</p>\n<p>绿色线上的相邻两个数字至少相差5.</p>\n<br>\n<p>将得到的第4行与第5行所有数字（共18位）按顺序写在答案提交框中，或许能发现什么……</p>\n<p><a href=\"/DMs\" class=\"btn\">进入站内信</a></p>\n  ",
+  "content": "<p>最终，你们来到了最后一个房间，里面只有一幅简单的画。四根线条、杂乱的数字同一些零散的黄色区域排列在画上。看来，你们需要先将这个未完成的画作补全…</p>\n<p><img src=\"/config/seco2/static/assets/meta4colorplot_7c5c39ffc55718cadcb6990964baf861.png\" weight=600px height=600px/></p>\n<p><a href=\"https://sudokupad.app/t18bfxlnrz\">查看盘面</a></p>\n<br>\n<p>标准数独规则适用。</p>\n<p>红色线上的相邻两个数字奇偶性不同；</p>\n<p>橙色线上的相邻两个数字至少相差4；</p>\n<p>蓝色线穿越了多个宫，在有蓝色线的每一宫内蓝色线上的数字之和相等；</p>\n<p>绿色线上的相邻两个数字至少相差5.</p>\n<br>\n<p>将得到的第4行与第5行所有数字（共18位）按顺序写在答案提交框中，或许能发现什么……</p>",
   "answer": "MONOCHROME",
   "desc": "",
   "tips": [

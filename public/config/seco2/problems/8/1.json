@@ -1,7 +1,7 @@
 {
   "type": "problem",
   "title": "FM",
-  "extendData": "<div>\n<h1>🎉 恭喜通关！</h1>\n进入胜利页面 &rarr;</div>",
+  "extendData": "<div class=\"congrats-banner\">\n        <h1>🎉 恭喜完赛！</h1>\n        <p>感谢您参与 SECO Puzzle Hunt 2</p>\n        <div class=\"congrats-links\">\n            <span>完赛交流群: QQ 1082353414</span>\n            <span>|</span>\n            <a href=\"https://docs.qq.com/form/page/DYmNJYXp5ZEtjUHJP\" target=\"_blank\">满意度调查</a>\n            <a href=\"https://e.tb.cn/h.ShGgmtsQuUp6Xgl?tk=iPQJf0KgMfH HU287 「SECO Puzzle Hunt2原创周边」\" target=\"_blank\">【淘宝】SECO Puzzle Hunt2原创周边（点击链接打开，或淘宝搜索SECO Puzzle Hunt）</a>\n        </div>\n    </div>",
   "contentType": 1,
   "content": "<p>最终的秘密似乎被隐藏在了不起眼的<strong>角落</strong>中。</p>\n<p><img src=\"/config/seco2/static/assets/seco2fmresult_955a0534710fb44b4ab7b0552f5e5332.jpeg\"></p>",
   "answer": "SECONDCHANCE",
