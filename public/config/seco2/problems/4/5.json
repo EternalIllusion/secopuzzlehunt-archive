@@ -3,7 +3,7 @@
   "title": "盲人摸字",
   "extendData": "",
   "contentType": 1,
-  "content": "暂未收录[mrmz]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/mrmz_425B49FEC8169F5E84B146E13571DDE0.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "CROSSFIRE",
   "desc": "<font color=\"#808080\"><i>汉字，汉字，你的笔画为什么那么长</i></font>",
   "tips": [
