@@ -1,0 +1,348 @@
+{
+  "version": "1.0",
+  "groupName": "到底是谁炸的群！(8)",
+  "chatHistory": [
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "欧邀请罗、黎、king、Light、riser、Taiga、WAHX加入群聊"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "罗、黎被设为管理员"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "群怎么又被炸了，第五次了😡😡😡"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonluo_7d9bf70081586810914a6ec27ced9167.jpg",
+      "name": "罗",
+      "title": "管理员",
+      "role": "admin",
+      "content": "😡"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonli_1b74e3b777cf94491479833f6caffa51.jpg",
+      "name": "黎",
+      "title": "管理员",
+      "role": "admin",
+      "content": "😡"
+    },
+    {
+      "msgType": "user",
+      "type": "right",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonother_3593a7cd5397ab25b3c3540c141cc79e.jpg",
+      "name": "riser",
+      "title": "",
+      "role": "none",
+      "content": "😨"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonother_3593a7cd5397ab25b3c3540c141cc79e.jpg",
+      "name": "king",
+      "title": "",
+      "role": "none",
+      "content": "😨"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonother_3593a7cd5397ab25b3c3540c141cc79e.jpg",
+      "name": "Light",
+      "title": "",
+      "role": "none",
+      "content": "😨"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonother_3593a7cd5397ab25b3c3540c141cc79e.jpg",
+      "name": "Taiga",
+      "title": "",
+      "role": "none",
+      "content": "😨"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonother_3593a7cd5397ab25b3c3540c141cc79e.jpg",
+      "name": "WAHX",
+      "title": "",
+      "role": "none",
+      "content": "😨"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "我研究了一下，炸群的线索如下"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "1. 五次炸群的嫌疑人可能有 king Light riser Taiga WAHX"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "2.五次炸群的理由可能为诈骗(cheat) 色情(sex) 政治(politics) 赌博(gamble) 传播谣言(rumor)"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "3.五位嫌疑人分别喜欢 PNKU CCBC SECOhunt SECOhunt-DLC 和 mitmh"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "4.每次炸群的元凶和理由各不相同，嫌疑人喜欢的 hunt 也各不相同"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "5.给定元凶中后三个加入出题组的人，在这些人之外的人中，<b>有且仅有一个人</b>名字里不含大写字母。"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "6.以赌博为理由炸群的人是中间加入出题组的（不是第一个也不是最后一个）"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "7.最喜欢 PNKU 的不是炸第一个群或第四个群的人"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "8.紧接着色情这个理由炸群的人加入出题组的是 Taiga"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "9.以政治相关理由炸群的人和 WAHX 加入出题组的顺序相邻"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "10.炸第五个群的人不是 king"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "11.Light 和以赌博为理由炸群的人加入出题组的顺序不相邻（可能是同一人）"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "12.以色情理由炸群的人和炸了第二个群的人加入出题组的顺序相邻"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "13.最喜欢 PNKU 的人不是中间加入出题组的"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "14.炸了第五个群的人不是中间加入出题组的"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "15.以诈骗为理由炸群的人紧随最喜欢 MITMH 的人加入出题组"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "16.炸了第三个群的人最喜欢 SECO"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "17.riser 和最喜欢 CCBC 的人加入出题组顺序相邻"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "18.炸第四个群的人紧随以谣言为理由炸群的人加入出题组"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "19.riser 是以诈骗为理由炸群的"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "20.Light 炸的不是第一个群"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonou_c1338e8d8467551a497416557cbb12fe.jpg",
+      "name": "欧",
+      "title": "群主",
+      "role": "owner",
+      "content": "21.喜欢 ccbc 的人在以谣言为理由炸群的人后隔着一个人加入了出题组"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonluo_7d9bf70081586810914a6ec27ced9167.jpg",
+      "name": "罗",
+      "title": "管理员",
+      "role": "admin",
+      "content": "收到"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.jsonli_1b74e3b777cf94491479833f6caffa51.jpg",
+      "name": "黎",
+      "title": "管理员",
+      "role": "admin",
+      "content": "收到"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "紧随 Light 加入出题组的 Taiga、紧随 king 加入出题组的 riser、炸了第一个群的 WAHX 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "最喜欢 CCBC 的 king、紧随 Light 加入出题组的 riser、最喜欢 PNKU 的 Light 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "使用政治相关炸群的 king、在 Taiga 之后加入出题组的 riser、与 king 和 Taiga 相邻加入出题组的 WAHX 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "炸了第五个群的 Taiga、最爱 CCBC 的 WAHX、使用谣言炸群的 king 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "使用赌博炸群的 Light、在最爱 MITMH 的人之前加入出题组的 Light、在 riser 之后加入出题组的 Light 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "炸了第三个群的 king、炸了第二个群且最爱 PNKU 的 Taiga、紧随 Light 加入出题组的 WAHX 已被禁言"
+    },
+    {
+      "msgType": "system",
+      "type": "system",
+      "content": "最爱 MITMH 的 Light、不与炸了第二个群的人相邻加入出题组的 riser、与 Light 间隔一人加入出题组的 Taiga 已被禁言"
+    },
+    {
+      "msgType": "user",
+      "type": "left",
+      "avatarUrl": "https://cravatar.cn/avatar/653583d71a3c26cca4d6baf7795782cb.png?d=256",
+      "name": "EterIll",
+      "title": "????",
+      "role": "owner",
+      "content": "……实话说我这辈子都想不明白riser为什么要把这么个静态网页拆成一个html和不带鉴权的json存储……算了我管你这啊那的……<a href=\"https://sr.mihoyo.com/\">点击炸群</a>"
+    }
+  ]
+}

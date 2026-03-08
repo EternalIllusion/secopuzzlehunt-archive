@@ -3,7 +3,7 @@
   "title": "到底是谁炸的群！",
   "extendData": "",
   "contentType": 1,
-  "content": "暂未收录[qq]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/qq_B818D65837560A1FF12A8A008FEE398A.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "FLATTEN",
   "desc": "<font color=\"#808080\"><i>这些线索已经无需证明了，大家也公认如此，除了其中一条。</i></font>",
   "tips": [

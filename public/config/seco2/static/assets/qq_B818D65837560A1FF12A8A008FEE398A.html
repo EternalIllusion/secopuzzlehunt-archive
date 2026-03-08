@@ -1,0 +1,187 @@
+<style>
+    /* --- 容器布局：让手机居中显示 --- */
+    .qq-puzzle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        background-color: transparent; /* 融入题目背景 */
+    }
+
+    /* --- 手机外壳 --- */
+    .phone-wrapper { 
+        width: 375px; 
+        height: 700px; /* 固定高度，确保在网页中合适 */
+        background: #f2f2f2; 
+        border: 1px solid #ddd; 
+        border-radius: 16px; /* 增加圆角，更像手机 */
+        position: relative; 
+        overflow: hidden; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+        display: flex; 
+        flex-direction: column;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    /* 顶部导航栏 */
+    .status-bar { height: 30px; background: #f2f2f2; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; font-size: 12px; font-weight: bold; flex-shrink: 0; z-index: 20;}
+    .top-header { height: 50px; background: #f2f2f2; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 0 15px; position: relative; z-index: 10; flex-shrink: 0; }
+    .back-btn { font-size: 20px; margin-right: 10px; color: #333; cursor: default; }
+    .group-info { flex: 1; }
+    .group-name { font-size: 16px; font-weight: 500; color: #000; }
+    .menu-btn { font-size: 20px; color: #333; cursor: default; }
+
+    /* --- 聊天滚动区域 --- */
+    .chat-area { 
+        flex: 1; 
+        overflow-y: auto; /* 允许垂直滚动 */
+        padding: 15px; 
+        padding-bottom: 20px; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
+        background: #f2f2f2; 
+        scroll-behavior: smooth;
+    }
+    
+    /* 美化滚动条 */
+    .chat-area::-webkit-scrollbar { width: 6px; }
+    .chat-area::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.2); border-radius: 3px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+
+    /* --- 消息气泡样式 (复用之前的逻辑) --- */
+    .message { display: flex; align-items: flex-start; margin-bottom: 0px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; background-size: cover; background-position: center; flex-shrink: 0; }
+    .content-wrapper { display: flex; flex-direction: column; max-width: 70%; }
+    .user-info { display: flex; align-items: center; margin-bottom: 4px; font-size: 12px; color: #888; }
+    
+    /* 头衔标签 */
+    .user-title { background: #f5a623; color: white; padding: 1px 4px; border-radius: 4px; margin-right: 5px; font-size: 10px; line-height: 14px; }
+    .user-title.admin { background: #1cbdc5; } /* 管理员-青色 */
+    .user-title.custom { background: #8e44ad; } /* 自定义-紫色 */
+    
+    .bubble { padding: 10px 12px; font-size: 15px; line-height: 1.5; border-radius: 10px; word-wrap: break-word; position: relative; }
+
+    /* 他人消息 (左) */
+    .message.left .content-wrapper { margin-left: 10px; align-items: flex-start; }
+    .message.left .bubble { background: #ffffff; color: #000; border-top-left-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    
+    /* 自己消息 (右) */
+    .message.right { flex-direction: row-reverse; }
+    .message.right .content-wrapper { margin-right: 10px; align-items: flex-end; }
+    .message.right .bubble { background: #0099ff; color: #fff; border-top-right-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    .message.right .user-info { display: none; }
+
+    /* 系统消息 */
+    .system-message { text-align: center; margin: 10px 0; }
+    .system-text { display: inline-block; background: #dcdcdc; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 12px; }
+
+    /* 底部假输入框 */
+    .bottom-input { height: 50px; background: #f6f6f6; border-top: 1px solid #ddd; width: 100%; display: flex; align-items: center; padding: 0 10px; box-sizing: border-box; flex-shrink: 0; cursor: not-allowed; }
+    .fake-input { flex: 1; height: 32px; background: #fff; border-radius: 4px; margin: 0 10px; }
+</style>
+
+<div class="qq-puzzle-container">
+    <div class="phone-wrapper">
+        <!-- 顶部状态栏 -->
+        <div class="status-bar">
+            <span>12:00</span>
+            <span>📶 5G 🔋</span>
+        </div>
+        
+        <!-- 头部导航 -->
+        <div class="top-header">
+            <span class="back-btn">&lt;</span>
+            <div class="group-info">
+                <div class="group-name" id="displayGroupName">加载中...</div>
+            </div>
+            <span class="menu-btn">≡</span>
+        </div>
+
+        <!-- 聊天内容区域 -->
+        <div class="chat-area" id="chatArea">
+            <!-- 内容将通过 JS 加载 -->
+            <div class="system-message"><span class="system-text">正在读取聊天记录...</span></div>
+        </div>
+
+        <!-- 底部输入框 (仅展示) -->
+        <div class="bottom-input">
+            <span style="font-size:24px; color:#7f8389;">🎤</span>
+            <div class="fake-input"></div>
+            <span style="font-size:24px; color:#7f8389;">😊 ➕</span>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 指向你的 JSON 文件位置
+    const jsonUrl = "/config/seco2/static/assets/qq_A60EFAE265F94147DFE343F020D87771.json";
+    
+    fetch(jsonUrl)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            const chatArea = document.getElementById('chatArea');
+            chatArea.innerHTML = ''; // 清空加载提示
+
+            // 1. 设置群名
+            if(data.groupName) {
+                document.getElementById('displayGroupName').innerText = data.groupName;
+            }
+
+            // 2. 渲染消息列表
+            if (data.chatHistory && Array.isArray(data.chatHistory)) {
+                data.chatHistory.forEach(item => {
+                    renderMessage(item, chatArea);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('JSON Load Error:', error);
+            document.getElementById('displayGroupName').innerText = "加载失败";
+            document.getElementById('chatArea').innerHTML = `<div class="system-message"><span class="system-text" style="background:#ff5252">数据加载失败，请联系管理员</span></div>`;
+        });
+
+    function renderMessage(data, container) {
+        const msgDiv = document.createElement('div');
+
+        if (data.msgType === 'system' || data.type === 'system') {
+            msgDiv.className = 'system-message';
+            msgDiv.innerHTML = `<span class="system-text">${data.content}</span>`;
+        } else {
+            msgDiv.className = `message ${data.type}`;
+            let titleHtml = '';
+            
+            // 只有左侧消息(他人)才显示头衔和名字
+            if (data.type === 'left') {
+                if (data.title) {
+                    let roleClass = '';
+                    if (data.role === 'admin') roleClass = 'admin';
+                    else if (data.role === 'custom') roleClass = 'custom';
+                    titleHtml = `<span class="user-title ${roleClass}">${data.title}</span>`;
+                }
+                
+                msgDiv.innerHTML = `
+                    <div class="avatar" style="background-image: url('${data.avatarUrl}')"></div>
+                    <div class="content-wrapper">
+                        <div class="user-info">${titleHtml}<span>${data.name}</span></div>
+                        <div class="bubble">${data.content}</div>
+                    </div>
+                `;
+            } else {
+                // 右侧消息(自己)
+                msgDiv.innerHTML = `
+                    <div class="avatar" style="background-image: url('${data.avatarUrl}')"></div>
+                    <div class="content-wrapper">
+                        <div class="bubble">${data.content}</div>
+                    </div>
+                `;
+            }
+        }
+        container.appendChild(msgDiv);
+    }
+});
+</script>
