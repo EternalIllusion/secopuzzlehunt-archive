@@ -18,6 +18,7 @@ const props = defineProps<{ name?: string, hints: PuzzleTip[]}>();
 const answerTips = reactive<tip[]>([]);
 
 const loadTips = () => {
+  answerTips.length=0;
   let i=1;
   props.hints.forEach((hint)=>{
     answerTips.push({

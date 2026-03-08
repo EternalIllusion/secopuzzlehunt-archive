@@ -3,9 +3,9 @@
   "title": "本题使用人工智能合成技术，请仔细甄别",
   "extendData": "",
   "contentType": 1,
-  "content": "暂未收录[ai]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/ai_D5B2C45F89DA53940622E30823C7D06B.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "SCARE",
-  "desc": "<font color=\"#808080\"><i>天上的星星，从西边看？还是从东边看</i></font>",
+  "desc": "<font color=\"#808080\"><i>天上的星星，从西边看？还是从东边看</i></font><br />注：存档站不设置存档，按L可以一键通关当前小关",
   "tips": [
     {
       "title": "我似乎没找到个别图片对应的答案？ (0提示点)",
