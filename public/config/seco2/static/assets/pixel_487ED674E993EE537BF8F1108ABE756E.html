@@ -1,0 +1,453 @@
+<p><font color="#808080"><i>看起来是个复古的电子游戏</i></font></p>
+<style>
+    @font-face {
+        font-family: 'PixelGame';
+        src: url("/config/seco2/static/pix_6ABD64EE724768C863D2969484B89E65.ttf") format('truetype');
+    }
+
+    /* 模拟 800x600 的游戏窗口 */
+    #game-container {
+        width: 800px;
+        height: 600px;
+        background-color: #000; /* 默认黑色背景 */
+        margin: 0 auto;
+        position: relative;
+        font-family: 'PixelGame', 'Courier New', monospace;
+        overflow: hidden;
+        user-select: none;
+        border: 4px solid #444;
+    }
+
+    /* 屏幕层：用于切换菜单、选关、游戏 */
+    .screen-layer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none; /* 默认隐藏 */
+    }
+
+    /* --- 主菜单样式 --- */
+    #screen-menu {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #title-img {
+        image-rendering: pixelated;
+        display: block;
+        margin: 0;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* --- 选关界面样式 --- */
+    #screen-select { background-color: #404040; color: white; padding: 20px; box-sizing: border-box; }
+    .select-header { font-size: 36px; text-align: center; margin-bottom: 20px; }
+    /* 选关：固定一行 5 个按钮 */
+    .level-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 100px);
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .level-btn {
+        width: 100px; height: 50px;
+        border: 2px solid black;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; font-size: 24px;
+        background-color: #0064ff; /* Blue */
+    }
+    .level-btn.completed { background-color: #00ff00; /* Green */ color: black; }
+    .level-btn:hover { opacity: 0.8; }
+    .part-title { width: 100%; font-size: 32px; margin-top: 10px; border-bottom: 2px solid #888; }
+    .danger-btn { background-color: #ff3b30; color: white; }
+    /* 选关底部按钮行：宽度与关卡网格一致(5*100 + 4*10 = 540)，保证对齐 3-1/3-5 */
+    .select-footer {
+        width: 540px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 10px 0 10px 0;
+    }
+    .select-footer.just-right { justify-content: flex-end; }
+    .select-footer.both-sides { justify-content: space-between; }
+
+    /* --- 游戏界面样式 --- */
+    #screen-game { background-color: white; position: relative; }
+    #game-level-text { font-size: 36px; position: absolute; top: 20px; left: 20px; color: black; }
+    #game-esc-hint { font-size: 24px; position: absolute; bottom: 30px; left: 20px; color: black; }
+    #game-image { 
+        position: absolute; 
+        left: 50%; top: 50%; 
+        transform: translate(-50%, -80%); /* 略微向上 */
+        image-rendering: pixelated; 
+    }
+
+    #game-hint-text {
+        position: absolute;
+        left: 50px;
+        bottom: 185px;
+        font-size: 24px;
+        color: black !important;
+    }
+    
+    /* 模拟 Pygame 输入框 */
+    #game-input-box {
+        position: absolute;
+        bottom: 120px; left: 50px;
+        width: 700px; height: 40px;
+        border: 2px solid black;
+        font-size: 36px;
+        line-height: 40px;
+        padding-left: 10px;
+        text-transform: uppercase;
+        background: transparent;
+        outline: none;
+        font-family: 'PixelGame', 'Courier New', monospace;
+        color: black !important;
+        caret-color: black;
+    }
+
+    /* 已完成关卡：关卡内所有文字统一更深的绿色 */
+    #screen-game.level-completed,
+    #screen-game.level-completed #game-level-text,
+    #screen-game.level-completed #game-hint-text,
+    #screen-game.level-completed #game-esc-hint,
+    #screen-game.level-completed #game-input-box {
+        color: #006400 !important;
+    }
+    /* 抖动动画 */
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+    .shake-effect { animation: shake 0.5s; }
+
+    /* --- 通关界面 --- */
+    #screen-ending { background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; }
+    .ending-text { font-size: 36px; color: #00ff00; margin-bottom: 20px; }
+
+</style>
+
+<div id="game-container" tabindex="0">
+    <!-- 1. 主菜单 -->
+    <div id="screen-menu" class="screen-layer">
+        <img id="title-img" src="" alt="Title">
+    </div>
+
+    <!-- 2. 选关界面 -->
+    <div id="screen-select" class="screen-layer">
+        <div class="select-header">Select Level</div>
+        <div style="font-size: 16px; margin-bottom: 10px;">Press ESC to return to Main Menu</div>
+        <div id="select-grid-container" style="overflow-y: scroll; height: 500px; padding-bottom: 60px; box-sizing: border-box;">
+            <!-- 动态生成按钮 -->
+        </div>
+    </div>
+
+    <!-- 3. 游戏界面 -->
+    <div id="screen-game" class="screen-layer">
+        <div id="game-level-text">Level: 1-1</div>
+        <img id="game-image" src="">
+        <input type="text" id="game-input-box" maxlength="30" autocomplete="off">
+        <div id="game-hint-text">Press Enter to submit answer</div>
+        <div id="game-esc-hint">Press ESC to return to level select</div>
+    </div>
+
+    <!-- 4. 结局界面 -->
+    <div id="screen-ending" class="screen-layer">
+        <div class="ending-text">Congratulations! All levels completed!</div>
+        <div style="font-size: 24px;">Press ESC to return to main menu</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('game-container');
+    const api = "";
+    const csrf = "";
+
+    // 状态机
+    const gameState = {
+        current: 'MENU', // MENU, SELECT, GAME, ENDING
+        
+        // Main Menu State
+        menuBuffer: "",
+        exitSequence: ".2$@-9 #8[>",
+        
+        // Game State
+        currentLevelKey: null,
+        
+        // Data
+        unlockedLevels: [],
+        completedLevels: [],
+        allCompleted: false,
+
+        change(newState) {
+            document.querySelectorAll('.screen-layer').forEach(el => el.style.display = 'none');
+            
+            if (newState === 'MENU') {
+                // 必须用 flex 才能居中（不能用 block 覆盖 CSS）
+                document.getElementById('screen-menu').style.display = 'flex';
+                this.menuBuffer = "";
+                updateTitleImage("");
+            } else if (newState === 'SELECT') {
+                document.getElementById('screen-select').style.display = 'block';
+                loadLevelSelect();
+            } else if (newState === 'GAME') {
+                document.getElementById('screen-game').style.display = 'block';
+                loadGameLevel(this.currentLevelKey);
+            } else if (newState === 'ENDING') {
+                // 结局界面使用 flex 才能上下左右居中（不能用 block 覆盖 CSS）
+                document.getElementById('screen-ending').style.display = 'flex';
+            }
+            this.current = newState;
+            container.focus(); // 保持焦点
+        }
+    };
+
+    // 供行内 onclick 使用（Ending / Clear Save）
+    window.gameState = gameState;
+
+    // --- 逻辑函数 ---
+
+    function updateTitleImage(buf) {
+        // 使用时间戳防止缓存
+        document.getElementById('title-img').src = `{% url 'pixel_title' %}?buf=${encodeURIComponent(buf)}&t=${Date.now()}`;
+    }
+
+    async function loadLevelSelect() {
+        const res = await fetch(api, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'get_state' }),
+            headers: {'X-CSRFToken': csrf}
+        });
+        const data = await res.json();
+        gameState.unlockedLevels = data.unlocked;
+        gameState.completedLevels = data.completed;
+        gameState.allCompleted = data.all_completed;
+        
+        renderLevelGrid();
+    }
+
+    async function resetSave() {
+        const ok = confirm("确定要清除存档吗？这会重置已解锁/已完成关卡进度。");
+        if (!ok) return;
+
+        try {
+            const res = await fetch(api, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'reset_save' }),
+                headers: {'X-CSRFToken': csrf, 'Content-Type': 'application/json'}
+            });
+            if (!res.ok) {
+                alert("清除存档失败（请求未成功）");
+            }
+        } catch (e) {
+            alert("清除存档失败（网络或服务器错误）");
+        }
+
+        // 重新拉取状态刷新 UI
+        await loadLevelSelect();
+    }
+    window.resetSave = resetSave;
+
+    function renderLevelGrid() {
+        const container = document.getElementById('select-grid-container');
+        container.innerHTML = "";
+        
+        // 渲染 Part 1, 2, 3
+        for (let part = 1; part <= 3; part++) {
+            const max = (part < 3) ? 15 : 5;
+            const partDiv = document.createElement('div');
+            partDiv.className = 'part-title';
+            partDiv.innerText = `Part ${part}`;
+            container.appendChild(partDiv);
+            
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'level-grid';
+            
+            for (let i = 1; i <= max; i++) {
+                const key = `${part}-${i}`;
+                if (gameState.unlockedLevels.includes(key)) {
+                    const btn = document.createElement('div');
+                    btn.className = 'level-btn';
+                    if (gameState.completedLevels.includes(key)) btn.classList.add('completed');
+                    btn.innerText = key;
+                    btn.onclick = () => {
+                        gameState.currentLevelKey = key;
+                        gameState.change('GAME');
+                    };
+                    gridDiv.appendChild(btn);
+                }
+            }
+            container.appendChild(gridDiv);
+
+            // Clear Save 固定放在 Part 3 下方（与 Part 3 区域隔一行），不放到最底部
+            if (part === 3) {
+                const gap = document.createElement('div');
+                gap.style.height = '35px';
+                container.appendChild(gap);
+
+                const footer = document.createElement('div');
+                footer.className = 'select-footer ' + (gameState.allCompleted ? 'both-sides' : 'just-right');
+                if (gameState.allCompleted) {
+                    footer.innerHTML = `
+                        <div class="level-btn completed" style="width:200px;" onclick="gameState.change('ENDING')">Ending</div>
+                        <div class="level-btn danger-btn" style="width:220px;" onclick="resetSave()">Clear Save</div>
+                    `;
+                } else {
+                    footer.innerHTML = `<div class="level-btn danger-btn" style="width:220px;" onclick="resetSave()">Clear Save</div>`;
+                }
+                container.appendChild(footer);
+
+                const bottomGap = document.createElement('div');
+                bottomGap.style.height = '30px';
+                container.appendChild(bottomGap);
+            }
+        }
+    }
+
+    function loadGameLevel(key) {
+        // 进入关卡时确保不会残留上一次的抖动效果
+        const gameScreen = document.getElementById('screen-game');
+        gameScreen.classList.remove('shake-effect');
+        gameScreen.classList.remove('level-completed');
+
+        document.getElementById('game-level-text').innerText = `Level: ${key}`;
+        // 切关时先隐藏图片，避免短暂显示上一关内容
+        const img = document.getElementById('game-image');
+        img.style.visibility = 'hidden';
+        img.onload = () => { img.style.visibility = 'visible'; };
+        img.src = `/puzzles/pixel/image/${key}/?t=${Date.now()}`;
+        
+        const inputBox = document.getElementById('game-input-box');
+        inputBox.value = "";
+        inputBox.disabled = false;
+        inputBox.style.background = "transparent";
+        inputBox.style.color = "black";
+        document.getElementById('game-hint-text').innerText = "Press Enter to submit answer";
+        inputBox.focus();
+        
+        // 如果已完成：显示正确答案（大写）并禁用输入（与 Python 版一致）
+        if (gameState.completedLevels.includes(key)) {
+            gameScreen.classList.add('level-completed');
+            showCompletedLevelAnswer(key);
+        }
+    }
+
+    async function showCompletedLevelAnswer(levelKey) {
+        const gameScreen = document.getElementById('screen-game');
+        gameScreen.classList.add('level-completed');
+        const inputBox = document.getElementById('game-input-box');
+        inputBox.value = "";
+        inputBox.disabled = true;
+        inputBox.style.background = "#ddd";
+        inputBox.style.color = "#006400";
+        document.getElementById('game-hint-text').innerText = "Level completed - Press ESC to return";
+
+        // 不在前端计算答案：交给后端（且应只对已完成关卡返回）
+        try {
+            const res = await fetch(api, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'get_answer', level: levelKey }),
+                headers: {'X-CSRFToken': csrf}
+            });
+            const data = await res.json();
+            if (data && data.answer) {
+                inputBox.value = String(data.answer).toUpperCase();
+            }
+        } catch (e) {
+            // ignore
+        }
+    }
+
+    async function submitAnswer() {
+        const val = document.getElementById('game-input-box').value;
+        const res = await fetch(api, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'submit', level: gameState.currentLevelKey, submission: val }),
+            headers: {'X-CSRFToken': csrf}
+        });
+        const data = await res.json();
+        
+        if (data.result === 'correct') {
+            // 答对后返回选关界面
+            gameState.change('SELECT');
+        } else {
+            // 错误，触发抖动
+            const gameScreen = document.getElementById('screen-game');
+            gameScreen.classList.remove('shake-effect');
+            void gameScreen.offsetWidth; // 触发重绘
+            gameScreen.classList.add('shake-effect');
+            document.getElementById('game-input-box').value = "";
+            // 防止下次进入关卡时立刻抖动
+            setTimeout(() => gameScreen.classList.remove('shake-effect'), 600);
+        }
+    }
+
+    // --- 输入监听 (模拟 Pygame 事件循环) ---
+
+    // 1. 全局按键监听
+    document.addEventListener('keydown', (e) => {
+        if (gameState.current === 'MENU') {
+            if (e.key === 'Enter') {
+                gameState.change('SELECT');
+            } else if (e.key.length === 1) { // 可打印字符（包含空格）
+                function easterEggPrompt() {
+                    alert("快做题！不准把我关掉！");
+                }
+
+                // 复刻 Python 版：必须从头按前缀逐字匹配，输错就清空重新开始
+                const maxLen = gameState.exitSequence.length;
+                let newBuf = (gameState.menuBuffer + e.key);
+                if (newBuf.length > maxLen) newBuf = newBuf.slice(-maxLen);
+
+                let matched = true;
+                for (let i = 0; i < Math.min(newBuf.length, gameState.exitSequence.length); i++) {
+                    if (newBuf[i] !== gameState.exitSequence[i]) {
+                        matched = false;
+                        break;
+                    }
+                }
+
+                gameState.menuBuffer = matched ? newBuf : "";
+
+                if (gameState.menuBuffer === gameState.exitSequence) {
+                    gameState.menuBuffer = "";
+                    updateTitleImage("");
+                    easterEggPrompt();
+                    return;
+                }
+                
+                updateTitleImage(gameState.menuBuffer);
+            }
+        } else if (gameState.current === 'SELECT') {
+            if (e.key === 'Escape') gameState.change('MENU');
+        } else if (gameState.current === 'GAME') {
+            if (e.key === 'Escape') gameState.change('SELECT');
+            if (e.key === 'Enter') submitAnswer();
+        } else if (gameState.current === 'ENDING') {
+            if (e.key === 'Escape') gameState.change('MENU');
+        }
+    });
+    
+    // 初始化
+    gameState.change('MENU');
+    container.focus();
+});
+</script>

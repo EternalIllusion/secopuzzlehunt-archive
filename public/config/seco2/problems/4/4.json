@@ -3,7 +3,7 @@
   "title": "像素小游戏",
   "extendData": "",
   "contentType": 1,
-  "content": "暂未收录[pixel]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/pixel_49031239D9CD9791D27EBBAE4B98E6F9.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "PUFF",
   "desc": "<p><font color=\"#808080\"><i>看起来是个复古的电子游戏</i></font></p>",
   "tips": [

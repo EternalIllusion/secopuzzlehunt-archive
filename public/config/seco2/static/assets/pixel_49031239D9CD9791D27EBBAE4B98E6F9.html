@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素小游戏</title>
+    <style>
+    @font-face {
+        font-family: 'PixelGame';
+        src: url("/config/seco2/static/pix_6ABD64EE724768C863D2969484B89E65.ttf") format('truetype');
+    }
+
+        body {
+            background-color: transparent;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'PixelGame', 'Courier New', monospace;
+        }
+
+        #game-container {
+            width: 800px;
+            height: 600px;
+            background-color: transparent;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            border: 4px solid #444;
+        }
+
+        .screen-layer {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        #screen-menu {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #title-canvas {
+            image-rendering: pixelated;
+            display: block;
+        }
+        .menu-hint {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        #screen-select { 
+            background-color: transparent; 
+            color: #404040; 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+        .select-header { 
+            font-size: 36px; 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        .select-subheader {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .level-btn {
+            width: 100px; 
+            height: 50px;
+            border: 2px solid black;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            cursor: pointer; 
+            font-size: 24px;
+            background-color: #0064ff;
+            color: white;
+        }
+        .level-btn.completed { 
+            background-color: #00ff00; 
+            color: black; 
+        }
+        .level-btn:hover { 
+            opacity: 0.8; 
+        }
+        .part-title { 
+            width: 100%; 
+            font-size: 32px; 
+            margin-top: 10px; 
+            border-bottom: 2px solid #888; 
+        }
+        .danger-btn { 
+            background-color: #ff3b30; 
+            color: white; 
+        }
+        .select-footer {
+            width: 540px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 10px 0 10px 0;
+        }
+        .select-footer.just-right { justify-content: flex-end; }
+        .select-footer.both-sides { justify-content: space-between; }
+
+        #screen-game { 
+            background-color: white; 
+            position: relative; 
+        }
+        #game-level-text { 
+            font-size: 36px; 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            color: black; 
+        }
+        #game-esc-hint { 
+            font-size: 24px; 
+            position: absolute; 
+            bottom: 30px; 
+            left: 20px; 
+            color: black; 
+        }
+        #game-canvas {
+            position: absolute;
+            left: 50%; 
+            top: 50%;
+            transform: translate(-50%, -80%);
+            image-rendering: pixelated;
+        }
+
+        #game-hint-text {
+            position: absolute;
+            left: 50px;
+            bottom: 185px;
+            font-size: 24px;
+            color: black !important;
+        }
+
+        #game-input-box {
+            position: absolute;
+            bottom: 120px; 
+            left: 50px;
+            width: 700px; 
+            height: 40px;
+            border: 2px solid black;
+            font-size: 36px;
+            line-height: 40px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            background: transparent;
+            outline: none;
+            font-family: 'PixelGame', 'Courier New', monospace;
+            color: black !important;
+            caret-color: black;
+        }
+
+        #screen-game.level-completed,
+        #screen-game.level-completed #game-level-text,
+        #screen-game.level-completed #game-hint-text,
+        #screen-game.level-completed #game-esc-hint,
+        #screen-game.level-completed #game-input-box {
+            color: #006400 !important;
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        .shake-effect { animation: shake 0.5s; }
+
+        #screen-ending { 
+            background-color: white; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            width: 100%; 
+        }
+        .ending-text { 
+            font-size: 36px; 
+            color: #00ff00; 
+            margin-bottom: 20px; 
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container" tabindex="0">
+        <div id="screen-menu" class="screen-layer">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAUCAYAAABvecQxAAABo0lEQVR4nO1Z0Q7DIAicS/v/H9wHl2ZpRhgoIGi3cC/LqL2iHlRoqbXWRyLhjKc3YSJxIoWVCEEKKxGCzYOklPJlO49u0XaLP/C+6/9KfyJ5oucVLizsAHRQYud4JHaJPxBYXHBs61qLn9oQC3+PB48f4afsLZ5lwuIWRWJvLS6cLGWX+APHUpnLwiMRQQRG1kFi90JIxqLseDNbkcdFErZb/LmuSRdWO69I1MF1oIIkyn83YfWAMwUVeZ7R1YtsqbikPNbNKYq5RWSZUf85lGyQJiLgkrGO4/Cg+Qvs+77ahVtgW7mgVPmPMSOhej03A2zSGUtS4eEDuqbysggC9q64YkJ69rJUliv7czNPPdvsKoYS0MimWYQIf7liAt8zcmivwX0sjpvinyWu8KpQ26/qceDxmkoJikGTsVotB054UfDqz/38q1DTr+Js0m78SMayYMVGVqf+3E8Ji1poTb8KjpE+T4NWxmpxcfPyEFVRzkHbn5ME6O2Fpf3OJhWi9HkaH3tfAXrXRp7t/f2T4135WnRpkGaZ/UH2sd7IznviEYEXSlbm5+gGz64AAAAASUVORK5CYII=" alt="title" style="
+    width: 100%;
+    image-rendering: pixelated;
+    height: auto;
+">
+        </div>
+
+        <div id="screen-select" class="screen-layer">
+            <div class="select-header">Select Level</div>
+            <div class="select-subheader">按 ESC 返回主菜单</div>
+            <div id="select-grid-container" style="overflow-y: scroll; height: 500px; padding-bottom: 60px; box-sizing: border-box;"></div>
+        </div>
+
+        <div id="screen-game" class="screen-layer">
+            <div id="game-level-text">Level: 1-1</div>
+            <canvas id="game-canvas" width="124" height="124"></canvas>
+            <input type="text" id="game-input-box" maxlength="30" autocomplete="off">
+            <div id="game-hint-text">按 Enter 提交答案</div>
+            <div id="game-esc-hint">按 ESC 返回选关</div>
+        </div>
+
+        <div id="screen-ending" class="screen-layer">
+            <div class="ending-text">恭喜！所有关卡已完成！</div>
+            <div style="font-size: 24px;">按 ESC 返回主菜单</div>
+        </div>
+    </div>
+
+    <script src="/config/seco2/static/assets/pixel_level_data_34503B4933CCE2C19D64F39DAAC19512.js"></script>
+    <script>
+        const ANSWERS = {
+            '1-1': '7', '1-2': '24', '1-3': '30', '1-4': '24', '1-5': '66',
+            '1-6': '48', '1-7': '10', '1-8': '16', '1-9': '40', '1-10': '85',
+            '1-11': '112', '1-12': '64', '1-13': '100', '1-14': '36', '1-15': '100',
+            '2-1': 'R', '2-2': 'X', '2-3': 'Y', '2-4': 'F', '2-5': 'I',
+            '2-6': 'I', '2-7': 'B', '2-8': 'X', '2-9': 'V', '2-10': 'V',
+            '2-11': 'S', '2-12': 'U', '2-13': 'W', '2-14': 'Q', '2-15': 'M',
+            '3-1': 'FIND', '3-2': 'HIDDEN', '3-3': 'RULE', '3-4': 'BY', '3-5': 'COUNTINGPIXELS'
+        };
+
+        const gameState = {
+            current: 'MENU',
+            menuBuffer: "",
+            exitSequence: ".2$@-9 #8[>",
+            currentLevelKey: null,
+            unlockedLevels: ['1-1', '1-2'],
+            completedLevels: [],
+            allCompleted: false
+        };
+
+        function loadSave() {
+            try {
+                const saved = localStorage.getItem('pixelGameSave');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    gameState.unlockedLevels = data.unlockedLevels || ['1-1', '1-2'];
+                    gameState.completedLevels = data.completedLevels || [];
+                    checkAllCompleted();
+                }
+            } catch (e) { console.error('加载存档失败:', e); }
+        }
+
+        function saveGame() {
+            try {
+                localStorage.setItem('pixelGameSave', JSON.stringify({
+                    unlockedLevels: gameState.unlockedLevels,
+                    completedLevels: gameState.completedLevels
+                }));
+            } catch (e) { console.error('保存存档失败:', e); }
+        }
+
+        function checkAllCompleted() {
+            const totalLevels = 15 + 15 + 5;
+            gameState.allCompleted = gameState.completedLevels.length >= totalLevels;
+        }
+
+        function unlockNextLevel(currentKey) {
+            if (!gameState.completedLevels.includes(currentKey)) {
+                gameState.completedLevels.push(currentKey);
+            }
+            const [part, index] = currentKey.split('-').map(Number);
+            if (part === 1) {
+                const allP1Unlocked = gameState.unlockedLevels.includes('1-15');
+                if (allP1Unlocked && index === 15) {
+                    if (!gameState.unlockedLevels.includes('2-1')) {
+                        gameState.unlockedLevels.push('2-1', '2-2');
+                    }
+                } else if (index < 15) {
+                    const nextKey = `1-${index + 1}`;
+                    if (!gameState.unlockedLevels.includes(nextKey)) {
+                        gameState.unlockedLevels.push(nextKey);
+                    }
+                }
+            } else if (part === 2) {
+                const allP2Unlocked = gameState.unlockedLevels.includes('2-15');
+                if (allP2Unlocked && index === 15) {
+                    if (!gameState.unlockedLevels.includes('3-1')) {
+                        gameState.unlockedLevels.push('3-1', '3-2');
+                    }
+                } else if (index < 15) {
+                    const nextKey = `2-${index + 1}`;
+                    if (!gameState.unlockedLevels.includes(nextKey)) {
+                        gameState.unlockedLevels.push(nextKey);
+                    }
+                }
+            } else if (part === 3) {
+                if (index < 5) {
+                    const nextKey = `3-${index + 1}`;
+                    if (!gameState.unlockedLevels.includes(nextKey)) {
+                        gameState.unlockedLevels.push(nextKey);
+                    }
+                }
+            }
+            checkAllCompleted();
+            saveGame();
+        }
+
+        function generateCountingPixelsPattern(ctx) {
+            const TARGET_PIXEL_COUNTS = [3, 15, 21, 14, 20, 9, 14, 7, 16, 9, 24, 5, 12, 19];
+            const width = 61, height = 31, scale = 4;
+            const canvas = document.getElementById('game-canvas');
+            canvas.width = width * scale;
+            canvas.height = height * scale;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const numComponents = TARGET_PIXEL_COUNTS.length;
+            const cellWidth = width / numComponents;
+            TARGET_PIXEL_COUNTS.forEach((pixelCount, i) => {
+                const regionX1 = Math.floor(i * cellWidth) + 2;
+                const regionX2 = Math.floor((i + 1) * cellWidth) - 2;
+                ctx.fillStyle = 'black';
+                let drawn = 0;
+                for (let y = 2; y < height - 2 && drawn < pixelCount; y++) {
+                    for (let x = regionX1; x <= regionX2 && drawn < pixelCount; x++) {
+                        ctx.fillRect(x * scale, y * scale, scale, scale);
+                        drawn++;
+                    }
+                }
+            });
+            ctx.fillStyle = '#fafafa';
+            for (let x = 0; x < width; x++) {
+                ctx.fillRect(x * scale, 0, scale, scale);
+                ctx.fillRect(x * scale, (height - 1) * scale, scale, scale);
+            }
+            for (let y = 0; y < height; y++) {
+                ctx.fillRect(0, y * scale, scale, scale);
+                ctx.fillRect((width - 1) * scale, y * scale, scale, scale);
+            }
+        }
+
+        function generateLevelImage(part, index) {
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            const key = `${part}-${index}`;
+            const data = LEVEL_PIXEL_DATA[key];
+            if (!data) {
+                if (part === 3 && index === 5) {
+                    generateCountingPixelsPattern(ctx);
+                }
+                return;
+            }
+            const { width, height, pixels } = data;
+            const scale = 4;
+            canvas.width = width * scale;
+            canvas.height = height * scale;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'black';
+            pixels.forEach(([x, y]) => {
+                ctx.fillRect(x * scale, y * scale, scale, scale);
+            });
+            ctx.fillStyle = '#fafafa';
+            for (let x = 0; x < width; x++) {
+                ctx.fillRect(x * scale, 0, scale, scale);
+                ctx.fillRect(x * scale, (height - 1) * scale, scale, scale);
+            }
+            for (let y = 0; y < height; y++) {
+                ctx.fillRect(0, y * scale, scale, scale);
+                ctx.fillRect((width - 1) * scale, y * scale, scale, scale);
+            }
+        }
+        function getCorrectAnswer(levelKey) { return ANSWERS[levelKey] || ""; }
+
+        function changeState(newState) {
+            document.querySelectorAll('.screen-layer').forEach(el => el.style.display = 'none');
+            if (newState === 'MENU') {
+                document.getElementById('screen-menu').style.display = 'flex';
+                gameState.menuBuffer = "";
+                document.getElementById('game-container').focus();
+            } else if (newState === 'SELECT') {
+                document.getElementById('screen-select').style.display = 'block';
+                renderLevelGrid();
+                document.getElementById('game-container').focus();
+            } else if (newState === 'GAME') {
+                document.getElementById('screen-game').style.display = 'block';
+                loadGameLevel(gameState.currentLevelKey);
+                // 确保输入框聚焦 - 多次尝试确保成功
+                setTimeout(() => {
+                    const inputBox = document.getElementById('game-input-box');
+                    inputBox.focus();
+                    inputBox.click();
+                }, 10);
+                setTimeout(() => {
+                    document.getElementById('game-input-box').focus();
+                }, 100);
+            } else if (newState === 'ENDING') {
+                document.getElementById('screen-ending').style.display = 'flex';
+                document.getElementById('game-container').focus();
+            }
+            gameState.current = newState;
+        }
+
+        function renderLevelGrid() {
+            const container = document.getElementById('select-grid-container');
+            container.innerHTML = "";
+            for (let part = 1; part <= 3; part++) {
+                const max = (part < 3) ? 15 : 5;
+                const partDiv = document.createElement('div');
+                partDiv.className = 'part-title';
+                partDiv.innerText = `Part ${part}`;
+                container.appendChild(partDiv);
+                const gridDiv = document.createElement('div');
+                gridDiv.className = 'level-grid';
+                for (let i = 1; i <= max; i++) {
+                    const key = `${part}-${i}`;
+                    if (gameState.unlockedLevels.includes(key)) {
+                        const btn = document.createElement('div');
+                        btn.className = 'level-btn';
+                        if (gameState.completedLevels.includes(key)) btn.classList.add('completed');
+                        btn.innerText = key;
+                        btn.onclick = () => { gameState.currentLevelKey = key; changeState('GAME'); };
+                        gridDiv.appendChild(btn);
+                    }
+                }
+                container.appendChild(gridDiv);
+                if (part === 3) {
+                    const gap = document.createElement('div');
+                    gap.style.height = '35px';
+                    container.appendChild(gap);
+                    const footer = document.createElement('div');
+                    footer.className = 'select-footer ' + (gameState.allCompleted ? 'both-sides' : 'just-right');
+                    if (gameState.allCompleted) {
+                        footer.innerHTML = `
+                            <div class="level-btn completed" style="width:200px;" onclick="changeState('ENDING')">Ending</div>
+                            <div class="level-btn completed" style="width:220px;" onclick="unlockAll()">Unlock All</div>
+                            <div class="level-btn danger-btn" style="width:220px;" onclick="resetSave()">Clear Save</div>
+                            <div class="level-btn danger-btn" style="width:220px;" onclick="passAll()">Pass All</div>`;
+                    } else {
+                        footer.innerHTML = `<div class="level-btn completed" style="width:220px;" onclick="unlockAll()">Unlock All</div>
+                            <div class="level-btn danger-btn" style="width:220px;" onclick="resetSave()">Clear Save</div>
+                            <div class="level-btn danger-btn" style="width:220px;" onclick="passAll()">Pass All</div>`;
+                    }
+                    container.appendChild(footer);
+                    const bottomGap = document.createElement('div');
+                    bottomGap.style.height = '30px';
+                    container.appendChild(bottomGap);
+                }
+            }
+        }
+
+        function resetSave() {
+            if (!confirm("确定要清除存档吗？这会重置已解锁/已完成关卡进度。")) return;
+            gameState.unlockedLevels = ['1-1', '1-2'];
+            gameState.completedLevels = [];
+            gameState.allCompleted = false;
+            saveGame();
+            renderLevelGrid();
+        }
+
+        function unlockAll() {
+            if (!confirm("确定要全部解锁吗？这会解锁全部关卡进度。")) return;
+            gameState.unlockedLevels = [
+                "1-1",
+                "1-2",
+                "1-3",
+                "1-4",
+                "1-5",
+                "1-6",
+                "1-7",
+                "1-8",
+                "1-9",
+                "1-10",
+                "1-11",
+                "1-12",
+                "1-13",
+                "1-14",
+                "1-15",
+                "2-1",
+                "2-2",
+                "2-3",
+                "2-4",
+                "2-5",
+                "2-6",
+                "2-7",
+                "2-8",
+                "2-9",
+                "2-10",
+                "2-11",
+                "2-12",
+                "2-13",
+                "2-14",
+                "2-15",
+                "3-1",
+                "3-2",
+                "3-3",
+                "3-4",
+                "3-5"
+            ];
+            saveGame();
+            renderLevelGrid();
+        }
+        function passAll() {
+            if (!confirm("确定要全部强制通过吗？这会导致严重剧透！！！")) return;
+            gameState.unlockedLevels = gameState.completedLevels = [
+                "1-1",
+                "1-2",
+                "1-3",
+                "1-4",
+                "1-5",
+                "1-6",
+                "1-7",
+                "1-8",
+                "1-9",
+                "1-10",
+                "1-11",
+                "1-12",
+                "1-13",
+                "1-14",
+                "1-15",
+                "2-1",
+                "2-2",
+                "2-3",
+                "2-4",
+                "2-5",
+                "2-6",
+                "2-7",
+                "2-8",
+                "2-9",
+                "2-10",
+                "2-11",
+                "2-12",
+                "2-13",
+                "2-14",
+                "2-15",
+                "3-1",
+                "3-2",
+                "3-3",
+                "3-4",
+                "3-5"
+            ];
+            gameState.allCompleted = true;
+            saveGame();
+            renderLevelGrid();
+        }
+
+        function loadGameLevel(key) {
+            const gameScreen = document.getElementById('screen-game');
+            gameScreen.classList.remove('shake-effect');
+            gameScreen.classList.remove('level-completed');
+            document.getElementById('game-level-text').innerText = `Level: ${key}`;
+            const [part, index] = key.split('-').map(Number);
+            generateLevelImage(part, index);
+            const inputBox = document.getElementById('game-input-box');
+            inputBox.value = "";
+            inputBox.disabled = false;
+            inputBox.style.background = "transparent";
+            inputBox.style.color = "black";
+            document.getElementById('game-hint-text').innerText = "按 Enter 提交答案";
+            if (gameState.completedLevels.includes(key)) showCompletedLevelAnswer(key);
+        }
+
+        function showCompletedLevelAnswer(levelKey) {
+            const gameScreen = document.getElementById('screen-game');
+            gameScreen.classList.add('level-completed');
+            const inputBox = document.getElementById('game-input-box');
+            inputBox.value = getCorrectAnswer(levelKey);
+            inputBox.disabled = true;
+            inputBox.style.background = "#ddd";
+            inputBox.style.color = "#006400";
+            document.getElementById('game-hint-text').innerText = "关卡已完成 - 按 ESC 返回";
+        }
+
+        function submitAnswer() {
+            const val = document.getElementById('game-input-box').value.replace(/\s/g,"").trim().toUpperCase();
+            const correctAnswer = getCorrectAnswer(gameState.currentLevelKey).toUpperCase();
+            if (val === correctAnswer) {
+                unlockNextLevel(gameState.currentLevelKey);
+                changeState('SELECT');
+            } else {
+                const gameScreen = document.getElementById('screen-game');
+                gameScreen.classList.remove('shake-effect');
+                void gameScreen.offsetWidth;
+                gameScreen.classList.add('shake-effect');
+                document.getElementById('game-input-box').value = "";
+                setTimeout(() => gameScreen.classList.remove('shake-effect'), 600);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (gameState.current === 'MENU') {
+                if (e.key === 'Enter') {
+                    changeState('SELECT');
+                } else if (e.key.length === 1) {
+                    const maxLen = gameState.exitSequence.length;
+                    let newBuf = gameState.menuBuffer + e.key;
+                    console.debug(newBuf);
+                    if (newBuf.length > maxLen) newBuf = newBuf.slice(-maxLen);
+                    console.debug(newBuf);
+                    let matched = true;
+                    for (let i = 0; i < Math.min(newBuf.length, gameState.exitSequence.length); i++) {
+                        if (newBuf[i] !== gameState.exitSequence[i]) { matched = false; break; }
+                    }
+                    gameState.menuBuffer = matched ? newBuf : "";
+                    if (gameState.menuBuffer === gameState.exitSequence) {
+                        gameState.menuBuffer = "";
+                        alert("快做题！不准把我关掉！");
+                        return;
+                    }
+                }
+            } else if (gameState.current === 'SELECT') {
+                if (e.key === 'Escape') changeState('MENU');
+            } else if (gameState.current === 'GAME') {
+                if (e.key === 'Escape') changeState('SELECT');
+                if (e.key === 'Enter') submitAnswer();
+            } else if (gameState.current === 'ENDING') {
+                if (e.key === 'Escape') changeState('MENU');
+            }
+        });
+
+        window.onload = () => {
+            loadSave();
+            changeState('MENU');
+            document.getElementById('game-container').focus();
+        };
+
+        window.gameState = gameState;
+        window.changeState = changeState;
+        window.resetSave = resetSave;
+    </script>
+</body>
+</html>
