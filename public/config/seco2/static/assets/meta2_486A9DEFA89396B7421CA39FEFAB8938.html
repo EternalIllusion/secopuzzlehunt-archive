@@ -1,0 +1,1212 @@
+<!-- 引入 Google Fonts 优化数字和字母显示 -->
+<header>
+    
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+<script src="/wordlist_C9D9FEB4D1A6380FB301E0C41F377DF5.js"></script>
+</header>
+
+<style>
+    /* ================= 作用域隔离 ================= 
+       使用 .meta2-app 包裹，防止污染全局 CSS
+    */
+    .meta2-app {
+        font-family: 'Arial', sans-serif;
+        /* 保持背景透明，显示网页原本的主题色 */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+    /* 游戏主容器：类似一张白纸卡片浮在背景上 */
+    .meta2-container {
+        background-color: rgba(255, 255, 255, 0.96);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 900px; /* 电脑端宽度限制 */
+        padding: 30px;
+        box-sizing: border-box;
+        min-height: 650px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Wordle 配色变量 */
+    :root {
+        --w-green: #6aaa64;
+        --w-yellow: #c9b458;
+        --w-gray: #787c7e;
+        --w-light-red: #ffcccc; 
+        --w-deep-red: #d32f2f;
+    }
+
+    /* 标题样式 */
+    .meta2-header h1 {
+        margin: 0 0 20px 0;
+        color: #333;
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    /* ================= 菜单页样式 ================= */
+    .page-section { display: none; width: 100%; flex-direction: column; align-items: center; }
+    .page-section.active { display: flex; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* 关卡网格 - 响应式核心 */
+    .level-grid {
+        display: grid;
+        /* 电脑上列宽固定，自动填满；手机上自动换行 */
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 20px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .level-card {
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .level-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: #999;
+    }
+
+    .level-card.completed {
+        background-color: #f0fff4;
+        border-color: var(--w-green);
+    }
+    .level-card.completed h3 { color: var(--w-green); }
+
+    /* ================= 游戏页样式 ================= */
+    .game-header {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .game-info-bar {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+        background: #f5f5f5;
+        padding: 8px 15px;
+        border-radius: 8px;
+    }
+
+    .status-badge {
+        font-family: 'Roboto Mono', monospace;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* 棋盘区域 */
+    .board-wrapper {
+        flex-grow: 1;
+        overflow-y: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+
+    .board {
+        display: grid;
+        gap: 6px;
+        padding-bottom: 10px;
+    }
+
+    .row {
+        display: grid;
+        gap: 6px;
+    }
+
+    .tile {
+        width: 52px; height: 52px;
+        border: 2px solid #d3d6da;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: white;
+        user-select: none;
+        color: #333;
+    }
+
+    /* 颜色状态 */
+    .tile.green { background-color: var(--w-green); color: white; border-color: var(--w-green); }
+    .tile.yellow { background-color: var(--w-yellow); color: white; border-color: var(--w-yellow); }
+    .tile.gray { background-color: var(--w-gray); color: white; border-color: var(--w-gray); }
+
+    /* 特殊列高亮 */
+    .tile.col-light-red { background-color: var(--w-light-red); border-color: #ffaaaa; color: #555; }
+    .tile.col-deep-red { background-color: var(--w-deep-red); border-color: #b71c1c; color: white; }
+    .tile.col-deep-red.green, .tile.col-deep-red.yellow { border: 4px solid #8b0000; }
+
+    /* 键盘区域 */
+    .keyboard {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .key-row {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .key {
+        font-family: inherit;
+        font-weight: bold;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        height: 58px;
+        border-radius: 4px;
+        cursor: pointer;
+        user-select: none;
+        background-color: #d3d6da;
+        color: #1a1a1b;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+    }
+    
+    .key:hover { opacity: 0.9; }
+    .key:active { background-color: #bbb; transform: scale(0.95); }
+    .key.wide { flex: 1.5; font-size: 1rem; }
+    .key.space { flex: 3; font-size: 1rem; }
+
+    /* 重置区域 (默认隐藏) */
+    #restart-area {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        padding: 20px;
+        background: #fff0f0;
+        border: 1px solid #ffcccc;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    /* 按钮通用样式 */
+    .btn-action {
+        padding: 8px 16px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+    }
+    .btn-secondary { background: #666; color: white; }
+    .btn-secondary:hover { background: #444; }
+    .btn-primary { background: var(--w-green); color: white; }
+    .btn-primary:hover { background: #55854e; }
+    .btn-danger { background: var(--w-deep-red); color: white; }
+    .btn-danger:hover { background: #b71c1c; }
+
+    /* 弹窗样式 */
+    .overlay {
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.6); display: none; z-index: 999;
+        backdrop-filter: blur(2px);
+    }
+    .modal {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        background: white; padding: 30px; border-radius: 12px;
+        text-align: center; display: none; z-index: 1000;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        width: 85%; max-width: 400px;
+    }
+    .modal h3 { margin-top: 0; color: #333; }
+    
+    #loading-overlay { display: none; justify-content: center; align-items: center; color: white; font-size: 1.5rem; flex-direction: column; gap: 15px; }
+
+    /* 手机端适配调整 */
+    @media (max-width: 600px) {
+        .meta2-container { padding: 15px; min-height: auto; border-radius: 0; }
+        .tile { width: 42px; height: 42px; font-size: 22px; }
+        .key { height: 48px; font-size: 1rem; }
+        .board { gap: 4px; }
+        .row { gap: 4px; }
+    }
+</style>
+
+<div class="meta2-app">
+    <div class="meta2-container">
+        
+        <!-- 1. 关卡菜单 -->
+        <div id="page-menu" class="page-section active">
+            <div class="meta2-header">
+                <h1>WORDLES</h1>
+            </div>
+            
+            <div id="level-list" class="level-grid">
+                <!-- JS 动态生成 -->
+                <div style="text-align:center; width:100%; color:#999; grid-column: 1/-1;">正在加载列表...</div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 15px; background: #f9f9f9; border-radius: 8px; font-size: 0.9em; color: #555; max-width: 600px;">
+                <p><strong>规则说明：</strong></p>
+                <ul style="text-align: left; padding-left: 20px; line-height: 1.6;">
+                    <li>每关有 6 行猜测空间</li>
+                    <li><strong>游玩机会</strong>：每关独立 5 次。如果 6 行猜完未通关，则消耗 1 次游玩机会重置本关。</li>
+                    <li>消耗提示点可以给<strong>所有关卡</strong>增加 5 次游玩机会。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. 游戏界面 -->
+        <div id="page-game" class="page-section">
+            <div class="game-header">
+                <button class="btn-action btn-secondary" onclick="showMenu()">« 列表</button>
+                <h2 id="level-title" style="margin:0; font-family: 'Roboto Mono', monospace;">LEVEL ?</h2>
+                <button id="hint-btn" class="btn-action btn-primary" style="font-size: 0.9em;">
+                    + 机会
+                </button>
+            </div>
+
+            <div class="game-info-bar">
+                <div>剩余机会: <span id="attempts-display" class="status-badge">...</span></div>
+                <div>状态: <span id="solve-status" style="font-weight:bold;">...</span></div>
+            </div>
+
+            <div class="board-wrapper">
+                <div id="board" class="board">
+                    <!-- JS 生成网格 -->
+                </div>
+            </div>
+
+            <!-- 重置按钮区域 (默认隐藏) -->
+            <div id="restart-area" style="display: none;">
+                <h3 style="color: var(--w-deep-red); margin-top: 0;">猜测次数耗尽</h3>
+                <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">棋盘已满，无法继续输入。</p>
+                <button class="btn-action btn-danger" onclick="tryRestart()" style="width: 100%; padding: 12px; font-size: 1.1rem;">
+                    重玩本关 (消耗1次机会)
+                </button>
+            </div>
+
+            <div class="keyboard" id="keyboard">
+                <!-- JS 生成键盘 -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 弹窗 -->
+<div id="overlay" class="overlay" onclick="/* 点击背景不关闭，强制点按钮 */"></div>
+<div id="modal" class="modal">
+    <h3 id="modal-title">提示</h3>
+    <p id="modal-msg" style="margin: 20px 0; line-height: 1.5; color: #444; white-space: pre-line;"></p>
+    <div id="modal-actions" style="display: flex; gap: 15px; justify-content: center;">
+        <!-- JS 动态插入按钮 -->
+        <button class="btn-action btn-secondary" onclick="closeModal()">关闭</button>
+    </div>
+</div>
+
+<!-- 加载遮罩 -->
+<div id="loading-overlay" class="overlay" style="z-index: 2000;">
+    <div class="spinner" style="border: 4px solid #f3f3f3; border-top: 4px solid #6aaa64; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+    <div style="margin-top: 15px;">通讯中...</div>
+</div>
+
+<style>
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pop { 50% { transform: scale(1.1); } }
+</style>
+
+<script>
+// Meta2 Wordle 游戏本地模拟器
+class Meta2GameSimulator {
+    constructor() {
+        // 配置数据
+        this.META2_LEVELS = [
+            {"id": 1, "wordA": "DOUBLE", "wordB": "GOBBLE", "deepRedCol": 3},
+            {"id": 2, "wordA": "VEGETABLE", "wordB": "DESERT", "deepRedCol": 1},
+            {"id": 3, "wordA": "CAT", "wordB": "CAFES", "deepRedCol": 0},
+            {"id": 4, "wordA": "POPCORN", "wordB": "HALLOWEEN", "deepRedCol": 4},
+            {"id": 5, "wordA": "MARINE", "wordB": "MENDEL", "deepRedCol": 0},
+            {"id": 6, "wordA": "MINIGUN", "wordB": "WINTER", "deepRedCol": 1},
+            {"id": 7, "wordA": "CONJOINT", "wordB": "PENTAGRAM", "deepRedCol": 2},
+            {"id": 8, "wordA": "TANGELA", "wordB": "VANGOGH", "deepRedCol": 3},
+        ];
+
+        // 初始命数
+        this.DEFAULT_LIVES = 5;
+        this.LIVES_PER_BUY = 5;
+        this.MAX_ROWS = 6;
+        this.HINT_COST = 1;
+
+        // 存档数据
+        this.state = {
+            level_status: {},
+            history: {}
+        };
+
+        // 有效单词集合
+        this.VALID_WORDS = new Set(WORDLIST_FULL);
+    }
+
+    // 计算 Wordle 颜色逻辑
+    calculateColors(target, guess) {
+        let length = guess.length;
+        
+        // 确保目标单词也用空格补齐到和猜测单词一样的长度
+        target = target.toUpperCase().padEnd(length, " ");
+        
+        let targetChars = target.split('');
+        let res = Array(length).fill("gray");
+        
+        // 第一步：标记绿色 (Green) - 位置完全匹配
+        for (let i = 0; i < length; i++) {
+            if (guess[i] === target[i]) {
+                res[i] = "green";
+                targetChars[i] = null; // 标记已消耗
+            }
+        }
+        
+        // 第二步：标记黄色 (Yellow) - 字母存在但位置不对
+        for (let i = 0; i < length; i++) {
+            if (res[i] === "green") continue;
+            
+            let char = guess[i];
+            let index = targetChars.indexOf(char);
+            if (index !== -1) {
+                res[i] = "yellow";
+                targetChars[index] = null; // 消耗掉
+            }
+        }
+        console.debug(res);
+        return res;
+    }
+
+    // API调用方法
+    async apiCall(data) {
+        const action = data.action;
+        
+        switch (action) {
+            case "get_menu_status":
+                return this.getMenuStatus();
+                
+            case "get_level_init":
+                return this.getLevelInit(data.level_id);
+                
+            case "submit_guess":
+                return this.submitGuess(data.level_id, data.guess);
+                
+            case "restart_level":
+                return this.restartLevel(data.level_id);
+                
+            case "exchange_attempts":
+                return this.exchangeAttempts(data.level_id);
+                
+            default:
+                return { success: false, message: "Unknown action" };
+        }
+    }
+
+    getMenuStatus() {
+        const levelsStatus = [];
+        for (const lvl of this.META2_LEVELS) {
+            const lvlIdStr = String(lvl.id);
+            const s = this.state.level_status[lvlIdStr] || {};
+            levelsStatus.push({
+                id: lvl.id,
+                completed: s.completed || false
+            });
+        }
+        return { success: true, levels: levelsStatus };
+    }
+
+    getLevelInit(levelId) {
+        const lvlConfig = this.META2_LEVELS.find(l => l.id === parseInt(levelId));
+        if (!lvlConfig) {
+            return { success: false, message: "关卡不存在" };
+        }
+
+        const lvlIdStr = String(levelId);
+
+        // 初始化关卡状态
+        if (!this.state.level_status[lvlIdStr]) {
+            this.state.level_status[lvlIdStr] = {
+                attempts_left: this.DEFAULT_LIVES,
+                solved_a: false,
+                solved_b: false,
+                completed: false,
+            };
+        }
+
+        const s = this.state.level_status[lvlIdStr];
+        const hist = this.state.history[lvlIdStr] || [];
+
+        // 判断游戏是否失败
+        const isGameOver = (hist.length >= this.MAX_ROWS) && !s.completed;
+
+        return {
+            success: true,
+            config: {
+                id: lvlConfig.id,
+                lenA: lvlConfig.wordA.length,
+                lenB: lvlConfig.wordB.length,
+                deepRedCol: s.completed ? lvlConfig.deepRedCol : -1,
+                max_rows: this.MAX_ROWS,
+            },
+            state: {
+                ...s,
+                history: hist,
+                lives: s.attempts_left,
+                is_game_over: isGameOver
+            }
+        };
+    }
+
+    submitGuess(levelId, guess) {
+        const rawGuess = guess.toUpperCase();
+        const lvlConfig = this.META2_LEVELS.find(l => l.id === parseInt(levelId));
+        if (!lvlConfig) {
+            return { success: false, message: "Error" };
+        }
+
+        // 输入校验逻辑
+        const maxLen = Math.max(lvlConfig.wordA.length, lvlConfig.wordB.length);
+        if (rawGuess.length !== maxLen) {
+            return { success: false, message: `请输入 ${maxLen} 个字符` };
+        }
+
+        if (rawGuess.startsWith(" ")) {
+            return { success: false, message: "单词开头不能有空格" };
+        }
+
+        const cleanGuess = rawGuess.trimEnd();
+
+        if (cleanGuess.includes(" ")) {
+            return { success: false, message: "单词中间不能有空格" };
+        }
+
+        if (!cleanGuess) {
+            return { success: false, message: "不能为空" };
+        }
+
+        if (!this.VALID_WORDS.has(cleanGuess)) {
+            return { success: false, message: "不是有效的单词" };
+        }
+
+        const lvlIdStr = String(levelId);
+        const s = this.state.level_status[lvlIdStr] || {};
+        const hist = this.state.history[lvlIdStr] || [];
+
+        if (s.completed) {
+            return { success: false, message: "已通过" };
+        }
+
+        if (hist.length >= this.MAX_ROWS) {
+            return { success: false, message: "本局次数已用完，请点击重置再试！" };
+        }
+
+        // 确定目标
+        const turnIndex = hist.length;
+        let isTargetA;
+        if (!s.solved_a && !s.solved_b) {
+            isTargetA = turnIndex % 2 === 0;
+        } else if (s.solved_a && !s.solved_b) {
+            isTargetA = false;
+        } else if (!s.solved_a && s.solved_b) {
+            isTargetA = true;
+        } else {
+            return { success: true, result: "completed" };
+        }
+
+        const targetWord = isTargetA ? lvlConfig.wordA : lvlConfig.wordB;
+        console.debug(targetWord)
+        const colors = this.calculateColors(targetWord, rawGuess);
+
+        // 更新状态
+        const newSolvedA = s.solved_a;
+        const newSolvedB = s.solved_b;
+        const isCorrect = colors.every(c => c === "green");
+
+        if (isCorrect) {
+            if (isTargetA) {
+                s.solved_a = true;
+            } else {
+                s.solved_b = true;
+            }
+        }
+
+        if (s.solved_a && s.solved_b) {
+            s.completed = true;
+        }
+
+        // 记录历史
+        const record = { word: rawGuess, colors: colors };
+        if (!this.state.history[lvlIdStr]) {
+            this.state.history[lvlIdStr] = [];
+        }
+        this.state.history[lvlIdStr].push(record);
+
+        // 检查是否输掉
+        const isGameOver = (this.state.history[lvlIdStr].length >= this.MAX_ROWS) && !s.completed;
+
+        return {
+            success: true,
+            result: "ok",
+            colors: colors,
+            lives: s.attempts_left,
+            solved_a: s.solved_a,
+            solved_b: s.solved_b,
+            completed: s.completed,
+            is_game_over: isGameOver,
+            final_reveal: s.completed ? {
+                wordA: lvlConfig.wordA,
+                wordB: lvlConfig.wordB,
+                deepRedCol: lvlConfig.deepRedCol
+            } : null
+        };
+    }
+
+    restartLevel(levelId) {
+        const lvlIdStr = String(levelId);
+        const s = this.state.level_status[lvlIdStr];
+
+        if (!s) {
+            return { success: false, message: "Error" };
+        }
+
+        if (s.completed) {
+            return { success: false, message: "已通关，无需重置" };
+        }
+
+        if (s.attempts_left <= 0) {
+            return {
+                success: false,
+                result: "no_lives",
+                message: "游玩次数不足，请先补充！"
+            };
+        }
+
+        // 消耗 1 次游玩机会
+        s.attempts_left -= 1;
+        // 重置当前关卡的解谜状态
+        s.solved_a = false;
+        s.solved_b = false;
+        s.completed = false;
+
+        // 清空历史
+        this.state.history[lvlIdStr] = [];
+
+        return {
+            success: true,
+            message: "重置成功，消耗 1 次游玩机会",
+            lives: s.attempts_left
+        };
+    }
+
+    exchangeAttempts(levelId) {
+        // 模拟花费提示点购买次数
+        for (const lvl of this.META2_LEVELS) {
+            const lidStr = String(lvl.id);
+            if (!this.state.level_status[lidStr]) {
+                this.state.level_status[lidStr] = {
+                    attempts_left: this.DEFAULT_LIVES,
+                    solved_a: false,
+                    solved_b: false,
+                    completed: false,
+                };
+            }
+            this.state.level_status[lidStr].attempts_left += this.LIVES_PER_BUY;
+        }
+
+        const currLid = String(levelId);
+        const newLives = (this.state.level_status[currLid] || {}).attempts_left || 0;
+
+        return {
+            success: true,
+            message: `兑换成功！所有关卡游玩次数 +${this.LIVES_PER_BUY}`,
+            new_attempts: newLives,
+            hints_remaining: 999 // 模拟无限提示点
+        };
+    }
+
+    // 保存存档
+    saveSaveData() {
+        localStorage.setItem('meta2_save_data_backend', JSON.stringify(this.state));
+    }
+
+    // 加载存档
+    loadSaveData() {
+        const saved = localStorage.getItem('meta2_save_data_backend');
+        if (saved) {
+            this.state = JSON.parse(saved);
+        }
+    }
+}
+
+// 创建全局实例
+const gameSimulator = new Meta2GameSimulator();
+
+// 尝试加载已有存档
+gameSimulator.loadSaveData();
+
+// 导出API调用函数
+async function apiCall(data) {
+    const result = await gameSimulator.apiCall(data);
+    // 在每次操作后自动保存存档
+    gameSimulator.saveSaveData();
+    return result;
+}
+
+
+
+    // ================= 配置与变量 =================
+    const apiUrl = "";
+    const csrfToken = "";
+    const hintCost = 1;
+    const attemptsPerBuy = 5;
+    const maxRows = 6; // 固定游戏行数上限
+
+    let currentLevelId = 0;
+    let maxLength = 5;
+    let livesLeft = 0; // 对应后端 attempts_left
+    let historyData = [];
+    let currentGuess = "";
+    
+    // 状态位
+    let isProcessing = false;
+    let isCompleted = false;
+    let isGameOver = false; // 是否行数已满且失败
+
+    // ================= API 封装 =================
+    async function _orig_apiCall(data) {
+        document.getElementById('loading-overlay').style.display = 'flex';
+        try {
+            const response = await fetch(apiUrl, { 
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken }, 
+                body: JSON.stringify(data) 
+            });
+            const json = await response.json();
+            document.getElementById('loading-overlay').style.display = 'none';
+            return json;
+        } catch (error) {
+            document.getElementById('loading-overlay').style.display = 'none';
+            console.error('API Error:', error);
+            showModal("网络错误", "无法连接到服务器，请检查网络或刷新页面。");
+            return { success: false };
+        }
+    }
+
+    // ================= 辅助函数 =================
+    function isModalOpen() {
+        const modal = document.getElementById('modal');
+        return modal && modal.style.display === 'block';
+    }
+
+    function switchPage(pageId) {
+        document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    // ================= 核心逻辑 =================
+
+    // 1. 初始化菜单
+    async function initMenu() {
+        switchPage('page-menu');
+        
+        const res = await apiCall({ action: 'get_menu_status' });
+        if (!res.success) return;
+
+        const container = document.getElementById('level-list');
+        container.innerHTML = '';
+        
+        res.levels.forEach(lvl => {
+            const div = document.createElement('div');
+            div.className = `level-card ${lvl.completed ? 'completed' : ''}`;
+            const icon = lvl.completed ? '★' : (lvl.id);
+            const statusText = lvl.completed ? '已完成' : '进行中';
+            
+            div.innerHTML = `
+                <div style="font-size: 2rem; margin-bottom: 5px; font-weight:bold; color: ${lvl.completed ? 'var(--w-green)' : '#ccc'}">${icon}</div>
+                <h3 style="margin:0; font-size: 1.1rem;">Level ${lvl.id}</h3>
+                <div style="margin-top: 5px; font-size: 0.8rem; color: #666;">${statusText}</div>
+            `;
+            div.onclick = () => loadLevel(lvl.id);
+            container.appendChild(div);
+        });
+    }
+
+    // 2. 加载关卡
+    async function loadLevel(id) {
+        const res = await apiCall({ action: 'get_level_init', level_id: id });
+        if (!res.success) {
+            showModal("错误", res.message || "无法加载关卡");
+            return;
+        }
+
+        currentLevelId = id;
+        const config = res.config;
+        const state = res.state;
+        
+        maxLength = Math.max(config.lenA, config.lenB);
+        livesLeft = state.lives; // 获取剩余命数
+        historyData = state.history || [];
+        isCompleted = state.completed;
+        isGameOver = state.is_game_over;
+        currentGuess = "";
+        isProcessing = false;
+
+        // UI 更新
+        switchPage('page-game');
+        document.getElementById('level-title').innerText = `LEVEL ${id}`;
+        document.getElementById('hint-btn').onclick = confirmExchange;
+        
+        updateStatusUI(state);
+        renderBoard(config);
+        renderKeyboard();
+        checkGameOverState();
+        
+        // 自动滚动到底部
+        setTimeout(() => {
+            const wrapper = document.querySelector('.board-wrapper');
+            if(wrapper) wrapper.scrollTop = wrapper.scrollHeight;
+        }, 50);
+    }
+
+    // 3. 渲染棋盘
+    function renderBoard(levelConfig) {
+        const board = document.getElementById('board');
+        board.innerHTML = '';
+        board.style.gridTemplateColumns = `repeat(1, 1fr)`; // 行容器占满
+        
+        // A. 渲染历史记录
+        historyData.forEach((record, index) => {
+            const row = createRow(maxLength, record.word, record.colors);
+            // 通关高亮处理
+            if (isCompleted && levelConfig && levelConfig.deepRedCol !== -1) {
+                applyEndGameHighlights(row, record.word, levelConfig); 
+            }
+            board.appendChild(row);
+        });
+
+        // B. 渲染当前输入行 (如果未通关且未结束)
+        if (!isCompleted && !isGameOver) {
+            const row = createRow(maxLength, currentGuess, null, true);
+            row.id = "current-row";
+            board.appendChild(row);
+        }
+
+        // C. 补齐剩余空行 (保持总行数为 maxRows)
+        const rowsUsed = historyData.length + (!isCompleted && !isGameOver ? 1 : 0);
+        const rowsToFill = Math.max(0, maxRows - rowsUsed);
+        
+        for(let i=0; i<rowsToFill; i++) {
+            board.appendChild(createRow(maxLength, ""));
+        }
+    }
+
+    function createRow(len, word, colors = null, isCurrent = false) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.style.gridTemplateColumns = `repeat(${len}, auto)`;
+        row.style.justifyContent = 'center';
+
+        for (let i = 0; i < len; i++) {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            
+            const char = word[i] || '';
+            
+            // 【关键修改】如果是空格，显示 '␣' 符号，并包裹 span 方便样式微调
+            if (char === ' ') {
+                tile.innerHTML = '<span class="tile-space-symbol">␣</span>';
+            } else {
+                tile.innerText = char;
+            }
+            
+            // 添加颜色类 (gray/yellow/green)
+            // 只要后端返回了颜色，CSS 就会让背景变色
+            if (colors && colors[i]) {
+                tile.classList.add(colors[i]);
+            }
+
+            // 当前输入行的特殊处理
+            if (isCurrent) {
+                tile.id = `curr-tile-${i}`;
+                if(char) tile.style.borderColor = "#666";
+            }
+            
+            row.appendChild(tile);
+        }
+        return row;
+    }
+
+    // 4. 更新当前输入行的显示
+    function updateCurrentRowDisplay() {
+        for (let i = 0; i < maxLength; i++) {
+            const tile = document.getElementById(`curr-tile-${i}`);
+            if (tile) {
+                const char = currentGuess[i] || '';
+                
+                // 【同步修改】空格显示逻辑
+                if (char === ' ') {
+                    tile.innerHTML = '<span class="tile-space-symbol">␣</span>';
+                } else {
+                    tile.innerText = char;
+                }
+
+                tile.style.borderColor = char ? "#555" : "#d3d6da";
+                if(char) tile.style.animation = "pop 0.1s ease";
+            }
+        }
+    }
+
+    // 5. 键盘输入处理
+    function handleInput(char) {
+        // 如果弹窗打开，禁止输入
+        if (isModalOpen()) return;
+        // 如果结束或处理中，禁止输入
+        if (isCompleted || isGameOver || isProcessing) return;
+
+        if (currentGuess.length < maxLength) {
+            currentGuess += char;
+            updateCurrentRowDisplay();
+        }
+    }
+
+    function handleBackspace() {
+         if (isModalOpen()) return;
+         if (isCompleted || isGameOver || isProcessing) return;
+
+         if (currentGuess.length > 0) {
+            currentGuess = currentGuess.slice(0, -1);
+            updateCurrentRowDisplay();
+        }
+    }
+
+    // 6. 提交猜测
+    async function submitGuess() {
+        if (isModalOpen()) return;
+        if (isProcessing || isCompleted || isGameOver) return;
+        
+        // 简单的前端校验：必须填满
+        // 注意：后端还会再次校验（包括空格规则）
+        if (currentGuess.length !== maxLength) {
+            showModal("提示", `请填满 ${maxLength} 个格子`);
+            return;
+        }
+
+        isProcessing = true;
+        
+        // 发送 raw 数据 (包含可能的空格)
+        const res = await apiCall({
+            action: 'submit_guess',
+            level_id: currentLevelId,
+            guess: currentGuess 
+        });
+        
+        isProcessing = false;
+
+        if (res.success) {
+            // 更新状态
+            livesLeft = res.lives;
+            isCompleted = res.completed;
+            isGameOver = res.is_game_over;
+            
+            historyData.push({ word: currentGuess, colors: res.colors });
+            currentGuess = "";
+
+            // 获取通关配置用于高亮
+            const config = res.final_reveal ? { 
+                deepRedCol: res.final_reveal.deepRedCol,
+                wordA: res.final_reveal.wordA,
+                wordB: res.final_reveal.wordB
+            } : null;
+            
+            console.debug(config);
+            renderBoard(config);
+
+            updateStatusUI({ 
+                lives: livesLeft, 
+                solved_a: res.solved_a, 
+                solved_b: res.solved_b 
+            });
+
+            // 结果反馈
+            if (isCompleted) {
+                setTimeout(() => showModal("恭喜", "🎉 成功通关！"), 600);
+            } else if (isGameOver) {
+                checkGameOverState();
+                setTimeout(() => showModal("遗憾", "猜测次数耗尽！\n请点击下方的红色按钮重玩本关。"), 600);
+            }
+            
+            // 滚动
+            const wrapper = document.querySelector('.board-wrapper');
+            if(wrapper) wrapper.scrollTop = wrapper.scrollHeight;
+
+        } else {
+            // 后端校验失败（如非法单词、空格位置错误等）
+            showModal("提示", res.message);
+        }
+    }
+
+    // 7. 游戏结束状态检查
+    function checkGameOverState() {
+        const restartArea = document.getElementById('restart-area');
+        const keyboard = document.getElementById('keyboard');
+        
+        if (isGameOver && !isCompleted) {
+            // 输了：隐藏键盘，显示重置按钮
+            restartArea.style.display = 'block';
+            keyboard.style.display = 'none';
+        } else {
+            // 正常：隐藏重置按钮，显示键盘
+            restartArea.style.display = 'none';
+            keyboard.style.display = 'flex';
+        }
+    }
+
+    // 8. 重置关卡 (消耗 Life)
+    async function tryRestart() {
+        if (livesLeft <= 0) {
+            showModal("提示", "您的游玩机会已耗尽！\n请点击右上角 '+' 号使用提示点购买。");
+            return;
+        }
+        
+        showModal("确认重置", `确定消耗 1 次游玩机会重置本关吗？\n(当前剩余: ${livesLeft})`, true);
+        
+        // 绑定弹窗的确认按钮
+        const confirmBtn = document.querySelector('#modal-actions button:last-child');
+        confirmBtn.onclick = async () => {
+            closeModal();
+            const res = await apiCall({ action: 'restart_level', level_id: currentLevelId });
+            
+            if (res.success) {
+                livesLeft = res.lives;
+                historyData = [];
+                isGameOver = false;
+                currentGuess = "";
+                
+                updateStatusUI({ lives: livesLeft, solved_a: false, solved_b: false });
+                renderBoard(null);
+                checkGameOverState(); // 恢复键盘
+            } else {
+                showModal("错误", res.message);
+            }
+        };
+        confirmBtn.innerText = "确认重置";
+    }
+
+    // 9. 购买次数 (全服 Buff)
+    async function confirmExchange() {
+        if (isCompleted) {
+            showModal("提示", "本关已通过，无需购买。\n(提示：购买操作对所有关卡生效)");
+            // 即使通关也允许购买，因为是全服增加
+            // return; 
+        }
+        
+        showModal("补充机会", 
+            `确定消耗 ${hintCost} 个提示点吗？\n\n注意：这将给 **所有关卡** 都增加 ${attemptsPerBuy} 次游玩机会！`, 
+            true
+        );
+        
+        const confirmBtn = document.querySelector('#modal-actions button:last-child');
+        confirmBtn.onclick = async () => {
+            closeModal();
+            const res = await apiCall({ action: 'exchange_attempts', level_id: currentLevelId });
+            if (res.success) {
+                livesLeft = res.new_attempts;
+                updateStatusUI({ lives: livesLeft }); 
+                showModal("成功", res.message);
+            } else {
+                showModal("失败", res.message);
+            }
+        };
+        confirmBtn.innerText = "确认兑换";
+    }
+
+    // UI 更新
+    function updateStatusUI(state) {
+        const attDisplay = document.getElementById('attempts-display');
+        // 优先使用 state.lives，如果没有则用全局变量
+        const val = (state.lives !== undefined) ? state.lives : livesLeft;
+        attDisplay.innerText = val;
+        attDisplay.style.color = val > 1 ? "var(--w-green)" : "var(--w-deep-red)";
+
+        const solveDisplay = document.getElementById('solve-status');
+        if (isCompleted) {
+            solveDisplay.innerText = "★ 已完成 ★";
+            solveDisplay.style.color = "var(--w-green)";
+        } else {
+            let txt = [];
+            if (state.solved_a !== undefined) {
+                if (state.solved_a) txt.push("A解出");
+                if (state.solved_b) txt.push("B解出");
+                solveDisplay.innerText = txt.length ? txt.join(" & ") : "进行中";
+                solveDisplay.style.color = "#555";
+            }
+        }
+    }
+
+    // 通关高亮逻辑
+    function applyEndGameHighlights(rowEl, guessWord, config) {
+        const pad = (w) => (w || "").padEnd(maxLength, " ");
+        const wa = pad(config.wordA);
+        const wb = pad(config.wordB);
+        const redCol = config.deepRedCol;
+
+        const tiles = rowEl.children;
+        for (let i = 0; i < maxLength; i++) {
+            if (i >= tiles.length) break;
+            if (wa[i] === wb[i]) tiles[i].classList.add('col-light-red');
+            if (i === redCol) tiles[i].classList.add('col-deep-red');
+        }
+    }
+
+    // 弹窗逻辑
+    function showModal(title, msg, isConfirm=false) {
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-msg').innerText = msg;
+        
+        const actions = document.getElementById('modal-actions');
+        actions.innerHTML = '';
+        
+        // 取消按钮 (左)
+        if (isConfirm) {
+            const cancel = document.createElement('button');
+            cancel.className = 'btn-action btn-secondary';
+            cancel.innerText = '取消';
+            cancel.style.background = '#999';
+            cancel.onclick = closeModal;
+            actions.appendChild(cancel);
+        }
+
+        // 确定/关闭按钮 (右)
+        const btn = document.createElement('button');
+        btn.className = 'btn-action btn-primary';
+        btn.innerText = isConfirm ? '确定' : '关闭';
+        btn.onclick = closeModal;
+        actions.appendChild(btn);
+
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    function showMenu() {
+        initMenu();
+    }
+
+    // 渲染键盘
+    function renderKeyboard() {
+        const kbd = document.getElementById('keyboard');
+        kbd.innerHTML = '';
+        const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+        
+        rows.forEach(rStr => {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'key-row';
+            rStr.split('').forEach(char => {
+                const btn = document.createElement('button');
+                btn.className = 'key';
+                btn.innerText = char;
+                btn.onclick = () => handleInput(char);
+                rowDiv.appendChild(btn);
+            });
+            kbd.appendChild(rowDiv);
+        });
+
+        const actionRow = document.createElement('div');
+        actionRow.className = 'key-row';
+        
+        const enter = document.createElement('button');
+        enter.className = 'key wide';
+        enter.innerHTML = 'ENTER';
+        enter.style.background = "#ddd";
+        enter.onclick = submitGuess;
+
+        const space = document.createElement('button');
+        space.className = 'key space';
+        space.innerText = 'SPACE';
+        space.onclick = () => handleInput(' ');
+
+        const del = document.createElement('button');
+        del.className = 'key wide';
+        del.innerHTML = '⌫';
+        del.style.background = "#ddd";
+        del.onclick = handleBackspace;
+
+        actionRow.appendChild(enter);
+        actionRow.appendChild(space);
+        actionRow.appendChild(del);
+        kbd.appendChild(actionRow);
+    }
+
+    // 物理键盘监听
+    document.addEventListener('keydown', (e) => {
+        if (!document.getElementById('page-game').classList.contains('active')) return;
+        
+        const k = e.key.toUpperCase();
+
+        // 弹窗打开时，Esc/Enter 关闭弹窗，禁止其他操作
+        if (isModalOpen()) {
+            if (k === 'ENTER' || k === 'ESCAPE') {
+                closeModal();
+                e.preventDefault();
+            }
+            return;
+        }
+
+        // 游戏结束时禁止物理键盘输入
+        if (isGameOver) return;
+
+        if(k === 'ENTER') submitGuess();
+        else if(k === 'BACKSPACE') handleBackspace();
+        else if(k === ' ') handleInput(' ');
+        else if(/^[A-Z]$/.test(k) && k.length === 1) handleInput(k);
+    });
+
+    // 启动
+    initMenu();
+
+</script>
