@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随蓝百练</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .suilan-container { 
+            max-width: 900px; 
+            margin: auto; 
+            padding: 20px; 
+            background-color: #f0f0f0; 
+            border-radius: 12px; 
+        }
+        .suilan-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 20px; 
+            padding: 10px; 
+            background: #fff; 
+            border-radius: 8px; 
+            font-size: 1.2rem; 
+            flex-wrap: wrap; 
+        }
+        .suilan-header > * { 
+            margin: 5px 10px; 
+        }
+        .suilan-grid { 
+            display: grid; 
+            grid-template-columns: repeat(10, 1fr); 
+            gap: 10px; 
+        }
+        .suilan-item { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 60px; 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            user-select: none; 
+        }
+        .suilan-item:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+        }
+        .item-locked { 
+            background-color: #a0a0a0; 
+            color: #666; 
+            cursor: not-allowed; 
+        }
+        .item-unlocked { 
+            background-color: #e0e0e0; 
+            color: #333; 
+        }
+        .item-solved { 
+            background-color: #4CAF50; 
+            color: white; 
+        }
+        .suilan-modal-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            display: none; 
+            z-index: 1000; 
+        }
+        .suilan-modal-content { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%) scale(0.95); 
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            width: 90%; 
+            max-width: 700px; 
+            max-height: 90vh; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4); 
+            opacity: 0; 
+            transition: opacity 0.2s ease, transform 0.2s ease; 
+        }
+        .suilan-modal-close { 
+            position: absolute; 
+            top: 10px; 
+            right: 15px; 
+            font-size: 2rem; 
+            cursor: pointer; 
+            border: none; 
+            background: none; 
+        }
+        #suilan-modal-question { 
+            flex-grow: 1; 
+            overflow-y: auto; 
+            background: #f9f9f9; 
+            padding: 15px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            white-space: pre-wrap; 
+        }
+        #suilan-answer-input { 
+            width: 100%; 
+            padding: 8px; 
+            margin: 10px 0; 
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <font color="#808080"><i>解谜太累？不如做点小题轻松一下！</i></font>
+    <p></p>
+    <div class="suilan-container">
+        <div class="suilan-header">
+            <h3>随蓝百练</h3>
+            <button id="exchange-hint-for-score-btn" class="btn">消耗1提示点换50积分</button>
+            <button id="unlock-extra-puzzle-btn" class="btn">消耗20积分解锁一题</button>
+            <div>当前积分: <b id="suilan-score">400</b></div>
+        </div>
+        <div class="suilan-grid">
+            <!-- 题目网格将通过JavaScript生成 -->
+        </div>
+
+        <!-- 最终图片容器 -->
+        <div id="suilan-final-image-container" style="display: none; text-align: center; margin-top: 20px;">
+            <!-- 图片将在完成所有题目后显示 -->
+        </div>
+    </div>
+
+    <!-- 悬浮窗口 -->
+    <div class="suilan-modal-overlay" id="suilan-modal">
+        <div class="suilan-modal-content" id="suilan-modal-content">
+            <button class="suilan-modal-close" id="suilan-modal-close-btn">&times;</button>
+            <h2 id="suilan-modal-title">小题 </h2>
+            <div id="suilan-modal-question">正在加载题目...</div>
+            
+            <!-- 已解答题目的答案 -->
+            <div id="suilan-modal-answer-section" style="display: none;">
+                <hr>
+                <h4>正确答案:</h4>
+                <p id="suilan-modal-answer" style="font-weight: bold; color: green; font-size: 1.2rem;"></p>
+            </div>
+
+            <!-- 交互部分 -->
+            <div id="suilan-modal-interactive-section">
+                <hr>
+                <div id="suilan-hint-section" style="display: flex; justify-content: space-between; align-items: center;">
+                    <button id="suilan-buy-hint-btn" class="btn">购买提示</button>
+                    <button id="suilan-buy-attempt-btn" class="btn">购买提交次数 (50积分)</button>
+                </div>
+                <hr>
+                <div>
+                    <input type="text" id="suilan-answer-input" placeholder="输入答案">
+                    <button id="suilan-submit-btn" class="btn">提交</button>
+                    <p>剩余提交次数: <span id="suilan-attempts-left">3</span></p>
+                    <p id="suilan-feedback"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 题目数据
+        const SUILAN_ANSWERS = {
+            "1": "三体",
+            "2": "乒乓球",
+            "3": "之乎者也",
+            "4": "买椟还珠",
+            "5": "压力板",
+            "6": "卧薪尝胆",
+            "7": "介值定理",
+            "8": "光明日报",
+            "9": "凫雁满回塘",
+            "10": "冻豆腐",
+            "11": "幂级数",
+            "12": "印度",
+            "13": "切分音",
+            "14": "势能",
+            "15": "参天大树",
+            "16": "巫山云雨",
+            "17": "圣旨",
+            "18": "射覆",
+            "19": "奥运五环",
+            "20": "少广",
+            "21": "国中之国",
+            "22": "山随平野尽",
+            "23": "形而上学",
+            "24": "外婆的澎湖湾",
+            "25": "廉",
+            "26": "宜家",
+            "27": "尺八",
+            "28": "己所不欲",
+            "29": "弹歌",
+            "30": ["屯垦", "屯田"],
+            "31": "妇好",
+            "32": "驴唇不对马嘴",
+            "33": "璃月港",
+            "34": "无中生有",
+            "35": "枋头之战",
+            "36": "犬戎",
+            "37": "车迟国",
+            "38": "牙婆",
+            "39": "战狼",
+            "40": "止战之殇",
+            "41": "时光代理人",
+            "42": "贺新郎",
+            "43": "水平仪",
+            "44": "特别行政区",
+            "45": "氟利昂",
+            "46": "版画",
+            "47": "新华字典",
+            "48": "父与子",
+            "49": "歌唱祖国",
+            "50": "风花雪月",
+            "51": "旋轮线",
+            "52": "烛光晚餐",
+            "53": "户枢不蠹",
+            "54": "神仙葫芦",
+            "55": "甘宁",
+            "56": "业炎",
+            "57": "略",
+            "58": "罗马数字",
+            "59": "短视频",
+            "60": "秩",
+            "61": "皑如山上雪",
+            "62": "痛痛病",
+            "63": "站站乐",
+            "64": ["疍家", "疍民", "疍族", "疍户", "疍人"],
+            "65": "癸",
+            "66": "耄耋",
+            "67": "聂耳",
+            "68": "臧克家",
+            "69": "而立之年",
+            "70": "至元",
+            "71": "蜂房水涡",
+            "72": "肉食者",
+            "73": "缺一门",
+            "74": "臼齿",
+            "75": "血浓于水",
+            "76": "航船中的文明",
+            "77": "齐天大圣到此一游",
+            "78": "差分",
+            "79": "肄业",
+            "80": "艰难苦恨繁霜鬓",
+            "81": "翁仲",
+            "82": "麦当劳",
+            "83": "超生游击队",
+            "84": "豆腐西施",
+            "85": "酸败",
+            "86": "辰砂",
+            "87": "卤代烃",
+            "88": "部首",
+            "89": "豁然开朗",
+            "90": "豺狼",
+            "91": "警世通言",
+            "92": "辣妹子",
+            "93": "静影沉璧",
+            "94": "雷州半岛",
+            "95": "鼋",
+            "96": "难于上青天",
+            "97": "鲱鱼罐头",
+            "98": "隶书",
+            "99": "面红耳赤",
+            "100": "香远益清",
+        };
+
+        const SUILAN_HINTS = {
+            "1": [
+                "【S2】这部作品从一个著名数学问题出",
+                "发，构建了一个环境极为恶劣且不",
+                "稳定的世界，描绘了人类文明在得",
+                "知此世界存在后的兴衰史。汪淼、罗",
+                "辑、程心都是这部作品的主要人物。",
+            ],
+            "2": [
+                "【P3】这项运动在中国现代史上有重",
+                "要的地位，不仅是我国拿到的第",
+                "一个世界冠军，并且曾经“转动大",
+                "球”，促进了尼克松访华以及中美",
+                "建交正常化，也成了我国的“国球”。",
+            ],
+            "3": [
+                "【Z4】这四个字没有什么实际意义，",
+                "但长期出场率很高，并且常",
+                "被连用来指代迂腐、咬文嚼",
+                "字的说话方式，因为它们是",
+                "古汉语中文言虚词的典例。",
+            ],
+            "4": [
+                "【M4】《韩非子》中的一则寓言，讲述了",
+                "一个楚国人取舍不当的行为，",
+                "但现在我们更多批判的并不",
+                "是这位楚国人，而是将珍珠视",
+                "而不见却买下木匣的郑国人。",
+            ],
+            "5": [
+                "【Y3】这种装置常见于各类电子游戏与",
+                "物理谜题中，当玩家或物体置于其",
+                "上时，会因重量触发某种机关。在",
+                "MC中，它由两个材料合成，如果是",
+                "铁锭或金锭，还会附加测重功能。",
+            ],
+            "6": [
+                "【W4】这个成语讲述的故事发生在",
+                "春秋时期，主人公通过每天用",
+                "这两件事激励自己而时刻",
+                "提醒自己不忘战败之耻，最后",
+                "他成功打败夫差，灭亡吴国。",
+            ],
+            "7": [
+                "【J4】数学分析中的一个重要结论，",
+                "它在高中课本中体现为零点",
+                "存在性定理。其内容为：闭区间",
+                "上连续函数必能取到被两端",
+                "点值所夹区间内的任意实数。",
+            ],
+            "8": [
+                "【G4】这家媒体以其在思想理论和学术",
+                "领域的深度报道和评论而著称。历",
+                "史上，在有关真理的全国性大讨",
+                "论之后，它在1978年发表了《实",
+                "践是检验真理的唯一标准》一文。",
+            ],
+            "9": [
+                "【F5】这句诗通过描绘两种鸟类",
+                "挤满曲折池塘的生动画面，",
+                "反衬出了作者清晨上路时",
+                "对故乡的深深思念。实际上，",
+                "它是作者对“杜陵梦”的记录。",
+            ],
+            "10": [
+                "【D3】中式火锅中极为常见的一种食",
+                "材，在东北炖菜中也时有出现。",
+                "在制作它时，原材料内部会形成",
+                "丰富的孔洞结构，因而在食用",
+                "时能充分吸收汤汁，口感独特。",
+            ],
+            "11": [
+                "【M3】这个数学工具能将难以研究的函",
+                "数化为容易研究的多项式，是近",
+                "似计算的重要工具。牛顿首先研究",
+                "它，泰勒和麦克劳林也分别用自",
+                "己的名字命名了它的常见形式。",
+            ],
+            "12": [
+                "【Y2】这是北约音标字母中的一项，对应",
+                "的地理名词占据了南亚的绝大",
+                "部分，是重要的第三世界力量。由",
+                "于其民众的盲目自信，这个国家",
+                "在中文互联网上被戏称为“阿三”。",
+            ],
+            "13": [
+                "【Q3】这是音乐节奏中的一种现",
+                "象，通过改变重音位置来打",
+                "破常规节拍，创造出动态和",
+                "摇摆感。如果按摩斯提取，一",
+                "种典型的方式可以提取R。",
+            ],
+            "14": [
+                "【S2】充上电的电容器、被举高的重物、",
+                "被拉伸的弹簧，都可以储存这",
+                "种能量。在物理学中，其取决于",
+                "物体在力场中的相对位置或",
+                "系统内部配置，而非运动状态。",
+            ],
+            "15": [
+                "【C4】看上去这个词违背了植物生长",
+                "的客观规律，因为木本植物均",
+                "无法在短短72小时长成成",
+                "体。实际上这里的第一字并不",
+                "是大写数字，而是等同的意思。",
+            ],
+            "16": [
+                "【W4】这个典故出自宋玉《高唐赋》，本意为",
+                "我国西南一种特殊的天气现象，后",
+                "来成为男女相爱的隐晦代称。教",
+                "员在一次游泳之后称，要修筑三峡",
+                "大坝，将它截断，让高峡成为平湖。",
+            ],
+            "17": [
+                "【S2】在中国，这种文体早已绝迹，然而在古装",
+                "影视作品中，其时常作为最高权力的",
+                "象征而得以表现。在阅读它时，聆听者",
+                "需要将其作为皇帝而行礼，在听到结",
+                "尾的“钦此”之后还要表示恭敬地接受。",
+            ],
+            "18": [
+                "【S2】这是一种源远流长而神秘的游",
+                "戏，最初需要玩家占卜得到答案，",
+                "后来演变成猜谜。唐代诗人李",
+                "商隐曾在一次酒令中玩了这个",
+                "游戏，并记载“隔座送钩春酒暖”。",
+            ],
+            "19": [
+                "【A4】相传在开幕式上，勃列日涅夫不认",
+                "识这个标志，于是连续念出了好",
+                "几个O。该标志将每个大洲用一种",
+                "颜色的圆环表示，所有圆环连在",
+                "一起，象征着世界人民的大团结。",
+            ],
+            "20": [
+                "【S2】《九章算术》中的章节，该章节探讨的",
+                "是平面图形的面积与立体图形",
+                "的体积，同时提出了用减根法开",
+                "平方和开立方的过程，并初步指",
+                "出开方不尽时需要用根式表示。",
+            ],
+            "21": [
+                "【G4】这种特殊的地缘政治现象被用",
+                "来借指使馆界、租界等失去管",
+                "辖权的地区，其本意为被某国",
+                "领土完全包围的国家。世界上",
+                "现存最典型的例子是梵蒂冈。",
+            ],
+            "22": [
+                "【S5】这句唐诗出自作者青年时期离",
+                "开蜀地时写下的名篇，描绘了诗",
+                "人乘舟出峡，从第二阶梯进入第",
+                "三阶梯时的壮阔景象，下一句“江",
+                "入大荒流”与之形成工整对仗。",
+            ],
+            "23": [
+                "【X4】这种观念最早由亚里士多德",
+                "构建，近代曾被翻译为“玄学”，",
+                "与辩证法相对。它探讨了存",
+                "在本身，但观点是孤立、静止",
+                "的，因此不能探知事物全貌。",
+            ],
+            "24": [
+                "【W6】这首歌曲创作于上世纪70年代，",
+                "从台湾地区传入大陆后成了经典",
+                "儿歌，歌词借一个地名勾勒出温馨",
+                "的画面，并使用了许多与大海相关",
+                "的意象，如“阳光、沙滩、海浪、仙人掌”。",
+            ],
+            "25": [
+                "【L1】这个字在中国古代数学中，这个字",
+                "被用来指开方运算得到的中间项",
+                "系数，因为在杨辉三角中它被包围",
+                "在两“隅”之间。它同时也指品行端正，",
+                "与“贪”相对，是干部的基本纪律要求。",
+            ],
+            "26": [
+                "【Y2】这家公司的产品经常被用地名",
+                "命名，现在的标牌色调与创始",
+                "人国籍的国旗相近。该公司主",
+                "营家具及家居用品，现已经遍",
+                "全球，成为世界500强之一。",
+            ],
+            "27": [
+                "【C2】这种中国传统乐器音色苍",
+                "凉辽阔，在《虚铃》等古典曲目",
+                "中展现了独特的禅意美学。",
+                "其因吹管长度而得名，唐宋",
+                "时期传入日本并保存至今。",
+            ],
+            "28": [
+                "【J4】在现代国际关系中，“不干涉内",
+                "政”原则即蕴含着与这句经典",
+                "格言相似的哲学智慧。这句话",
+                "出自《论语》，体现了推己及人的",
+                "恕道精神，下句为“勿施于人”。",
+            ],
+            "29": [
+                "【D2】这首远古歌谣相传出自黄",
+                "帝时期，被历代高度评价，誉",
+                "为“质之至也”。全诗仅八个",
+                "字，但生动再现了先民制作",
+                "工具、狩猎追捕的全过程。",
+            ],
+            "30": [
+                "【T2】这项制度是古代掌控边疆地",
+                "区的措施，新疆生产建设兵",
+                "团也是这一传统的延续和",
+                "发展，即通过组织军民开垦",
+                "荒地来巩固边防、发展经济。",
+            ],
+            "31": [
+                "【F2】尽管她未能被史籍记载，且对其",
+                "名字的读法有争议，考古学仍",
+                "然证明了她的传奇经历，其多次",
+                "率领军队出征北方和西方，辅",
+                "佐丈夫武丁开创了一代霸业。",
+            ],
+            "32": [
+                "【L6】这个成语涉及两种动物，在另一",
+                "个版本中它们都是生肖。其意义",
+                "可以用网络用语表示为“已读乱",
+                "回”，即答案与问题毫无关联，就像",
+                "这两种动物的嘴不能匹配一样。",
+            ],
+            "33": [
+                "【L3】《原神》中的重要地名，和游戏中",
+                "某个国家同名，是提瓦特大",
+                "陆繁荣悠久的贸易古都。其坐",
+                "落于天衡山和云来海之间，",
+                "拥有三面环山的地理条件。",
+            ],
+            "34": [
+                "【W4】这一概念最早源于古代哲学思想中",
+                "的辩证关系，后来它的引申义成为",
+                "三十六计中的一计，强调通过制造",
+                "虚构事实来迷惑对手。《三国杀》中，这",
+                "是一张锦囊牌，能让自己摸两张牌。",
+            ],
+            "35": [
+                "【F4】这场战役发生在东晋时期，一位权臣",
+                "率领北伐军与北方政权交锋。由于补",
+                "给中断，晋军最终溃败。此战不仅挫伤",
+                "了东晋的北伐势头，也影响了权臣的",
+                "声望，此后他只能废帝以重塑权威。",
+            ],
+            "36": [
+                "【Q2】这个古代部族以游牧和骑射",
+                "见长，经常与中原发生冲突。他",
+                "们曾与申侯联合攻陷镐京，导",
+                "致周幽王被杀和周王室东迁，",
+                "成为西周灭亡的重要推手。",
+            ],
+            "37": [
+                "【C3】某古典小说中的一个虚构国家，其",
+                "国王崇信道教并尊奉三位国师，导",
+                "致国内佛教徒遭受迫害。主人公一",
+                "行在此通过祈雨、坐禅等斗法环节",
+                "击败国师，揭示了他们妖物的本质。",
+            ],
+            "38": [
+                "【Y2】这种职业在古代社会中以贩",
+                "卖女性日常用品为生，但也",
+                "扮演中介角色，暗中从事人",
+                "口买卖、媒妁和杂役介绍等",
+                "非法职业，是“三姑六婆”之一。",
+            ],
+            "39": [
+                "【Z2】这部电影塑造了一位孤胆英雄式",
+                "的特种兵主角，其故事围绕捍卫国",
+                "家利益和民族尊严展开，然而由",
+                "于后来主旋律电影的泛滥，其片名",
+                "被引申为激进爱国主义的代称。",
+            ],
+            "40": [
+                "【Z4】这是一首以反战为主题的华语流",
+                "行歌曲，其歌词描绘了废墟中的孩",
+                "童视角，充满了对和平的渴望与对",
+                "创伤的哀悼。歌名中引用了表示夭",
+                "折的汉字以强化了作品的悲怆感。",
+            ],
+            "41": [
+                "【S5】这部国产动画以一家照相馆为背景，两位主角",
+                "拥有通过照片潜入过去时间节点的特殊能",
+                "力。他们的任务通常是获取关键信息，但必须严",
+                "格遵守“不改变过去”的铁律。其英文名“Lin",
+                "k Click”巧妙地揭示了能力的核心。",
+            ],
+            "42": [
+                "【H3】这是一个著名的词牌名，属于长",
+                "调，风格往往豪放悲壮。教员曾经",
+                "用它记述了读史的感想，辛弃",
+                "疾也曾用它写下“我见青山多妩",
+                "媚，料青山见我应如是”的名句。",
+            ],
+            "43": [
+                "【S3】这种测量工具利用了液体的流",
+                "动性，其核心部件通常是一个或",
+                "多个封装在透明管体中的液",
+                "体腔室，通过观察内部气泡的位",
+                "置来判断被检平面是否标准。",
+            ],
+            "44": [
+                "【T5】这种区域具有特殊法律和",
+                "政治地位，享有高度的自治",
+                "权。它最早为解决台湾问题",
+                "而被提出，目前在我国存在",
+                "两个，都是“一国两制”的成果。",
+            ],
+            "45": [
+                "【F3】这是一类有机化合物的商品",
+                "名称，它们曾广泛用作制冷剂",
+                "和发泡剂。因其进入高空平流",
+                "层后会分解并破坏臭氧分子，",
+                "现已被国际公约限制和淘汰。",
+            ],
+            "46": [
+                "【B2】这种艺术形式与印刷术同源，现",
+                "存最早有年代的作品为晚唐所",
+                "刻《金刚经》。其制作过程脱胎于印",
+                "章和碑刻，即先在不同材料上雕",
+                "刻，并在凹凸表面施墨进行转印。",
+            ],
+            "47": [
+                "【X4】它是无数中国人一生中拥有的",
+                "第一本书，尽管其侧重单字而",
+                "忽略了词组，但其以权威的释义",
+                "和亲民的价格，推动了汉语的",
+                "规范化和教育资源的的普及。",
+            ],
+            "48": [
+                "【F3】这是一部俄国小说，围绕两代人的思",
+                "想冲突展开，表现了农奴改革前夜",
+                "的动荡社会。同时一部德国漫画系列",
+                "与其同名，后者描绘了秃头大胡子",
+                "父亲与调皮儿子之间的日常趣事。",
+            ],
+            "49": [
+                "【G4】这是一首诞生于1950年的",
+                "著名爱国歌曲，其旋律激昂、歌",
+                "词奋进，常在重大庆典和外交场",
+                "合奏响，歌词开头为“五星红旗",
+                "迎风飘扬，胜利歌声多么响亮”。",
+            ],
+            "50": [
+                "【F4】这四个字原本描绘了四种迷人的自",
+                "然景象，但随着文学的发展，它们逐",
+                "渐变得脱离实际，现在它们常被用来",
+                "比喻那些辞藻华丽却内容空洞、只",
+                "谈爱情与闲情而回避现实的作品。",
+            ],
+            "51": [
+                "【X3】对这种曲线的研究过程堪称精彩，不",
+                "少科学家因发现权而出现争议。对其",
+                "面积的研究则更是一段佳话，因为",
+                "这个问题最早是通过物理方法，即将",
+                "曲线对应区域剪下称重而解决的。",
+            ],
+            "52": [
+                "【Z4】这种餐饮形式的流行与近代城市夜",
+                "生活的兴起密切相关，通过较为昏",
+                "暗的光照条件营造浪漫氛围，成为情",
+                "侣约会的经典场景。然而停电的时",
+                "候，这种吃饭方式就是无奈之举了。",
+            ],
+            "53": [
+                "【H4】这个成语出自《吕氏春秋》，",
+                "和用进废退学说异曲同",
+                "工。它形象地揭示了持续",
+                "运动能防止腐朽的道理，",
+                "通常与“流水不腐”并用。",
+            ],
+            "54": [
+                "【S4】这种轻巧的机械结构有一个充",
+                "满神话色彩的名称，但在工厂、",
+                "工地等场所发挥着实际的吊装",
+                "作用。它能实现“四两拨千斤”的",
+                "效果，采用的是差动滑轮原理。",
+            ],
+            "55": [
+                "【G2】这位东汉末年的猛将曾经率",
+                "领百骑夜袭曹营，未损一兵一",
+                "卒而还，被主公盛赞。显然他不",
+                "会自称为“某”，因为他在《三国演",
+                "义》中以“锦帆贼”的绰号闻名。",
+            ],
+            "56": [
+                "【Y2】《三国杀》中的一个限定技，能造成大",
+                "面积的火焰伤害，或者打出高额的",
+                "定点伤害。该技能的原型是火烧",
+                "赤壁，因此开完之后对应武将也会",
+                "如历史上的周瑜一样变得危险。",
+            ],
+            "57": [
+                "【L1】这个字在兵法中有重要地位，",
+                "但在翻看答案时如果看到",
+                "了它，你往往会感到生气，就",
+                "算没有“详写”，也至少把得数",
+                "印下来，而不是敷衍大家嘛。",
+            ],
+            "58": [
+                "【L4】这种古老的系统采用七个基本字",
+                "母和横线进行组合表示一切正",
+                "整数，尽管在现代社会基本被阿",
+                "拉伯数字取代，但在钟表盘面、周",
+                "期表分族等场合仍可见其身影。",
+            ],
+            "59": [
+                "【D3】这种媒体形式的风靡是现代社",
+                "会节奏碎片化的缩影，许多国产",
+                "应用都在其上加装了观看它的",
+                "功能，但其中用户最多的还是抖",
+                "音、快手等专门为其制作的平台。",
+            ],
+            "60": [
+                "【Z1】这是一个比较大的时间单位，换",
+                "算成国际单位相当于约3.1",
+                "亿秒。同时在线性代数中，这个字",
+                "也被用来指代维数，它表示行列",
+                "式非零的最大子矩阵的阶数。",
+            ],
+            "61": [
+                "【A5】这是一首诗的第一句，和下一句的",
+                "月亮都是以自然现象起兴，以歌",
+                "颂爱情的纯净与决绝。这首诗的",
+                "作者是中国古代著名才女，但写",
+                "这首诗时她被司马相如抛弃了。",
+            ],
+            "62": [
+                "【T3】元素周期律在它和另一种",
+                "病之上得到了体现，答案对",
+                "应的元素位于后者的上方，",
+                "且被富集的是大米而非水",
+                "产。这种疾病发生在日本。",
+            ],
+            "63": [
+                "【Z3】公共交通术语，与“直达”或“大站快",
+                "车”相对，由于一般旅速较慢而广",
+                "受诟病。这个词的出现一定程度",
+                "上是对居民的妥协，因为每站必",
+                "停的线路的覆盖面相对最广泛。",
+            ],
+            "64": [
+                "【D2】这个部族分布于福建、广",
+                "东等沿海地带，相传他们",
+                "是闽越的后裔。该部族的",
+                "最大特征是世代以海为",
+                "生，不在陆上置办家业。",
+            ],
+            "65": [
+                "【G1】这个字的甲骨文很像转过来的",
+                "方向标，它可以指代北方或水，",
+                "也是上古时期一位君主的名字，",
+                "他的暴虐统治让民众咒骂“时",
+                "日曷丧”，最终让夏朝走向灭亡。",
+            ],
+            "66": [
+                "【M2】虽然因为某个谐音而诞生",
+                "了一些烂梗，这个词仍是对",
+                "高寿老人的雅称。其两个",
+                "字均指代八十岁左右的年",
+                "纪，并且都带有“老”的部件。",
+            ],
+            "67": [
+                "【N2】其姓名不管是简体还是繁体",
+                "都可以完全被双消掉。虽然他",
+                "年仅二十几岁就意外身亡，但",
+                "他为我国音乐界创作了许多",
+                "不朽作品，其中还包括国歌。",
+            ],
+            "68": [
+                "【Z3】著名诗人，其为纪念鲁迅而作的",
+                "一首诗被广为传诵。诗中将两类",
+                "人交叉描述并在后半部分书写",
+                "前半部分事迹对应的结局，其第",
+                "一句是“有的人活着，他已经死了”。",
+            ],
+            "69": [
+                "【E4】这个词源于《论语》，化用于孔子对某",
+                "个年龄节点的总结，在后世的普",
+                "遍认知中，它代表了一个人应该",
+                "有所成就、能够自立的阶段，这样",
+                "才能在接下来的四十岁时“不惑”。",
+            ],
+            "70": [
+                "【Z2】这个年号在同一个王朝中被",
+                "使用了两次，巧合的是两次使",
+                "用期间朝廷内都有名为伯颜",
+                "的重臣。在第一次使用的第十",
+                "六年，对应王朝完成了统一。",
+            ],
+            "71": [
+                "【F4】看上去苯环的鲍林式写法可",
+                "以用这句话形容，但它最初",
+                "用来形容的是四边形结构，只",
+                "是用一种动物巢穴的密集",
+                "来比喻阿房宫房间的众多。",
+            ],
+            "72": [
+                "【R3】严格来说，人不应该属于这一类，因为",
+                "人是典型的杂食动物。但在春秋时期，",
+                "由于阶级分化，平民已经很难接触到",
+                "动物食品了，因此曹刿用这个词指代",
+                "身居高位的人，也是合情合理的了。",
+            ],
+            "73": [
+                "【Q3】在某运动的某个标准模式中，它的价值",
+                "为1，而在另一个地方模式中，它是取胜",
+                "的必要条件。不仅如此，在后者的游戏",
+                "开始时，玩家必须确定好一种花色，只有",
+                "将这种花色都打出去才能成功和牌。",
+            ],
+            "74": [
+                "【J2】这个身体部位由其形态而得名，",
+                "在食草动物中比较发达，以满足",
+                "其咀嚼植物纤维的要求。正常人",
+                "最后一次长出它的时间在成年",
+                "以后，此时长出的部分也叫“智齿”。",
+            ],
+            "75": [
+                "【X4】这个大小关系是显然的，因",
+                "为正数均大于零。实际上，这",
+                "个词中的两种液体都是",
+                "对人际关系的抽象，该词意",
+                "为胜过外人的亲戚关系。",
+            ],
+            "76": [
+                "【H6】这篇散文写于1924年，记述了",
+                "作者从绍兴到杭州的乘船经历，通",
+                "过几件小事，暴露出了传统礼教的",
+                "荒诞性，通过“汽油船与航船并存”隐",
+                "喻新旧文明冲突，作者是朱自清。",
+            ],
+            "77": [
+                "【Q8】这句话本来是兑现承诺的凭证，却在",
+                "主人公回到原地之后成了其后五百",
+                "年苦难的根源。得益于其人物形象的",
+                "广为传播，许多人在旅游时都会像主",
+                "人公那样做出不文明的刻字行为。",
+            ],
+            "78": [
+                "【C2】这个概念可以看作导数在离散",
+                "环境的类比，其极限也是导数的",
+                "定义。对某个数列a_n，",
+                "这个概念的定义为D_n=",
+                "a_(n+1)-a_n。",
+            ],
+            "79": [
+                "【Y2】这个结局是现实生活中的Bad En",
+                "d，一般伴随着特殊情况，因为成绩再差，只",
+                "要修满规定年限，也会有对应Norma",
+                "l End的保底奖励——当然大家一般都",
+                "会追求名为“毕业”的Happy End。",
+            ],
+            "80": [
+                "【J7】这句诗将作者内心的情感融进",
+                "一个具体的生理变化，凝练地",
+                "写出了作者在乱世之中身心交",
+                "瘁、老病孤愁的复杂情感，是作",
+                "者在夔州旅居期间登高所作。",
+            ],
+            "81": [
+                "【W2】这种雕塑是古代帝陵前的标",
+                "配，始于秦汉，历代沿用不衰，在",
+                "明清达到极盛，是皇权仪卫的",
+                "象征。通常其包含某个特定数",
+                "量的人和动物，也叫“石像生”。",
+            ],
+            "82": [
+                "【M3】《反物质维度》和CCBC15都有",
+                "这个连锁品牌的身影，因为该品",
+                "牌喜欢派发优惠券，且在暑假期间",
+                "推出了一系列解谜活动，其标志",
+                "性特征是红底黄字的M形拱门。",
+            ],
+            "83": [
+                "【C5】这部小品在1990年首次演",
+                "出，其取材于计划生育政策推行",
+                "初期大众的抵触情绪，并用大众",
+                "化的语言讲述了人类的性别决",
+                "定机制，由宋丹丹和黄宏表演。",
+            ],
+            "84": [
+                "【D4】这是鲁迅作品中某女性角色",
+                "的外号，取自她的产业和年轻",
+                "时的美貌。在小说中，作者用尖",
+                "锐的笔法刻画出了她的刻薄",
+                "形象，并将她比作一种文具。",
+            ],
+            "85": [
+                "【S2】这是化学和食品科学中的一个术",
+                "语，特指油脂或含油食物在储存",
+                "不当时，因水解或氧化而产生异",
+                "味和变质的化学过程。生活中，哈",
+                "喇味的坚果便是发生了此现象。",
+            ],
+            "86": [
+                "【C2】这种矿物曾经让秦始皇痴迷，也",
+                "成了后来的方士在炼丹时的",
+                "重要原料，并作为镇静剂而入",
+                "药。但其实际上是重金属的盐，",
+                "因为颜色朱红，也被称为“朱砂”。",
+            ],
+            "87": [
+                "【L3】它们似乎打破了相似相溶的规律，因",
+                "为它们虽然都是极性分子，但多数不",
+                "溶于水。由于杂原子的活泼性，它们是",
+                "重要的有机中间体，但广泛使用也让",
+                "它们成了臭氧层空洞的罪魁祸首。",
+            ],
+            "88": [
+                "【B2】这个概念最早出现在《说文解字》中，",
+                "对形声字来说，它在绝大多数情况",
+                "都表示了这个字的形旁。不过现",
+                "在它的定义方法还要兼顾检索，如",
+                "“锦”的这项元素是表音的金字旁。",
+            ],
+            "89": [
+                "【H4】当你卡题时，往往一个提示",
+                "就能让你感受到这种顿悟",
+                "一样的效果，就像当年的一",
+                "位渔人进入山洞时，路途突",
+                "然从狭窄变得宽广一样。",
+            ],
+            "90": [
+                "【C2】这两种动物属于同一科，存",
+                "在着细微差别，和“虎豹”一样",
+                "都被用作对凶恶敌人的",
+                "指代。如果它们代替朋友来",
+                "了，迎接它们的将是猎枪。",
+            ],
+            "91": [
+                "【J4】这部作品收录了许多劝诫世",
+                "人的短篇故事，《杜十娘怒沉",
+                "百宝箱》即出自其中。该作品由",
+                "冯梦龙编撰，与同时代的另",
+                "外四部作品合称“三言二拍”。",
+            ],
+            "92": [
+                "【L3】这首歌旋律简单，歌词有",
+                "大量重复，但也生动地体",
+                "现了湖南女生的性格。",
+                "在央视舞台上，这首歌与",
+                "《本草纲目》进行过串烧。",
+            ],
+            "93": [
+                "【J4】和上一句跳跃的光芒不同，这一",
+                "句描述的是水面无风时的情况，",
+                "显得颇为平和。而紧接着渔歌的",
+                "相互回答为深夜的气氛注入活",
+                "力，也让作者感受到心旷神怡。",
+            ],
+            "94": [
+                "【L4】此地以当地人崇拜的某自",
+                "然现象得名，位于热带与",
+                "亚热带季风气候的过渡区，",
+                "是我国重要的热带作物",
+                "产区，与海南岛隔海相望。",
+            ],
+            "95": [
+                "【Y1】根据《墨子》的记载，在春秋战国时，这",
+                "种动物就已经大量分布于长江中。",
+                "在《西游记》中，它和八十一难中的",
+                "一难息息相关，不过在此之前也为",
+                "唐僧师徒通过通天河帮了大忙。",
+            ],
+            "96": [
+                "【N5】这句诗在全诗的开头和结尾都有",
+                "出现，它用一个当时无法完成的",
+                "动作为全诗描写的道路留下了",
+                "第一印象。然而后世有人却反其",
+                "道而行之，称此道路“易于履平地”。",
+            ],
+            "97": [
+                "【F4】在《哆啦A梦》中，大雄用这种",
+                "食物的图片和品尝汤勺",
+                "治理了吹牛的小夫。该食物",
+                "产自北欧，是一种发酵产",
+                "品，因为气味极臭而得名。",
+            ],
+            "98": [
+                "【L2】在《横竖撇点折》中，它在对联中与",
+                "“谐”字相对。其最早出现于秦汉",
+                "时期，虽然你能在许多火车站看",
+                "到它，但它与原始版本差距极",
+                "大，只是一种压扁的楷书而已。",
+            ],
+            "99": [
+                "【M4】这个词和某个网络流行语一",
+                "样，都用颜色来形容发怒的",
+                "情况，不同的是它也可以指",
+                "羞愧或尴尬的表情，比如孔",
+                "乙己被揭穿偷书时的脸色。",
+            ],
+            "100": [
+                "【X4】这句古文给出了一个气味分",
+                "子浓度影响嗅觉的现象，因",
+                "为随着距离增大，作者认为莲",
+                "花的气味越来越清芬，这也",
+                "就是其“独爱莲”的原因之一。",
+            ],
+        };
+
+        // 游戏状态管理
+        class GameState {
+            constructor() {
+                this.score = 400;
+                this.hints = 0; // 提示点数量
+                this.itemsStatus = {};
+                
+                // 初始化所有题目状态
+                for (let i = 1; i <= 100; i++) {
+                    this.itemsStatus[i.toString()] = {
+                        status: "locked",
+                        hintLevel: 1,
+                        attemptsLeft: 3
+                    };
+                }
+                
+                // 解锁第一题
+                this.itemsStatus["1"].status = "unlocked";
+            }
+            
+            saveToLocalStorage() {
+                localStorage.setItem('suilanGameState', JSON.stringify({
+                    score: this.score,
+                    hints: this.hints,
+                    itemsStatus: this.itemsStatus
+                }));
+            }
+            
+            loadFromLocalStorage() {
+                const saved = localStorage.getItem('suilanGameState');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    this.score = data.score || 400;
+                    this.hints = data.hints || 0;
+                    this.itemsStatus = data.itemsStatus || this.itemsStatus;
+                }
+            }
+        }
+
+        // 创建游戏状态实例
+        const gameState = new GameState();
+        gameState.loadFromLocalStorage();
+
+        // DOM元素
+        const gridContainer = document.querySelector('.suilan-grid');
+        const scoreDisplay = document.getElementById('suilan-score');
+        const modal = document.getElementById('suilan-modal');
+        const modalContent = document.getElementById('suilan-modal-content');
+        const closeModalBtn = document.getElementById('suilan-modal-close-btn');
+        const modalTitle = document.getElementById('suilan-modal-title');
+        const modalQuestion = document.getElementById('suilan-modal-question');
+        const modalAnswerSection = document.getElementById('suilan-modal-answer-section');
+        const modalAnswerDisplay = document.getElementById('suilan-modal-answer');
+        const modalInteractiveSection = document.getElementById('suilan-modal-interactive-section');
+        const buyHintBtn = document.getElementById('suilan-buy-hint-btn');
+        const buyAttemptBtn = document.getElementById('suilan-buy-attempt-btn');
+        const answerInput = document.getElementById('suilan-answer-input');
+        const submitBtn = document.getElementById('suilan-submit-btn');
+        const attemptsLeftDisplay = document.getElementById('suilan-attempts-left');
+        const feedbackDisplay = document.getElementById('suilan-feedback');
+        const unlockExtraBtn = document.getElementById('unlock-extra-puzzle-btn');
+        const exchangeHintBtn = document.getElementById('exchange-hint-for-score-btn');
+        const finalImageContainer = document.getElementById('suilan-final-image-container');
+
+        let currentItemId = null;
+
+        // 生成题目网格
+        function renderGrid() {
+            gridContainer.innerHTML = '';
+            for (let i = 1; i <= 100; i++) {
+                const itemId = i.toString();
+                const itemData = gameState.itemsStatus[itemId];
+                const itemElement = document.createElement('div');
+                itemElement.className = `suilan-item item-${itemData.status}`;
+                itemElement.dataset.itemId = itemId;
+                itemElement.textContent = itemId;
+                
+                if (itemData.status !== 'locked') {
+                    itemElement.addEventListener('click', () => {
+                        currentItemId = itemId;
+                        openModal();
+                    });
+                }
+                
+                gridContainer.appendChild(itemElement);
+            }
+        }
+
+        // 更新分数显示
+        function updateScoreDisplay() {
+            scoreDisplay.textContent = gameState.score;
+        }
+
+        // 打开模态框
+        async function openModal() {
+            modal.style.display = 'block';
+            requestAnimationFrame(() => {
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+            
+            const itemData = gameState.itemsStatus[currentItemId];
+            modalTitle.textContent = `小题 ${currentItemId}`;
+            
+            if (itemData.status === 'solved') {
+                // 显示完整题目和答案
+                const fullQuestion = SUILAN_HINTS[currentItemId].join('');
+                const correctAnswerRaw = SUILAN_ANSWERS[currentItemId];
+                const correctAnswer = Array.isArray(correctAnswerRaw) 
+                    ? correctAnswerRaw.join(' / ') 
+                    : correctAnswerRaw;
+                
+                modalQuestion.textContent = fullQuestion;
+                modalAnswerDisplay.textContent = correctAnswer;
+                modalAnswerSection.style.display = 'block';
+                modalInteractiveSection.style.display = 'none';
+            } else {
+                // 显示当前提示级别
+                const hintLevel = itemData.hintLevel;
+                const fullText = SUILAN_HINTS[currentItemId];
+                const questionText = fullText.slice(0, hintLevel).join('');
+                
+                modalQuestion.textContent = questionText;
+                attemptsLeftDisplay.textContent = itemData.attemptsLeft;
+                
+                // 更新提示按钮状态
+                const canBuyHint = hintLevel < fullText.length;
+                if (canBuyHint) {
+                    buyHintBtn.style.display = 'inline-block';
+                    buyHintBtn.textContent = `解锁下一段 (2积分)`;
+                } else {
+                    buyHintBtn.style.display = 'none';
+                }
+                
+                // 更新提交按钮状态
+                const hasAttempts = itemData.attemptsLeft > 0;
+                submitBtn.disabled = !hasAttempts;
+                answerInput.disabled = !hasAttempts;
+                
+                modalAnswerSection.style.display = 'none';
+                modalInteractiveSection.style.display = 'block';
+            }
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'translate(-50%, -50%) scale(0.95)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 200);
+        }
+
+        // 检查是否所有题目都已解锁
+        function checkAllUnlocked() {
+            const hasLocked = Object.values(gameState.itemsStatus).some(item => item.status === 'locked');
+            if (!hasLocked) {
+                // 所有题目都已解锁，显示最终图片
+                showFinalImage();
+            }
+        }
+
+        // 显示最终图片
+        function showFinalImage() {
+            const img = document.createElement('img');
+            img.src = 'https://image.secopuzzle.com/SECO2/101.jpg';
+            img.alt = 'Congratulations!';
+            img.style.maxWidth = '100%';
+            img.style.borderRadius = '10px';
+            finalImageContainer.innerHTML = '';
+            finalImageContainer.appendChild(img);
+            finalImageContainer.style.display = 'block';
+        }
+
+        // 事件监听器
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 提交答案
+        submitBtn.addEventListener('click', () => {
+            const answer = answerInput.value.trim();
+            if (!answer) return;
+            
+            feedbackDisplay.textContent = '正在提交...';
+            
+            const itemData = gameState.itemsStatus[currentItemId];
+            itemData.attemptsLeft -= 1;
+            
+            const correctAnswers = SUILAN_ANSWERS[currentItemId];
+            const isCorrect = Array.isArray(correctAnswers) 
+                ? correctAnswers.includes(answer)
+                : answer === correctAnswers;
+            
+            if (isCorrect) {
+                itemData.status = 'solved';
+                
+                // 寻找下一个要解锁的题目
+                let nextUnlockedId = null;
+                for (let i = 1; i <= 100; i++) {
+                    const id = i.toString();
+                    if (gameState.itemsStatus[id].status === 'locked') {
+                        gameState.itemsStatus[id].status = 'unlocked';
+                        nextUnlockedId = id;
+                        break;
+                    }
+                }
+                
+                feedbackDisplay.textContent = '回答正确！';
+                feedbackDisplay.style.color = 'green';
+                
+                // 更新界面
+                renderGrid();
+                updateScoreDisplay();
+                
+                // 如果没有下一个解锁的题目，显示最终图片
+                if (!nextUnlockedId) {
+                    setTimeout(() => {
+                        showFinalImage();
+                        closeModal();
+                    }, 1000);
+                } else {
+                    setTimeout(closeModal, 1000);
+                }
+            } else {
+                feedbackDisplay.textContent = '回答错误，请再试一次。';
+                feedbackDisplay.style.color = 'red';
+                attemptsLeftDisplay.textContent = itemData.attemptsLeft;
+                
+                if (itemData.attemptsLeft <= 0) {
+                    submitBtn.disabled = true;
+                    answerInput.disabled = true;
+                }
+            }
+            
+            gameState.saveToLocalStorage();
+        });
+
+        // 购买提示
+        buyHintBtn.addEventListener('click', () => {
+            const itemData = gameState.itemsStatus[currentItemId];
+            const fullText = SUILAN_HINTS[currentItemId];
+            
+            if (itemData.hintLevel >= fullText.length) {
+                alert('没有更多提示了');
+                return;
+            }
+            
+            if (gameState.score < 2) {
+                alert('积分不足');
+                return;
+            }
+            
+            gameState.score -= 2;
+            itemData.hintLevel += 1;
+            
+            // 更新题目显示
+            const hintLevel = itemData.hintLevel;
+            const questionText = fullText.slice(0, hintLevel).join('');
+            modalQuestion.textContent = questionText;
+            
+            // 更新提示按钮
+            const canBuyHint = hintLevel < fullText.length;
+            if (canBuyHint) {
+                buyHintBtn.textContent = `解锁下一段 (2积分)`;
+            } else {
+                buyHintBtn.style.display = 'none';
+            }
+            
+            updateScoreDisplay();
+            gameState.saveToLocalStorage();
+        });
+
+        // 购买提交次数
+        buyAttemptBtn.addEventListener('click', () => {
+            if (gameState.score < 50) {
+                alert('积分不足');
+                return;
+            }
+            
+            gameState.score -= 50;
+            gameState.itemsStatus[currentItemId].attemptsLeft += 1;
+            
+            attemptsLeftDisplay.textContent = gameState.itemsStatus[currentItemId].attemptsLeft;
+            submitBtn.disabled = false;
+            answerInput.disabled = false;
+            
+            updateScoreDisplay();
+            gameState.saveToLocalStorage();
+        });
+
+        // 解锁额外题目
+        unlockExtraBtn.addEventListener('click', () => {
+            if (gameState.score < 20) {
+                alert('积分不足，无法解锁新题');
+                return;
+            }
+            
+            let newlyUnlockedId = null;
+            for (let i = 1; i <= 100; i++) {
+                const id = i.toString();
+                if (gameState.itemsStatus[id].status === 'locked') {
+                    gameState.itemsStatus[id].status = 'unlocked';
+                    newlyUnlockedId = id;
+                    break;
+                }
+            }
+            
+            if (!newlyUnlockedId) {
+                alert('所有题目均已解锁');
+                return;
+            }
+            
+            gameState.score -= 20;
+            updateScoreDisplay();
+            renderGrid();
+            
+            alert(`成功解锁第 ${newlyUnlockedId} 题！`);
+            gameState.saveToLocalStorage();
+        });
+
+        // 兑换积分
+        exchangeHintBtn.addEventListener('click', () => {
+            if (gameState.hints < 1) {
+                alert('提示点不足！');
+                return;
+            }
+            
+            gameState.hints -= 1;
+            gameState.score += 50;
+            
+            updateScoreDisplay();
+            alert(`兑换成功！获得了 50 积分。\n您当前剩余 ${gameState.hints} 个提示点。`);
+            gameState.saveToLocalStorage();
+        });
+
+        // 初始化游戏
+        renderGrid();
+        updateScoreDisplay();
+        checkAllUnlocked();
+    </script>
+</body>
+</html>
+
+
+

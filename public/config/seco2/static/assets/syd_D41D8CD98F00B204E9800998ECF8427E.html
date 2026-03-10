@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>声韵调</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: transparent;
+        }
+        .syd-container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 20px; 
+            background-color: #f4f4f4; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .syd-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 20px; 
+            font-size: 1.2rem; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+        .syd-level-nav { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .syd-nav-btn { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            padding: 0 10px; 
+            border-radius: 5px; 
+            user-select: none; 
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        .syd-nav-btn:hover:not(.disabled) { 
+            background-color: #ddd; 
+        }
+        .syd-nav-btn.disabled { 
+            color: #aaa; 
+            cursor: not-allowed; 
+            background-color: #f9f9f9; 
+        }
+        
+        .syd-image-wrapper { 
+            width: 100%; 
+            max-width: 600px; 
+            margin: 0 auto 20px; 
+        }
+        .syd-image { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .syd-controls { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 10px; 
+        }
+        #syd-submission-input { 
+            flex-grow: 1; 
+            padding: 10px; 
+            font-size: 1rem; 
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .syd-feedback { 
+            min-height: 24px; 
+            font-weight: bold; 
+            margin-top: 5px; 
+        }
+        .syd-image-caption { 
+            margin-bottom: 15px; 
+            font-style: italic; 
+            color: #555; 
+            background-color: #fff; 
+            padding: 15px; 
+            border-radius: 8px; 
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="syd-container">
+        <div class="syd-header">
+            <div class="syd-level-nav">
+                <div id="syd-prev-btn" class="syd-nav-btn">&lt;</div>
+                <span id="syd-level-text">当前小关: <b id="syd-level-display">1</b></span>
+                <div id="syd-next-btn" class="syd-nav-btn">&gt;</div>
+            </div>
+            <span id="syd-attempts-container">
+                剩余提交次数: <b id="syd-attempts-display">5</b>
+            </span>
+        </div>
+
+        <div class="syd-image-caption" id="syd-level-description">
+            正在加载...
+        </div>
+
+        <div class="syd-image-wrapper">
+            <img id="syd-image" src="" alt="Puzzle Image" class="syd-image">
+        </div>
+
+        <div id="syd-interaction-area">
+            <div id="syd-submission-area" class="syd-controls">
+                <input type="text" id="syd-submission-input" placeholder="输入答案">
+                <button id="syd-submit-btn" class="btn">提交</button>
+            </div>
+            <div id="syd-answer-area" style="display: none; padding: 15px; background: #e8f5e9; border-radius: 8px; font-weight: bold; color: #2e7d32;">
+                正确答案：<span id="syd-answer-display"></span>
+            </div>
+            <div class="syd-feedback" id="syd-feedback-display"></div>
+            <div class="syd-actions" id="syd-actions-area" style="display: flex; gap: 10px; margin-top: 15px;">
+                <button id="syd-exchange-btn" class="btn btn-secondary">
+                    使用提示点换次数 (消耗 1) (可用: <span id="hint-balance-display">10.00</span>)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 游戏数据
+        const SYD_DATA = [
+            // 第 1 关 (索引为 0)
+            {
+                "level": 1,
+                "image_url": "/config/seco2/static/assets/syd_eae4e9050377d2ae2b08db956d83395f.png",
+                "description": "请根据图片内容提交答案。",
+                "correct_answer": "最好"
+            },
+            // 第 2 关 (索引为 1)
+            {
+                "level": 2,
+                "image_url": "/config/seco2/static/assets/syd_67d1fb90aa43868897cefdae2af7e6ea.png",
+                "description": "请根据图片内容提交答案。",
+                "correct_answer": "14"
+            },
+            // 第 3 关 (索引为 2)
+            {
+                "level": 3,
+                "image_url": "/config/seco2/static/assets/syd_42b490d27743a0e409d1fb94e8de3ef6.png",
+                "description": "请根据图片内容提交答案。",
+                "correct_answer": "thenextpage"
+            },
+            // 第 4 关 (索引为 3)
+            {
+                "level": 4,
+                "image_url": "/config/seco2/static/assets/syd_605f1da94f311dc7f6dffe6a6bf63e17.png",
+                "description": "这是一个只供观赏的结局页面。",
+            }
+        ];
+
+        const SUBMITTABLE_LEVELS = 3;  // 只有前三关可以提交答案
+        const SYD_MAX_SUBMISSIONS = 5;  // 每关默认提交次数
+        const SYD_HINT_COST = 1;  // 兑换次数消耗的提示点
+        const SYD_ATTEMPTS_PER_HINT = 3;  // 每次兑换增加的次数
+        const SYD_RESET_COMMAND = "SECORESETSYD";
+
+        // --- DOM 元素获取 ---
+        const levelDisplay = document.getElementById('syd-level-display');
+        const levelText = document.getElementById('syd-level-text');
+        const imageEl = document.getElementById('syd-image');
+        const descriptionEl = document.getElementById('syd-level-description');
+        const prevBtn = document.getElementById('syd-prev-btn');
+        const nextBtn = document.getElementById('syd-next-btn');
+
+        const interactionArea = document.getElementById('syd-interaction-area');
+        const submissionArea = document.getElementById('syd-submission-area');
+        const answerArea = document.getElementById('syd-answer-area');
+        const answerDisplay = document.getElementById('syd-answer-display');
+        const actionsArea = document.getElementById('syd-actions-area');
+        const attemptsContainer = document.getElementById('syd-attempts-container');
+        const attemptsDisplay = document.getElementById('syd-attempts-display');
+        const inputEl = document.getElementById('syd-submission-input');
+        const submitBtn = document.getElementById('syd-submit-btn');
+        const feedbackDisplay = document.getElementById('syd-feedback-display');
+        const exchangeBtn = document.getElementById('syd-exchange-btn');
+        const hintBalanceDisplay = document.getElementById('hint-balance-display');
+
+        // --- 游戏状态初始化 ---
+        let teamCurrentLevel = 1;
+        let viewingLevel = 1;
+        let maxReachedLevel = 1;
+        let hintsRemaining = 32767.00;
+        let attemptsByLevel = {
+            "1": SYD_MAX_SUBMISSIONS,
+            "2": SYD_MAX_SUBMISSIONS,
+            "3": SYD_MAX_SUBMISSIONS
+        };
+        let history = [];
+
+        // 从localStorage加载游戏状态
+        function loadGameState() {
+            const savedState = localStorage.getItem('sydGameState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                teamCurrentLevel = state.teamCurrentLevel || 1;
+                viewingLevel = state.viewingLevel || 1;
+                maxReachedLevel = state.maxReachedLevel || 1;
+                hintsRemaining = state.hintsRemaining || 10.00;
+                attemptsByLevel = state.attemptsByLevel || {
+                    "1": SYD_MAX_SUBMISSIONS,
+                    "2": SYD_MAX_SUBMISSIONS,
+                    "3": SYD_MAX_SUBMISSIONS
+                };
+                history = state.history || [];
+            }
+        }
+
+        // 保存游戏状态到localStorage
+        function saveGameState() {
+            const state = {
+                teamCurrentLevel,
+                viewingLevel,
+                maxReachedLevel,
+                hintsRemaining,
+                attemptsByLevel,
+                history
+            };
+            localStorage.setItem('sydGameState', JSON.stringify(state));
+        }
+
+        function formatHintBalance(val) {
+            const num = Number(val);
+            if (Number.isNaN(num)) return val;
+            const truncated = Math.trunc(num * 100) / 100;
+            return truncated.toFixed(2);
+        }
+        
+        // --- UI 更新函数 ---
+        function updateNavButtons() {
+            prevBtn.classList.toggle('disabled', viewingLevel <= 1);
+            // 只有当正在查看的关卡就是最高可达关卡时，才禁用“下一关”按钮
+            nextBtn.classList.toggle('disabled', viewingLevel === maxReachedLevel);
+        }
+
+        function updateLevelDisplay() {
+            levelDisplay.innerText = viewingLevel;
+            if (viewingLevel === teamCurrentLevel && teamCurrentLevel <= SUBMITTABLE_LEVELS) {
+                levelText.innerHTML = `当前小关: <b id="syd-level-display">${viewingLevel}</b>`;
+            } else {
+                levelText.innerHTML = `查看: 第 <b id="syd-level-display">${viewingLevel}</b> 关`;
+            }
+        }
+
+        function updateControlsVisibility(levelPassed, correctAnswer) {
+            if (viewingLevel > SUBMITTABLE_LEVELS) {
+                interactionArea.style.display = 'none';
+                attemptsContainer.style.display = 'none';
+                return;
+            }
+            interactionArea.style.display = 'block';
+            if (levelPassed && correctAnswer) {
+                submissionArea.style.display = 'none';
+                answerArea.style.display = 'block';
+                answerDisplay.innerText = correctAnswer;
+                actionsArea.style.display = 'none';
+                attemptsContainer.style.display = 'none';
+            } else {
+                submissionArea.style.display = 'flex';
+                answerArea.style.display = 'none';
+                actionsArea.style.display = 'flex';
+                attemptsContainer.style.display = 'inline';
+            }
+        }
+
+        function loadLevelData(level) {
+            if (level < 1 || level > SYD_DATA.length) {
+                feedbackDisplay.innerText = "关卡不存在";
+                feedbackDisplay.style.color = 'red';
+                return;
+            }
+
+            viewingLevel = level;
+            const data = SYD_DATA[level - 1];
+            imageEl.src = data.image_url;
+            descriptionEl.innerHTML = data.description || '';
+            
+            const attemptsLeft = attemptsByLevel[level.toString()] || SYD_MAX_SUBMISSIONS;
+            attemptsDisplay.innerText = attemptsLeft;
+            
+            const levelPassed = teamCurrentLevel > level;
+            updateLevelDisplay();
+            updateNavButtons();
+            updateControlsVisibility(levelPassed, data.correct_answer);
+            
+            feedbackDisplay.innerText = '';
+            inputEl.value = '';
+            inputEl.disabled = false;
+            submitBtn.disabled = false;
+            
+            saveGameState();
+        }
+
+        // --- 事件处理 ---
+        function handleSubmit() {
+            const submission = inputEl.value.trim();
+            if (!submission || submitBtn.disabled) return;
+
+            feedbackDisplay.innerText = "正在提交...";
+            feedbackDisplay.style.color = 'inherit';
+            submitBtn.disabled = true;
+
+            // 处理重置指令
+            if (submission.toUpperCase().replace(/\s/g, '') === SYD_RESET_COMMAND) {
+                resetGame();
+                return;
+            }
+
+            // 验证提交级别
+            if (viewingLevel > SUBMITTABLE_LEVELS) {
+                feedbackDisplay.innerText = "此关卡不接受提交";
+                feedbackDisplay.style.color = 'red';
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // 检查提交次数
+            const attemptsLeft = attemptsByLevel[viewingLevel.toString()] || SYD_MAX_SUBMISSIONS;
+            if (attemptsLeft <= 0) {
+                feedbackDisplay.innerText = "本关提交次数已用完！";
+                feedbackDisplay.style.color = 'red';
+                inputEl.disabled = true;
+                submitBtn.disabled = true;
+                return;
+            }
+
+            // 验证答案
+            const levelData = SYD_DATA[viewingLevel - 1];
+            const correctNormalized = levelData.correct_answer.replace(/\s/g, '').toUpperCase();
+            const submissionNormalized = submission.replace(/\s/g, '').toUpperCase();
+
+            if (submissionNormalized === correctNormalized) {
+                // 答案正确
+                history.push({
+                    level: viewingLevel,
+                    submission: submission,
+                    response: `第 ${viewingLevel} 关通过！`
+                });
+
+                if (viewingLevel === teamCurrentLevel) {
+                    teamCurrentLevel++;
+                    maxReachedLevel = Math.max(maxReachedLevel, teamCurrentLevel);
+                    
+                    feedbackDisplay.innerText = levelData.correct_answer 
+                        ? `正确！答案是「${levelData.correct_answer}」。正在进入下一关...` 
+                        : "正确！正在进入下一关...";
+                    feedbackDisplay.style.color = 'green';
+                    
+                    setTimeout(() => {
+                        if (teamCurrentLevel <= SUBMITTABLE_LEVELS) {
+                            loadLevelData(teamCurrentLevel);
+                        } else {
+                            // 到达最终关卡
+                            loadLevelData(teamCurrentLevel);
+                        }
+                    }, 1500);
+                } else {
+                    // 已通过的关卡重新提交
+                    feedbackDisplay.innerText = levelData.correct_answer 
+                        ? `答案正确！(本关之前已通过) 正确答案：「${levelData.correct_answer}」` 
+                        : "答案正确！(本关之前已通过)";
+                    feedbackDisplay.style.color = 'green';
+                    submitBtn.disabled = false;
+                }
+            } else {
+                // 答案错误
+                attemptsByLevel[viewingLevel.toString()] = attemptsLeft - 1;
+                
+                history.push({
+                    level: viewingLevel,
+                    submission: submission,
+                    response: "答案错误"
+                });
+                
+                feedbackDisplay.innerText = "答案错误";
+                feedbackDisplay.style.color = 'red';
+                attemptsDisplay.innerText = attemptsByLevel[viewingLevel.toString()];
+                
+                if (attemptsByLevel[viewingLevel.toString()] <= 0) {
+                    inputEl.disabled = true;
+                    submitBtn.disabled = true;
+                } else {
+                    inputEl.value = '';
+                    submitBtn.disabled = false;
+                }
+            }
+            
+            saveGameState();
+        }
+        
+        function handleExchange() {
+            const cost = SYD_HINT_COST;
+            if (hintsRemaining < cost) {
+                feedbackDisplay.innerText = "提示点不足！";
+                feedbackDisplay.style.color = 'red';
+                return;
+            }
+
+            if (!confirm(`你确定要消耗 ${cost} 个提示点来换取更多提交机会吗？`)) {
+                return;
+            }
+
+            exchangeBtn.disabled = true;
+            feedbackDisplay.innerText = "正在兑换...";
+            feedbackDisplay.style.color = 'inherit';
+
+            // 增加提交次数
+            const currentAttempts = attemptsByLevel[viewingLevel.toString()] || SYD_MAX_SUBMISSIONS;
+            attemptsByLevel[viewingLevel.toString()] = currentAttempts + SYD_ATTEMPTS_PER_HINT;
+            hintsRemaining -= cost;
+
+            feedbackDisplay.innerText = `兑换成功！获得了 ${SYD_ATTEMPTS_PER_HINT} 次提交机会。`;
+            feedbackDisplay.style.color = 'green';
+            attemptsDisplay.innerText = attemptsByLevel[viewingLevel.toString()];
+            hintBalanceDisplay.innerText = formatHintBalance(hintsRemaining);
+
+            // 重新启用输入和提交按钮
+            inputEl.disabled = false;
+            submitBtn.disabled = false;
+
+            exchangeBtn.disabled = false;
+            saveGameState();
+        }
+
+        function resetGame() {
+            // 重置游戏状态
+            teamCurrentLevel = 1;
+            viewingLevel = 1;
+            maxReachedLevel = 1;
+            hintsRemaining = 10.00;
+            attemptsByLevel = {
+                "1": SYD_MAX_SUBMISSIONS,
+                "2": SYD_MAX_SUBMISSIONS,
+                "3": SYD_MAX_SUBMISSIONS
+            };
+            history = [];
+            
+            feedbackDisplay.innerText = "游戏已重置！即将返回第一关...";
+            feedbackDisplay.style.color = 'blue';
+            
+            setTimeout(() => {
+                loadLevelData(1);
+            }, 1500);
+            
+            saveGameState();
+        }
+
+        // --- 页面初始化 ---
+        function initializePage() {
+            if (SYD_DATA.length === 0) {
+                descriptionEl.innerText = "错误：未加载到谜题数据。";
+                descriptionEl.style.color = 'red';
+                return;
+            }
+            
+            loadGameState();
+            loadLevelData(viewingLevel);
+
+            prevBtn.addEventListener('click', () => { 
+                if (!prevBtn.classList.contains('disabled')) {
+                    loadLevelData(viewingLevel - 1); 
+                }
+            });
+            nextBtn.addEventListener('click', () => { 
+                if (!nextBtn.classList.contains('disabled')) {
+                    loadLevelData(viewingLevel + 1); 
+                }
+            });
+            submitBtn.addEventListener('click', handleSubmit);
+            inputEl.addEventListener('keyup', (e) => { 
+                if (e.key === 'Enter') handleSubmit(); 
+            });
+            exchangeBtn.addEventListener('click', handleExchange);
+            
+            // 更新提示点显示
+            hintBalanceDisplay.innerText = formatHintBalance(hintsRemaining);
+        }
+
+        // 启动游戏
+        initializePage();
+    </script>
+</body>
+</html>
