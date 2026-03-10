@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>某二字灾害题</title>
+    <style>
+        /* 雪花容器 */
+        .snow-container {
+            width: clamp(300px, 80vw, 1100px);
+            height: clamp(400px, 70vh, 800px);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .snowflake {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            transition: 
+                opacity 1s ease-out, 
+                transform 0.2s ease-out, 
+                z-index 0.2s ease-out,
+                filter 0.2s ease-out;
+            z-index: 1;
+            transform-origin: center center;
+            cursor: pointer;
+        }
+        
+        .snowflake.landing {
+            z-index: 2;
+        }
+        
+        .snowflake.fading {
+            opacity: 0;
+        }
+        
+        .snowflake:hover {
+            transform: scale(1.1) rotate(var(--rotation, 0deg));
+            z-index: 5;
+            filter: brightness(1.2);
+            opacity: 1 !important;
+        }
+
+        /* 弹窗样式 */
+        .image-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .popup-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .popup-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border: 5px solid #fff;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+        }
+
+        .close-btn:hover {
+            transform: scale(1);
+        }
+    </style>
+
+    <!-- 雪花展示容器 -->
+    <div class="snow-container" id="snow-container"></div>
+
+    <!-- 图片弹窗 -->
+    <div class="image-popup" id="image-popup">
+        <div class="popup-content">
+            <img src="" alt="放大的雪花图片" id="popup-image">
+            <button class="close-btn" id="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <script>
+        // 配置参数
+        const config = {
+            totalSnowflakes: 66,
+            minFallSpeed: 1,
+            maxFallSpeed: 2,
+            minSway: 0.3,
+            maxSway: 0.8,
+            minRotation: -15,
+            maxRotation: 15,
+            minOpacity: 0.6,
+            maxOpacity: 0.85,
+            stackDuration: 500,
+            fadeDuration: 500,
+            maxStackCount: 30
+        };
+
+        const snowContainer = document.getElementById('snow-container');
+        const imagePopup = document.getElementById('image-popup');
+        const popupImage = document.getElementById('popup-image');
+        const closeBtn = document.getElementById('close-btn');
+
+        let containerWidth = snowContainer.clientWidth;
+        let containerHeight = snowContainer.clientHeight;
+        let stackCount = 0;
+        const snowflakeSize = 60;
+        let currentlyPausedSnowflake = null; // 用于存储当前被暂停的雪花
+
+        // 图片URL数组
+        const imageUrls = ["images/43a05b8146d6fffafdbf927bbcd252c5.png", "images/98adf4997ee462bbd48f4506c78e14e5.png", "images/51f47e5394f0878d6ee04962347bf2ce.png", "images/3a28473893f562f0a0054c4d0728aa79.png", "images/404915f3e683c49c4beea05d52c6b26a.png", "images/78dfed3084f8765b34b99d541a1718bb.png", "images/b7f578ce9a400ab3b124afb402bb80d2.png", "images/db44eb0bb56e6700031f6e46d48cd84a.png", "images/d4eb9ee4937613fa9e8be9287ab6f6c6.png", "images/f50876d6b887888e38d6cef2332d43ff.png", "images/f0c0d2eede0927fd833b17a3dbfd527a.png", "images/1ef5af855a8fa3ecd65209d95907b21e.png", "images/926d9838e04f998f247f37bdb4061c1d.png", "images/edae645222466f64e8ca400f78d1776f.png", "images/fa5bb2e81f93e8ff77e47718307d0499.png", "images/deafb265a6898e5c03ff962b76cd9f63.png", "images/aeac30689bd23354a0ca02ace5588876.png", "images/f674a1710d997ee5ff55254a40793db8.png", "images/ad0da214976ea623060fb0c3bbc92493.png", "images/0e5f0ecf48ea57551a161a0b8679bfb6.png", "images/f668f7f618b3b5dc9e5f98f38f9122c7.png", "images/14d46a4a1e040453a2935630331528e0.png", "images/726bf321279c27a1d954eeef58d2c3af.png", "images/34b1a9f0b5ece2240253b7fc1f5377c3.png", "images/471241cd5147f2fa3252b3917b2508c9.png", "images/b1978237fcfff0d11061e81697fb7629.png", "images/60e35c21a996156ab9c556e61a66885d.png", "images/3dd258191bd447903555f083f546709f.png", "images/f9976e870b2a2138f59a054acbce1d31.png", "images/a703a1c7e5f2b8d8c30987d654add29d.png", "images/61c8fd142091b34565c6fee74b656b93.png", "images/68d277329d3123f1dfe9b0a4c82944ff.png", "images/0df102594f82b0f4812708843cfbafcd.png", "images/441c072279b341431689c364af9c3453.png", "images/1efadf54ea36365f77789d1e3b85d062.png", "images/728387658fa62a5297d81e5a5a250176.png", "images/00c3bec0e20a8228fdd2021644fd8d73.png", "images/549e6fd85016a655e23e38209794bfd0.png", "images/e6e6c1d0e7bbc2356e32beb444adda90.png", "images/592c07e36bdae592c7536b3814428b3b.png", "images/d935354199baf0736cbf653b9de36335.png", "images/561af3961b3bcca4c3e514d62ba392b1.png", "images/132384cc2cd7b86284b236208397a7a0.png", "images/06918dc02a35c78cb47863a2b21ba473.png", "images/e0ae149d1e7dc34c6ff45e134b3e0fb4.png", "images/5ffa060a3d671ab6c79ecb335ac109ef.png", "images/730305dc3236065b0d088b2bfcf94915.png", "images/7d104351d9e0ab133edc767e00783fa7.png", "images/c753dfb94fdad8d6d91e3a75157a8a77.png", "images/6bcbeb872b2367ee15b37070cfc182a8.png", "images/f86a419cc04e55486002ba6eeb2328fd.png", "images/941982e1f7f77aa4031a20fe9ac1b0b1.png", "images/66580aacb30ce51c70be487c5fc8cd94.png", "images/9cc7e84a1c5e8744850f054013148e53.png", "images/fb8978e9940dd886ae8c7f5da9936fa1.png", "images/74963a5dcfe94d6f868147809555d67d.png", "images/7f78a866e180c364d627581ed317f2d2.png", "images/9477017d3e6d5b2d52378572f53f11da.png", "images/1d57f338b0a762ea79b98a53be5a62b2.png", "images/78edc9ad38cba8a4d8b328058f249ef8.png", "images/059020c16691c9fd9e3af52025b7f6ae.png", "images/84be2f1c246c6081d9f0ff98cd42b2b8.png", "images/8fc894802ca6753ac8a49e0d98ad5646.png", "images/c5572ddd7f09f41b26d8ff17083949ff.png", "images/4861b007dc376c17ffca29ee5bdd6545.png", "images/d64026253c359649e1ecc5a0da7b347a.png"];
+
+        function getRandomImageUrl() {
+            return imageUrls[Math.floor(Math.random() * imageUrls.length)];
+        }
+        
+        function createSnowflake() {
+            if (stackCount >= config.maxStackCount) return;
+            
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const imgUrl = getRandomImageUrl();
+            snowflake.style.backgroundImage = `url(${imgUrl})`;
+            snowflake.dataset.imageUrl = imgUrl;
+            
+            const startX = Math.random() * (containerWidth - snowflakeSize);
+            snowflake.style.left = `${startX}px`;
+            snowflake.style.top = `-${snowflakeSize}px`;
+            
+            const opacity = config.minOpacity + Math.random() * (config.maxOpacity - config.minOpacity);
+            snowflake.style.opacity = opacity;
+            
+            const rotation = config.minRotation + Math.random() * (config.maxRotation - config.minRotation);
+            snowflake.style.transform = `rotate(${rotation}deg)`;
+            snowflake.style.setProperty('--rotation', `${rotation}deg`);
+            
+            snowflake.snowState = {
+                currentX: startX,
+                currentY: -snowflakeSize,
+                fallSpeed: config.minFallSpeed + Math.random() * (config.maxFallSpeed - config.minFallSpeed),
+                sway: config.minSway + Math.random() * (config.maxSway - config.minSway),
+                swayDirection: Math.random() > 0.5 ? 1 : -1,
+                swayOffset: 0,
+                isFalling: true,
+                animationId: null
+            };
+            
+            snowflake.addEventListener('mouseenter', handleMouseEnter);
+            snowflake.addEventListener('mouseleave', handleMouseLeave);
+            snowflake.addEventListener('click', handleSnowflakeClick);
+            
+            snowContainer.appendChild(snowflake);
+            
+            startFallAnimation(snowflake);
+        }
+
+        function startFallAnimation(snowflake) {
+            const { snowState } = snowflake;
+            const landingY = containerHeight - snowflakeSize;
+            
+            if (snowState.animationId) {
+                clearInterval(snowState.animationId);
+            }
+            
+            snowState.animationId = setInterval(() => {
+                if (!snowState.isFalling) return;
+                
+                snowState.currentY += snowState.fallSpeed;
+                snowState.swayOffset += 0.05;
+                snowState.currentX += snowState.sway * snowState.swayDirection * Math.sin(snowState.swayOffset);
+                
+                snowState.currentX = Math.max(0, Math.min(snowState.currentX, containerWidth - snowflakeSize));
+                
+                snowflake.style.left = `${snowState.currentX}px`;
+                snowflake.style.top = `${snowState.currentY}px`;
+                
+                if (snowState.currentY >= landingY) {
+                    snowState.isFalling = false;
+                    snowflake.style.top = `${landingY}px`;
+                    snowflake.classList.add('landing');
+                    stackCount++;
+                    
+                    setTimeout(() => {
+                        snowflake.classList.add('fading');
+                        setTimeout(() => {
+                            if (snowflake.parentNode) {
+                                clearInterval(snowState.animationId);
+                                snowflake.removeEventListener('mouseenter', handleMouseEnter);
+                                snowflake.removeEventListener('mouseleave', handleMouseLeave);
+                                snowflake.removeEventListener('click', handleSnowflakeClick);
+                                snowflake.parentNode.removeChild(snowflake);
+                                stackCount--;
+                            }
+                        }, config.fadeDuration);
+                    }, config.stackDuration);
+                }
+            }, 16);
+        }
+
+        function handleMouseEnter() {
+            // 鼠标悬浮时暂停当前雪花
+            if (this.snowState && this.snowState.animationId) {
+                clearInterval(this.snowState.animationId);
+            }
+        }
+
+        function handleMouseLeave() {
+            // 鼠标离开时恢复当前雪花动画（如果它不是被弹窗暂停的）
+            if (this !== currentlyPausedSnowflake && this.snowState && this.snowState.isFalling && !this.classList.contains('fading')) {
+                startFallAnimation(this);
+            }
+        }
+        
+        function handleSnowflakeClick(event) {
+            event.stopPropagation();
+            const snowflake = event.currentTarget;
+            const imgUrl = snowflake.dataset.imageUrl;
+            
+            if (imgUrl) {
+                popupImage.src = imgUrl;
+                imagePopup.style.display = 'flex';
+                
+                // 暂停被点击的雪花，并记录它
+                if (snowflake.snowState && snowflake.snowState.animationId) {
+                    clearInterval(snowflake.snowState.animationId);
+                    currentlyPausedSnowflake = snowflake;
+                }
+            }
+        }
+        
+        function closePopup() {
+            imagePopup.style.display = 'none';
+            popupImage.src = '';
+            
+            // 恢复被弹窗暂停的雪花动画
+            if (currentlyPausedSnowflake && currentlyPausedSnowflake.snowState && currentlyPausedSnowflake.snowState.isFalling && !currentlyPausedSnowflake.classList.contains('fading')) {
+                startFallAnimation(currentlyPausedSnowflake);
+            }
+            currentlyPausedSnowflake = null; // 清空记录
+        }
+        
+        closeBtn.addEventListener('click', closePopup);
+        imagePopup.addEventListener('click', (event) => {
+            if (event.target === imagePopup) {
+                closePopup();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && imagePopup.style.display === 'flex') {
+                closePopup();
+            }
+        });
+
+        // 波次循环逻辑 - 修改为每波66片
+        const WAVE_SIZE = 66;          // <-- 修改这里
+        const SPAWN_INTERVAL = 250;
+        const WAVE_DELAY = 0;
+
+        function generateWave() {
+            for (let i = 0; i < WAVE_SIZE; i++) {
+                setTimeout(() => {
+                    createSnowflake();
+                    if (i === WAVE_SIZE - 1) {
+                        setTimeout(generateWave, WAVE_DELAY);
+                    }
+                }, i * SPAWN_INTERVAL);
+            }
+        }
+
+        function startSnowfall() {
+            generateWave();
+        }
+
+        window.addEventListener('resize', () => {
+            containerWidth = snowContainer.clientWidth;
+            containerHeight = snowContainer.clientHeight;
+        });
+
+        startSnowfall();
+    </script>
+<p>注：图片编号和图片大小均对答案无影响。</p>
+<p>小题验证格式是“数字+答案”，例如，若第1题答案是“天”，提交“01天”即可验证。</p>
+<p>拥有小题验证的序号：01、02、05、06、07、10、12、16、17、18、20、22、23、24、25、26、28、29、30、32、34、39、41、47、48、50、52、53、56、60、61、63、64、65</p>
+<p><a href="/config/seco2/static/assets/雪崩_18EF74B97D2DA4C69905D713ECB28818.zip">点击下载</a></p>
+</html>

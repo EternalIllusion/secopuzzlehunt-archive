@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连线小游戏 - 离线版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: transparent;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .line-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .line-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .line-progress {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .line-progress-bar {
+            width: 100%;
+            height: 40px;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .line-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .line-meta-notice {
+            padding: 20px;
+            background-color: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .line-meta-notice.unlocked {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .line-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            margin-top: 2rem;
+        }
+
+        .line-level-action-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .unlock-all-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .unlock-all-btn:hover {
+            background-color: #0b7dda;
+        }
+
+        .complete-all-btn {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .complete-all-btn:hover {
+            background-color: #e68a00;
+        }
+
+        .line-level-card {
+            background: white;
+            border: 3px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            min-height: 180px;
+        }
+
+        .line-level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #4caf50;
+        }
+
+        .line-level-card.completed {
+            border-color: #4caf50;
+            background-color: #f1f8f4;
+        }
+
+        .line-level-card.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #ccc;
+        }
+
+        .line-level-card.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .line-level-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #555;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .line-level-card.completed .line-level-number {
+            background: #4caf50;
+        }
+
+        .line-level-card.meta .line-level-number {
+            background: #ff9800;
+        }
+
+        .line-level-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            padding-right: 60px;
+        }
+
+        .line-level-status {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .line-level-status.completed {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .line-level-status.locked {
+            background-color: #999;
+            color: white;
+        }
+
+        .line-level-attempts {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .line-level-answer {
+            margin-top: 8px;
+            padding: 8px 12px;
+            background-color: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .line-detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .line-detail-content {
+            background: white;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .line-detail-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #999;
+            font-weight: bold;
+        }
+
+        .line-detail-close:hover {
+            color: #333;
+        }
+
+        .line-detail-title {
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .line-detail-description {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            color: #555;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .line-detail-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .line-detail-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .line-detail-input {
+            flex-grow: 1;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .line-detail-submit {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .line-detail-submit:hover {
+            background-color: #45a049;
+        }
+
+        .line-detail-submit:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .line-detail-feedback {
+            min-height: 35px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .line-detail-attempts {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .line-detail-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .line-exchange-btn {
+            flex-grow: 1;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .line-exchange-btn:hover {
+            background-color: #f57c00;
+        }
+
+        .line-exchange-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        @media (max-width: 768px) {
+            .line-container {
+                padding: 15px;
+            }
+
+            .line-levels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .line-detail-content {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .line-detail-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="line-container">
+        <div class="line-header">
+            <div class="line-progress">
+                已完成：<span id="line-solved-count">0</span> / 5 题
+            </div>
+            <div class="line-progress-bar">
+                <div class="line-progress-fill" id="line-progress-fill" style="width: 0%;">
+                    <span id="line-progress-text">0%</span>
+                </div>
+            </div>
+            <div class="line-meta-notice" id="line-meta-notice">
+                完成任意 4 题即可解锁 Meta 关卡
+            </div>
+        </div>
+
+        <div class="line-levels-actions">
+        </div>
+
+        <div class="line-levels-grid" id="line-levels-grid">
+            <!-- 关卡卡片将由 JavaScript 动态生成 -->
+        </div>
+    </div>
+
+    <!-- 关卡详情弹窗 -->
+    <div class="line-detail-modal" id="line-detail-modal">
+        <div class="line-detail-content">
+            <span class="line-detail-close" id="line-detail-close">&times;</span>
+            <h2 class="line-detail-title" id="line-detail-title">关卡标题</h2>
+            <div class="line-detail-description" id="line-detail-description">关卡描述</div>
+            <img id="line-detail-image" src="" alt="Puzzle Image" class="line-detail-image">
+
+            <div id="line-detail-interaction" style="display: none;">
+                <div class="line-detail-controls">
+                    <input type="text" id="line-detail-input" class="line-detail-input" placeholder="输入答案">
+                    <button id="line-detail-submit" class="line-detail-submit">提交</button>
+                </div>
+                <div class="line-detail-feedback" id="line-detail-feedback"></div>
+                <div class="line-detail-attempts" id="line-detail-attempts"></div>
+                <div class="line-detail-actions">
+                    <button id="line-exchange-btn" class="line-exchange-btn">
+                        使用提示点换次数 (消耗 1)
+                        (可用：<span id="line-hint-balance-display">0</span>)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+    <button class="line-level-action-btn reset-btn" onclick="resetGame()">重置游戏进度</button>
+    <button class="line-level-action-btn unlock-all-btn" onclick="unlockAllLevels()">一键解锁全部关卡</button>
+    <button class="line-level-action-btn complete-all-btn" onclick="completeAllLevels()">一键通过全部关卡</button>
+</div>
+    <script>
+        // =======================================================
+        // 连线谜题数据（离线版）
+        // =======================================================
+        const LINE_DATA = [
+            {
+                level: 1,
+                title: "连线教学",
+                image: "1.png",
+                description: "所谓连线，就是每一个左边的事物，都有唯一一个右边的事物与之对应。",
+                correct_answer: "openmarket",
+                submittable: true,
+            },
+            {
+                level: 2,
+                title: "天各一方",
+                image: "2.png",
+                description: "本应鹊桥相会，而今天各一方。",
+                correct_answer: "teamhonor",
+                submittable: true,
+            },
+            {
+                level: 3,
+                title: "🧵",
+                image: "3.png",
+                description: "⬅️🧵➡️。",
+                correct_answer: "citytype",
+                submittable: true,
+            },
+            {
+                level: 4,
+                title: "暗藏玄机",
+                image: "4.png",
+                description: "放在<b>左右</b>的这些 clue 到底是什么<b>东西</b>？",
+                correct_answer: "humancaptain",
+                submittable: true,
+            },
+            {
+                level: 5,
+                title: "拆弹专家",
+                image: "5.png",
+                description: "这给我干哪来了？",
+                correct_answer: "glorybegin",
+                submittable: true,
+            },
+            {
+                level: 6,
+                title: "回到简单",
+                image: "returntonormal.png",
+                description: "简单的意思也不是把这题的 clue 都省掉啊！",
+                correct_answer: "dukecherry",
+                submittable: true,
+            },
+        ];
+
+        const TOTAL_LEVELS = 6;
+        const REGULAR_LEVELS = 5;
+        const META_LEVEL = 6;
+        const REQUIRED_SOLVES_FOR_META = 4;
+        const LINE_MAX_SUBMISSIONS = 10;
+        const LINE_HINT_COST = 1;
+        const LINE_ATTEMPTS_PER_HINT = 3;
+
+        // =======================================================
+        // 本地存储管理
+        // =======================================================
+        const STORAGE_KEY = 'linker_game_state';
+
+        function loadGameState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                return JSON.parse(saved);
+            }
+            return {
+                completed_levels: {},
+                attempts_by_level: {},
+                hint_balance: 32767, // 默认提示点改为32767
+                history: []
+            };
+        }
+
+        function saveGameState(state) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function resetGame() {
+            if (confirm('确定要重置所有游戏进度吗？此操作不可恢复。')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        // 新增功能：一键解锁全部关卡
+        function unlockAllLevels() {
+            if (confirm('确定要解锁全部关卡吗？这将允许您访问所有关卡。')) {
+                // 解锁所有关卡（包括META关卡）
+                for (let i = 1; i <= TOTAL_LEVELS; i++) {
+                    if (gameState.attempts_by_level[i] === undefined) {
+                        gameState.attempts_by_level[i] = LINE_MAX_SUBMISSIONS;
+                    }
+                }
+                saveGameState(gameState);
+                renderLevels();
+                updateProgress();
+                alert('所有关卡已解锁！');
+            }
+        }
+
+        // 新增功能：一键通过全部关卡
+        function completeAllLevels() {
+            if (confirm('确定要通过全部关卡吗？这将标记所有关卡为已完成。')) {
+                // 完成所有关卡
+                for (let i = 1; i <= TOTAL_LEVELS; i++) {
+                    gameState.completed_levels[i] = true;
+                    gameState.attempts_by_level[i] = 0; // 设置为0表示已完成
+                }
+                saveGameState(gameState);
+                renderLevels();
+                updateProgress();
+                alert('所有关卡已完成！');
+            }
+        }
+
+        // =======================================================
+        // 游戏状态管理
+        // =======================================================
+        let gameState = loadGameState();
+        let currentLevel = null;
+        let levelsData = [];
+
+        function getAttemptsLeft(levelNum) {
+            if (gameState.attempts_by_level[levelNum] === undefined) {
+                return LINE_MAX_SUBMISSIONS;
+            }
+            return gameState.attempts_by_level[levelNum];
+        }
+
+        function setAttemptsLeft(levelNum, attempts) {
+            gameState.attempts_by_level[levelNum] = attempts;
+            saveGameState(gameState);
+        }
+
+        function isLevelCompleted(levelNum) {
+            return gameState.completed_levels[levelNum] === true;
+        }
+
+        function completeLevel(levelNum) {
+            gameState.completed_levels[levelNum] = true;
+            saveGameState(gameState);
+        }
+
+        function addHistory(level, submission, response) {
+            gameState.history.push({ level, submission, response });
+            saveGameState(gameState);
+        }
+
+        function getMetaUnlocked() {
+            let solvedRegular = 0;
+            for (let i = 1; i <= REGULAR_LEVELS; i++) {
+                if (isLevelCompleted(i)) solvedRegular++;
+            }
+            if(gameState.attempts_by_level[6]>0) return true;
+            return solvedRegular >= REQUIRED_SOLVES_FOR_META;
+        }
+
+        function getSolvedCount() {
+            let solved = 0;
+            for (let i = 1; i <= REGULAR_LEVELS; i++) {
+                if (isLevelCompleted(i)) solved++;
+            }
+            return solved;
+        }
+
+        // =======================================================
+        // UI 渲染
+        // =======================================================
+        function updateProgress() {
+            const solvedCount = getSolvedCount();
+            document.getElementById('line-solved-count').innerText = solvedCount;
+
+            const progress = Math.round((solvedCount / REGULAR_LEVELS) * 100);
+            document.getElementById('line-progress-fill').style.width = progress + '%';
+            document.getElementById('line-progress-text').innerText = progress + '%';
+
+            const metaNotice = document.getElementById('line-meta-notice');
+            if (getMetaUnlocked()) {
+                metaNotice.className = 'line-meta-notice unlocked';
+                metaNotice.innerText = '✓ Meta 关卡已解锁！';
+            } else {
+                metaNotice.className = 'line-meta-notice';
+                metaNotice.innerText = '完成任意 4 题即可解锁 Meta 关卡';
+            }
+        }
+
+        function renderLevels() {
+            const levelsGrid = document.getElementById('line-levels-grid');
+            levelsGrid.innerHTML = '';
+
+            const metaUnlocked = getMetaUnlocked();
+
+            LINE_DATA.forEach(levelInfo => {
+                const levelNum = levelInfo.level;
+                const isMeta = levelNum === META_LEVEL;
+
+                // Meta 关卡未解锁时不显示（除非已被完成）
+                if (isMeta && !metaUnlocked && !isLevelCompleted(levelNum)) return;
+
+                const isCompleted = isLevelCompleted(levelNum);
+                const accessible = !isMeta || metaUnlocked || isLevelCompleted(levelNum);
+
+                const card = document.createElement('div');
+                card.className = 'line-level-card';
+
+                if (isCompleted) card.classList.add('completed');
+                if (!accessible) card.classList.add('locked');
+                if (isMeta) card.classList.add('meta');
+
+                let statusHTML = '';
+                if (isCompleted) {
+                    statusHTML = '<span class="line-level-status completed">✓ 已完成</span>';
+                } else if (!accessible) {
+                    statusHTML = '<span class="line-level-status locked">🔒 未解锁</span>';
+                }
+
+                let attemptsHTML = '';
+                if (levelInfo.submittable && accessible && !isCompleted) {
+                    attemptsHTML = `<div class="line-level-attempts">剩余次数：${getAttemptsLeft(levelNum)}</div>`;
+                }
+
+                let answerHTML = '';
+                if (isCompleted) {
+                    answerHTML = `<div class="line-level-answer">答案：${levelInfo.correct_answer.toUpperCase()}</div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="line-level-number">${levelNum}</div>
+                    <div class="line-level-title">${levelInfo.title}</div>
+                    ${statusHTML}
+                    ${attemptsHTML}
+                    ${answerHTML}
+                `;
+
+                if (accessible) {
+                    card.addEventListener('click', () => openLevel(levelNum));
+                }
+
+                levelsGrid.appendChild(card);
+            });
+        }
+
+        function openLevel(levelNum) {
+            const levelInfo = LINE_DATA.find(l => l.level === levelNum);
+            if (!levelInfo) return;
+
+            const metaUnlocked = getMetaUnlocked();
+            if (levelNum === META_LEVEL && !metaUnlocked && !isLevelCompleted(levelNum)) return;
+
+            currentLevel = levelNum;
+
+            document.getElementById('line-detail-title').innerText = levelInfo.title;
+            document.getElementById('line-detail-description').innerHTML = levelInfo.description;
+            document.getElementById('line-detail-image').src = levelInfo.image;
+            document.getElementById('line-detail-feedback').innerText = '';
+            document.getElementById('line-detail-feedback').style.backgroundColor = '';
+            document.getElementById('line-detail-feedback').style.color = '';
+            document.getElementById('line-detail-input').value = '';
+
+            const isCompleted = isLevelCompleted(levelNum);
+            const interactionDiv = document.getElementById('line-detail-interaction');
+            const inputEl = document.getElementById('line-detail-input');
+            const submitBtn = document.getElementById('line-detail-submit');
+            const attemptsEl = document.getElementById('line-detail-attempts');
+            const exchangeBtn = document.getElementById('line-exchange-btn');
+
+            // Meta 关卡不显示输入框
+            if (levelNum === META_LEVEL) {
+                interactionDiv.style.display = 'none';
+            } else if (isCompleted) {
+                interactionDiv.style.display = 'block';
+                document.getElementById('line-detail-feedback').innerText = '✓ 本关已完成';
+                document.getElementById('line-detail-feedback').style.backgroundColor = '#d4edda';
+                document.getElementById('line-detail-feedback').style.color = '#155724';
+                inputEl.disabled = true;
+                submitBtn.disabled = true;
+                attemptsEl.innerText = '';
+                exchangeBtn.disabled = true;
+            } else {
+                interactionDiv.style.display = 'block';
+                const attemptsLeft = getAttemptsLeft(levelNum);
+                attemptsEl.innerText = `剩余提交次数：${attemptsLeft}`;
+                inputEl.disabled = false;
+                submitBtn.disabled = false;
+                exchangeBtn.disabled = false;
+            }
+
+            document.getElementById('line-hint-balance-display').innerText = gameState.hint_balance;
+
+            document.getElementById('line-detail-modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('line-detail-modal').style.display = 'none';
+            currentLevel = null;
+        }
+
+        // =======================================================
+        // 提交答案
+        // =======================================================
+        function handleSubmit() {
+            const submission = document.getElementById('line-detail-input').value.trim();
+            if (!submission || !currentLevel) return;
+
+            const levelInfo = LINE_DATA.find(l => l.level === currentLevel);
+            if (!levelInfo) return;
+
+            const feedbackEl = document.getElementById('line-detail-feedback');
+            const submitBtn = document.getElementById('line-detail-submit');
+            const attemptsEl = document.getElementById('line-detail-attempts');
+            const inputEl = document.getElementById('line-detail-input');
+
+            // 清理输入
+            const cleanedSubmission = submission.replace(/[\s\t\n\r]/g, '').toLowerCase();
+
+            feedbackEl.innerText = '正在提交...';
+            feedbackEl.style.backgroundColor = '#f0f0f0';
+            feedbackEl.style.color = '#333';
+            submitBtn.disabled = true;
+
+            // 检查是否已完成
+            if (isLevelCompleted(currentLevel)) {
+                feedbackEl.innerText = '✓ 本关已完成';
+                feedbackEl.style.backgroundColor = '#d4edda';
+                feedbackEl.style.color = '#155724';
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // 检查剩余次数
+            let attemptsLeft = getAttemptsLeft(currentLevel);
+            if (attemptsLeft <= 0) {
+                feedbackEl.innerText = '✗ 本关提交次数已用完';
+                feedbackEl.style.backgroundColor = '#f8d7da';
+                feedbackEl.style.color = '#721c24';
+                inputEl.disabled = true;
+                submitBtn.disabled = true;
+                return;
+            }
+
+            // 验证答案
+            if (cleanedSubmission === levelInfo.correct_answer.toLowerCase()) {
+                completeLevel(currentLevel);
+                addHistory(currentLevel, cleanedSubmission, '第 ' + currentLevel + ' 关通过！');
+
+                feedbackEl.innerText = '✓ 正确！';
+                feedbackEl.style.backgroundColor = '#d4edda';
+                feedbackEl.style.color = '#155724';
+                inputEl.disabled = true;
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    closeModal();
+                    updateProgress();
+                    renderLevels();
+                }, 1500);
+            } else {
+                // 答案错误，扣除次数
+                setAttemptsLeft(currentLevel, attemptsLeft - 1);
+                addHistory(currentLevel, cleanedSubmission, '答案错误');
+
+                feedbackEl.innerText = '✗ 答案错误';
+                feedbackEl.style.backgroundColor = '#f8d7da';
+                feedbackEl.style.color = '#721c24';
+                inputEl.value = '';
+
+                attemptsLeft = getAttemptsLeft(currentLevel);
+                attemptsEl.innerText = `剩余提交次数：${attemptsLeft}`;
+
+                if (attemptsLeft <= 0) {
+                    inputEl.disabled = true;
+                    submitBtn.disabled = true;
+                    feedbackEl.innerText = '✗ 本关提交次数已用完';
+                }
+
+                submitBtn.disabled = false;
+            }
+        }
+
+        // =======================================================
+        // 提示点兑换
+        // =======================================================
+        function handleExchange() {
+            if (!currentLevel) return;
+            if (currentLevel === META_LEVEL) {
+                alert('Meta 关无法兑换次数。');
+                return;
+            }
+
+            const cost = LINE_HINT_COST;
+            if (gameState.hint_balance < cost) {
+                alert('提示点不足！');
+                return;
+            }
+
+            if (!confirm(`你确定要消耗 ${cost} 个提示点来换取 ${LINE_ATTEMPTS_PER_HINT} 次提交机会吗？`)) {
+                return;
+            }
+
+            const exchangeBtn = document.getElementById('line-exchange-btn');
+            const feedbackEl = document.getElementById('line-detail-feedback');
+            const attemptsEl = document.getElementById('line-detail-attempts');
+            const hintDisplay = document.getElementById('line-hint-balance-display');
+
+            exchangeBtn.disabled = true;
+            feedbackEl.innerText = '正在兑换...';
+            feedbackEl.style.backgroundColor = '#f0f0f0';
+            feedbackEl.style.color = '#333';
+
+            // 扣除提示点，增加次数
+            gameState.hint_balance -= cost;
+            let currentAttempts = getAttemptsLeft(currentLevel);
+            setAttemptsLeft(currentLevel, currentAttempts + LINE_ATTEMPTS_PER_HINT);
+            saveGameState(gameState);
+
+            const newAttempts = getAttemptsLeft(currentLevel);
+
+            feedbackEl.innerText = '兑换成功！获得了 ' + LINE_ATTEMPTS_PER_HINT + ' 次提交机会。';
+            feedbackEl.style.backgroundColor = '#d4edda';
+            feedbackEl.style.color = '#155724';
+            attemptsEl.innerText = `剩余提交次数：${newAttempts}`;
+            hintDisplay.innerText = gameState.hint_balance;
+
+            exchangeBtn.disabled = false;
+        }
+
+        // =======================================================
+        // 事件绑定
+        // =======================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // 关闭按钮
+            document.getElementById('line-detail-close').addEventListener('click', closeModal);
+            document.getElementById('line-detail-modal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('line-detail-modal')) closeModal();
+            });
+
+            // 提交按钮
+            document.getElementById('line-detail-submit').addEventListener('click', handleSubmit);
+            document.getElementById('line-detail-input').addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') handleSubmit();
+            });
+
+            // 兑换按钮
+            document.getElementById('line-exchange-btn').addEventListener('click', handleExchange);
+
+            // 初始化
+            updateProgress();
+            renderLevels();
+        });
+    </script>
+</body>
+</html>

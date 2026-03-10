@@ -3,7 +3,7 @@
   "title": "雪崩",
   "extendData": "",
   "contentType": 1,
-  "content": "这道二字自然灾害题暂未收录[snowfall]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/snowfall_260310/index.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight *1.1+ 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "BLUE",
   "desc": "<font color=\"#808080\"><i>纷飞的画纸如雪片一样，它们飘扬，堆积，连结，直到——崩塌。</i></font>",
   "tips": [
