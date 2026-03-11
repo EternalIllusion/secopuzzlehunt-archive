@@ -16,6 +16,11 @@
   ],
   "links": [
     {
+      "title": "😋解析",
+      "ext": true,
+      "path": "https://docs.qq.com/aio/DS1BiY3BmbUFjU01G"
+    },
+    {
       "title": "庄园",
       "path": "/area/seco2/1",
       "pgid": 1
@@ -71,7 +76,7 @@
       "path": "/announcements/seco2"
     },
     {
-      "title": "按按钮维度",
+      "title": "🚨按按钮维度",
       "ext": true,
       "path": "/button-dim/index.html"
     },
