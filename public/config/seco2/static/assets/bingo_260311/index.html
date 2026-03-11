@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo!!!!!!!!!!!!!!!!!!!!!!</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: transparent; }
+        
+        .bingo-container {
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            background-color: #fff;
+        }
+
+        .bingo-image-wrapper { text-align: center; margin-bottom: 20px; }
+        .bingo-image { max-width: 100%; border-radius: 4px; max-height: 300px; }
+
+        .unified-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            width: 100%;
+            border: 2px solid #333;
+            background-color: #333;
+        }
+
+        .grid-cell {
+            aspect-ratio: 1 / 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            padding: 2px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.15);
+            margin: 0;
+        }
+
+        .char-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2px;
+            width: 100%;
+        }
+
+        .char-box {
+            width: 14px;
+            height: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .black-square {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            border-radius: 1px;
+        }
+
+        .legend-text {
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .interaction-area {
+            margin-top: 25px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        #bingo-input {
+            width: 80px;
+            text-align: center;
+            padding: 5px;
+            color: #000;
+            font-size: 1rem;
+        }
+
+        .status-line { margin-top: 5px; font-size: 1.5rem; color: #666; }
+
+        @media (max-width: 500px) {
+            .char-box { width: 10px; height: 10px; font-size: 10px; }
+            .grid-cell { font-size: 0.6rem; }
+            .legend-text { font-size: 0.7rem; }
+        }
+
+        .cell { color: #8a8080 !important; }
+        .cell span, .cell .masked { color: #8a8080 !important; }
+        .sidebar .cell { color: #8a8080 !important; }
+
+        .bingo-history-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center;
+            z-index: 1000;
+        }
+        .bingo-history-content {
+            background: #fff; padding: 24px; border-radius: 10px; max-width: 400px; width: 90%;
+            max-height: 70vh; overflow-y: auto; position: relative;
+        }
+        .bingo-history-close { position: absolute; top: 10px; right: 14px; font-size: 1.5rem; cursor: pointer; border: none; background: none; color: #666; }
+        .bingo-history-list { list-style: none; padding: 0; margin: 0; }
+        .bingo-history-list li { padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; gap: 12px; }
+        .bingo-history-list li:last-child { border-bottom: none; }
+
+        .btn { padding: 8px 15px; font-size: 1rem; cursor: pointer; border: none; border-radius: 4px; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-primary:hover { background-color: #0056b3; }
+        .btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+        .btn-secondary:hover { background-color: #545b62; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-danger:hover { background-color: #c82333; }
+        .btn-success { background-color: #28a745; color: white; }
+        .btn-success:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+<div class="bingo-container">
+    <div class="bingo-image-wrapper">
+        <img id="bingo-main-image" src="images/bingo_image.png" alt="Puzzle Image" class="bingo-image">
+    </div>
+
+    <div id="main-grid" class="unified-grid"></div>
+    <div id="legend-grid" class="unified-grid" style="border-top: none; margin-top: 0;"></div>
+
+    <div class="interaction-area">
+        <p>输入字符解锁面板：</p>
+        <div style="display: flex; justify-content: center; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="text" id="bingo-input" maxlength="1" placeholder="?" autocomplete="off">
+            <button id="submit-btn" class="btn btn-primary">提交</button>
+            <span id="attempts-display" style="font-weight: bold; color: #ff6600; min-width: 120px;">剩余：50 次</span>
+        </div>
+        <div id="feedback-display" style="margin-top: 10px; font-weight: bold; min-height: 24px;"></div>
+        <div class="status-line">
+            已解锁字符：<span id="stats-unlocked">0</span>
+        </div>
+        <div style="margin-top: 15px; text-align: center; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button id="bingo-history-btn" class="btn btn-secondary">查看猜测历史</button>
+            <button id="exchange-hints-btn" class="btn" style="background-color: #4CAF50; color: white; padding: 8px 15px; border-radius: 4px; cursor: pointer;">
+                用 1 个提示点换 50 次提交 →
+            </button>
+            <button id="unlock-all-btn" class="btn btn-success">一键解锁全部</button>
+            <button id="clear-storage-btn" class="btn btn-danger">清除存档</button>
+        </div>
+    </div>
+
+    <div class="bingo-history-overlay" id="bingo-history-modal">
+        <div class="bingo-history-content">
+            <button type="button" class="bingo-history-close" id="bingo-history-close" aria-label="关闭">&times;</button>
+            <h3 style="margin-top: 0;">猜测历史</h3>
+            <ul id="bingo-history-list" class="bingo-history-list"></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+// =======================================================
+// 常量定义
+// =======================================================
+const COLORS = {
+    "bg-green": "#6AB157",
+    "bg-yellow": "#FFF380",
+    "bg-dark": "#4B3B47",
+    "bg-pink": "#F8D8E8",
+};
+
+const TEXT_COLOR_DARK = "#1a1a1a";
+const TEXT_COLOR_LIGHT = "#f0f0f0";
+
+function getTextColor(bgHex) {
+    return bgHex === COLORS["bg-dark"] ? TEXT_COLOR_LIGHT : TEXT_COLOR_DARK;
+}
+
+// =======================================================
+// Bingo 题目数据 (25 格)
+// =======================================================
+const BINGO_DATA = [
+    { "id": 1, "answer": "只含有五人", "color": COLORS["bg-green"] },
+    { "id": 2, "answer": "含有 Riser", "color": COLORS["bg-green"] },
+    { "id": 3, "answer": "含有 mc", "color": COLORS["bg-yellow"] },
+    { "id": 4, "answer": "含有彩蛋", "color": COLORS["bg-dark"] },
+    { "id": 5, "answer": "不含有 staff", "color": COLORS["bg-dark"] },
+    { "id": 6, "answer": "不含有女同", "color": COLORS["bg-green"] },
+    { "id": 7, "answer": "含有猴子打印机", "color": COLORS["bg-yellow"] },
+    { "id": 8, "answer": "含有春晚", "color": COLORS["bg-yellow"] },
+    { "id": 9, "answer": "不含有特殊机制", "color": COLORS["bg-dark"] },
+    { "id": 10, "answer": "含有支线", "color": COLORS["bg-dark"] },
+    { "id": 11, "answer": "含有 seco1", "color": COLORS["bg-yellow"] },
+    { "id": 12, "answer": "不含有双解", "color": COLORS["bg-yellow"] },
+    { "id": 13, "answer": "含有音游", "color": COLORS["bg-yellow"] },
+    { "id": 14, "answer": "不含有 DLC", "color": COLORS["bg-yellow"] },
+    { "id": 15, "answer": "含有视频", "color": COLORS["bg-yellow"] },
+    { "id": 16, "answer": "含有谐音梗", "color": COLORS["bg-yellow"] },
+    { "id": 17, "answer": "不含有旗语", "color": COLORS["bg-yellow"] },
+    { "id": 18, "answer": "含有黑神话悟空", "color": COLORS["bg-yellow"] },
+    { "id": 19, "answer": "含有里程碑", "color": COLORS["bg-yellow"] },
+    { "id": 20, "answer": "含有二进制", "color": COLORS["bg-pink"] },
+    { "id": 21, "answer": "含有宝可梦", "color": COLORS["bg-yellow"] },
+    { "id": 22, "answer": "不含有化学", "color": COLORS["bg-yellow"] },
+    { "id": 23, "answer": "不含有方格", "color": COLORS["bg-yellow"] },
+    { "id": 24, "answer": "不含有猪圈密码", "color": COLORS["bg-pink"] },
+    { "id": 25, "answer": "含有棋盘密码", "color": COLORS["bg-pink"] }
+];
+
+const FULL_BINGO_CHAR = ["只", "含", "有", "五", "人", " ", "R", "i", "s", "e", "r", "m", "c", "彩", "蛋", "不", "t", "a", "f", "女", "同", "猴", "子", "打", "印", "机", "春", "晚", "特", "殊", "制", "支", "线", "o", "1", "双", "解", "音", "游", "D", "L", "C", "视", "频", "谐", "梗", "旗", "语", "黑", "神", "话", "悟", "空", "里", "程", "碑", "二", "进", "宝", "可", "梦", "化", "学", "方", "格", "猪", "圈", "密", "码", "棋", "盘"];
+
+// =======================================================
+// 图例数据
+// =======================================================
+const LEGEND_DATA = [
+    { "label": "其他", "color": COLORS["bg-dark"] },
+    { "label": "关于剧情", "color": COLORS["bg-green"] },
+    { "label": "关于本题提取", "color": COLORS["bg-pink"] },
+    { "label": "关于题目", "color": COLORS["bg-yellow"] }
+];
+
+// =======================================================
+// 游戏常量
+// =======================================================
+const MAX_ATTEMPTS = 50;
+const HINT_COST = 1;
+const ATTEMPTS_PER_HINT = 50;
+const STORAGE_KEY = 'bingo_offline_state';
+
+// =======================================================
+// 本地存储管理
+// =======================================================
+function loadState() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        return JSON.parse(saved);
+    }
+    return {
+        unlockedChars: [],
+        attemptsLeft: MAX_ATTEMPTS,
+        history: []
+    };
+}
+
+function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function clearStorage() {
+    localStorage.removeItem(STORAGE_KEY);
+    state = {
+        unlockedChars: [],
+        attemptsLeft: MAX_ATTEMPTS,
+        history: []
+    };
+    renderBoard();
+    updateStats();
+    feedbackEl.innerText = '存档已清除';
+    feedbackEl.style.color = 'green';
+}
+
+function unlockAll() {
+    state.unlockedChars = Array.from(new Set(FULL_BINGO_CHAR.map(c => c.toUpperCase())));
+    state.attemptsLeft = MAX_ATTEMPTS;
+    saveState(state);
+    renderBoard();
+    updateStats();
+    feedbackEl.innerText = '所有字符已解锁';
+    feedbackEl.style.color = 'green';
+}
+
+// =======================================================
+// 全局状态
+// =======================================================
+let state = loadState();
+
+// =======================================================
+// DOM 元素
+// =======================================================
+const mainGridEl = document.getElementById('main-grid');
+const legendGridEl = document.getElementById('legend-grid');
+const imageEl = document.getElementById('bingo-main-image');
+const inputEl = document.getElementById('bingo-input');
+const submitBtn = document.getElementById('submit-btn');
+const exchangeBtn = document.getElementById('exchange-hints-btn');
+const unlockAllBtn = document.getElementById('unlock-all-btn');
+const clearStorageBtn = document.getElementById('clear-storage-btn');
+const historyBtn = document.getElementById('bingo-history-btn');
+const historyModal = document.getElementById('bingo-history-modal');
+const historyCloseBtn = document.getElementById('bingo-history-close');
+const historyListEl = document.getElementById('bingo-history-list');
+const feedbackEl = document.getElementById('feedback-display');
+const statsEl = document.getElementById('stats-unlocked');
+const attemptsEl = document.getElementById('attempts-display');
+
+// =======================================================
+// 渲染函数
+// =======================================================
+function renderPuzzleCell(cell) {
+    const cellDiv = document.createElement('div');
+    cellDiv.className = 'grid-cell';
+    cellDiv.style.backgroundColor = cell.color;
+    cellDiv.style.color = cell.text_color;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'char-content';
+
+    const blockColor = cell.text_color || '#000';
+    cell.display.forEach(charState => {
+        const charBox = document.createElement('div');
+        charBox.className = 'char-box';
+        if (charState.type === 'mask') {
+            const sq = document.createElement('div');
+            sq.className = 'black-square';
+            sq.style.backgroundColor = blockColor;
+            charBox.appendChild(sq);
+        } else {
+            charBox.innerText = charState.val;
+        }
+        contentDiv.appendChild(charBox);
+    });
+
+    cellDiv.appendChild(contentDiv);
+    return cellDiv;
+}
+
+function renderLegendCell(item) {
+    const cellDiv = document.createElement('div');
+    cellDiv.className = 'grid-cell';
+    cellDiv.style.backgroundColor = item.color;
+    if (item.text_color) cellDiv.style.color = item.text_color;
+    cellDiv.innerHTML = `<span class="legend-text">${item.label}</span>`;
+    return cellDiv;
+}
+
+function renderBoard() {
+    mainGridEl.innerHTML = '';
+    const unlockedSet = new Set(state.unlockedChars.map(c => c.toUpperCase()));
+
+    BINGO_DATA.forEach(item => {
+        const answer = item.answer;
+        const displayArray = [];
+        
+        for (const char of answer) {
+            if (char.trim()) {
+                const isUnlocked = unlockedSet.has(char.toUpperCase());
+                if (isUnlocked) {
+                    displayArray.push({ type: 'char', val: char });
+                } else {
+                    displayArray.push({ type: 'mask' });
+                }
+            }
+        }
+
+        const cellData = {
+            color: item.color,
+            text_color: getTextColor(item.color),
+            display: displayArray
+        };
+        mainGridEl.appendChild(renderPuzzleCell(cellData));
+    });
+
+    legendGridEl.innerHTML = '';
+    LEGEND_DATA.forEach(item => {
+        const legendItem = {
+            ...item,
+            text_color: getTextColor(item.color)
+        };
+        legendGridEl.appendChild(renderLegendCell(legendItem));
+    });
+
+    // 补齐空白格子
+    const emptyCount = 5 - (LEGEND_DATA.length % 5);
+    if (emptyCount < 5) {
+        for (let i = 0; i < emptyCount; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'grid-cell';
+            emptyCell.style.background = '#fff';
+            emptyCell.style.border = '1px solid rgba(0,0,0,0.05)';
+            legendGridEl.appendChild(emptyCell);
+        }
+    }
+}
+
+function updateStats() {
+    const unlockedSet = new Set(state.unlockedChars.map(c => c.toUpperCase()));
+    statsEl.innerText = unlockedSet.size;
+    attemptsEl.innerText = `剩余：${state.attemptsLeft} 次`;
+}
+
+// =======================================================
+// 事件处理
+// =======================================================
+function handleSubmit() {
+    const char = inputEl.value.trim().toUpperCase();
+    if (!char) return;
+
+    const unlockedSet = new Set(state.unlockedChars.map(c => c.toUpperCase()));
+
+    // 已经猜过的字符
+    if (unlockedSet.has(char)) {
+        feedbackEl.innerText = `"${char}" 已经猜过了`;
+        feedbackEl.style.color = 'orange';
+        inputEl.value = '';
+        inputEl.focus();
+        return;
+    }
+
+    // 检查次数
+    if (state.attemptsLeft <= 0) {
+        feedbackEl.innerText = '没有提交次数了！用提示点兑换 50 次提交吗？';
+        feedbackEl.style.color = 'red';
+        return;
+    }
+
+    // 计算命中数
+    let hitCount = 0;
+    BINGO_DATA.forEach(item => {
+        for (const c of item.answer.toUpperCase()) {
+            if (c === char) hitCount++;
+        }
+    });
+
+    // 记录历史
+    state.history.push({
+        submission: char,
+        timestamp: new Date().toISOString()
+    });
+
+    // 只有错误才扣次数
+    if (hitCount === 0) {
+        state.attemptsLeft -= 1;
+    }
+
+    // 解锁字符
+    if (!state.unlockedChars.includes(char)) {
+        state.unlockedChars.push(char);
+    }
+
+    saveState(state);
+    updateStats();
+    renderBoard();
+
+    if (hitCount > 0) {
+        feedbackEl.innerText = `正确！发现了 ${hitCount} 个 "${char}"`;
+        feedbackEl.style.color = 'green';
+    } else {
+        feedbackEl.innerText = `遗憾，谜题中不包含 "${char}"`;
+        feedbackEl.style.color = 'red';
+    }
+
+    inputEl.value = '';
+    inputEl.focus();
+}
+
+function formatHistoryTime(ts) {
+    if (!ts) return '';
+    try {
+        const d = new Date(ts);
+        if (isNaN(d.getTime())) return ts;
+        return d.toLocaleString('zh-CN', { 
+            month: '2-digit', 
+            day: '2-digit', 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit' 
+        });
+    } catch (_) { 
+        return ts; 
+    }
+}
+
+function escapeHtml(s) {
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+}
+
+function showHistory() {
+    const history = state.history || [];
+    const historyDisplay = [...history].reverse();
+
+    if (historyDisplay.length === 0) {
+        historyListEl.innerHTML = '<li style="color:#888;">暂无猜测记录</li>';
+    } else {
+        historyListEl.innerHTML = historyDisplay.map(item => 
+            `<li><span><strong>${escapeHtml(item.submission || '')}</strong></span><span style="color:#666;">${formatHistoryTime(item.timestamp)}</span></li>`
+        ).join('');
+    }
+    historyModal.style.display = 'flex';
+}
+
+function handleExchangeHints() {
+    if (!confirm('确定要用 1 个提示点换 50 次提交机会吗？')) {
+        return;
+    }
+
+    // 离线版：直接给次数（因为没有真正的提示点系统）
+    state.attemptsLeft += ATTEMPTS_PER_HINT;
+    saveState(state);
+
+    feedbackEl.innerText = '成功兑换！获得 50 次提交机会';
+    feedbackEl.style.color = 'green';
+    updateStats();
+}
+
+// =======================================================
+// 事件监听
+// =======================================================
+historyCloseBtn.addEventListener('click', () => { 
+    historyModal.style.display = 'none'; 
+});
+
+historyModal.addEventListener('click', (e) => { 
+    if (e.target === historyModal) {
+        historyModal.style.display = 'none';
+    }
+});
+
+historyBtn.addEventListener('click', showHistory);
+submitBtn.addEventListener('click', handleSubmit);
+inputEl.addEventListener('keyup', (e) => { 
+    if (e.key === 'Enter') handleSubmit(); 
+});
+exchangeBtn.addEventListener('click', handleExchangeHints);
+unlockAllBtn.addEventListener('click', () => {
+    if (confirm('确定要一键解锁全部字符吗？此操作不可逆！')) {
+        unlockAll();
+    }
+});
+clearStorageBtn.addEventListener('click', () => {
+    if (confirm('确定要清除存档吗？此操作不可逆！')) {
+        clearStorage();
+    }
+});
+
+// =======================================================
+// 页面初始化
+// =======================================================
+renderBoard();
+updateStats();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解谜塔</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: transparent; }
+        
+        .tower-intro-text { max-width: 800px; margin: 0 auto 20px; line-height: 1.6; padding: 0 20px; }
+        .tower-intro-text p { margin: 10px 0; }
+        
+        .tower-container { max-width: 800px; margin: auto; padding: 20px; background-color: #f4f4f4; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .tower-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 1.2rem; flex-wrap: wrap; gap: 10px; }
+        .tower-level-nav { display: flex; align-items: center; gap: 15px; }
+        .tower-nav-btn { font-size: 1.5rem; font-weight: bold; cursor: pointer; padding: 0 10px; border-radius: 5px; user-select: none; background: none; border: none; }
+        .tower-nav-btn:hover:not(.disabled) { background-color: #ddd; }
+        .tower-nav-btn.disabled { color: #aaa; cursor: not-allowed; }
+
+        .tower-image-wrapper { width: 100%; max-width: 400px; margin: 0 auto 20px; }
+        .tower-image { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .tower-controls { display: flex; gap: 10px; margin-bottom: 10px; }
+        #tower-submission-input { flex-grow: 1; padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+        .tower-feedback { min-height: 24px; font-weight: bold; padding: 10px 0; }
+        
+        .tower-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .tower-modal-content { background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 600px; position: relative; max-height: 80vh; overflow-y: auto; }
+        .tower-modal-close { position: absolute; top: 10px; right: 15px; font-size: 2rem; cursor: pointer; border: none; background: none; }
+        #tower-history-list { list-style: none; padding: 0; }
+        #tower-history-list li { padding: 8px 0; border-bottom: 1px solid #eee; }
+
+        .tower-image-caption { margin-bottom: 15px; font-style: italic; color: #555; background-color: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; }
+        
+        .btn { padding: 10px 20px; font-size: 1rem; cursor: pointer; border: none; border-radius: 5px; background-color: #007bff; color: white; }
+        .btn:hover { background-color: #0056b3; }
+        .btn:disabled { background-color: #ccc; cursor: not-allowed; }
+        .btn-secondary { background-color: #6c757d; }
+        .btn-secondary:hover { background-color: #545b62; }
+        
+        .tower-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        
+        .reset-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; }
+        .reset-btn { background-color: #dc3545; }
+        .reset-btn:hover { background-color: #c82333; }
+        
+        .hint-info { font-size: 0.9rem; color: #666; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="tower-intro-text">
+    <p>你来到了一座塔下面，这座塔虽然小巧，但是其八面都是机关。每一层塔的上楼通道都被密码门挡住了，你要找到对应的密码才能开门，获得最上层的宝物。</p>
+    <p>你注意到这个塔的机关是环环相扣的，从第二层开始每一层需要把上一层绿色框内的数字填入到本关的所有问号内，就能探到这个塔的奥秘。</p>
+</div>
+
+<div class="tower-container">
+    <div class="tower-header">
+        <div class="tower-level-nav">
+            <button id="tower-prev-btn" class="tower-nav-btn" title="上一关">&lt;</button>
+            <span id="tower-level-text">当前小关：<b id="tower-level-display">1</b></span>
+            <button id="tower-next-btn" class="tower-nav-btn" title="下一关">&gt;</button>
+        </div>
+        <span>剩余提交次数：<b id="tower-attempts-display">5</b></span>
+    </div>
+
+    <div class="tower-image-caption" id="tower-level-description">
+        <!-- 动态更新 -->
+    </div>
+
+    <div class="tower-image-wrapper">
+        <a id="tower-image-link" href="" target="_blank" rel="noopener noreferrer">
+            <img id="tower-image" src="" alt="Puzzle Image" class="tower-image">
+        </a>
+    </div>
+    
+    <div class="tower-controls">
+        <input type="text" id="tower-submission-input" placeholder="输入答案">
+        <button id="tower-submit-btn" class="btn">提交</button>
+    </div>
+    <div class="tower-feedback" id="tower-feedback-display"></div>
+
+    <div class="tower-actions">
+        <button id="tower-history-btn" class="btn">查看历史记录</button>
+        <button id="exchange-hints-btn" class="btn btn-secondary">
+            使用提示点换次数 (消耗 1)
+            <span style="font-weight: bold;">
+                (可用：<span id="hint-balance-display">10</span>)
+            </span>
+        </button>
+    </div>
+    
+    <div class="reset-section">
+        <div class="btns">
+            <button id="unlock-tower-btn" class="btn unlock-btn">解锁全塔</button>
+            <button id="reset-tower-btn" class="btn reset-btn">重置整个塔的进度</button>
+        </div>
+        <p class="hint-info">提示：输入命令 "SECORESETTOWER" 也可以重置</p>
+    </div>
+</div>
+
+<div class="tower-modal-overlay" id="tower-history-modal">
+    <div class="tower-modal-content">
+        <button class="tower-modal-close" id="tower-history-close-btn">&times;</button>
+        <h2>提交历史</h2>
+        <ul id="tower-history-list"></ul>
+    </div>
+</div>
+
+<script>
+// =======================================================
+// 关卡数据
+// =======================================================
+const TOWER_DATA = [
+    {
+        "level": 1,
+        "image_url": "images/level_01.png",
+        "image_file": "images/level_01.png",
+        "description": "你来到了第一层 (Dim Sum)，这里摆放着一盘……星星饼干？<br>规则：数数看，哪种饼干最多？旋转和翻转视为同样的饼干哦。<br>开门密码：最多的饼干的数量。",
+        "puzzle_link": "https://tinyurl.com/34j4h557",
+        "milestones": {},
+        "correct_answer": "7"
+    },
+    {
+        "level": 2,
+        "image_url": "images/level_02.png",
+        "image_file": "images/level_02.png",
+        "description": "你来到了第二层 (Digital Kakuro)，这里放着一块显示屏，看上去和这个塔显得格格不入……<br>规则：在白格内以数码管的形式填入 1~9 的整数，使得灰色格中下/右边的数等于其下/右方连续一段白格中的数字之和。连续的一段白格内数字不能重复。本题中部分灰色格中的数字也会以数码管形式给出，也需要在做题过程中确定。<br>开门密码：左上角黑色箭头指向的两个数字按顺序输入。",
+        "puzzle_link": "https://tinyurl.com/bdhputsy",
+        "milestones": { "31": "新的答案正确！" },
+        "correct_answer": "41"
+    },
+    {
+        "level": 3,
+        "image_url": "images/level_03.png",
+        "image_file": "images/level_03.png",
+        "description": "你来到了第三层 (Hundred)，这里有一个很像幻方的东西，但是仔细看去，规则和幻方有一点区别。<br>规则：在一些已知数的前后填入数字，使得填完数后每行每列之和为 100。空格内必须填数，且只能填一位数。<br>开门密码：中间一行的所有数字按顺序输入，中间不要有空格。",
+        "puzzle_link": "https://tinyurl.com/5apxb8nf",
+        "milestones": { "64432": "新的答案正确！" },
+        "correct_answer": "54937"
+    },
+    {
+        "level": 4,
+        "image_url": "images/level_04.png",
+        "image_file": "images/level_04.png",
+        "description": "你来到了第四层 (Arrow Maze)，这一层有一个由箭头构成的迷宫。<br>规则：在格子内填入 1~16 的整数，使得每个整数恰好出现一次，且包含数字 x 的格子的箭头指向包含数字 x+1 的格子。<br>开门密码：从左下到右上对角线上的所有数字按顺序输入，中间不要有空格。",
+        "puzzle_link": "https://tinyurl.com/33ewtv7k",
+        "milestones": { "613119": "新的答案正确！" },
+        "correct_answer": "116133"
+    },
+    {
+        "level": 5,
+        "image_url": "images/level_05.png",
+        "image_file": "images/level_05.png",
+        "description": "你来到了第五层 (Figure Doppelblock)，这里有一些点阵。<br>规则：在格子内填入给定的形状和黑格，使得每行每列每种形状恰好出现一次，且每行每列有两个黑格。外提示表示两个黑格之间所有形状叠在一起之后的结果。<br>开门密码：从左下到右上格子的所有内容，形状输入对应数字，空格输入 0，中间不要有任何空格。",
+        "puzzle_link": "https://tinyurl.com/jnvm3tfa",
+        "milestones": { "40222": "新的答案正确！" },
+        "correct_answer": "25505"
+    },
+    {
+        "level": 6,
+        "image_url": "images/level_06.png",
+        "image_file": "images/level_06.png",
+        "description": "你来到了第六层 (Dice Skyscrapers)，这里摆放着几个骰子和它们的展开图。<br>规则：在格子内填入 1~6，使得每行每列出现 1~6 各一次。外提示数表示摩天楼提示数，表示如果把数字当成高楼，数字大小看成高楼层数，则外提示表示该方向能够看到多少个高楼。每个虚线框都是一个骰子的展开图（1~6 不重复，且骰子的相对两面之和为 7）。<br>开门密码：从左上到右下的所有数字按顺序输入。",
+        "puzzle_link": "https://tinyurl.com/35trt92s",
+        "milestones": { "331254": "新的答案正确！" },
+        "correct_answer": "251424"
+    },
+    {
+        "level": 7,
+        "image_url": "images/level_07.png",
+        "image_file": "images/level_07.png",
+        "description": "你来到了第七层 (Easy As (Non-consecutive))，这里只有一个题。<br>规则：在格子内填入 1~4，使得每行每列出现 1~4 各一次。外提示数表示该方向能看到的第一个数，且如果相邻的两个格子内都有数字，则这两个数字的差不能为 1。<br>开门密码：从左上到右下每个格子包含的内容，数字输入数字本身，空格输入 0，中间不包含任何空格。",
+        "puzzle_link": "https://tinyurl.com/cv28us6a",
+        "milestones": { "0030200": "新的答案正确！" },
+        "correct_answer": "3333230"
+    },
+    {
+        "level": 8,
+        "image_url": "images/level_08.png",
+        "image_file": "images/level_08.png",
+        "description": "你来到了第八层 (Mathrax)，这里有很多的数学运算符号。<br>规则：在格子内填入 1~8，使得每行每列出现 1~8 各一次。圆圈内的数字和运算符表示和圆圈接触的两组对角相邻的格子中的数字使用运算符得到的结果为该数字。圆圈内为 O 表示与该圆圈接触的四格均为奇数，圆圈内为 E 表示与该圆圈接触的四格均为偶数。<br>开门密码：从左上到右下对角线上所有数字按顺序输入。",
+        "puzzle_link": "https://tinyurl.com/5n649smz",
+        "milestones": { "73431124": "新的答案正确！" },
+        "correct_answer": "31615124"
+    },
+    {
+        "level": 9,
+        "image_url": "images/level_09.png",
+        "image_file": "images/level_09.png",
+        "description": "你来到了第九层 (Compass)，这里放着很多个大大小小的指南针。<br>规则：将盘面分成若干个区域，使得每个区域内有且仅有一个提示。提示四个方向的数字表示该区域内在提示对应方向的格子数量。<br>开门密码：从左上到右下，对角线上每个格子所在区域面积的个位按顺序输入。",
+        "puzzle_link": "https://tinyurl.com/mku3m4ex",
+        "milestones": { "399243552": "新的答案正确！" },
+        "correct_answer": "455240031"
+    },
+    {
+        "level": 10,
+        "image_url": "images/level_10.png",
+        "image_file": "images/level_10.png",
+        "description": "你来到了第十层 (Battleships)，这里宛若一片汪洋，有一支战舰部队正等着出海。<br>规则：将给定的船舶放入盘面中，使得它们既不会相互接触，也不会对角接触。船可以旋转。盘中可能已经给出了一些船舶段，标记为\"水\"的单元格不能包含任何船舶段。网格外的数字表示相应行或列中出现的船舶段数。<br>开门密码：从上到下，每一行最右边的战舰位于第几列，如果该行最右边战舰位于第 10 列或者该行没有战舰则输入 0。",
+        "puzzle_link": "https://tinyurl.com/mrxxffx6",
+        "milestones": { "9099495500": "新的答案正确！" },
+        "correct_answer": "9696405580"
+    },
+    {
+        "level": 11,
+        "image_url": "images/level_11.png",
+        "image_file": "images/level_11.png",
+        "description": "你来到了第十一层 (Kurodoko)，这里是一片农田，但是已经被田鼠破坏得面目全非了。<br>规则：在盘中涂黑一些格子，使所有未涂色的格子横竖连通为一个整体，且涂黑的单元格不能相邻。带有数字的单元格不能涂黑，这些数字表示在所有四个方向上都可以看到的未涂色格子的总数，包括数字格子本身。<br>开门密码：从左下到右上，对角线上每个格子如果是黑格输入 1，如果是空格输入 0，中间不包含空格。",
+        "puzzle_link": "https://tinyurl.com/cc2akyeu",
+        "milestones": { "00010001100": "新的答案正确！" },
+        "correct_answer": "00000011100"
+    },
+    {
+        "level": 12,
+        "image_url": "images/level_12.png",
+        "image_file": "images/level_12.png",
+        "description": "你来到了第十二层 (Pentomino Fences)，这里摆放着 12 块五格骨牌的雕塑。<br>规则：在盘面上沿虚线画 12 个回路，使得每个回路内的面积为 5，且每个回路的形状都不相同（旋转和翻转视为相同）。不同的回路不能交叉也不能接触（包括对角接触）。格内数字表示该格被回路使用的边的长度。<br>开门密码：从左上到右下，对角线上每个格子是否在某个回路内部，是的话输入 1，否则输入 0；遇到大格子只需要输入一次。",
+        "puzzle_link": "https://tinyurl.com/yck372xe",
+        "milestones": { "101101000": "新的答案正确！" },
+        "correct_answer": "101001001"
+    },
+    {
+        "level": 13,
+        "image_url": "images/level_13.png",
+        "image_file": "images/level_13.png",
+        "description": "你来到了第十三层 (Fillomino)，这里也是最顶层，你看到了一个宝箱，同时上面有一张提示：当你将题目做出来之后，将最后一层的题面旋转 180°，就能探到这个塔的奥秘。而宝箱上是一个有一些空洞的码牌题目。<br>规则：在所有的空格中填入数字。相邻且填有相同数字的格视为同一个区域，每一个区域的格数与这些格填入的数字相同。每个区域可以有任意数量的已知数（包括 0 个）。黑色格子不在盘面内。<br>开启宝箱的密码：从左上到右下，对角线上每个格子所在区域面积的个位按顺序输入。不在盘面内的格子不需要输入。",
+        "puzzle_link": "https://tinyurl.com/a5cupdx2",
+        "milestones": { "277757573": "新的答案正确！" },
+        "correct_answer": "255757573"
+    }
+];
+
+// =======================================================
+// 常量
+// =======================================================
+const MAX_SUBMISSIONS = 5;
+const HINT_COST_FOR_ATTEMPTS = 1;
+const ATTEMPTS_PER_HINT = 5;
+const RESET_COMMAND_ENTIRE_TOWER = "SECORESETTOWER";
+const UNLOCK_COMMAND_ENTIRE_TOWER = "UNLOCKWHOLETOWER";
+const STORAGE_KEY = 'tower_offline_state';
+
+// =======================================================
+// 本地存储管理
+// =======================================================
+function loadState() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        return JSON.parse(saved);
+    }
+    return {
+        currentLevel: 1,
+        attemptsByLevel: {},
+        history: [],
+        hintsRemaining: 32767
+    };
+}
+
+function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function getAttemptsForLevel(state, level) {
+    const key = String(level);
+    if (!(key in state.attemptsByLevel)) {
+        state.attemptsByLevel[key] = MAX_SUBMISSIONS;
+        saveState(state);
+    }
+    return state.attemptsByLevel[key];
+}
+
+// =======================================================
+// 全局状态
+// =======================================================
+let state = loadState();
+let viewingLevel = state.currentLevel;
+let maxReachedLevel = state.currentLevel;
+
+// 检查是否已完成所有关卡
+const isCompleted = state.currentLevel > TOWER_DATA.length;
+if (isCompleted) {
+    maxReachedLevel = TOWER_DATA.length;
+    viewingLevel = Math.min(state.currentLevel, TOWER_DATA.length);
+}
+
+// =======================================================
+// DOM 元素
+// =======================================================
+const levelText = document.getElementById('tower-level-text');
+const levelDisplay = document.getElementById('tower-level-display');
+const attemptsContainer = document.querySelector('.tower-header > span:last-child');
+const imageEl = document.getElementById('tower-image');
+const descriptionEl = document.getElementById('tower-level-description');
+const inputEl = document.getElementById('tower-submission-input');
+const submitBtn = document.getElementById('tower-submit-btn');
+const feedbackDisplay = document.getElementById('tower-feedback-display');
+const historyBtn = document.getElementById('tower-history-btn');
+const exchangeBtn = document.getElementById('exchange-hints-btn');
+const hintBalanceDisplay = document.getElementById('hint-balance-display');
+const historyModal = document.getElementById('tower-history-modal');
+const historyCloseBtn = document.getElementById('tower-history-close-btn');
+const historyList = document.getElementById('tower-history-list');
+const prevBtn = document.getElementById('tower-prev-btn');
+const nextBtn = document.getElementById('tower-next-btn');
+const imageLinkEl = document.getElementById('tower-image-link');
+const resetBtn = document.getElementById('reset-tower-btn');
+const unlockBtn = document.getElementById('unlock-tower-btn');
+
+// =======================================================
+// 工具函数
+// =======================================================
+function formatHintBalance(val) {
+    const num = Number(val);
+    if (Number.isNaN(num)) return val;
+    const truncated = Math.trunc(num * 100) / 100;
+    return truncated.toFixed(2);
+}
+
+function getLevelData(level) {
+    return TOWER_DATA[level - 1];
+}
+
+// =======================================================
+// UI 更新函数
+// =======================================================
+function updateNavButtons() {
+    prevBtn.classList.toggle('disabled', viewingLevel <= 1);
+    nextBtn.classList.toggle('disabled', viewingLevel >= maxReachedLevel);
+}
+
+function updateLevelDescription(description) {
+    descriptionEl.innerHTML = description || `<p>第 ${viewingLevel} 关 - 仔细观察图片，找出隐藏的线索。</p>`;
+}
+
+function updateLevelDisplay() {
+    levelDisplay.innerText = viewingLevel;
+    if (viewingLevel === state.currentLevel && !isCompleted) {
+        levelText.innerHTML = `当前小关：<b id="tower-level-display">${viewingLevel}</b>`;
+    } else {
+        levelText.innerHTML = `查看：第 <b id="tower-level-display">${viewingLevel}</b> 关`;
+    }
+}
+
+function updateAttemptsDisplay(attempts) {
+    attemptsContainer.innerHTML = `剩余提交次数：<b id="tower-attempts-display">${attempts}</b>`;
+}
+
+function updateHintDisplay() {
+    hintBalanceDisplay.innerText = formatHintBalance(state.hintsRemaining);
+}
+
+// =======================================================
+// 事件处理
+// =======================================================
+function handleNavClick(direction) {
+    const targetLevel = viewingLevel + direction;
+    if (targetLevel < 1 || targetLevel > maxReachedLevel) return;
+
+    viewingLevel = targetLevel;
+    const levelData = getLevelData(viewingLevel);
+    imageEl.src = levelData.image_file;
+    imageLinkEl.href = levelData.puzzle_link || '#';
+    updateLevelDescription(levelData.description);
+    updateLevelDisplay();
+    updateNavButtons();
+    updateAttemptsDisplay(getAttemptsForLevel(state, viewingLevel));
+
+    feedbackDisplay.innerText = '';
+    inputEl.value = '';
+}
+
+function handleSubmit() {
+    const submission = inputEl.value.trim().toUpperCase();
+    if (!submission || submitBtn.disabled) return;
+
+    feedbackDisplay.innerText = "正在提交...";
+    submitBtn.disabled = true;
+
+    // 检查重置命令
+    if (submission === RESET_COMMAND_ENTIRE_TOWER) {
+        handleResetTower();
+        return;
+    }
+    if (submission === UNLOCK_COMMAND_ENTIRE_TOWER) {
+        handleUnlockTower();
+        return;
+    }
+
+    const levelIndex = viewingLevel - 1;
+    const levelData = getLevelData(viewingLevel);
+    let attemptsLeft = getAttemptsForLevel(state, viewingLevel);
+
+    if (attemptsLeft <= 0) {
+        feedbackDisplay.innerText = "本关提交次数已用完！";
+        feedbackDisplay.style.color = 'red';
+        inputEl.disabled = true;
+        submitBtn.disabled = false;
+        return;
+    }
+
+    // 检查是否已解锁第 13 关里程碑
+    const hasLevel13Milestone = state.history.some(
+        item => item.level === 13 && item.submission === "255757573"
+    );
+
+    // 检查答案
+    if (submission === levelData.correct_answer.toUpperCase()) {
+        // 正确答案，不消耗次数
+        if (viewingLevel === state.currentLevel) {
+            // 新通过的关卡
+            let responseMsg = `第 ${state.currentLevel} 关通过！`;
+            if (viewingLevel === 13 && submission === "255757573") {
+                responseMsg = "宝箱里没有宝物，但你是否注意到了红色数字所在的区域？";
+            }
+
+            state.history.push({
+                level: viewingLevel,
+                submission: submission,
+                response: responseMsg
+            });
+
+            state.currentLevel += 1;
+            state.currentLevel = Math.min(state.currentLevel, TOWER_DATA.length);
+            saveState(state);
+
+            if (viewingLevel >= TOWER_DATA.length) {
+                // 完成所有关卡
+                feedbackDisplay.innerText = responseMsg || "恭喜！你已完成所有关卡！";
+                feedbackDisplay.style.color = 'blue';
+                maxReachedLevel = TOWER_DATA.length;
+                viewingLevel = TOWER_DATA.length;
+                updateLevelDisplay();
+                updateNavButtons();
+                inputEl.disabled = false;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // 进入下一关
+            feedbackDisplay.innerText = "正确！正在进入下一关...";
+            feedbackDisplay.style.color = 'green';
+            
+            setTimeout(() => {
+                state.currentLevel = Math.min(state.currentLevel, TOWER_DATA.length);
+                maxReachedLevel = state.currentLevel;
+                viewingLevel = state.currentLevel;
+                
+                const newLevelData = getLevelData(viewingLevel);
+                imageEl.src = newLevelData.image_file;
+                imageLinkEl.href = newLevelData.puzzle_link || '#';
+                
+                updateLevelDisplay();
+                updateLevelDescription(newLevelData.description);
+                updateAttemptsDisplay(getAttemptsForLevel(state, viewingLevel));
+                updateNavButtons();
+
+                feedbackDisplay.innerText = '';
+                inputEl.value = '';
+                submitBtn.disabled = false;
+            }, 1500);
+            return;
+        } else {
+            // 已经通过的关卡
+            state.history.push({
+                level: viewingLevel,
+                submission: submission,
+                response: "答案正确！(本关之前已通过)"
+            });
+            saveState(state);
+            feedbackDisplay.innerText = "答案正确！(本关之前已通过)";
+            feedbackDisplay.style.color = 'green';
+            inputEl.value = '';
+            submitBtn.disabled = false;
+            return;
+        }
+    }
+
+    // 检查里程碑答案（只有解锁 13 关后才有效）
+    if (levelData.milestones[submission] && hasLevel13Milestone) {
+        const responseText = levelData.milestones[submission];
+        state.history.push({
+            level: viewingLevel,
+            submission: submission,
+            response: responseText
+        });
+        saveState(state);
+        feedbackDisplay.innerText = responseText;
+        feedbackDisplay.style.color = 'blue';
+        inputEl.value = '';
+        submitBtn.disabled = false;
+        return;
+    }
+
+    // 错误答案，消耗次数
+    state.attemptsByLevel[String(viewingLevel)] = attemptsLeft - 1;
+    state.history.push({
+        level: viewingLevel,
+        submission: submission,
+        response: "答案错误"
+    });
+    saveState(state);
+
+    feedbackDisplay.innerText = "答案错误";
+    feedbackDisplay.style.color = 'red';
+    inputEl.value = '';
+    submitBtn.disabled = false;
+    updateAttemptsDisplay(state.attemptsByLevel[String(viewingLevel)]);
+}
+
+function showHistory() {
+    const levelHistory = state.history.filter(item => item.level === viewingLevel);
+    
+    if (levelHistory.length === 0) {
+        historyList.innerHTML = '<li>本关暂无提交记录</li>';
+    } else {
+        historyList.innerHTML = levelHistory.map(item => 
+            `<li><b>提交:</b> ${item.submission} <br> <b>响应:</b> ${item.response}</li>`
+        ).join('');
+    }
+    historyModal.style.display = 'flex';
+}
+
+function handleExchange() {
+    if (!confirm(`你确定要消耗 ${HINT_COST_FOR_ATTEMPTS} 个提示点来换取 ${ATTEMPTS_PER_HINT} 次提交机会吗？`)) {
+        return;
+    }
+
+    if (state.hintsRemaining < HINT_COST_FOR_ATTEMPTS) {
+        feedbackDisplay.innerText = "提示点不足！";
+        feedbackDisplay.style.color = 'red';
+        return;
+    }
+
+    state.hintsRemaining -= HINT_COST_FOR_ATTEMPTS;
+    const currentAttempts = getAttemptsForLevel(state, viewingLevel);
+    state.attemptsByLevel[String(viewingLevel)] = currentAttempts + ATTEMPTS_PER_HINT;
+    saveState(state);
+
+    feedbackDisplay.innerText = `兑换成功！获得了 ${ATTEMPTS_PER_HINT} 次提交机会。`;
+    feedbackDisplay.style.color = 'green';
+    updateAttemptsDisplay(state.attemptsByLevel[String(viewingLevel)]);
+    updateHintDisplay();
+}
+
+function handleResetTower() {
+    if (!confirm("确定要重置整个塔的进度吗？这将清空所有关卡的进度和历史记录！")) {
+        inputEl.value = '';
+        submitBtn.disabled = false;
+        return;
+    }
+
+    state = {
+        currentLevel: 1,
+        attemptsByLevel: {},
+        history: [],
+        hintsRemaining: 32767
+    };
+    saveState(state);
+
+    viewingLevel = 1;
+    maxReachedLevel = 1;
+
+    const levelData = getLevelData(1);
+    imageEl.src = levelData.image_file;
+    imageLinkEl.href = levelData.puzzle_link || '#';
+    updateLevelDescription(levelData.description);
+    updateLevelDisplay();
+    updateNavButtons();
+    updateAttemptsDisplay(MAX_SUBMISSIONS);
+    updateHintDisplay();
+
+    feedbackDisplay.innerText = "高塔进度已完全重置！";
+    feedbackDisplay.style.color = 'blue';
+    inputEl.value = '';
+    inputEl.disabled = false;
+    submitBtn.disabled = false;
+
+    setTimeout(() => {
+        feedbackDisplay.innerText = '';
+    }, 2000);
+}
+
+function handleUnlockTower() {
+    maxReachedLevel = TOWER_DATA.length;
+    state.currentLevel = maxReachedLevel;
+    saveState(state);
+
+    feedbackDisplay.innerText = "高塔已完全解锁！";
+    feedbackDisplay.style.color = 'blue';
+    inputEl.value = '';
+    inputEl.disabled = false;
+    submitBtn.disabled = false;
+    
+    updateLevelDisplay();
+    updateNavButtons();
+
+    setTimeout(() => {
+        feedbackDisplay.innerText = '';
+    }, 2000);
+}
+
+// =======================================================
+// 页面初始化
+// =======================================================
+function initializePage() {
+    const levelData = getLevelData(viewingLevel);
+    imageEl.src = levelData.image_file;
+    imageLinkEl.href = levelData.puzzle_link || '#';
+    updateLevelDescription(levelData.description);
+    updateAttemptsDisplay(getAttemptsForLevel(state, viewingLevel));
+    updateHintDisplay();
+    updateLevelDisplay();
+    updateNavButtons();
+
+    // 事件监听
+    prevBtn.addEventListener('click', () => handleNavClick(-1));
+    nextBtn.addEventListener('click', () => handleNavClick(1));
+    submitBtn.addEventListener('click', handleSubmit);
+    exchangeBtn.addEventListener('click', handleExchange);
+    resetBtn.addEventListener('click', handleResetTower);
+    unlockBtn.addEventListener('click', handleUnlockTower);
+    inputEl.addEventListener('keyup', (e) => { 
+        if (e.key === 'Enter') handleSubmit(); 
+    });
+    historyBtn.addEventListener('click', showHistory);
+    historyCloseBtn.addEventListener('click', () => { 
+        historyModal.style.display = 'none'; 
+    });
+    historyModal.addEventListener('click', (e) => { 
+        if (e.target === historyModal) {
+            historyModal.style.display = 'none';
+        }
+    });
+}
+
+// 启动页面
+initializePage();
+</script>
+
+</body>
+</html>

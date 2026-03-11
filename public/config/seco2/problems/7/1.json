@@ -3,7 +3,7 @@
   "title": "将胡解谜",
   "extendData": "",
   "contentType": 1,
-  "content": "暂未收录[majiang]",
+  "content": "<iframe id=\"eterill_pharchiveevolved_ifr_autoheight\" src=\"/config/seco2/static/assets/majiang_260311/index.html\"></iframe><style>iframe{width:100%;border:none;}</style>\n<script>\n  function resizeIframe(obj) {\nobj.style.height = obj.contentWindow.document.documentElement.scrollHeight *1.1+ 'px';\n  }\n\nconst iframe = document.getElementById('eterill_pharchiveevolved_ifr_autoheight');iframe.addEventListener('load', function() {\nresizeIframe(this);\n});\n</script>",
   "answer": "COLORMIXED",
   "desc": "",
   "tips": [
